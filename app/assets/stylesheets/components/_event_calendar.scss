@@ -1,0 +1,112 @@
+.event-calendar {
+  display: none;
+  margin-bottom: 5px;
+
+  .event-calendar__next {
+    display: inline-block;
+    fill: $calendar-arrow;
+    height: 16px;
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 16px;
+  }
+
+  .event-calendar__prev {
+    display: inline-block;
+    fill: $calendar-arrow;
+    height: 16px;
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 16px;
+  }
+
+  .event-calendar__month {
+    color: $blue;
+    font-weight: normal;
+    line-height: 1;
+    margin: 0;
+    vertical-align: middle;
+
+    @include font-size(16px);
+  }
+
+  .event-calendar__header {
+    border-bottom: 1px solid $calendar-arrow;
+    border-top: 1px solid $calendar-arrow;
+    padding: 10px;
+    position: relative;
+    text-align: center;
+  }
+
+  table {
+    width: 100%;
+  }
+
+  thead {
+    display: none;
+  }
+
+  tbody tr {
+    border-bottom: 1px solid $calendar-arrow;
+
+    td {
+      color: $gray;
+      font-weight: 300;
+      line-height: 1;
+      padding: 20px 0;
+      position: relative;
+
+      @include font-size(16px);
+    }
+
+    td.prev-month, td.prev-month.has-events a {
+      color: #B3B3B3;
+    }
+
+    td.next-month, td.next-month.has-events a {
+      color: #B3B3B3;
+    }
+  }
+
+  .has-events {
+    a {
+      color: $text-color;
+      cursor: pointer;
+      text-decoration: none;
+    }
+  }
+}
+
+.event-calendar__today {
+  background: transparent;
+  border: 1px solid $green;
+  border-radius: 39px;
+  height: 39px;
+  left: 50%;
+  margin-top: 1px;
+  position: absolute;
+  text-indent: -999em;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  width: 39px;
+}
+
+.event-calendar__event {
+  background: $green;
+  border-radius: 7px;
+  bottom: 10px;
+  height: 7px;
+  left: 50%;
+  position: absolute;
+  text-indent: -999em;
+  transform: translateX(-50%);
+  width: 7px;
+
+  .past & {
+    background: #D9E6AD;
+  }
+}

@@ -1,0 +1,13 @@
+.pod-select__overlay
+  .pod-select__pod
+    span= current_pod.name
+    svg viewbox="0 0 1024 1024"
+      use xlink:href="#icon-podkeeper-arrow-up"
+
+  .pod-select__calendar
+    a My Calendar
+
+  nav.pod-select__pod-list
+    p.pod-select__my-pods My Pods
+    - current_user.pods.includes(:pod_memberships).order('pod_memberships.created_at desc').each do |pod|
+      a= pod.name

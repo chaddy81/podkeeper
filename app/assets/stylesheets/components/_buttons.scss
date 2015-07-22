@@ -1,0 +1,18 @@
+.btn {
+  border-radius: 5px;
+  display: inline-block;
+  line-height: 1;
+  padding: 9px 25px;
+
+  @include font-size(16px);
+}
+
+.btn--cancel {
+  border: 1px solid $red;
+  color: $red;
+}
+
+.btn--green {
+  background: $green;
+  color: #fff;
+}

@@ -1,0 +1,90 @@
+.add-menu__trigger {
+  background: #fff;
+  border-radius: 50px;
+  bottom: 20px;
+  height: 50px;
+  position: fixed;
+  right: 20px;
+  transition: 0.1s ease-in;
+  width: 50px;
+  z-index: 11;
+
+  &.active {
+    transform: rotate(45deg);
+  }
+
+  svg {
+    fill: $green;
+    height: 50px;
+    width: 50px;
+  }
+}
+
+.add-menu__trigger.active ~ .add-menu__overlay {
+  display: block;
+}
+
+.add-menu__overlay {
+  background: rgba(69, 97, 137, 0.9);
+  display: none;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 10;
+}
+
+.add-menu__menu {
+  margin-right: 20px;
+  margin-top: 22%;
+  text-align: right;
+}
+
+.add-menu__menu-item {
+  -webkit-font-smoothing: antialiased;
+  color: #fff;
+  display: block;
+  margin-bottom: 25px;
+
+  &:hover, :active, :visited {
+    color: #fff;
+    cursor: pointer;
+    text-decoration: none;
+  }
+
+  .icon-back {
+    border-radius: 60px;
+    display: inline-block;
+    height: 60px;
+    margin-left: 18px;
+    position: relative;
+    vertical-align: middle;
+    width: 60px;
+  }
+
+  svg {
+    fill: $blue;
+    height: 26px;
+    left: 50%;
+    margin-left: -13px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  @include font-size(16px);
+}
+
+.add-menu__menu-item--discussion {
+  svg {
+    height: 28px;
+    margin-left: -14px;
+  }
+}
+
+.add-menu__menu-item--event {
+  svg {
+    height: 29px;
+    margin-left: -14px;
+  }
+}

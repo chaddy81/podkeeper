@@ -1,0 +1,72 @@
+.pod-select__overlay {
+  background: rgba(69, 97, 137, 0.9);
+  display: none;
+  font-weight: 300;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 11;
+
+  &.active {
+    display: block;
+  }
+
+  @include font-size(16px);
+}
+
+.pod-select__pod {
+  color: #fff;
+  margin-top: 14px;
+  text-align: center;
+
+  span {
+    display: inline-block;
+    max-width: 250px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  svg {
+    fill: #fff;
+    margin-left: 10px;
+    vertical-align: 3px;
+    width: 14px;
+  }
+}
+
+.pod-select__my-pods {
+  border-bottom: 1px solid $event-border;
+  color: $event-border;
+  margin-bottom: 20px;
+}
+
+.pod-select__calendar {
+  display: table;
+  margin: 56px auto 25px;
+  width: 192px;
+
+  a {
+    color: #fff;
+    display: block;
+    text-decoration: none;
+    text-transform: capitalize;
+  }
+}
+
+.pod-select__pod-list {
+  margin: 0 auto;
+  width: 192px;
+
+  a {
+    color: #fff;
+    display: block;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    padding-left: 18px;
+    text-decoration: none;
+    text-transform: capitalize;
+    word-wrap: break-word;
+  }
+}

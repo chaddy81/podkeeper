@@ -1,0 +1,40 @@
+#main {
+  -webkit-transform: translate3d(0, 0, 0);
+  background: #fff;
+  box-shadow: 3px 0 3px rgba(0,0,0,0.2);
+  min-height: 100vh;
+  position: relative;
+  width: 100%;
+}
+
+.slideout-menu {
+  position: fixed;
+  // left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 0;
+  width: 256px;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  display: none;
+}
+
+.slideout-panel {
+  position: relative;
+  z-index: 1;
+}
+
+.slideout-open,
+.slideout-open body,
+.slideout-open .slideout-panel {
+  overflow: hidden;
+}
+
+.slideout-open .slideout-menu {
+  display: block;
+}
+
+.slideout-open .add-menu__trigger {
+  display: none;
+}

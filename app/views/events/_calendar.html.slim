@@ -1,0 +1,9 @@
+= month_calendar title: event_calendar_title, header: {class: "event-calendar__header"}, table: { class: "text-center" }, events: @events, previous_link: events_ajax_previous_link, next_link: events_ajax_next_link do |date, meetings|
+  - if date == Date.today
+    span.event-calendar__today.center-block
+  - if meetings.length > 0
+    = link_to 'http://www.google.com', target: '_blank' do
+      = date.strftime('%e')
+      span.event-calendar__event.center-block dot
+  - else
+    = date.strftime('%e')

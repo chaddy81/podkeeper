@@ -29,8 +29,7 @@ gem 'rmagick'
 gem 'simple_form'
 gem 'griddler', '0.6.1'
 
-gem 'activerecord-tableless', ">= 1.3.4",  git:'https://github.com/david135/activerecord-tableless.git'
-
+gem 'activerecord-tableless', '>= 1.3.4',  git:'https://github.com/david135/activerecord-tableless.git'
 
 # facebook login
 gem 'omniauth-facebook'
@@ -38,7 +37,7 @@ gem 'omniauth-facebook'
 # for continued use of respond_to
 gem 'responders'
 
-gem 'slim'
+gem 'slim-rails'
 
 # assets
 # gem 'therubyracer', :platform => :ruby # for less-rails
@@ -46,15 +45,14 @@ gem 'slim'
 
 gem 'bootstrap-datepicker-rails'
 gem 'jquery-timepicker-rails'
-gem 'bootstrap-sass'
-gem 'coffee-rails'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'sass-rails'
 gem 'uglifier'
-gem 'compass'
-gem 'compass-rails'
-gem "simple_calendar", "~> 1.1.0"
+gem 'autoprefixer-rails'
+gem 'simple_calendar', '~> 1.1.0'
+gem 'modernizr-rails'
+gem 'turbolinks'
 
 group :production do
   # Control elastic dynos on heroku for increased traffic
@@ -70,6 +68,8 @@ group :development do
   gem 'delorean'
   gem 'rack-mini-profiler'
   gem 'rubocop', require: false
+  gem 'spring'
+  gem 'slack-notifier'
 end
 
 group :test do

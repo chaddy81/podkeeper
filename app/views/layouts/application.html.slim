@@ -1,0 +1,50 @@
+doctype html
+html
+  head
+    meta charset="utf-8"
+    meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"
+    title Podkeeper
+    meta name="viewport" content="width=device-width, initial-scale=1"
+    = stylesheet_link_tag    'application', 'http://fonts.googleapis.com/css?family=Roboto:400,500,300,700,500italic,400italic,300italic', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = javascript_include_tag :modernizr
+    = csrf_meta_tags
+
+  body
+    /! inject svg's for use inline throughout app
+    = render 'svg_declaration'
+
+    /! push menu for mobile
+    = render 'mobile_menu'
+
+    main#main.panel.clearfix
+      = render 'mobile_header'
+      = render 'site_nav_mobile'
+      = yield
+
+    /! overlay for selecting new pod
+    = render 'add_menu'
+    = render 'pod_select'
+
+    javascript:
+      var slideout = new Slideout({
+        'panel': document.getElementById('main'),
+        'menu': document.getElementById('menu'),
+        'padding': 256,
+        'side': 'right',
+        'tolerance': 70
+      });
+
+      document.querySelector('.pod-nav__menu').addEventListener('click', function() {
+        slideout.toggle();
+      });
+      $(function() {
+        $('.view-toggle svg').on('click', function() {
+          $('.event-calendar').toggle();
+          if ($('.event-calendar:visible').length) {
+            $(this).find('use').attr('xlink:href', '#icon-podkeeper-calendar-view');
+          } else {
+            $(this).find('use').attr('xlink:href', '#icon-podkeeper-list-view');
+          }
+        });
+      });

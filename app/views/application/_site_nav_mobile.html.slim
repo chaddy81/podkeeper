@@ -1,0 +1,26 @@
+nav.site-nav.site-nav__mobile
+  = link_to events_path, class: "site-nav__item site-nav__item--events text-center #{is_active?(events_path)}" do
+    svg.icon.icon-events.center-block viewbox="0 0 1024 1024"
+      use xlink:href="#icon-podkeeper-calendar"
+    | Events
+  = link_to notes_path, class: "site-nav__item site-nav__item--discussions text-center #{is_active?(notes_path)}" do
+    svg.icon.icon-discussions.center-block viewbox="0 0 1024 1024"
+      use xlink:href="#icon-podkeeper-discussion"
+    | Discussions
+  a.site-nav__item.site-nav__item--lists.text-center
+    svg.icon.icon-lists.center-block viewbox="0 0 1024 1024"
+      use xlink:href="#icon-podkeeper-list"
+    | Lists
+  a.site-nav__item.site-nav__item--files.text-center
+    svg.icon.icon-files.center-block viewbox="0 0 1024 1024"
+      use xlink:href="#icon-podkeeper-file"
+    | Files
+  span.site-nav__item.site-nav__item--more.text-center
+    svg.icon.icon-more.center-block viewbox="0 0 1024 1024"
+      use xlink:href="#icon-podkeeper-more"
+    | More
+    nav.site-nav__item--sub-menu
+      a Invite Others
+      a Members
+      a Pod Details
+      a Pod Admin

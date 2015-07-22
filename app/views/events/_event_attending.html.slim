@@ -1,0 +1,108 @@
+- total_accepted = total_adults(event.rsvps.accepted) + total_kids(event.rsvps.accepted)
+
+- total_maybe = total_adults(event.rsvps.undecided) + total_kids(event.rsvps.undecided)
+
+- total_no = total_adults(event.rsvps.rejected) + total_kids(event.rsvps.rejected)
+
+- user_ids = event.rsvps.pluck(:user_id)
+
+- no_answer = event.pod.users.where('users.id NOT IN (?)', user_ids)
+
+- if event.require_rsvp?
+  h4.header Attending
+  .container
+    .row.text-center
+      a.pull-left.rsvp-users.rsvp-users---yes.active
+        svg.icon.center-block viewbox=("0 0 1024 1024")
+          use xlink:href="#icon-podkeeper-yes"
+        p #{total_accepted} Going
+      a.pull-left.rsvp-users.rsvp-users---maybe
+        svg.icon.center-block viewbox=("0 0 1024 1024")
+          use xlink:href="#icon-podkeeper-maybe"
+        p #{total_maybe} Maybe
+      a.pull-left.rsvp-users.rsvp-users---no
+        svg.icon.center-block viewbox=("0 0 1024 1024")
+          use xlink:href="#icon-podkeeper-no"
+        p #{total_no} Not Going
+      a.pull-left.rsvp-users.rsvp-users---rsvp
+        svg.icon.center-block viewbox=("0 0 1024 1024")
+          use xlink:href="#icon-podkeeper-rsvp"
+        p #{no_answer.count} No Reply
+
+    - if total_accepted > 0
+      table.rsvp-results.rsvp-results--yes.active.col-xs-12
+        thead
+          tr
+            th
+            th.rsvp-results__adults
+              svg.icon viewbox=("0 0 1024 1024")
+                use xlink:href="#icon-podkeeper-user"
+            th.rsvp-results__kids
+              svg.icon viewbox=("0 0 1024 1024")
+                use xlink:href="#icon-podkeeper-user"
+        tbody
+          - event.rsvps.accepted.each do |rsvp|
+            tr
+              td.text-left
+                = rsvp.user.full_name
+                .rsvp-results__message= simple_format rsvp.comments, {}, wrapper_tag: 'span'
+              td.text-center= rsvp.number_of_adults
+              td.text-center= rsvp.number_of_kids
+
+    - if total_maybe > 0
+      table.rsvp-results.rsvp-results--maybe.col-xs-12
+        thead
+          tr
+            th
+            th.rsvp-results__adults
+              svg.icon viewbox=("0 0 1024 1024")
+                use xlink:href="#icon-podkeeper-user"
+            th.rsvp-results__kids
+              svg.icon viewbox=("0 0 1024 1024")
+                use xlink:href="#icon-podkeeper-user"
+        tbody
+          - event.rsvps.undecided.each do |rsvp|
+            tr
+              td.text-left
+                p= rsvp.user.full_name
+                p.rsvp-results__message= simple_format rsvp.comments
+              td.text-center= rsvp.number_of_adults
+              td.text-center= rsvp.number_of_kids
+
+    - if total_no > 0
+      table.rsvp-results.rsvp-results--no.col-xs-12
+        thead
+          tr
+            th
+            th.rsvp-results__adults
+              svg.icon viewbox=("0 0 1024 1024")
+                use xlink:href="#icon-podkeeper-user"
+            th.rsvp-results__kids
+              svg.icon viewbox=("0 0 1024 1024")
+                use xlink:href="#icon-podkeeper-user"
+        tbody
+          - event.rsvps.rejected.each do |rsvp|
+            tr
+              td.text-left
+                p= rsvp.user.full_name
+                p.rsvp-results__message= simple_format rsvp.comments
+              td.text-center= rsvp.number_of_adults
+              td.text-center= rsvp.number_of_kids
+
+    - if no_answer.count > 0
+      table.rsvp-results.rsvp-results--needed.col-xs-12
+        thead
+          tr
+            th
+            th.rsvp-results__adults
+              svg.icon viewbox=("0 0 1024 1024")
+                use xlink:href="#icon-podkeeper-user"
+            th.rsvp-results__kids
+              svg.icon viewbox=("0 0 1024 1024")
+                use xlink:href="#icon-podkeeper-user"
+        tbody
+          - no_answer.each do |user|
+            tr
+              td.text-left= user.full_name
+              td.text-center
+              td.text-center

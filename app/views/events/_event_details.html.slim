@@ -1,0 +1,33 @@
+h4.header Details
+.container.event-details
+  .event-details__when
+    h3 When
+    .row
+      .pull-left.col-xs-6
+        p= event.start_date.strftime("%a. %b %d, %Y")
+        p= event.start_time.strftime('%l:%M%p %Z')
+      a.save-web.pull-right.col-xs-6 Save to Web Calendar
+  .event-details__where
+    h3 Where
+    .row
+      .pull-left.col-xs-6
+        p= event.location
+      a.view-map.pull-right.col-xs-6 View in Google Maps
+  - if event.description
+    .event-details__detail
+      h3 Details
+      p= event.description
+  .event-details__contact
+    h3 Event Contact
+    .vcard
+      p.fn= event.organizer.full_name
+      p.tel= event.organizer.phone
+      p.email= event.organizer.email
+  - if current_user?(event.organizer) || is_at_least_pod_admin?
+    .event-details__actions
+      .btn Edit
+      .btn Send Reminder
+  - if my_rsvp(event).rsvp_option
+    div class="event-rsvp event-rsvp--#{my_rsvp(event).rsvp_option.name} text-center"= rsvp_message(my_rsvp(event).rsvp_option.name)
+  - else
+    .event-rsvp.event-rsvp--rsvp.text-center Please RSVP

@@ -1,0 +1,131 @@
+.event {
+  border-bottom: 1px solid $event-border;
+  padding: 8px 8px 0;
+
+  h4 {
+    color: $blue;
+    font-weight: 300;
+    margin-bottom: 4px;
+    margin-top: 0;
+
+    @include font-size(16px);
+  }
+
+  p {
+    margin-bottom: 4px;
+  }
+}
+
+#main > .event {
+  border-top: 1px solid $event-border;
+}
+
+#main > .event ~ .event {
+  border-top: none;
+}
+
+.event-date {
+  position: relative;
+
+  .event-date__icon {
+    fill: $blue;
+    position: relative;
+    width: 50px;
+  }
+
+  .event-date__month {
+    color: $blue;
+    left: 50%;
+    position: absolute;
+    text-transform: uppercase;
+    top: 3px;
+    transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+
+    @include font-size(10px);
+  }
+
+  .event-date__day {
+    color: #fff;
+    left: 50%;
+    position: absolute;
+    top: 18px;
+    transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+
+    @include font-size(20px);
+  }
+}
+
+.event-meta {
+  color: $text-color;
+
+  @include font-size(12px);
+}
+
+.event-rsvp {
+  margin-top: 12px;
+  width: 21.5625%;
+
+  p {
+    color: $text-color;
+  }
+
+  @include font-size(12px);
+}
+
+[class^=event] {
+  .header {
+    background: $event-border;
+    color: #fff;
+    font-weight: normal;
+    line-height: 1;
+    margin: 0;
+    padding: 8px 15px;
+
+    @include font-size(16px);
+  }
+}
+
+.event-details-container {
+  color: $text-color;
+  padding-bottom: 15px;
+  position: relative;
+
+  .container {
+    position: relative;
+  }
+
+  h3 {
+    color: $blue;
+    font-weight: 300;
+
+    @include font-size(16px);
+  }
+
+  p {
+    margin: 0;
+  }
+
+  @include font-size(12px);
+}
+
+.event-details__actions {
+  margin-top: 15px;
+
+  .btn {
+    background: $blue;
+    color: #fff;
+    padding: 9px 0;
+    text-align: center;
+    width: 44.8275862%;
+
+    &:last-child {
+      margin-left: 30px;
+    }
+  }
+}
+
+.save-web, .view-map {
+  color: $save-to-calendar;
+}

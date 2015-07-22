@@ -1,0 +1,23 @@
+= link_to event do
+  .event.col-xs-12
+    .event-date.col-xs-3
+      svg.event-date__icon.center-block viewbox="0 0 1024 1024"
+        use xlink:href="#icon-podkeeper-date"
+      span.event-date__month= event.start_date.strftime("%b")
+      span.event-date__day= event.start_date.strftime("%d")
+    span.event-meta.pull-left
+      h4= truncate event.name, :length => 20
+      p
+        = event.start_date.strftime("%a. %b %d, %Y")
+        br
+        = event.start_time.strftime('%l:%M%P %Z')
+      p= event.location
+    span.event-rsvp.text-center.pull-right
+      - if my_rsvp(event).rsvp_option
+        svg.icon.icon-more.center-block viewbox="0 0 1024 1024"
+          use xlink:href="#icon-podkeeper-#{my_rsvp(event).rsvp_option.name}"
+        p= rsvp_message(my_rsvp(event).rsvp_option.name)
+      - else
+        svg.icon.icon-more.center-block viewbox="0 0 1024 1024"
+            use xlink:href="#icon-podkeeper-rsvp"
+        p Please RSVP

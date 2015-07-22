@@ -1,0 +1,61 @@
+.discussions {
+  margin-top: 10px;
+}
+
+.discussion {
+  border-bottom: 1px solid $event-border;
+  padding-bottom: 7px;
+  padding-top: 7px;
+}
+
+.discussion-icon {
+  svg {
+    fill: $blue;
+    width: 50px;
+  }
+
+  .comment-count {
+    background: $new-count;
+    border: 1px solid #fff;
+    border-radius: 36px;
+    color: #fff;
+    display: inline-block;
+    height: 18px;
+    left: 50%;
+    line-height: 18px;
+    margin-left: 5px;
+    position: absolute;
+    text-align: center;
+    width: 18px;
+
+    @include font-size(12px);
+  }
+}
+
+.discussion-info {
+  h4 {
+    color: $blue;
+    font-weight: 300;
+    margin-bottom: 5px;
+    margin-top: 0;
+
+    @include font-size(16px);
+  }
+
+  p {
+    color: $text-color;
+    margin: 0;
+
+    @include font-size(12px);
+  }
+}
+
+.discussion-urgent {
+  margin-right: 15px;
+
+  svg {
+    height: 24px;
+    margin-top: 10px;
+    width: 24px;
+  }
+}

@@ -1,0 +1,44 @@
+class CommentsController < ApplicationController
+  before_filter :correct_user, except: :create
+
+  def create
+    @comment = current_user.comments.new(params[:comment])
+    if @comment.save
+      flash[:success] = 'Comment was created successfully!'
+      @comments = @comment.note.comments.includes(:user)
+      @note = @comment.note
+      @notes = @note.pod.notes.order('sort_by_date DESC')
+      redirect_to notes_path(pod_id: current_pod.id)
+    else
+      flash[:error] = @comment.errors.full_messages.first
+      redirect_to :back
+    end
+  end
+
+  def edit
+  end
+
+  def update
+    if @comment.update_attributes(params[:comment])
+      @comments = @comment.note.comments.includes(:user)
+      @notes = current_pod.notes.order('sort_by_date DESC')
+      flash.now[:success] = 'Comment was updated successfully!'
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @comment.destroy
+    flash[:success] = 'Comment was deleted successfully'
+  end
+
+
+  private
+
+  def correct_user
+    @comment = Comment.find(params[:id])
+    render_404 unless current_user?(@comment.user)
+  end
+
+end

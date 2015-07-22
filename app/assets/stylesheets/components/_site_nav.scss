@@ -1,0 +1,83 @@
+.site-nav__mobile {
+  display: table;
+  width: 100%;
+
+  .site-nav__item {
+    background: $blue-gray;
+    border-left: 1px solid #fff;
+    color: $blue;
+    cursor: pointer;
+    display: table-cell;
+    padding: 6px 0 4px;
+    position: relative;
+    text-decoration: none;
+
+    &.active {
+      background: #fff;
+      font-weight: 500;
+    }
+
+    svg {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    @include font-size(12px);
+  }
+
+  .site-nav__item--events {
+    width: 20%;
+  }
+
+  .site-nav__item--discussions {
+    width: 23.75%;
+  }
+
+  .site-nav__item--lists {
+    width: 20%;
+  }
+
+  .site-nav__item--files {
+    width: 20%;
+  }
+
+  .site-nav__item--more {
+    width: 16.25%;
+
+    svg {
+      transition: 0.2s ease-in-out;
+    }
+
+    .site-nav__item--sub-menu {
+      background: #fff;
+      border: 1px solid $event-border;
+      display: none;
+      margin-top: 4px;
+      padding: 15px 20px 5px;
+      position: absolute;
+      right: 5px;
+      text-align: left;
+      width: 110px;
+      z-index: 10;
+
+      a {
+        cursor: pointer;
+        display: block;
+        margin-bottom: 10px;
+      }
+    }
+  }
+}
+
+.site-nav__item.site-nav__item--more.active {
+  background: $blue-gray;
+  font-weight: normal;
+
+  svg {
+    transform: rotate(90deg);
+  }
+
+  .site-nav__item--sub-menu {
+    display: block;
+  }
+}

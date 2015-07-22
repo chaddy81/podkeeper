@@ -1,0 +1,205 @@
+.event-rsvp {
+  color: #fff;
+  font-weight: 300;
+  margin: 0;
+  padding: 6px 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 80px;
+
+  &.event-rsvp--rsvp {
+    background: $text-color;
+  }
+
+  &.event-rsvp--yes {
+    background: $save-to-calendar;
+  }
+
+  &.event-rsvp--no {
+    background: $red;
+  }
+
+  &.event-rsvp--maybe {
+    background: $new-count;
+  }
+}
+
+.event-rsvp-container {
+  .answer {
+    background: #fff;
+    margin-bottom: 20px;
+    margin-top: 15px;
+    padding: 6px;
+    width: 100%;
+  }
+
+  .button-container {
+    padding: 0 5px;
+
+    &:first-of-type {
+      padding: 0 5px 0 0;
+    }
+
+    &:last-of-type {
+      padding: 0 0 0 5px;
+    }
+  }
+
+  form {
+    margin-bottom: 15px;
+
+    label {
+      display: block;
+      line-height: 1;
+      margin-top: 15px;
+    }
+
+    textarea {
+      border-color: $event-border;
+      border-radius: 5px;
+      height: 60px;
+      margin-bottom: 10px;
+    }
+
+    .cancel {
+      background: #fff;
+      border: 1px solid $red;
+      border-radius: 5px;
+      color: $red;
+      padding: 8px 6px;
+      width: 47%;
+
+      @include font-size(16px);
+    }
+
+    .submit {
+      background: $save-to-calendar;
+      border: 1px solid $save-to-calendar;
+      border-radius: 5px;
+      color: #fff;
+      padding: 8px 6px;
+      width: 47%;
+
+      @include font-size(16px);
+    }
+  }
+}
+
+.answer--yes {
+  border: 1px solid $save-to-calendar;
+  border-radius: 0;
+  color: $save-to-calendar;
+  height: 35px;
+  outline: none;
+
+  &:hover, &.active {
+    background: $save-to-calendar;
+    color: #fff;
+  }
+
+  @include font-size(12px);
+}
+
+.answer--no {
+  border: 1px solid $red;
+  border-radius: 0;
+  color: $red;
+  height: 35px;
+  outline: none;
+
+  &:hover, &.active {
+    background: $red;
+    color: #fff;
+  }
+
+  @include font-size(12px);
+}
+
+.answer--maybe {
+  border: 1px solid $new-count;
+  border-radius: 0;
+  color: $new-count;
+  height: 35px;
+  outline: none;
+
+  &:hover, &.active {
+    background: $new-count;
+    color: #fff;
+  }
+
+  @include font-size(12px);
+}
+
+.rsvp-users {
+  color: $event-border;
+  margin-bottom: 5px;
+  margin-top: 12px;
+  text-decoration: none;
+  width: 25%;
+
+  svg {
+    width: 20px;
+  }
+
+  &.rsvp-users---yes.active, &.rsvp-users---yes:hover, &.rsvp-users---yes:active {
+    color: $green;
+    text-decoration: underline;
+  }
+
+  &.rsvp-users---maybe.active, &.rsvp-users---maybe:hover, &.rsvp-users---maybe:active {
+    color: $new-count;
+    text-decoration: underline;
+  }
+
+  &.rsvp-users---no.active, &.rsvp-users---no:hover, &.rsvp-users---no:active {
+    color: $red;
+    text-decoration: underline;
+  }
+
+  &.rsvp-users---rsvp.active, &.rsvp-users---rsvp:hover, &.rsvp-users---rsvp:active {
+    color: $text-color;
+    text-decoration: underline;
+  }
+}
+
+.rsvp-results {
+  display: none;
+  margin-bottom: 25px;
+
+  &.active {
+    display: table;
+  }
+
+  thead, tbody {
+    tr {
+      border-bottom: 1px solid $event-border;
+    }
+
+    td {
+      color: $text-color;
+      padding: 3px 0;
+      vertical-align: top;
+
+      @include font-size(12px);
+    }
+  }
+
+  .rsvp-results__adults {
+    padding: 2px 9px;
+
+    svg {
+      fill: $blue;
+      width: 16px
+    }
+  }
+
+  .rsvp-results__kids {
+    padding: 0 9px;
+
+    svg {
+      fill: $blue;
+      width: 12px
+    }
+  }
+}

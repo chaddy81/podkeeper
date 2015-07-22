@@ -1,0 +1,12 @@
+header.page-head
+  nav.pod-nav
+    a.pod-nav__home.pull-left href="#"
+      svg.icon.icon-logo viewbox="0 0 1024 1024"
+        use xlink:href="#icon-podkeeper-logo"
+    a.pod-nav__menu.pull-right
+      svg.icon.icon-menu viewbox="0 0 1024 1024"
+        use xlink:href="#icon-podkeeper-menu"
+    a.pod-nav__pod-name
+      span= current_pod.name
+      svg viewbox="0 0 1024 1024"
+        use xlink:href="#icon-podkeeper-arrow-down"
