@@ -1,0 +1,44 @@
+- if current_user
+  nav.navbar.site-nav-container
+    .container-fluid
+      ul.nav.navbar-nav.navbar-left
+        li.dropdown.pod-name
+          a.dropdown-toggle aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#" role="button"
+            = current_pod ? current_pod.name : "No Pod Selected"
+            span.caret
+          ul.dropdown-menu
+            - current_user.pods.includes(:pod_memberships).order('pod_memberships.created_at desc').each do |pod|
+              li
+                a href="#{set_pod_pods_path(pod_id: pod.id)}" data-remote="true" = pod.name
+
+      ul.nav.navbar-nav.navbar-right.site-nav
+        li
+          = link_to events_path, class: "site-nav__item site-nav__item--events text-center #{is_active?(events_path)}" do
+            svg.icon.icon-events.center-block viewbox="0 0 1024 1024"
+              use xlink:href="#icon-podkeeper-calendar"
+            | Events
+        li
+          = link_to notes_path, class: "site-nav__item site-nav__item--discussions text-center #{is_active?(notes_path)}" do
+            svg.icon.icon-discussions.center-block viewbox="0 0 1024 1024"
+              use xlink:href="#icon-podkeeper-discussion"
+            | Discussions
+        li
+          = link_to lists_path, class: "site-nav__item site-nav__item--lists text-center #{is_active?(lists_path)}"
+            svg.icon.icon-lists.center-block viewbox="0 0 1024 1024"
+              use xlink:href="#icon-podkeeper-list"
+            | Lists
+        li
+          = link_to uploaded_files_path, class: "site-nav__item site-nav__item--files text-center #{is_active?(uploaded_files_path)}"
+            svg.icon.icon-files.center-block viewbox="0 0 1024 1024"
+              use xlink:href="#icon-podkeeper-file"
+            | Files
+        li
+           a.site-nav__item.site-nav__item--files.text-center href="#{invite_pods_path}"
+            svg.icon.icon-files.center-block viewbox="0 0 1024 1024"
+              use xlink:href="#icon-podkeeper-user"
+            | Invite Others
+        li
+           a.site-nav__item.site-nav__item--files.text-center
+            svg.icon.icon-files.center-block viewbox="0 0 1024 1024"
+              use xlink:href="#icon-podkeeper-information"
+            | Pod Details

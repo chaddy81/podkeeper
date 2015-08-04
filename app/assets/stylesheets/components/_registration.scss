@@ -1,0 +1,150 @@
+.registration {
+  background: $blue-gray;
+  max-width: 680px;
+  width: 100%;
+
+  .registration__header {
+    border-bottom: 1px solid $dark-blue;
+    // padding: 25px 94px 15px;
+    padding: 12px 32px 10px;
+
+    h3 {
+      color: $gray;
+      font-family: 'Raleway';
+      margin: 0;
+
+      // @include font-size(30px);
+      @include font-size(15px);
+    }
+  }
+
+  .form-group {
+    // margin: 0 60px;
+  }
+
+  .blue-line {
+    background: $dark-blue;
+    display: inline-block;
+    height: 1px;
+    margin: 0 9px;
+    vertical-align: middle;
+    // width: 155px;
+    width: 80px;
+  }
+
+  .checkbox {
+    color: $gray;
+    font-weight: 300;
+  }
+
+  .error, .help-inline {
+    color: $red;
+    display: block;
+  }
+
+  h4 {
+    font-family: 'Raleway';
+    margin: 15px auto;
+
+    // @include font-size(35px);
+    @include font-size(18px);
+  }
+
+  svg {
+    margin: 25px auto 12px;
+    width: 88.4375%;
+  }
+
+  .registration__facebook {
+    & + p {
+      margin-bottom: 15px;
+    }
+  }
+
+  input[type=email], input[type=password] {
+    border: 1px solid $dark-blue;
+    border-radius: 18px;
+    font-family: 'Open Sans';
+    height: 39px;
+    outline: none;
+    padding: 0 18px;
+    width: 88.4375%;
+  }
+
+  button, button:hover, button:active {
+    background: $green;
+    border: none;
+    color: #fff;
+    font-family: 'Raleway';
+    height: 38px;
+    width: 88.4375%;
+
+    @include font-size(18px);
+  }
+
+  .terms {
+    @include font-size(12px);
+  }
+}
+
+@media ( min-width: 768px ) {
+  .registration {
+    margin-top: 50px;
+
+    .registration__header {
+      padding: 25px 94px 15px;
+
+      h3 {
+        @include font-size(30px);
+      }
+    }
+
+    .blue-line {
+      width: 155px;
+    }
+
+    .registration__facebook {
+      & + p {
+        margin-bottom: 35px;
+        margin-top: 5px;
+
+        @include font-size(19px);
+      }
+    }
+
+    input[type=email], input[type=password] {
+      border: 1px solid $dark-blue;
+      border-radius: 18px;
+      font-family: 'Open Sans';
+      height: 70px;
+      padding: 0 34px;
+
+      @include font-size(22px);
+    }
+
+    .checkbox {
+      input {
+        margin-top: 6px;
+      }
+
+      @include font-size(19px);
+    }
+
+    button, button:hover, button:active {
+      border-radius: 0;
+      font-weight: 500;
+      height: 75px;
+      outline: none;
+
+      @include font-size(35px)
+    }
+
+    .terms {
+      @include font-size(19px);
+    }
+
+    h4 {
+      @include font-size(35px);
+    }
+  }
+}

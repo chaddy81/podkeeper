@@ -1,0 +1,20 @@
+- provide :title, 'Forgot Password'
+= render 'layouts/banner', banner_content: "Reset Password"
+
+#wrap
+  .container
+    .row
+      .main-contents.col-xs-12
+        .main-contents__body
+          p
+            | Just enter your email and we'll send you instructions on resetting your password.
+
+          = form_tag password_resets_path, method: :post, class: 'col-md-5', id: 'password-reset' do
+            .form-group
+              .col-md-2
+                label style="line-height: 2.2" Email
+              .col-md-10
+                = text_field_tag :email, params[:email], class: 'form-control'
+            .form-controls.pull-right
+              = link_to 'Cancel', root_path, class: 'back'
+              = submit_tag 'Reset', class: 'btn btn-default btn-blue', disable_with: 'Processing...'

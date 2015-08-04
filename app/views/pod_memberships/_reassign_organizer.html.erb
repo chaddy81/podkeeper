@@ -1,0 +1,11 @@
+<div class="content">
+  <%= form_tag reassign_organizer_pod_membership_path(pod_membership), method: :post do %>
+    <h3>Select New Pod Organizer</h3>
+    <div class="message">
+      <p>You are currently the Pod Organizer. Before you leave, please designate another Pod member to be the new pod organizer.</p>
+      <%= select_tag :new_pod_organizer_id, options_from_collection_for_select(@members, 'id', 'full_name') %>
+      <%= submit_tag 'Leave Pod', disable_with: 'Saving...', class: 'submit' %>
+      <%= link_to 'Cancel', '#', class: 'back', 'data-dismiss' => 'modal' %>
+    </div>
+  <% end %>
+</div>

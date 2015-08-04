@@ -1,4 +1,4 @@
-span.add-menu__trigger
+span.add-menu__trigger.visible-xs
   svg.icon viewbox="0 0 1024 1024"
     use xlink:href="#icon-podkeeper-add"
 
@@ -10,25 +10,25 @@ span.add-menu__trigger
         svg.icon viewBox="0 0 1024 1024"
           use xlink:href="#icon-podkeeper-add"
 
-    a.add-menu__menu-item.add-menu__menu-item--file
+    a.add-menu__menu-item.add-menu__menu-item--file href="#{uploaded_files_path}"
       | New File
       span.icon-back
         svg.icon viewBox="0 0 1024 1024"
           use xlink:href="#icon-podkeeper-file"
 
-    a.add-menu__menu-item.add-menu__menu-item--list
+    a.add-menu__menu-item.add-menu__menu-item--list href="#{new_list_path}"
       | New List
       span.icon-back
         svg.icon viewBox="0 0 1024 1024"
           use xlink:href="#icon-podkeeper-list"
 
-    a.add-menu__menu-item.add-menu__menu-item--discussion
+    a.add-menu__menu-item.add-menu__menu-item--discussion href="#{notes_path}"
       | New Discussion
       span.icon-back
         svg.icon viewBox="0 0 1024 1024"
           use xlink:href="#icon-podkeeper-discussion"
 
-    a.add-menu__menu-item.add-menu__menu-item--event
+    a.add-menu__menu-item.add-menu__menu-item--event href="#{new_event_path}"
       | New Event
       span.icon-back
         svg.icon viewBox="0 0 1024 1024"

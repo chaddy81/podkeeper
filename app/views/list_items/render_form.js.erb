@@ -1,0 +1,2 @@
+$('[data-list-item="<%= j(@row_number) %>"]').replaceWith("<%= j(render 'list_items/form', list: @list_item.list, list_item: @list_item) %>");
+console.log("<%= @list_item.id %>");

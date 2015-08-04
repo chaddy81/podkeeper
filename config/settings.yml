@@ -1,0 +1,19 @@
+development:
+  griddler:
+    domain: "email.chadbartels.com"
+
+test:
+  griddler:
+    domain: "test.podkeeper.com"
+
+testing:
+  griddler:
+    domain: "test.podkeeper.com"
+
+staging:
+  griddler:
+    domain: "test.podkeeper.com"
+
+production:
+  griddler:
+    domain: "email.podkeeper.com"

@@ -1,0 +1,53 @@
+<% provide :title, 'Account Update' %>
+
+<section class="container content">
+  <div class="sub-page settings-page">
+    <h3>Settings</h3>
+    <div class="content">
+      <ul class="nav setting-tabs">
+        <li><%= link_to 'My Account', settings_path %></li>
+        <li><%= link_to 'Email Notifications', edit_user_path(active: 'settings') %></li>
+        <li class="active"><%= link_to 'Leave A Pod', pods_user_path(current_user) %></li>
+      </ul><!-- /.setting-tabs -->
+      <div class="tab-content">
+
+        <div class="third-box tab-pane active" id="leave-a-pod">
+          <p>To leave a Pod, click the appropriate button</p>
+          <p><em>Warning: If you leave a Pod you will not be able to access the Pod or receive ANY information from the Pod.</em></p>
+
+          <% if @pod_memberships.any? %>
+            <table class="vertical">
+              <thead>
+                <tr>
+                  <th>My Pods</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @pod_memberships.each do |pod_membership| %>
+                  <tr>
+                    <td><%= pod_membership.pod.name %></td>
+                    <td>
+                      <% if current_user? pod_membership.pod.organizer %>
+                        <%= link_to 'Leave Pod', pod_membership_path(pod_membership), method: :delete, remote: true, class: 'submit' %>
+                      <% else %>
+                        <%= link_to 'Leave Pod', pod_membership_path(pod_membership), method: :delete, class: 'submit', data: { confirm: 'Are you sure you want to leave this Pod?' } %>
+                      <% end %>
+                    </td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          <% else %>
+            <hr/>
+            <p><strong>No Pods?  Don’t be sad. Here’s how to recover from the I-don’t-have-any-Pods blues.</strong></p>
+            <p>Check if you have any Pods you’ve been invited to by clicking on Pod Invites above.</p>
+            <p>Create a new Pod by clicking on Create a Pod above.</p>
+          <% end %>
+
+        </div><!-- /.second-box -->
+      </div><!-- /.tab-content -->
+    </div><!-- /.content -->
+  </div><!-- /.settings-page -->
+
+</section><!-- /.container -->

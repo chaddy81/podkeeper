@@ -70,3 +70,13 @@
     word-wrap: break-word;
   }
 }
+
+@media (min-width: 768px) {
+  .pod-select__overlay {
+    display: none;
+
+    &.active {
+      display: none;
+    }
+  }
+}

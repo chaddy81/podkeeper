@@ -126,6 +126,20 @@
   }
 }
 
+.event-details--desktop {
+  .container {
+    width: 100%;
+  }
+}
+
 .save-web, .view-map {
   color: $save-to-calendar;
+}
+
+@media (min-width: 768px) {
+  .event-details-container, .event-rsvp-container, .event-attending-container {
+    .container {
+      width: 100%;
+    }
+  }
 }

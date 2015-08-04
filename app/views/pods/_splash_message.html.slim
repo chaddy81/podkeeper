@@ -1,0 +1,37 @@
+#splash.modal.fade aria-hidden="true" aria-labelledby="splashLabel" role="dialog" tabindex="-1"
+  .modal-dialog
+    .modal-content
+      .modal-header
+        button.close data-dismiss="modal" type="button"
+          span aria-hidden="true"  &times;
+          span.sr-only Close
+        h4#myModalLabel.modal-title &nbsp;
+      .modal-body
+        .align-center
+          p We’re excited to announce Podanize is now . . .
+          = image_tag 'logo_small.png'
+
+          p Everything you love about the site is still here, and along with the new name come exciting changes:
+        ul style="text-align: left; font-size: 14px;line-height: normal"
+          li style="margin-bottom: 20px;"
+            span style="font-weight: bold; margin-right:5px;"
+              ' THE DASHBOARD.
+            | Every time you come to the site, you’ll be on the new Dashboard page.  From here you can easily see the most important information for any Pod.  Then you can click through to that Pod’s page where you can view Discussions, Events, Lists and Files.
+
+          li style="margin-bottom: 20px;"
+            span style="font-weight: bold; margin-right:5px;"
+              ' EASILY TRACK WHAT YOU’VE SEEN.
+            | Whenever you see an icon or dot that is orange, it means there’s something you haven’t viewed yet.
+
+          li style="margin-bottom: 20px;"
+            span style="font-weight: bold; margin-right:5px;"
+              ' CUSTOMIZE YOUR NOTIFICATIONS.
+            | You can specify which email notifications you wish to receive for each Pod, including a Daily Digest containing everything that happened in all of your Pods in the past 24 hours.
+
+          li style="margin-bottom: 20px;"
+            span style="font-weight: bold; margin-right:5px;"
+              ' DESIGN.
+            | New colors, new look, new feel. Even easier to use.
+
+      .modal-footer
+        a data-dismiss="modal" Close

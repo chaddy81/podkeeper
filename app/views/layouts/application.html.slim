@@ -5,7 +5,7 @@ html
     meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"
     title Podkeeper
     meta name="viewport" content="width=device-width, initial-scale=1"
-    = stylesheet_link_tag    'application', 'http://fonts.googleapis.com/css?family=Roboto:400,500,300,700,500italic,400italic,300italic', media: 'all', 'data-turbolinks-track' => true
+    = stylesheet_link_tag    'application', 'http://fonts.googleapis.com/css?family=Roboto:400,500,300,700,500italic,400italic,300italic', 'http://fonts.googleapis.com/css?family=Raleway:400,500', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = javascript_include_tag :modernizr
     = csrf_meta_tags
@@ -15,15 +15,22 @@ html
     = render 'svg_declaration'
 
     /! push menu for mobile
-    = render 'mobile_menu'
+    .visible-xs
+      = render 'mobile_menu'
 
     main#main.panel.clearfix
-      = render 'mobile_header'
-      = render 'site_nav_mobile'
+      .visible-xs
+        = render 'mobile_header'
+        = render 'site_nav_mobile'
+      .hidden-xs
+        = render 'desktop_header'
+        = render 'site_nav_desktop'
+      .error-messages
+        = flash_messages
       = yield
 
     /! overlay for selecting new pod
-    = render 'add_menu'
+    = render 'add_menu' if action_name == 'index'
     = render 'pod_select'
 
     javascript:
@@ -38,6 +45,7 @@ html
       document.querySelector('.pod-nav__menu').addEventListener('click', function() {
         slideout.toggle();
       });
+
       $(function() {
         $('.view-toggle svg').on('click', function() {
           $('.event-calendar').toggle();
@@ -47,4 +55,6 @@ html
             $(this).find('use').attr('xlink:href', '#icon-podkeeper-list-view');
           }
         });
+
+        $('.spinner').spinner({ min: 0, icons: { down: "icon-arrow-down", up: "icon-arrow-up" } });
       });

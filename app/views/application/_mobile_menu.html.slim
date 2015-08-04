@@ -2,28 +2,31 @@
   section.mobile-menu__section.mobile-menu__section--user
     p.mobile-menu__user= current_user.email
   section.mobile-menu__section.mobile-menu__section--settings
-    a Settings
+    = link_to 'Settings', settings_path
+
   section.mobile-menu__section.mobile-menu__section--invites
-    a Pod Invites
+    = link_to 'Pod Invites', invites_path
   section.mobile-menu__section.mobile-menu__section--help.clearfix
     a
       span.pull-left Help
       svg.icon.pull-right viewbox="0 0 1024 1024"
         use xlink:href="#icon-podkeeper-arrow-right"
     nav.mobile-menu__sub-menu
-      a How Pods Work
-      a Take a Tour
-      a FAQs
+      = link_to 'How Pods Work', how_pods_work_path
+      / li
+      /   a href="#"  Take a Tour
+      = link_to 'FAQs', faq_path
   section.mobile-menu__section.mobile-menu__section--about.clearfix
     a
       span.pull-left About
       svg.icon.pull-right viewbox="0 0 1024 1024"
         use xlink:href="#icon-podkeeper-arrow-right"
     nav.mobile-menu__sub-menu
-      a Our Mission
-      a Mobile
-      a Feedback
-      a Contact Us
+      = link_to 'Our Mission', our_mission_path
+      = link_to 'Mobile', mobile_path
+      = link_to 'Feedback', '#'
+      / = link_to 'Feedback', new_site_comment_path, remote: true
+      = link_to 'Contact Us', contact_path
 
   section.mobile-menu__section.mobile-menu__section--sign-out.clearfix
     = link_to 'Sign Out', signout_path, method: :delete

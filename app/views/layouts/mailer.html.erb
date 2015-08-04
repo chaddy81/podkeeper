@@ -1,0 +1,156 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+   "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="initial-scale=1.0">    <!-- So that mobile webkit will display zoomed in -->
+    <meta name="format-detection" content="telephone=no"> <!-- disable auto telephone linking in iOS -->
+
+    <title>PodKeeper - The Powerfully Simple Way for You to Manage Kids' Activities</title>
+    <style type="text/css">
+
+        /* Resets: see reset.css for details */
+        .ReadMsgBody { width: 100%; background-color: #f0ede8;}
+        .ExternalClass {width: 100%; background-color: #f0ede8;}
+        .ExternalClass, .ExternalClass p, .ExternalClass span, .ExternalClass font, .ExternalClass td, .ExternalClass div {line-height:100%;}
+        body {-webkit-text-size-adjust:none; -ms-text-size-adjust:none;}
+        body {margin:0; padding:0;}
+        table {border-spacing:0;}
+        table td {border-collapse:collapse;}
+        .yshortcuts a {border-bottom: none !important;}
+
+        /* Constrain email width for small screens */
+        @media screen and (max-width: 600px) {
+            table[class="container"] {
+              width: 95% !important;
+            }
+
+            img[class="social"] {
+              height: 32px;
+              width: 32px;
+            }
+        }
+
+        /* Give content more room on mobile */
+        @media screen and (max-width: 480px) {
+            td[class="container-padding"] {
+                padding-left: 12px !important;
+                padding-right: 12px !important;
+            }
+
+            img[class="social"] {
+              height: 40px;
+              margin: 0 5px;
+              width: 40px;
+            }
+
+            img[class="logo"] {
+              width: 50% !important;
+            }
+
+         }
+
+    </style>
+</head>
+<body style="margin:0;padding:0;" bgcolor="#f0ede8" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+
+<br>
+
+<!-- 100% wrapper (grey background) -->
+<table border="0" width="100%" height="100%" cellpadding="20" cellspacing="0" bgcolor="#f0ede8">
+  <tr>
+    <td align="center" valign="top" bgcolor="#f0ede8" style="background-color: #f0ede8;">
+
+      <!-- 600px container (white background) -->
+      <table border="0" width="600" cellpadding="0" cellspacing="0" class="container" bgcolor="#ffffff">
+        <tr>
+          <td class="container-padding" bgcolor="#ffffff" style="background-color: #ffffff; padding-left: 30px; padding-right: 30px; font-size: 14px; line-height: 20px; font-family: Helvetica, sans-serif; color: #333;text-align:left;">
+            <br>
+
+            <!-- ### BEGIN CONTENT ### -->
+            <div>
+                <img src="http://podanize-images.s3.amazonaws.com/email-images/email-logo.png" alt="PodKeeper - The Powerfully Simple Way for You to Manage Kids' Activities" width="40%" class="logo" />
+            </div><br>
+
+            <font face="Trebuchet MS, sans-serif" style="font-size: 11px; line-height: 16px;"><%= yield %></font>
+
+            <table style="text-align:center;width: 100%;">
+              <tr>
+                <td>
+                  <p style="margin-bottom: 0;font-family: Helvetica, sans-serif;font-size:11px;font-weight: 600">Follow Us</p>
+                  <p class="social" style="text-align: center;">
+                    <a href="https://www.facebook.com/podkeeper" target="_blank" style="display:inline-block;border:none;"><img src="http://podanize-images.s3.amazonaws.com/email-images/ico_facebook.png" class="social" style="border-style: none" /></a>
+                    <a href="https://plus.google.com/u/1/106425453206801358598/about" target="_blank" style="display:inline-block;border:none;"><img src="http://podanize-images.s3.amazonaws.com/email-images/ico_google.png" class="social" style="border-style: none" /></a>
+                    <a href="https://twitter.com/podkeeper" target="_blank" style="display:inline-block;border:none;"><img src="http://podanize-images.s3.amazonaws.com/email-images/ico_twitter.png" class="social" style="border-style: none" /></a>
+                    <a href="https://www.pinterest.com/podkeeper" target="_blank" style="display:inline-block;border:none;"><img src="http://podanize-images.s3.amazonaws.com/email-images/ico_pinterest.png" class="social" style="border-style: none" /></a>
+                  </p>
+                </td>
+              </tr>
+            </table>
+
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <img src="<%= root_url %>/images/line.jpg" width="100%" height="8" />
+            <table cellspacing="0" style="width: 100%" cellpadding="0">
+              <tr>
+                <td style="font-size: 9px; background-color: #fff; padding: 20px 20px 25px;font-family: Helvetica, sans-serif; color: #333;text-align: left;">
+                  <p style="margin: 10px 0;">
+                    This message was sent to <%= yield :email %><br>
+                    Add <%= link_to 'podmember@email.podkeeper.com', 'mailto:podmember@email.podkeeper.com' %> to your address book to ensure delivery to your Inbox.
+                  </p>
+
+                  <% if @user.class.to_s == "User" && !defined?(@is_member) == true %>
+                    <p>To adjust which email notifications you receive, go to <%= link_to 'Settings', settings_url %></p>
+                  <% elsif @invite && @invite.invitee.class.to_s == 'User' && !defined?(@is_member) == true %>
+                    <p>To adjust which email notifications you receive, go to <%= link_to 'Settings', settings_url %></p>
+                  <% end %>
+
+                  <% if @user.class.to_s == 'Invite' && @twolines == true %>
+                    <p style="margin: 10px 0;">
+                      You are receiving this email because someone has invited you to Join this Pod and wants to keep you informed.  If you no longer wish to receive emails from this Pod, you can
+                      <%= link_to 'Decline this Pod', decline_pod_invite_url(@user) %>
+                    </p>
+                  <% end %>
+
+                  <% if @invite.class.to_s == 'Invite' && @twolines == true %>
+                    <p style="margin: 10px 0;">
+                      You are receiving this email because someone has invited you to Join this Pod and wants to keep you informed.  If you no longer wish to receive emails from this Pod, you can
+                      <%= link_to 'Decline this Pod', decline_pod_invite_url(@invite) %>
+                    </p>
+                  <% end %>
+
+                  <% if @invite.class.to_s == 'Invite' && @oneline == true %>
+                    <p style="margin: 10px 0;">
+                      You are receiving this email because someone has invited you to Join this Pod and wants to keep you informed.  If you no longer wish to receive emails from this Pod, you can
+                      <%= link_to 'Decline this Pod', decline_pod_invite_url(@invite) %>
+                    </p>
+                  <% end %>
+
+                  <% if @is_member %>
+                    You are receiving this email because someone has invited you to Create a Pod on PodKeeper.  If you no longer wish to receive emails from this Pod, you can email us at <%= link_to 'podhelp@podkeeper.com', 'mailto:podhelp@podkeeper.com' %>.
+                  <% end %>
+
+                  <p style="margin: 10px 0;">If you have any questions about this email or the site, please contact us at <%= link_to 'podhelp@podkeeper.com', 'mailto:podhelp@podkeeper.com' %></p>
+
+                  <p style="margin: 10px 0;">PodKeeper, 222 South Church St., Suite 100, Charlotte, NC 28202</p>
+
+                  <p style="margin: 10px 0;">&copy; <%= Date.today.year %> PodKeeper. All rights reserved.</p>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+      <!--/600px container -->
+
+    </td>
+  </tr>
+</table>
+<!--/100% wrapper-->
+<br>
+<br>
+</body>
+</html>
+

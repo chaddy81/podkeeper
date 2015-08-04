@@ -8,9 +8,11 @@ class EventsController < ApplicationController
   include Icalendar
 
   def index
-    @events = @pod.events.confirmed.where(completed: completed).includes(:organizer, :pod, :rsvps, pod: :organizer).order('start_date ASC').order('start_time ASC')
-    @first_visit = true
-    params[:direction] = 'desc'
+    if @pod
+      @events = @pod.events.confirmed.where(completed: completed).includes(:organizer, :pod, :rsvps, pod: :organizer).order('start_date ASC').order('start_time ASC')
+      @first_visit = true
+      params[:direction] = 'desc'
+    end
   end
 
   def new
@@ -187,6 +189,7 @@ class EventsController < ApplicationController
   end
 
   def show
+    @events = @pod.events.confirmed.where(completed: completed).includes(:organizer, :pod, :rsvps, pod: :organizer).order('start_date ASC').order('start_time ASC')
     @event = ::Event.includes(:organizer).find(params[:id])
     if current_pod != @event.pod
       set_current_pod(@event.pod)

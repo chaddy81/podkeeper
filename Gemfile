@@ -53,6 +53,7 @@ gem 'autoprefixer-rails'
 gem 'simple_calendar', '~> 1.1.0'
 gem 'modernizr-rails'
 gem 'turbolinks'
+gem 'jquery-turbolinks'
 
 group :production do
   # Control elastic dynos on heroku for increased traffic

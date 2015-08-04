@@ -1,0 +1,41 @@
+div*{ 'data-pod-id' => pod.id }
+  = render 'layouts/banner', banner_content: pod.name
+
+  .container
+    .row
+      .col-sm-12.col-md-10.dashboard-container
+        .col-sm-12
+          = render 'layouts/page_nav'
+
+        .col-sm-12.col-md-6
+          = render 'dashboard_discussions', pod: pod
+          = render 'dashboard_lists', pod: pod
+
+        .col-sm-12.col-md-6
+          = render 'dashboard_events', pod: pod
+          = render 'dashboard_files', pod: pod
+
+        .clearfix
+
+        - if Rails.env.production?
+          .ad-leaderboard style="margin: 15px 0"
+            script async="" src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
+            /! LeaderboardBottomAd
+            ins.adsbygoogle data-ad-client="ca-pub-5720516226282576" data-ad-slot="8445954640" style="display:inline-block;width:100%;height:90px"
+            javascript:
+              (adsbygoogle = window.adsbygoogle || []).push({});
+
+      - if Rails.env.production?
+        .hidden-xs.hidden-sm.col-md-2
+          script async="" src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
+          /! WideSkyscraperRightAd
+          ins.adsbygoogle data-ad-client="ca-pub-5720516226282576" data-ad-slot="1341490246" style="display:inline-block;width:100%;height:600px"
+          javascript:
+            (adsbygoogle = window.adsbygoogle || []).push({});
+
+.clearfix
+
+javascript:
+  $(function() {
+    addToHomescreen();
+  });

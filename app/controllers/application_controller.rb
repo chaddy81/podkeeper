@@ -31,7 +31,7 @@ class ApplicationController < ActionController::Base
 
   def render_404
     respond_to do |format|
-      format.html { render file: 'public/404', layout: 'none' }
+      format.html { render file: 'public/404', layout: false }
       format.all { redirect_to controller: 'application', action: 'render_404' }
     end
   end
@@ -69,11 +69,24 @@ class ApplicationController < ActionController::Base
 
   private
 
-  def mobile_device?
-    request.user_agent =~ /Mobile|webOS/
+  def detect_browser
+    case request.user_agent
+      when /iPad/i
+        request.variant = :tablet
+      when /iPhone/i
+        request.variant = :phone
+      when /Android/i && /mobile/i
+        request.variant = :phone
+      when /Android/i
+        request.variant = :tablet
+      when /Windows Phone/i
+        request.variant = :phone
+      else
+        request.variant = :desktop
+    end
   end
 
-  helper_method :mobile_device?
+  helper_method :detect_browser
 
   def set_time_zone
     Time.zone = current_user.time_zone if signed_in?

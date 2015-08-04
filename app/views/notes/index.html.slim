@@ -1,3 +1,32 @@
-- @notes.each do |discussion|
-  .discussions
-    = render @notes, discussion: discussion
+.col-sm-12.col-md-10
+  .row
+    - if @notes.count > 0
+      .col-sm-6.col-md-5
+        - @notes.each do |discussion|
+          .discussions
+            = render @notes, discussion: discussion
+
+      .hidden-xs.col-sm-6.col-md-5.discussion-thread--desktop
+        svg.icon.icon-events.center-block viewbox="0 0 1024 1024" style="width: 144px"
+          use xlink:href="#icon-podkeeper-discussion"
+        p Select a discussion from the left to view, or click “New Discussion” to get a conversation started!
+    - else
+      .col-sm-12.col-md-10
+        p There are no discussions for this Pod. Click “New Discussion” above to get a conversation started!
+
+javascript:
+  function getFormat() {
+    if (window.innerWidth < 768) {
+      $('.event, .discussion').parent('a').removeAttr('data-remote');
+    }else{
+      $('.event, .discussion').parent('a').attr('data-remote', true);
+    }
+  }
+
+  $(function() {
+    getFormat();
+
+    $(window).on('resize', function() {
+      getFormat();
+    });
+  });

@@ -1,0 +1,9 @@
+= simple_form_for kid, html: { class: 'edit-comment' }, remote: true do |f|
+  .form-group
+    h3 Add Child's Name
+    p Please add the name(s) of any of your children who are associated with this Pod, using a comma to separate them, so your fellow members will know their names.
+    = f.input :name, label: false, placeholder: 'Name', input_html: { class: 'form-control' }
+    = f.association :pod, as: :hidden,  input_html: { value: pod.id }
+    = f.association :user, as: :hidden, input_html: { value: current_user.id }
+    = f.submit 'Save', disable_with: 'Saving...', class: 'btn btn-default btn-blue'
+    = link_to 'Cancel', '#', class: 'back', 'data-dismiss' => 'modal'

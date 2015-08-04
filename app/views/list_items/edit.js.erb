@@ -1,0 +1,11 @@
+$('[data-list-item-id="<%= @list_item.id %>"]').before('<tr data-edit-list-item="<%= @list_item.id %>"><td colspan="4"><%= j(render "list_items/form", list: @list_item.list, list_item: @list_item) %></td></tr>');
+$('[data-list-item-id="<%= @list_item.id %>"]').css('visibility', 'hidden');
+change_list_item_user();
+
+var option = $('[data-edit-list-item="<%= @list_item.id %>"]').find('#list_item_user_id').val();
+
+if("<%= current_user.id %>" == option) {
+  $('[data-edit-list-item="<%= @list_item.id %>"] .list__name--current').attr('checked', 'checked');
+}else{
+  $('[data-edit-list-item="<%= @list_item.id %>"] #pod-users option[value="' + option + '"]').attr('selected', 'selected');
+}

@@ -34,7 +34,78 @@
     width: 100%;
   }
 
+  input[type=radio] {
+    display: none;
+
+    & + label {
+      border-radius: 0;
+      height: 35px;
+      line-height: 35px;
+      margin-top: 5px;
+      outline: none;
+      padding: 0;
+      text-align: center;
+      vertical-align: top;
+
+      @include font-size(12px);
+    }
+
+    & + label[for=rsvp_rsvp_option_id_1] {
+      border: 1px solid $save-to-calendar;
+      color: $save-to-calendar;
+
+      &:hover {
+        background: $save-to-calendar;
+        color: #fff;
+      }
+
+      @include font-size(12px);
+    }
+
+    & + label[for=rsvp_rsvp_option_id_2] {
+      border: 1px solid $red;
+      color: $red;
+
+      &:hover {
+        background: $red;
+        color: #fff;
+      }
+
+      @include font-size(12px);
+    }
+
+    & + label[for=rsvp_rsvp_option_id_3] {
+      border: 1px solid $new-count;
+      color: $new-count;
+
+      &:hover {
+        background: $new-count;
+        color: #fff;
+      }
+
+      @include font-size(12px);
+    }
+  }
+
+  input[type=radio]:checked {
+    & + label[for=rsvp_rsvp_option_id_1] {
+      background: $save-to-calendar;
+      color: #fff;
+    }
+
+    & + label[for=rsvp_rsvp_option_id_2] {
+      background: $red;
+      color: #fff;
+    }
+
+    & + label[for=rsvp_rsvp_option_id_3] {
+      background: $new-count;
+      color: #fff;
+    }
+  }
+
   .button-container {
+    margin-top: 5px;
     padding: 0 5px;
 
     &:first-of-type {
@@ -46,7 +117,36 @@
     }
   }
 
+  .rsvp-count-comment {
+    display: none;
+  }
+
+  .rsvp-count {
+    display: block;
+    margin-top: 20px;
+  }
+
+  .rsvp-count__user {
+    margin-top: 15px;
+
+    span {
+      color: $green;
+    }
+
+    .rsvp-count__user-count {
+      margin-right: 5px;
+    }
+
+    @include font-size(16px);
+  }
+
+  .rsvp-comment {
+    font-style: italic;
+    margin-bottom: 15px;
+  }
+
   form {
+    // display: none;
     margin-bottom: 15px;
 
     label {
@@ -202,4 +302,22 @@
       width: 12px
     }
   }
+}
+
+.rsvp-count__edit {
+  color: $green;
+
+  svg {
+    fill: $green;
+    height: 20px;
+    margin-left: 5px;
+    vertical-align: middle;
+  }
+
+  @include font-size(12px);
+}
+
+.rsvp-results__message {
+  font-style: italic;
+  margin-left: 15px;
 }

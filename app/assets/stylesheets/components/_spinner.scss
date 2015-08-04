@@ -1,0 +1,29 @@
+.ui-spinner {
+  height: 50px;
+  overflow: visible;
+  width: 45px;
+
+  .spinner {
+    border: none;
+    color: $green;
+    outline: none;
+    text-align: center;
+    width: 45px;
+
+    @include font-size(36px);
+  }
+
+  .ui-spinner-down {
+    bottom: 20px;
+    left: 50%;
+    position: absolute;
+    transform: translateX(-50%);
+  }
+
+  .ui-spinner-up {
+    left: 50%;
+    position: absolute;
+    top: -12px;
+    transform: translateX(-50%);
+  }
+}

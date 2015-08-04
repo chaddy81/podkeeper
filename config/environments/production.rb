@@ -76,4 +76,13 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  config.action_mailer.default_url_options = { host: 'www.podkeeper.com' }
+
+  config.middleware.use ExceptionNotification::Rack,
+    :email => {
+      :email_prefix => "PodKeeper Production Exception ",
+      :sender_address => %{"notifier" <chad@entrision.com>},
+      :exception_recipients => %w{chad@entrision.com}
+    }
 end

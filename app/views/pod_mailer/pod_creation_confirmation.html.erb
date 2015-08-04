@@ -1,0 +1,41 @@
+<p style="margin: 10px 0;">Dear <%= @pod.organizer.first_name? ? @pod.organizer.first_name : @pod.organizer.email %>,</p>
+
+<p style="margin: 10px 0;"><span style="color:#456189; font-weight:bold;">Congratulations on creating your Pod: <%= @pod.name %>.</span> You now have a place to better organize this group and communicate with all the group members.</p>
+
+<p style="margin: 10px 0;">Make sure you <b>invite everyone</b> in this group to the Pod, if you haven't already, so that all members can benefit from being a part of it. If they don’t join right away they will receive up to two email reminders to join.</p>
+
+<p style="margin: 10px 0;">Please note that even if group members don’t accept your invitation (either right away or at all) they will still receive emails with important information such as new events and Urgent Discussions. So you don’t have to be concerned that anyone will miss out.</p>
+
+<h3 style="color:#456189;">Get Your Pod Going</h3>
+
+<p style="margin-bottom:0;">To make the most of what PodKeeper can do to keep your group organized, be sure to:</p>
+<ul style="margin-top:0;">
+  <li>Post important information or urgent updates</li>
+  <li>Start a discussion or ask for help or feedback</li>
+  <li>Set up all your upcoming events on the Events Calendar</li>
+</ul>
+
+<%= link_to image_tag('http://podanize-images.s3.amazonaws.com/email-images/go-to-the-pod-blue.png', alt: 'Go to the Pod', width: '204', height: '40', border: 0), dashboard_pod_url(@pod.slug), style: 'display:block; margin: 0 auto; font-size:18px; color:#15c; width:204px; height:40px' %>
+
+<p style="margin-bottom:0;">If you have any questions, comments or suggestions:</p>
+<ul style="margin-top:0;">
+  <li>Go to <%= link_to 'Frequently Asked Questions', faq_url, style: 'color: #456189' %></li>
+  <li>Contact us at <%= link_to 'podinfo@podkeeper.com', 'mailto:podinfo@podkeeper.com', style: 'color: #456189' %></li>
+</ul>
+
+<br>
+
+<p style="margin: 10px 0;">All the best,<br>
+The PodKeeper Team</p>
+
+<% provide :email, @email %>
+
+<table cellpadding="0" cellspacing="0" style="width: 100%;">
+  <tr>
+    <td style="text-align: center;" align="center">
+      <a href="http://e-find.co/c/1754?eid=<%= @email %>&a=&cid=1" class="reach-ad" style="max-width: 468px !important;width: 100%;">
+        <img src="http://e-find.co/img/1754?eid=<%= @email %>&a=&cid=1" style="max-width: 468px !important;width: 100%;height:60px;" />
+      </a>
+    </td>
+  </tr>
+</table>

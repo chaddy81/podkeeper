@@ -1,0 +1,40 @@
+= render 'shared/error_messages', f: f
+.form-group
+  label.control-label.col-sm-4 First Name
+  .col-sm-7.col-sm-offset-1
+    = f.input :first_name, label: false, wrapper: :no_wrap, error: false, input_html: { class: 'user-info__name form-control', value: f.object.first_name }
+
+.form-group
+  label.control-label.col-sm-4 Last Name
+  .col-sm-7.col-sm-offset-1
+    = f.input :last_name, label: false, wrapper: :no_wrap, input_html: { class: 'user-info__name form-control' }, error: false
+
+.form-group
+  label.control-label.col-sm-4 Email
+  .col-sm-7.col-sm-offset-1
+    = f.input :email, label: false, wrapper: :no_wrap, input_html: { class: 'user-info__email form-control' }
+
+.form-group
+  label.control-label.col-sm-4 Create Password
+  .col-sm-7.col-sm-offset-1
+    = f.input :password, label: false, wrapper: :no_wrap, input_html: { class: 'user-info__password form-control' }
+
+/ .form-group
+/   label.control-label.col-sm-4 Confirm Password
+/   .col-sm-7.col-sm-offset-1
+/     = f.input :password_confirmation, label: false, wrapper: :no_wrap, input_html: { class: 'user-info__password form-control' }
+
+.checkbox
+  .col-sm-7.col-sm-offset-5
+    label
+      = f.input :remember_me, as: :boolean, label: 'Remember me on this computer', input_html: { checked: 'checked' }
+
+.form-group
+  .col-sm-7.col-sm-offset-5
+    / = f.submit 'Join this Pod', class: 'btn btn-default', disable_with: 'Joining...'
+    = button_tag(type: 'submit', class: "btn btn-default btn-blue btn-registration", style: "display: block;margin-top: 15px;width: 100%") do
+      | Join PodKeeper
+      span 100% free
+
+= f.input :pod_id, as: :hidden, input_html: { value: @pod.id } unless @pod.nil?
+= f.input :time_zone, as: :hidden, input_html: { id: 'set_user_time_zone' }

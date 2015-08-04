@@ -1,0 +1,49 @@
+tr
+  td.files__link
+    - if %w(edit update).include?(params[:action]) && uploaded_file.id == params[:id].to_i
+      = simple_form_for uploaded_file do |f|
+        .form-group
+          = f.input :description, label: false, wrapper: :none, input_html: { class: 'form-control', 'maxlength' => '45' }, placeholder: 'Add a description'
+        .form-controls
+          = f.submit 'Save', class: 'btn btn-default btn-blue'
+          = link_to 'Cancel', '#', class: 'back', 'data-cancel-description-edit' => true, style: 'display: inline-block;line-height: 34px;margin: 0 20px;'
+        span data-original-description="" style="display:none;" = uploaded_file.description
+    - else
+      - if show_file_notification(current_pod, uploaded_file)
+        i.icons__notification style="color: #f7941e;margin-right: 2px;"
+      = uploaded_file.description
+
+  td style=("padding: 0 10px;")
+    - if current_user?(uploaded_file.pod_membership.user) || is_at_least_pod_admin?
+      = link_to edit_uploaded_file_path(uploaded_file), class: 'edit tooltip-base', title: 'Edit Description', 'data-placement' => 'right', 'data-toggle' => 'tooltip' do
+        span.file__edit.icons__edit
+      = link_to uploaded_file_path(uploaded_file), id: "delete_uploaded_file_#{uploaded_file.id}", method: :delete, class: 'delete tooltip-base', title: "Delete #{uploaded_file.file.present? ? 'File' : 'Link'}", 'data-placement' => 'right', 'data-toggle' => 'tooltip', data: { confirm: 'Are you sure you want to remove this file?' } do
+        span.file__delete.icons__delete
+
+  td.link-tooltips
+    .tooltip-container
+      - if uploaded_file.file.present?
+        - if IMAGE_EXTENSIONS.include? uploaded_file.file.file.extension.downcase
+          = link_to image_tag(uploaded_file.file.thumb.url), uploaded_file.file.file.url, class: 'thumbnail-image', target: '_blank'
+        - else
+          span.tooltip-unstyled data-placement="right" data-toggle="tooltip" data-html="true" title="<nobr>#{truncate(uploaded_file.identifier, length: 70)}</nobr>" = link_to 'Download File', uploaded_file.file.file.url, class: 'thumbnail-image', target: '_blank'
+      - else
+        span.tooltip-unstyled data-placement="right" data-toggle="tooltip" title=truncate(uploaded_file.url, length: 70) = link_to 'Visit Link', uploaded_file.url, target: '_blank'
+
+  td
+    - if uploaded_file.file.file.nil?
+      | Link
+    - elsif uploaded_file.file.file.extension.include?('/uploaded_file/file/')
+      | N/A
+    - else
+      = uploaded_file.file.file.extension.downcase
+
+  td
+    - if uploaded_file.file.present?
+      = number_to_human_size uploaded_file.file.size
+    - else
+      | N/A
+
+  td= uploaded_file.pod_membership.user.full_name
+
+  td= pretty_date uploaded_file.created_at

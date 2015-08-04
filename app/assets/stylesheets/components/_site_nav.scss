@@ -1,4 +1,17 @@
-.site-nav__mobile {
+.site-nav-container {
+  background: $blue-gray !important;
+  border: none;
+  border-top: 1px solid $event-border;
+
+  .pod-name {
+    color: $blue;
+    margin-top: 5px;
+
+    @include font-size(18px);
+  }
+}
+
+.site-nav {
   display: table;
   width: 100%;
 
@@ -79,5 +92,42 @@
 
   .site-nav__item--sub-menu {
     display: block;
+  }
+}
+
+@media (min-width: 768px) {
+  .site-nav {
+    display: inline-block;
+    width: auto;
+
+    .site-nav__item {
+      border: none;
+      padding: 6px 16px 4px;
+
+      &:hover {
+        background: #fff;
+      }
+
+      @include font-size(14px);
+    }
+
+    .site-nav__item--events {
+      width: auto;
+    }
+
+    .site-nav__item--discussions {
+      padding: 6px 22px 4px;
+      width: auto;
+    }
+
+    .site-nav__item--lists {
+      padding: 6px 22px 4px;
+      width: auto;
+    }
+
+    .site-nav__item--files {
+      padding: 6px 22px 4px;
+      width: auto;
+    }
   }
 }

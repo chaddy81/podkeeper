@@ -4,7 +4,7 @@ class PodMembershipsController < ApplicationController
   before_filter :is_pod_admin_or_self?, only: :destroy
 
   def index
-    pod = Pod.find(params[:pod_id])
+    pod = current_pod
     render_404 and return if pod.nil?
     @pod_memberships = pod.pod_memberships
     @invites = pod.invites.unaccepted

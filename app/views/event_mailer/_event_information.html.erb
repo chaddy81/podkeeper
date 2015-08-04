@@ -1,0 +1,48 @@
+<table cellspacing="0" style="text-align: left;" cellpadding="0">
+  <tr>
+    <td style="width: 100px; font-weight: bold;" valign="top">
+      Description
+    </td>
+    <td style="padding-bottom:10px;">
+      <%= event.name %><br>
+      <%= auto_link(simple_format(event.description), :all, target: '_blank', class: 'web-link') %>
+    </td>
+  </tr>
+  <tr>
+    <td style="width: 100px; font-weight: bold;" valign="top">
+      Date &amp; Time
+    </td>
+    <td style="padding-bottom:10px;">
+      <%= event_date_time(event, user) %>
+    </td>
+  </tr>
+  <tr>
+    <td style="width: 100px; font-weight: bold;" valign="top">
+      Location
+    </td>
+    <td style="padding-bottom:10px;">
+      <%= event.location %><br>
+      <% if event.street.present? %>
+        <%= event.street %><br>
+      <% end %>
+      <% if event.address_without_street.present? %>
+        <%= event.address_without_street %><br>
+      <% end %>
+      <% if event.phone.present? %>
+        <%= link_to event.phone, "tel:#{event.phone}" %><br>
+      <% end %>
+      <% if event.gmaps_address.present? %>
+        <%= link_to 'Google Map', google_map_link(event.gmaps_address), target: '_blank', style: 'color: #456189;' %>
+      <% end %>
+    </td>
+  </tr>
+  <tr>
+    <td style="width: 100px; font-weight: bold;" valign="top">
+      Event Contact
+    </td>
+    <td style="padding-bottom:10px;">
+      <%= event.organizer.email %><br>
+      <%= link_to event.organizer.phone, "tel:#{event.organizer.phone}" %>
+    </td>
+  </tr>
+</table>

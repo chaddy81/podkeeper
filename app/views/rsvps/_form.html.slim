@@ -1,0 +1,40 @@
+= simple_form_for rsvp, html: { class: 'col-xs-12' }, remote: true do |f|
+    = f.input :event_id, as: :hidden, input_html: { value: rsvp.event_id }
+    .row
+      = f.association :rsvp_option, as: :radio_buttons, label_method: :display_name, label: false, collection: RsvpOption.order('id ASC'), item_wrapper_class: 'col-xs-4 button-container'
+
+    .clearfix
+    .row
+      - if rsvp.rsvp_option
+        .rsvp-count__user.clearfix
+          .rsvp-count__user-count.pull-left
+            span= rsvp.number_of_adults
+            '  Adults,
+          .rsvp-count__user-count.pull-left
+            span= rsvp.number_of_kids
+            '  Kids
+
+          .rsvp-count__edit.pull-right
+            | Edit
+            svg.icon.center-block viewbox=("0 0 1024 1024")
+              use xlink:href="#icon-podkeeper-edit"
+
+        .rsvp-comment
+          p= simple_format rsvp.comments, {}, wrapper_tag: 'span'
+    .rsvp-count-comment
+      .row
+        .rsvp-count.clearfix
+          .col-xs-6.text-center
+            = f.input :number_of_adults, as: :string, label: false, input_html: { class: 'spinner' }
+            label Adults
+          .col-xs-6.text-center
+            = f.input :number_of_kids, as: :string, label: false, input_html: { class: 'spinner' }
+            label Kids
+        p
+          label Quick Comment
+        / textarea.col-xs-12
+        = f.input :comments, as: :text, label: false, input_html: { class: 'col-xs-12' }
+
+      .btn-toolbar
+        button.btn.cancel.pull-left Cancel
+        button.btn.submit.pull-right Save

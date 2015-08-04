@@ -1,0 +1,4 @@
+<% if @pod %>
+  $('#pod-container').append('<%= escape_javascript(render("pod_info", pod: @pod)) %>')
+<% end %>
+

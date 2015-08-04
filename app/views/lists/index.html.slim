@@ -1,0 +1,25 @@
+.col-sm-12.col-md-10
+  .main-contents
+
+    h2.section-title Lists
+    .main-contents__body
+      = link_to 'Create a List', new_list_path(pod_id: @pod.id), class: 'list__create btn btn-default btn-blue'
+      = render @pod.lists if @pod.lists.any?
+
+javascript:
+  $(function() {
+    $.ajax({
+      type: 'GET',
+      url: "/lists/update_last_visit"
+    });
+
+    $('.list__items').on('change', 'select#pod-users', function() {
+      $(this).parent().next().find('input:hidden#list_item_user_id').val($(this).val());
+    });
+
+    $('.list__items').on('change', '.list__name--current', function() {
+      if ($(this).is(':checked')) {
+        $(this).parent().find('input:hidden#list_item_user_id').val("#{current_user.id}");
+      }
+    });
+  });

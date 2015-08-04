@@ -1,7 +1,14 @@
 module ApplicationHelper
 
+  BOOTSTRAP_FLASH_MSG = {
+    success: 'alert-success',
+    error: 'alert-error',
+    alert: 'alert-block',
+    notice: 'alert-info'
+  }
+
   def full_title(page_title)
-    base_title = "PodKeeper"
+    base_title = 'PodKeeper'
     if page_title.empty?
       base_title
     else
@@ -10,11 +17,20 @@ module ApplicationHelper
   end
 
   def page_description(description)
-    default_desc = "Keep your family and groups organized in one place for free. Moms, dads, volunteers and coaches use our easy scheduling software to manage a school class, scout troop, sports team."
+    default_desc = 'Keep your family and groups organized in one place for free. Moms, dads, volunteers and coaches use our easy scheduling software to manage a school class, scout troop, sports team.'
     if description.empty?
       default_desc
     else
       "#{description}".html_safe
+    end
+  end
+
+  def show_pod_name
+    content_for :pod_name do
+      "<span><%= current_pod.name %></span>
+      <svg viewbox='0 0 1024 1024'>
+        <use xlink:href='#icon-podkeeper-arrow-down'></use>
+      </svg>".html_safe
     end
   end
 
@@ -44,7 +60,7 @@ module ApplicationHelper
   end
 
   def datepicker_format(date)
-    return "" if date.nil?
+    return '' if date.nil?
     "#{l date, format: '%m/%d/%Y'}"
   end
 
@@ -68,7 +84,7 @@ module ApplicationHelper
     "#{pod.organizer.full_name}, #{link_to pod.organizer.email, mailto, target: '_blank'} #{',' unless pod.organizer.phone.blank?} #{pod.organizer.phone}".html_safe
   end
 
-  def sort_direction(column=nil)
+  def sort_direction(column = nil)
     direction = params[:direction] || 'asc'
     if column.present? && column == params[:column]
       direction == 'asc' ? 'desc' : 'asc'
@@ -78,7 +94,7 @@ module ApplicationHelper
     end
   end
 
-  def inverse_sort_direction(column=nil)
+  def inverse_sort_direction(column = nil)
     sort_direction(column) == 'asc' ? 'desc' : 'asc'
   end
 
@@ -91,21 +107,18 @@ module ApplicationHelper
     pod.slug
   end
 
-  def bootstrap_class_for flash_type
-    case flash_type
-      when :success
-        "alert-success"
-      when :error
-        "alert-danger"
-      when :alert
-        "alert-warning"
-      when :notice
-        "alert-info"
-      when :warning
-        "alert-warning"
-      else
-        flash_type.to_s
+  def bootstrap_class_for(flash_type)
+    BOOTSTRAP_FLASH_MSG.fetch(flash_type, flash_type.to_s)
+  end
+
+  def flash_messages
+    flash.each do |msg_type, message|
+      concat(content_tag(:div, message, class: "alert #{bootstrap_class_for(msg_type)} fade in") do
+              concat content_tag(:button, 'x', class: "close", data: { dismiss: 'alert' })
+              concat message
+             end)
     end
+    nil
   end
 
   def get_icon category, subcategory=nil

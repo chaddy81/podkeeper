@@ -1,0 +1,80 @@
+.user-permissions {
+  .user-permissions__head {
+    span {
+      font-weight: 600;
+    }
+  }
+
+  .user-permissions__head {
+    display: none;
+  }
+
+  .user-permissions__row {
+    margin-bottom: 25px;
+
+    span {
+      box-sizing: border-box;
+      display: block;
+      margin-bottom: 5px;
+      padding: 0 10px;
+      vertical-align: top;
+
+      p {
+        font-weight: 600;
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  .user-permissions__controls {
+    a {
+      text-transform: capitalize;
+    }
+  }
+}
+
+@media ( min-width: 768px ) {
+  .user-permissions {
+    .user-permissions__head {
+      span {
+        font-weight: 600;
+      }
+    }
+
+    .user-permissions__row, .user-permissions__head {
+      display: block;
+      margin-bottom: 10px;
+
+      span {
+        box-sizing: border-box;
+        display: inline-block;
+        padding: 0 10px;
+        vertical-align: top;
+      }
+    }
+
+    .user-permissions__icon {
+      width: 5%;
+    }
+
+    .user-permissions__parent {
+      width: 20%;
+    }
+
+    .user-permissions__email {
+      width: 30%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .user-permissions__level {
+      width: 25%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .user-permissions__controls {
+      width: 20%;
+    }
+  }
+}

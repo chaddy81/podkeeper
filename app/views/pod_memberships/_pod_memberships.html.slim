@@ -1,0 +1,30 @@
+- pod_memberships.each do |pod_membership|
+  - user = pod_membership.user
+  .user-permissions__row.clearfix
+    span.user-permissions__icon.icon--adult
+      i.icons__adult.member.tooltip-base style="font-size: 22px;color: #a0c133;" data-placement="right" data-toggle="tooltip" title="Member"
+    span.user-permissions__parent
+      p.visible-xs Parent's Name
+      = render 'users/name', user: user
+    span.user-permissions__email
+      p.visible-xs Email
+      = link_to user.email, "mailto:#{user.email}"
+    span.user-permissions__level
+      p.visible-xs Access Level
+      = pod_membership.access_level.display_name
+    span.user-permissions__controls
+      - if is_pod_admin_with_sharing?
+        = link_to 'edit', edit_pod_membership_path(pod_membership), id: "edit_user_#{user.id}_permissions"
+
+- invites.each do |invite|
+  .user-permissions__row.clearfix
+    span.user-permissions__icon.icon--adult
+      i.icons__adult.non-member.tooltip-base style="font-size: 22px" data-placement="right" data-toggle="tooltip" title=("Not a member yet")
+    span.user-permissions__parent
+      p.visible-xs Parent's Name
+      = render 'users/name', user: invite
+    span.user-permissions__email
+      p.visible-xs Email
+      = link_to invite.email, "mailto:#{invite.email}"
+    span.user-permissions__level
+    span.user-permissions__controls

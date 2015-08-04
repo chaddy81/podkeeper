@@ -1,0 +1,25 @@
+- provide :title, 'Forgot Password'
+= render 'layouts/banner', banner_content: "Reset Password"
+
+#wrap
+  .container
+    .row
+      .main-contents.col-xs-12
+        .main-contents__body
+          .col-md-6
+            = form_for @user, url: password_reset_path(@user.password_reset_token) do |f|
+              .form-group
+                .col-md-3
+                  label New Password
+                .col-md-9
+                  = f.password_field :password, class: 'form-control'
+
+              / .form-group
+              /   .col-md-3
+              /     label Password Confirmation
+              /   .col-md-9
+              /     = f.password_field :password_confirmation, class: 'form-control'
+
+              .form-controls.pull-right
+                = link_to 'Cancel', '#', class: 'back', data: { reset_password: nil }
+                = f.submit 'Update', class: 'btn btn-default'

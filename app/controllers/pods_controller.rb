@@ -76,7 +76,7 @@ class PodsController < ApplicationController
       session[:register] = 'success'
       #redirect_to thank_you_path(create: 'success')
       pod = Pod.where(id: @user.last_pod_visited_id).first || @user.pods.last
-      pod.present? ? redirect_back_or(dashboard_pod_path(pod.slug, login: 'success')) : redirect_to(no_pod_path)
+      pod.present? ? redirect_back_or(events_path(pod.slug, login: 'success')) : redirect_to(new_pod_path)
     else
       @invite = Invite.find_by_id(@pod_user.invite_id)
       if @invite
@@ -86,12 +86,7 @@ class PodsController < ApplicationController
       else
         puts "PodUser invalid, bad render"
         flash[:error] = @pod_user.errors.full_messages.first
-        # redirect_to new_session_path
-        if session[:reg_page] == '1'
-          render 'registrations/new'
-        else
-          render 'sessions/new'
-        end
+        render 'registrations/new'
       end
     end
   end
@@ -103,7 +98,7 @@ class PodsController < ApplicationController
       @pod.add_organizer
       flash[:success] = 'Congratulations! You have added a new Pod'
       set_current_pod(@pod) # Moved from show method as being set after render
-      redirect_to dashboard_pod_path(@pod.slug, created: 'success')
+      redirect_to invite_pods_path
     else
       @active = 'pods'
       @invite = current_user.sent_invites.new
@@ -125,15 +120,12 @@ class PodsController < ApplicationController
   end
 
   def edit
+    @pod = current_pod
   end
 
   def set_pod
     pod = Pod.find(params[:pod_id])
-    if set_current_pod(pod)
-      render nothing: true, status: 201
-    else
-      render nothing: true, status: 304
-    end
+    set_current_pod(pod)
   end
 
   def update
@@ -190,7 +182,7 @@ class PodsController < ApplicationController
   end
 
   def invite
-    @pod = Pod.find_by_id(params[:pod_id])
+    @pod = current_pod
     invited_users = @pod.invites.unaccepted
     invited_users_with_only_first_name = invited_users.where("(last_name IS NULL OR last_name = '') AND (first_name IS NOT NULL AND first_name != '')").order(:first_name)
     invited_users_with_only_last_name = invited_users.where("(first_name IS NULL OR first_name = '') AND (last_name IS NOT NULL AND last_name != '')").order(:last_name)
@@ -234,16 +226,6 @@ class PodsController < ApplicationController
     redirect_to @pod
   end
 
-  def dashboard
-    redirect_to(new_pod_path) && return unless current_user.pods.any?
-    @pod = Pod.find_by_slug(params[:id])
-    # @require_rsvp = @pod.require_rsvp(current_user)
-    unless @pod
-      @pod = current_user.pods_as_organizer.any? ? current_user.pods_as_organizer.first : current_user.pods.first
-    end
-    set_current_pod(@pod)
-  end
-
   def no_pod
     session[:view_count] ||= 0
     session[:view_count] += 1
@@ -273,7 +255,7 @@ class PodsController < ApplicationController
   end
 
   def can_access?
-    pod = Pod.find(params[:pod_id])
+    pod = current_pod
     render_404 unless current_user.pods.include?(pod)
   end
 

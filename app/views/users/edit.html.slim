@@ -1,0 +1,137 @@
+.col-sm-12
+  ul.nav.nav-tabs role="tablist"
+    li.active
+      a href="#account" role="tab" data-toggle="tab" My Account
+    li
+      a href="#notifications" role="tab" data-toggle="tab" Email Notifications
+    li
+      a href="#leave-a-pod" role="tab" data-toggle="tab" Leave a Pod
+
+  .tab-content
+    .update-info.tab-pane.active.in#account
+      h4 Update Your Information
+      = simple_form_for @user, defaults: { label_html: { class: 'control-label col-sm-4' } } do |f|
+        .col-xs-12.col-sm-6
+          .form-group.col-sm-12
+            = f.input :first_name, input_html: { class: 'form-control' }
+
+          .form-group.col-sm-12
+            = f.input :last_name, input_html: { class: 'form-control' }
+
+          .form-group.col-sm-12
+            = f.input :email, input_html: { class: 'form-control' }
+
+          .form-group.col-sm-12
+            label.phone.required.control-label.control-label.col-sm-4
+              | Phone
+              = image_tag 'ico-info.png', 'data-toggle' => "tooltip", 'data-placement' => "auto", title:"Your phone number (optional) is visible only to your fellow Pod Members. It will not be used for any other purpose per our privacy policy.", style: 'margin-left: 10px;width: 14px;'
+
+            = f.input :phone, label: false, input_html: { class: 'form-control' }
+
+          .form-group.col-sm-12
+            = f.input :time_zone, label: 'Time Zone', collection: mod_time_zone_options, selected: current_user.time_zone, input_html: { class: 'form-control timezone' }
+
+        .clearfix
+
+        .update-info__password
+          h4 Change Your Password
+
+          .password-container.clearfix
+            .col-sm-6
+              .form-group.col-sm-12
+                = f.input :password, input_html: { class: 'form-control' }, label: 'New Password'
+
+              .form-group.col-sm-12
+                = f.input :password_confirmation, input_html: { class: 'form-control' }, label: 'Confirm'
+        br
+        .update-info__controls
+          .form-group
+            .col-sm-12
+              a href="#" Cancel
+              = f.submit 'Save', class: 'btn btn-default btn-blue'
+    .notifications.tab-pane#notifications
+      - if current_pod
+        p Email notifications are an important part of staying up to date with all of your groups. However, if there are certain emails you don’t want to receive, you can decide not to receive them. Recommended emails are pre-checked.
+
+        p You can decide to have different settings for each Pod, which are listed below alphabetically
+        .daily-digest-container
+          = simple_form_for @user, html: { class: 'daily-digest' }, remote: true do |f|
+            .checkbox
+              label
+                = f.input :daily_digest, label: 'Daily Digest'
+          p
+            | Receive 1 email daily with the most relevant information from all of your Pods.
+            br Sent at 7 am your local time if the Pod has any activity in the past 24 hours.
+        - @settings.each do |setting|
+          .notification-container.col-sm-12.col-md-8
+            h4.settings-pod-name= setting.pod.name
+            p These emails are sent when a specific Pod activity occurs
+            = simple_form_for setting, namespace: setting.id, html: { class: 'notify-me' } do |f|
+              = f.input :user_id, :as => "hidden", :input_html => { :value => @user.id }
+              = f.input :pod_id, :as => "hidden", :input_html => { :value => setting.pod.id }
+              .discussions
+                h5.col-sm-2 Discussions
+                .inputs.col-sm-10
+                  = f.input :note_urgent_notice, disabled: true, label: 'Urgent Discussion is added'
+                  = f.input :note_new_notice, label: 'Discussion is added'
+                  = f.input :note_reply_to_any_notice, label: 'Pod member comments on any Discussion'
+                  = f.input :note_reply_to_you_notice, label: 'Pod member comments on a Discussion I started'
+              .events
+                h5.col-sm-2 Events
+                .inputs.col-sm-10
+                  = f.input :event_new_notice, label: 'Event is added'
+                  = f.input :event_update_notice, label: 'Event is updated'
+                  = f.input :event_reminder_notice, label: 'Reminder to RSVP & Reminder of upcoming Event'
+              .controls.col-sm-9
+                .pull-right
+                  = f.submit 'save', disable_with: 'Saving...', class: 'btn btn-default', style: 'margin-right: 10px;'
+                  = link_to 'Cancel', settings_path, class: 'back'
+            .clearfix
+        .col-sm-12.col-md-8
+          = paginate @settings, params: { anchor: 'notifications' }
+      - else
+        p Once you create a Pod or join a Pod, you'll be able to adjust the email notifications for each Pod you are in.  You will also be able to sign up for our Daily Digest.
+    #leave-a-pod.tab-pane
+      p To leave a Pod, click the appropriate button
+      p
+        em Warning: If you leave a Pod you will not be able to access the Pod or receive ANY information from the Pod.
+      - if @pod_memberships.any?
+        .table-responsive
+          table.table
+            thead
+              tr
+                th My Pods
+                th
+            tbody
+              - @pod_memberships.each do |pod_membership|
+                tr
+                  td= pod_membership.pod.name
+                  td
+                    - if current_user? pod_membership.pod.organizer && pod_membership.pod.pod_memberships.where(id: [AccessLevel.member.id, AccessLevel.pod_admin.id]).count <=1
+                      = link_to 'Leave Pod', pod_membership_path(pod_membership), method: :delete, remote: true, class: 'btn btn-default btn-blue'
+                    - else
+                      = link_to 'Leave Pod', pod_membership_path(pod_membership), method: :delete, class: 'btn btn-default btn-blue', data: { confirm: 'Are you sure you want to leave this Pod?' }
+      - else
+        hr
+        p
+          strong No Pods?  Don’t be sad. Here’s how to recover from the I-don’t-have-any-Pods blues.
+        p Check if you have any Pods you’ve been invited to by clicking on Pod Invites above.
+        p Create a new Pod by clicking on Create a Pod above.
+
+    .clearfix
+
+javascript:
+  $(function() {
+    if(window.location.hash.length > 0) {
+      $('ul[role="tablist"] li').removeClass('active');
+      $('.tab-content div').removeClass('active');
+      $('a[href="' + window.location.hash + '"]').parent().addClass('active');
+      $(window.location.hash).addClass('active');
+    }
+
+    var user_updated = #{session[:user_updated] == false ? false:true};
+    if(user_updated == false) {
+      $('.update-info__password .password-container').show();
+    }
+
+  });

@@ -1,0 +1,6 @@
+- if user.first_name.blank?
+  span style="margin-left: 50px;"
+- else
+  = user.first_name.capitalize + ' '
+
+= user.last_name.capitalize

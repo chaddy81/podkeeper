@@ -70,7 +70,7 @@ class UsersController < ApplicationController
 
   def edit
     @user = current_user
-    @settings = @user.settings.all
+    @settings = @user.settings.page(params[:page]).per(5)
     if params[:pod_id].present?
       @pod = current_user.pods.where(id: params[:pod_id]).first
     else
@@ -104,7 +104,6 @@ class UsersController < ApplicationController
     if params[:pod_id].present?
       @pod = current_user.pods.where(id: params[:pod_id]).first
       set_current_pod(@pod)
-
     else
       @pod_memberships = current_user.pod_memberships.joins(:pod).order('pods.name')
     end
@@ -115,7 +114,7 @@ class UsersController < ApplicationController
     @time_zone = params[:time_zone]
     current_user.update_attribute(:time_zone, @time_zone)
   end
-  
+
   def update_fb_time_zone
     @time_zone = params[:time_zone]
     current_user.update_attribute(:time_zone, @time_zone)

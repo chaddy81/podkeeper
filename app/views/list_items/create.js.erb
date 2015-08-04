@@ -1,0 +1,2 @@
+$('tbody#list_<%= @list_item.list.id %>').append('<%= escape_javascript(render "list_items/row", list_item: @list_item) %>')
+$('form[data-list="<%= @list_item.list.id %>"]').replaceWith('<%= escape_javascript(render "list_items/form", list: @list_item.list, list_item: @list_item.list.list_items.build) %>')

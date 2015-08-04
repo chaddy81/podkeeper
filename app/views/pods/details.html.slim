@@ -1,0 +1,17 @@
+.col-sm-12
+  .row
+    .col-sm-4
+      p Description
+    .col-sm-6
+      p= @pod.description
+  .row
+    .col-sm-4
+      p Primary Contact
+    .col-sm-6
+      p
+        = @pod.organizer.full_name
+        br
+        = link_to @pod.organizer.email, "mailto: #{@pod.organizer.email}"
+        - if @pod.organizer.phone
+          br
+          = @pod.organizer.phone

@@ -1,12 +1,48 @@
-= simple_form_for @pod_user, wrapper: :registration_fields, defaults: { label_html: { class: 'control-label col-sm-4' } }, url: pod_create_user_and_pod_path(0), html: { class: 'create-pod__form form-horizontal' } do |f|
+= simple_form_for @pod_user, url: pod_create_user_and_pod_path(0) do |f|
   = f.input :time_zone, as: :hidden, input_html: { id: 'set_user_time_zone' }
 
-  = f.input :first_name, label: false, wrapper: :user_info_fields, input_html: { class: 'user-info__name form-control' }, wrap_with: { class: 'user-info__name form-control' }
+  .registration.center-block.clearfix
+    .registration__header.clearfix
+      h3.pull-left Sign Up
+      h3.pull-right It’s Free. Always.
 
-  = f.input :last_name, label: false, wrapper: :user_info_fields, input_html: { class: 'user-info__name form-control' }, wrap_with: { class: 'user-info__name form-control' }
+    .form-group
+      .text-center
+        = link_to "/auth/facebook", class: 'registration__facebook' do
+          svg.icon.icon-facebook.center-block.visible-xs viewbox="0 0 8664 1024"
+            use xlink:href="#icon-podkeeper-facebook"
 
-  = f.input :email, input_html: { class: 'user-info__email form-control' }
-              = f.input :password, label: 'Create Password', input_html: { class: 'user-info__password form-control' }
+          svg.icon.icon-facebook.center-block.hidden-xs viewbox="0 0 8810 1024"
+            use xlink:href="#icon-podkeeper-facebook-desktop"
+        p
+          span.blue-line
+          | OR
+          span.blue-line
 
-  = button_tag(type: 'submit', class: "btn btn-default btn-blue btn-registration", style: "display: inline-block;width:100%") do
-    | Join PodKeeper
+    .form-group.text-center
+      = f.input :email, label: false, input_html: { placeholder: 'Enter Your Email Address' }
+
+    .form-group.text-center
+      = f.input :password, label: false, input_html: { placeholder: 'Choose Password' }
+
+    .form-group
+      .text-center
+        = f.input :remember_me, as: :boolean, label: 'Remember Me', input_html: { class: 'user-info__remember', style: 'float:none;', checked: 'checked' }, inline_label: true
+
+    .form-group
+      .col-sm-12
+        input name="OI_FORM_IDENTIFIER" type="hidden" value=""
+        script src="//www.clear-request.com/oi/a/23504568.js" type="text/javascript"
+
+      .text-center
+        = button_tag(type: 'submit', class: "btn btn-default btn-green btn-registration") do
+          | Sign Up for my Free Account
+
+    p.terms.text-center
+      ' By creating an account you agree to the
+      = link_to 'Terms of Service', terms_of_service_path, target: '_blank'
+      | .
+
+    h4.text-center
+      ' Already have an account?
+      = link_to 'Log In', signin_path

@@ -1,0 +1,22 @@
+nav.navbar.navbar-default.logged-out
+  .container-fluid
+    .navbar-header
+      button.navbar-toggle.collapsed aria-expanded="false" data-target="#logged-out" data-toggle="collapse" type="button"
+        span.sr-only Toggle navigation
+        span.icon-bar
+        span.icon-bar
+        span.icon-bar
+      a.navbar-brand href="#" Brand
+
+    #logged-out.collapse.navbar-collapse
+      ul.nav.navbar-nav.navbar-right
+        li
+          a href="#{how_pods_work_path}" OVERVIEW
+        li
+          a href="#" COMPANY
+        li
+          a href="#" SUPPORT
+        li
+          a href="#{signin_path}" LOGIN
+        li
+          a href="#{new_registration_path}" SIGN UP

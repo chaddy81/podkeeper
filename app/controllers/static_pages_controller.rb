@@ -1,14 +1,14 @@
 class StaticPagesController < ApplicationController
   skip_before_filter :signed_in_user, except: :disable_tracking
-  layout 'registration'
+  layout 'registration', only: :index
   # layout 'none', only: [:site_maintenance, :landing]
 
   def index
     if signed_in?
       if current_pod
-        redirect_to events_path(current_pod.slug)
+        redirect_to events_path
       else
-        redirect_to no_pod_path
+        redirect_to new_pod_path
       end
     end
 

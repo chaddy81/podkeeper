@@ -1,0 +1,88 @@
+= render 'layouts/banner', banner_content: "Registration - Join a Pod"
+
+.container
+  .row
+    .main-contents__body
+      .row
+        .col-sm-12.col-md-6
+          .create-pod.join-pod
+            h2
+              | You have been invited to join this Pod:
+              br
+              = @pod.name
+              br
+              ' Invited by
+              = @pod.organizer.full_name
+
+          .user-info
+            h3 Your Information
+            / form.create-pod__form.form-horizontal
+            = simple_form_for @user, defaults: { wrapper: :none }, html: { class: 'form-horizontal create-pod__form' } do |f|
+              = render 'users/fields', f: f
+              = f.input :invite_id, as: :hidden
+
+            p.user-info__disclaimer
+              ' By completing this form and clicking the button above you are becoming a member of PodKeeper, which allows you to access this Pod and any other Pods you may create or join. For additional details please view our
+              = link_to 'Terms of Service.', terms_of_service_path, target: '_blank'
+
+        .col-sm-12.col-md-6
+          h3.align-center Join your group on PodKeeper
+          p.description Joining PodKeeper is completely free.  Sign up and you can access all of the Pod’s communications in one place - events, discussions, sign-up lists and files.
+
+          p.description Once you join, we urge you to join Pod discussions, or create a discussion yourself.  All members of your Pod can add content.
+
+          p.description Once you experience what you can do with a Pod, go ahead and set one up for another group you are in.  Or simply set up a Pod and invite your spouse to keep your household organized.  You can easily manage your hectic schedule and coordinate with one another. Imagine how much easier it would be to keep yourself organized if you had all your important information at your fingertips. Having a Pod for your family and for each of your kids’ groups will do just that.
+
+          p.description Sign up now and manage the details of life with ease.
+
+          h4.learn-more
+            = link_to 'Learn More', '#learn-more', 'data-toggle' => "modal", 'data-target' => "#learn-more"
+
+.modal.fade#learn-more aria-hidden="true" aria-labelledby="learnmore" role="dialog" tabindex="-1"
+  .modal-dialog
+    .modal-content
+      .modal-header
+        button.close data-dismiss="modal" type="button"
+          span aria-hidden="true"  &times;
+          span.sr-only Close
+        h4.modal-title KEY FEATURES
+      .modal-body
+        h5 DISCUSSIONS
+        p Provide Pod members with important information, ask for input, keep members engaged and keep it all straight.
+
+        h5 EVENTS
+        p Let everyone in the Pod know upcoming events and track RSVPs. Save to your own online calendar (Google Calendar, Yahoo Calendar, iCal, Outlook).
+
+        h5 LISTS
+        p Seamlessly manage logistics by creating lists – and asking people to sign up to bring an item or select a time slot.
+
+        h5 FILES
+        p Add documents or website links for easy reference, such as schedules, permission slips, forms, handbooks or photos.
+
+        h5 NOTIFICATIONS
+        p Stay informed and customize which notifications are sent to your email – get as many or as few as you want.
+
+        h4.align-center Keep Organized Like Never Before – For FREE!
+        p.align-center Join PodKeeper using the brief form on the page below
+        a.align-center data-dismiss="modal" Close
+
+- if session[:signup] == 'failure'
+  javascript:
+    $(function() {
+      ga('send', 'event', 'register join pod', 'register', 'failure');
+    });
+
+  - session[:signup] == ''
+
+
+javascript:
+  $(function() {
+    $('.user-info .user-info__disclaimer a').on('click',function(){ga('send', 'event', 'register join pod', 'click', 'link 1');});
+    $('.learn-more a').on('click',function(){ga('send', 'event', 'register join pod', 'click', 'link 2');});
+
+    window.onbeforeunload = function() {
+      if ($('#user_password').val() == '') {
+        ga('send', 'event', 'register join pod', 'exit', 'no input');
+      }
+    };
+  });

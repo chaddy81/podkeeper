@@ -1,0 +1,94 @@
+.navbar {
+  background: #fff;
+  border: none;
+  margin-bottom: 0;
+
+  &.desktop-header {
+    background: #fff;
+    border: none;
+
+    @include font-size(14px);
+  }
+}
+
+.navbar-brand {
+  background: image-url('svg/podkeeper_logo-full.svg') no-repeat center center;
+  background-size: 170px;
+  display: inline-block;
+  height: 46px;
+  text-indent: -999em;
+  width: 170px;
+}
+
+.navbar.desktop-header {
+  padding: 15px 0;
+
+  .dropdown {
+    a {
+      color: $blue;
+    }
+
+    &.open {
+      background: transparent;
+    }
+  }
+
+  .create-pod {
+
+    a, a:hover, a:active, a:visited, a:focus {
+      background: $green;
+      border-radius: 3px;
+      color: #fff;
+      height: 30px;
+      line-height: 0;
+      margin-top: 10px;
+      padding: 5px 10px;
+    }
+
+    svg {
+      fill: #fff;
+      height: 20px;
+      margin-right: 3px;
+      vertical-align: middle;
+    }
+  }
+
+  .pod-invites {
+    position: relative;
+
+    a, a:hover {
+      color: $green;
+    }
+
+    &:after {
+      background: $event-border;
+      content: '';
+      display: inline-block;
+      height: 80%;
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 1px;
+    }
+  }
+}
+
+.caret {
+  background: image-url('svg/podkeeper_arrow-down.svg') center center no-repeat;
+  background-size: 8px;
+  border: none;
+  height: 10px;
+  margin-left: 3px;
+  width: 8px;
+}
+
+.logged-out {
+  padding: 20px 0;
+}
+
+@media ( min-width: 768px ) {
+  .logged-out {
+    padding: 30px 0;
+  }
+}

@@ -1,0 +1,42 @@
+<p style="margin: 10px 0;">Dear <%= @user.first_name.blank? ? 'Invitee' : @user.first_name %>,</p>
+
+<p style="margin: 10px 0;">There has been an update to <%= @event.name %>, an event with <%= @event.pod.name %>.</p>
+
+<% if @event.require_rsvp? %>
+  <p style="margin: 10px 0;">Your current RSVP is: <span style="color:#456189;"><%= @rsvp.new_record? ? 'Not Responded' : @rsvp.rsvp_option.display_name %></span></p>
+<% end %>
+
+<% if @user.class.to_s == 'User' %>
+  <% if @event.require_rsvp? && @user.rsvps.where(event_id: @event.id).empty? %>
+    <%= link_to image_tag('http://podanize-images.s3.amazonaws.com/email-images/go-to-event-and-rsvp-blue.png', alt: 'Go to Event and RSVP', width: '243', height: '40', border: 0), event_url(@event), style: 'display:block; margin:0 auto; font-size:18px; height: 40px; width: 243px; color:#15c;' %>
+  <% else %>
+    <%= link_to image_tag('http://podanize-images.s3.amazonaws.com/email-images/go-to-event-blue.png', alt: 'Go to Event', width: '184', height: '40', border: 0), event_url(@event), style: 'display:block; margin:0 auto; font-size:18px; height: 40px; width: 184px; color:#15c;' %>
+  <% end %>
+<% else %>
+  <% if @event.require_rsvp? %>
+    <%= link_to image_tag('http://podanize-images.s3.amazonaws.com/email-images/join-and-rsvp-blue.png', alt: 'Join Pod and RSVP', width: '291', height: '40', border: 0), signup_url(auth_token: @user.auth_token), style: 'display: block; margin:0 auto; font-size:18px; height: 40px; width: 291px; color:#15c;' %>
+  <% else %>
+    <%= link_to image_tag('http://podanize-images.s3.amazonaws.com/email-images/join-and-go-blue.png', alt: 'Join Pod and Go to Event', width: '275', height: '40', border: 0), signup_url(auth_token: @user.auth_token), style: 'display:block; margin:0 auto; font-size:18px; height: 40px; width: 275px; color:#15c;' %>
+  <% end %>
+<% end %>
+
+<h3 style="color:#456189;">Updated Event Information</h3>
+
+<%= render 'event_information', event: @event, user: @user %>
+
+<p style="margin: 10px 0;">We hope to see you there.</p>
+
+<p style="margin: 10px 0;">Regards,<br>
+<%= @event.organizer.full_name %></p>
+
+<% provide :email, @email %>
+
+<table cellpadding="0" cellspacing="0" style="width: 100%;">
+  <tr>
+    <td style="text-align: center;" align="center">
+      <a href="http://e-find.co/c/1754?eid=<%= @email %>&a=&cid=1" class="reach-ad" style="max-width: 468px !important;width: 100%;">
+        <img src="http://e-find.co/img/1754?eid=<%= @email %>&a=&cid=1" style="max-width: 468px !important;width: 100%;height:60px;" />
+      </a>
+    </td>
+  </tr>
+</table>

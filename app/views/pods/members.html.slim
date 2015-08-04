@@ -1,0 +1,84 @@
+.col-sm-12
+  p.note A list of Pod members and non-members that are part of this group.
+  .table-responsive
+    table.table
+      thead
+        tr
+          th
+          th Parent’s Name
+          th Child’s Name(s)
+          th
+          th
+            | Email
+          th Phone
+          th#members-admin
+            | Admin
+          th
+      tbody
+        /! current user
+        tr
+          - kids = current_user.kids.where(pod_id: @pod.id).order('name')
+          td.first
+            i.icons__adult.member.tooltip-base data-placement="right" data-toggle="tooltip" title="Member"
+          td= current_user.full_name
+          td
+            - if kids.any?
+              - kids.each do |kid|
+                p.kid_name= kid.name
+            - else
+              = link_to 'Add Child', new_kid_path(pod_id: @pod.id), remote: true
+          td style="width:110px;"
+            - if kids.any?
+              - kids.each do |kid|
+                ul.utils
+                  li.edit.tooltip-base data-placement="right" data-toggle="tooltip" title=("Edit children") = link_to 'edit', edit_kid_path(kid), remote: true
+                  li.add.tooltip-base data-placement="right" data-toggle="tooltip" title=("Add children") = link_to 'add', new_kid_path(pod_id: @pod.id), remote: true
+                  li.remove
+                    = link_to 'remove', kid_path(kid), method: :delete, data: { confirm: "Are you sure you want to remove #{kid.name}?" }
+          td= link_to current_user.email, "mailto:#{current_user.email}", target: '_blank'
+          td
+            - if current_user.phone
+              - if detect_browser == :phone
+                = link_to current_user.phone, "tel:#{current_user.phone.gsub('-','')}"
+              - else
+                = current_user.phone
+          td style="text-align:center"= image_tag('alert-green.png', class: 'admin-icon') if @pod.admin?(current_user)
+          td
+        - @users.each do |user|
+          - unless current_user?(user)
+            tr
+              td.first
+                - if user.class.to_s == 'User'
+                  i.icons__adult.member.tooltip-base data-placement="right" data-toggle="tooltip" title="Member"
+                - else
+                  i.icons__adult.tooltip-base data-placement="right" data-toggle="tooltip" title=("Not a member yet")
+              td= render 'users/name', user: user
+              td
+                - if user.class.to_s == 'User'
+                  = render 'kids/index', user: user, pod: @pod
+              td
+              td= link_to user.email, "mailto:#{user.email}", target: '_blank'
+              td= user.phone if user.class.to_s == 'User'
+              td= image_tag('alert-green.png', class: 'admin-icon') if @pod.admin?(user)
+              td
+                - if user.class.to_s == 'Invite'
+                  = link_to invite_path(user), method: :delete, class: 'delete light tooltip-base', title: 'Delete Invitation', 'data-placement' => 'right', 'data-toggle' => 'tooltip', data: { confirm: 'Are you sure you want to delete this invitation? This person will need to be sent a new invitation in order to join the Pod.' } do
+                    i.icons__delete style="font-size: 28px;color: #ab3334;"
+                - elsif is_at_least_pod_admin?
+                  - pod_membership = user.pod_memberships.where(pod_id: @pod.id).last
+                  = link_to pod_membership_path(pod_membership), method: :delete, class: 'delete tooltip-base', title: 'Remove Member', 'data-placement' => 'right', 'data-toggle' => 'tooltip', data: { confirm: 'Are you sure you want to remove this member from the Pod?' } do
+                    i.icons__delete style="font-size: 28px;color: #ab3334;"
+        - if true
+          - @declined_invites.each do |invite|
+            tr
+              td.first
+                span.icon.declined-invite.tooltip-base data-placement="right" data-toggle="tooltip" title=("Declined Pod Invite")
+              td= render 'users/name', user: invite
+              td
+              td
+              td= link_to invite.email, "mailto:# invite.email ", target: '_blank'
+              td
+              td
+              td
+    = link_to 'Invite Others - Send New Invitations & Reminders', invite_pods_path, class: 'go-to-page'
+

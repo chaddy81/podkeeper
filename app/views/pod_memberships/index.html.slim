@@ -1,0 +1,23 @@
+.col-sm-12.col-md-10
+  ul.nav.nav-tabs
+    li= link_to 'Pod Details', edit_pod_path(current_pod)
+    li.active= link_to 'Manage Permissions', pod_memberships_path
+
+  .tab-content style="overflow:visible;"
+    .second-box.tab-pane.active
+      p style=("margin: 10px 10px 35px;")
+        | To change Access Level, click the edit icon, change in drop down menu, and Save.
+        em Warning: If you remove Pod Admin rights for yourself, you will no longer have access to the Pod Admin section, which includes this Manage Permissions page.
+
+      .user-permissions.col-xs-12.col-sm-12
+        .user-permissions__head
+          span.user-permissions__icon.icon--adult
+          span.user-permissions__parent Parent's Name
+          span.user-permissions__email Email
+          span.user-permissions__level Access Level
+          span.user-permissions__controls
+
+        - if %w(edit update).include? params[:action]
+          = render 'editable_pod_memberships', pod_memberships: @pod_memberships, invites: @invites, pod_membership_to_edit: @pod_membership
+        - else
+          = render 'pod_memberships', pod_memberships: @pod_memberships, invites: @invites

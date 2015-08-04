@@ -1,0 +1,15 @@
+tr data-list-item-id="#{list_item.id}"
+  td = list_item.item
+  - unless list_item.user.nil?
+    td = list_item.user.full_name
+  - else
+    td Unassigned
+  td = list_item.notes
+  td
+    .list__controls
+      - if current_user?(list_item.list.creator) || is_at_least_pod_admin? || current_user?(list_item.user) || !list_item.user.try(:full_name)
+        = link_to edit_list_item_path(list_item), remote: true do
+          i.icons.icons__edit
+      - if current_user?(list_item.list.creator) || is_at_least_pod_admin?
+        = link_to list_item_path(list_item), method: :delete, remote: true, data: { confirm: 'Are you sure you want to delete this item?' } do
+          i.icons.icons__delete

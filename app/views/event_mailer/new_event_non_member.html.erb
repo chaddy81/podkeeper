@@ -1,0 +1,59 @@
+<p style="margin: 10px 0;">Dear <%= @invite.first_name.blank? ? 'Invitee' : @invite.first_name %>,</p>
+
+<p style="margin: 10px 0;">I’d like to invite you to <%= @event.name %> with <%= @event.pod.name %>. I’d also like for you to join the <%= @event.pod.name %> on PodKeeper. This is a place for all of us to stay updated on the group’s events and activities and be better connected with the other group members.</p>
+
+<p style="margin: 10px 0;">We hope you'll be able to join us.</p>
+
+<% if @podanize_member %>
+  <% if @event.require_rsvp? %>
+    <%= link_to image_tag('http://podanize-images.s3.amazonaws.com/email-images/join-and-rsvp-blue.png', alt: 'Join Pod and RSVP', width: '291', height: '40', border: 0), invites_url, style: 'display:block; margin: 0 auto; font-size:18px; height: 40px; width: 291px; color:#15c;' %>
+  <% else %>
+    <%= link_to image_tag('http://podanize-images.s3.amazonaws.com/email-images/join-and-go-blue.png', alt: 'Join Pod and Go to Event', width: '275', height: '40', border: 0), invites_url, style: 'display: block; margin: 0 auto; font-size:18px; height: 40px; width: 275px; color:#15c;' %>
+  <% end %>
+<% else %>
+  <% if @event.require_rsvp? %>
+    <%= link_to image_tag('http://podanize-images.s3.amazonaws.com/email-images/join-and-rsvp-blue.png', alt: 'Join Pod and RSVP', width: '291', height: '40', border: 0), signup_url(auth_token: @invite.auth_token), style: 'display:block; margin: 0 auto; font-size:18px; height: 40px; width: 291px; color:#15c;' %>
+  <% else %>
+    <%= link_to image_tag('http://podanize-images.s3.amazonaws.com/email-images/join-and-go-blue.png', alt: 'Join Pod and Go to Event', width: '275', height: '40', border: 0), signup_url(auth_token: @invite.auth_token), style: 'display: block; margin: 0 auto; font-size:18px; height: 40px; width: 275px; color:#15c;' %>
+  <% end %>
+<% end %>
+
+<h3 style="color:#456189;">Event Information</h3>
+<% if !@event.single_event? && @event.require_rsvp? %>
+  <p><span style="font-weight: bold">This event is a Weekly Series of <%= @event.weeks %> events in total.</span> Once you RSVP to the first event (see date below) you can RSVP to the other events now or later.</p>
+<% elsif !@event.single_event? && !@event.require_rsvp? %>
+  <p><span style="font-weight: bold">This event is a Weekly Series of <%= @event.weeks %> events in total.</span></p>
+<% end %>
+<%= render 'event_information', event: @event, user: @invite %>
+
+<% unless @podanize_member %>
+  <h3 style="color:#456189; margin-bottom:0;">Why Join Our Pod?</h3>
+  <p style="margin: 0 0 10px 0;">Our lives are all pretty hectic, and PodKeeper makes it easier to stay organized. Now you can connect with the people in our group in a whole new way:</p>
+
+  <%= render 'mailers/pod_notes' %>
+  <%= render 'mailers/events_calendar' %>
+
+  <% if @event.require_rsvp? %>
+    <%= link_to image_tag('http://podanize-images.s3.amazonaws.com/email-images/join-and-rsvp-blue.png', alt: 'Join Pod and RSVP', width: '291', height: '40', border: 0), signup_url(auth_token: @invite.auth_token), style: 'display:block; margin: 0 auto; font-size:18px; height: 40px; width: 291px; color:#15c;' %>
+  <% else %>
+    <%= link_to image_tag('http://podanize-images.s3.amazonaws.com/email-images/join-and-go-blue.png', alt: 'Join Pod and Go to Event', width: '275', height: '40', border: 0), signup_url(auth_token: @invite.auth_token), style: 'display: block; margin: 0 auto; font-size:18px; height: 40px; width: 275px; color:#15c;' %>
+  <% end %>
+
+<% end %>
+
+<p style="margin: 10px 0;">If you have any questions, don't hesitate to send an email to podhelp@podkeeper.com and they will help you out.</p>
+
+<p style="margin: 10px 0;">All the best,<br>
+<%= @event.organizer.full_name %></p>
+
+<% provide :email, @email %>
+
+<table cellpadding="0" cellspacing="0" style="width: 100%;">
+  <tr>
+    <td style="text-align: center;" align="center">
+      <a href="http://e-find.co/c/1754?eid=<%= @email %>&a=&cid=1" class="reach-ad" style="max-width: 468px !important;width: 100%;">
+        <img src="http://e-find.co/img/1754?eid=<%= @email %>&a=&cid=1" style="max-width: 468px !important;width: 100%;height:60px;" />
+      </a>
+    </td>
+  </tr>
+</table>

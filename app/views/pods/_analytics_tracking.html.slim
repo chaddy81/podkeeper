@@ -1,0 +1,49 @@
+- if params[:login] == 'success'
+  javascript:
+    $(function() {
+      ga('send', 'event', 'user', 'login', 'success');
+    });
+
+- if params[:created] == 'success'
+  javascript:
+    $(function() {
+      if(#{current_user.has_seen_get_pod_going == false}) {
+        getPodGoing(#{current_user.id});
+      }
+
+      ga('send', 'event', 'pod', 'create', "#{current_pod.name}");
+    });
+
+- if session[:register] == 'success'
+  = javascript_include_tag "https://www.advconversion.com/convtrack/conversion/track.do?type=html&id=68003"
+  javascript:
+    $(function() {
+      if(#{current_user.has_seen_get_pod_going == false}) {
+        getPodGoing(#{current_user.id});
+      }
+
+      ga('send', 'event', 'register create pod', 'register', 'success');
+    });
+
+- if session[:signup] == 'success'
+  javascript:
+    $(function() {
+      ga('send', 'event', 'register join pod', 'register', 'success');
+    });
+
+javascript:
+  $(function() {
+    /****  Do Not Delete, Will Use Functionality at Later Point  ****/
+
+    /*if(#{current_user.has_seen_splash_message == false}) {
+      $('#splash').modal();
+    }
+
+    $('#splash').on('shown.bs.modal', function(e) {
+      $.ajax({
+        type: 'POST',
+        url: "/users/seen_splash_message",
+        data: {user_id: #{current_user.id}}
+      })
+    }); */
+  });

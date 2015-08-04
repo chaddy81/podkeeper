@@ -1,0 +1,4 @@
+$('[data-edit-list-item="<%= @list_item.id %>"]').remove()
+$('[data-list-item-id="<%= @list_item.id %>"]').replaceWith("<%= escape_javascript(render 'row', list_item: @list_item) %>");
+change_list_item_user()
+remove_list_item()

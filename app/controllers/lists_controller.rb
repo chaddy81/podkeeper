@@ -70,7 +70,7 @@ class ListsController < ApplicationController
   private
 
   def can_create?
-    pod = Pod.find(params[:pod_id])
+    pod = Pod.find(current_pod)
     render_404 unless current_user.pods.include?(pod)
   end
 

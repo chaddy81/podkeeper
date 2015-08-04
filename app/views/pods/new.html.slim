@@ -1,0 +1,28 @@
+.col-sm-12.col-md-12.col-lg-12
+  h3 Create a Pod for each group you want to keep organized
+  p Don't worry -- you can change your Pod Name or Category at any time;
+
+  = simple_form_for @pod, html: { 'data-form' => 1, class: "create-pod__form form-horizontal" } do |f|
+    .form-group
+      label.control-label.col-sm-4.col-md-2 Pod Name *
+      .col-sm-7.col-sm-offset-1.col-md-6.col-md-offset-0
+        = f.input :name, label: false, input_html: { class: 'create-pod__pod-name form-control', maxlength: 50 }
+
+    .form-group
+      label.control-label.col-sm-4.col-md-2 Category *
+      .col-sm-7.col-sm-offset-1.col-md-6.col-md-offset-0
+        = f.association :pod_category, label: false, label_method: :display_name, collection: PodCategory.in_order, input_html: { class: 'create-pod__category form-control' }
+
+    .form-group
+      label.control-label.col-sm-4.col-md-2 More Specifically *
+      .col-sm-7.col-sm-offset-1.col-md-6.col-md-offset-0
+        = f.association :pod_sub_category, label: false, label_method: :display_name, input_html: { class: 'create-pod__sub-category form-control' }
+
+    .form-group
+      .col-sm-8
+        .pull-right
+          - if current_pod
+            = link_to 'Cancel', events_path, class: 'back'
+          - else
+            = link_to 'Cancel', no_pod_path, class: 'back'
+          input.user-info__submit.btn.btn-default.btn-blue type="submit" value="Create a Pod"

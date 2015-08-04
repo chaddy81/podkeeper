@@ -2,30 +2,37 @@ class RsvpsController < ApplicationController
   before_filter :correct_user, only: :update
 
   def create
-    @rsvp = current_user.rsvps.new(params[:rsvp])
-    if @rsvp.save
+    @rsvp = current_user.rsvps.new(rsvp_params)
+    if @rsvp.save!
       flash.now[:success] = 'You have RSVP\'d successfully!'
       render :rsvp_updated
     else
-      render :form
+      flash.now[:error] = @rsvp.errors.full_messages.first
+      # render :rsvp_updated
     end
   end
 
   def update
-    @rsvp = Rsvp.find(params[:id])
-    if @rsvp.update_attributes(params[:rsvp])
-      flash.now[:success] = 'RSVP was updated successfully!'
-      render :rsvp_updated
+    if rsvp.update(rsvp_params)
+      render json: rsvp, status: :accepted
     else
-      render :form
+      render json: rsvp.errors.full_messages, status: :unprocessable_entity
     end
   end
 
   private
+
+  def rsvp
+    @rsvp ||= Rsvp.find(params[:id])
+  end
 
   def correct_user
     @rsvp = Rsvp.find(params[:id])
     render_404 unless current_user.rsvps.include?(@rsvp)
   end
 
+  def rsvp_params
+    params.require(:rsvp).permit(:event_id, :rsvp_option_id,
+                                 :number_of_adults, :number_of_kids, :comments)
+  end
 end

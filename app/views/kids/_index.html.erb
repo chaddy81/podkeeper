@@ -1,0 +1,7 @@
+<% kids = user.kids.where(pod_id: pod.id).order('name') %>
+
+<% if kids.any? %>
+  <% kids.each do |kid| %>
+    <%= kid.name %><br/>
+  <% end %>
+<% end %>

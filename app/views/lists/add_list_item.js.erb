@@ -1,0 +1,2 @@
+$('.list__items[data-list-id="<%= @list.id %>"] .table-responsive').after("<%= j(render 'list_items/form', list: @list, list_item: @list.list_items.build) %>");
+remove_list_item()

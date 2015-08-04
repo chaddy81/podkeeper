@@ -1,0 +1,13 @@
+.settings-pod-name {
+  word-wrap: break-word;
+}
+
+#leave-a-pod {
+  tr {
+    td:nth-of-type(1) {
+      max-width: 200px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+}

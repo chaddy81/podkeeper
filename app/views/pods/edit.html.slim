@@ -1,0 +1,48 @@
+.col-sm-12
+  ul.nav.nav-tabs#invites__tabs role="tablist"
+    li.active
+      a data-toggle="tab" role="tab" href="#pod-details" Pod Details
+    li
+      = link_to 'Manage Permissions', pod_memberships_url(pod_id: @pod.id)
+
+  .tab-content
+    .tab-pane#pod-details.active
+      = simple_form_for @pod, html: { 'data-form' => 1, class: "create-pod__form form-horizontal" } do |f|
+        .form-group
+          label.control-label.col-sm-4.col-md-2 Pod Name *
+          .col-sm-7.col-sm-offset-1.col-md-6.col-md-offset-0
+            = f.input :name, label: false, input_html: { class: 'create-pod__pod-name form-control', maxlength: 40 }
+
+        .form-group
+          label.control-label.col-sm-4.col-md-2 Description
+          .col-sm-7.col-sm-offset-1.col-md-6.col-md-offset-0
+            = f.input :description, label: false, input_html: { class: 'create-pod__description form-control', rows: 7 }
+
+        .form-group
+          label.control-label.col-sm-4.col-md-2 Category *
+          .col-sm-7.col-sm-offset-1.col-md-6.col-md-offset-0
+            = f.association :pod_category, label: false, label_method: :display_name, collection: PodCategory.in_order, input_html: { class: 'create-pod__category form-control' }
+
+        .form-group
+          label.control-label.col-sm-4.col-md-2 More Specifically *
+          .col-sm-7.col-sm-offset-1.col-md-6.col-md-offset-0
+            = f.association :pod_sub_category, label: false, label_method: :display_name, input_html: { class: 'create-pod__sub-category form-control' }
+
+        .form-controls
+          .col-sm-7.col-md-8
+            .pull-right
+              a.cancel.back href="" Cancel
+              input.user-info__submit.btn.btn-default.btn-blue type="submit" value="Save"
+
+        .clearfix
+
+      a.pod-details__delete href="#" How to delete this pod
+      .pod-details__delete-details
+        p If you and the other Pod Members no longer have a need to use this Pod, you can delete the Pod using the link below.
+
+        p Upon deletion, an email will go out to all Pod Members and NonMembers informing them.
+
+        p
+          em Warning: Once deleted, nobody will be able to access the Pod and all of its contents. If you need any of this content, you may want to copy it before deleting the Pod.
+
+        = link_to 'Delete this Pod', pod_path(current_pod), method: :delete, data: { confirm: 'Are you sure you want to delete this pod? All associated information will also be deleted, including events, invites, and discussions.' }

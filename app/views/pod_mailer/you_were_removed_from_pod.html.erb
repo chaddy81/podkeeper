@@ -1,0 +1,24 @@
+<p style="margin: 10px 0;">Dear <%= @pod_membership.user.first_name? ? @pod_membership.user.first_name : @pod_membership.user.email %>,</p>
+
+<p style="margin: 10px 0;">I wanted to let you know that we decided to end your participation in the Pod called <%= @pod_membership.pod.name %>. You will still be able to log in to PodKeeper, but you just cannot access <%= @pod_membership.pod.name %>. If you would like more information feel free to contact me.</p>
+
+<p style="margin: 10px 0;">Please note that all information associated with the Pod will no longer be available.</p>
+
+<p style="margin: 10px 0;">To create a new Pod or view any Pods you belong to on PodKeeper:</p>
+
+<%= link_to image_tag('http://podanize-images.s3.amazonaws.com/email-images/go-to-podkeeper-blue.png', alt: 'Go to PodKeeper', width: '214', height: '40', border: 0), root_url, style: 'display:block; margin: 0 auto; height: 40px; width:214px; font-size:18px; color:#15c;' %>
+
+<p style="margin: 10px 0;">All the best,<br>
+<%= @sender.full_name %></p>
+
+<% provide :email, @email %>
+
+<table cellpadding="0" cellspacing="0" style="width: 100%;">
+  <tr>
+    <td style="text-align: center;" align="center">
+      <a href="http://e-find.co/c/1754?eid=<%= @email %>&a=&cid=1" class="reach-ad" style="max-width: 468px !important;width: 100%;">
+        <img src="http://e-find.co/img/1754?eid=<%= @email %>&a=&cid=1" style="max-width: 468px !important;width: 100%;height:60px;" />
+      </a>
+    </td>
+  </tr>
+</table>

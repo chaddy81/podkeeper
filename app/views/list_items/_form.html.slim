@@ -1,0 +1,26 @@
+- rand = SecureRandom.hex(8)
+
+= simple_form_for list_item, html: { class: 'form-inline list__item-new', role: 'form', data: { list: list_item.list.id, 'list-item' => rand } }, remote: true do |f|
+  .form-group
+    = f.input :item, input_html: { placeholder: 'Item or Time Slot', rows: 2, cols: 20, class: 'form-control list__item--item' }
+  .form-group
+    input type="radio" id="list__name--current-#{list_item.list.id}" class="list__name--current" name="user" checked=(current_user?(list_item.user) ? "" : "checked")
+    label for="list__name--current-#{list_item.list.id}" Sign Me Up
+    br
+    input type="radio" id="list__name--select-#{list_item.list.id}" class="list__name--select" name="user" checked=(list_item.user && !current_user?(list_item.user) ? "checked" : "" )
+    label for="list__name--select-#{list_item.list.id}"
+      span
+      = select_tag nil, options_from_collection_for_select(current_pod.users.where('users.id != ?', current_user.id), :id, :full_name, list_item.user.try(:id)), prompt: "Unassigned", id: 'pod-users'
+
+    = f.input :user_id, as: :hidden
+  .form-group
+    = f.input :notes, input_html: { placeholder: 'Notes', rows: 2, cols: 20, class: 'form-control list__item--item' }
+  .form-group
+    = f.submit 'Save', disable_with: 'Saving...', class: 'btn btn-default btn-sm'
+    br
+    = link_to 'Remove row', '#', 'data-remove-row' => 'true' if list_item.new_record?
+
+    = f.input :list_id, as: :hidden
+    = f.input :row_number, input_html: { value: rand }, as: :hidden
+    / = f.input :sign_me_up, as: :hidden, input_html: { value: list_item.new_record? || list_item.user == current_user }
+    = f.input :sign_me_up, as: :hidden, input_html: { value: current_user?(list_item.user) }
