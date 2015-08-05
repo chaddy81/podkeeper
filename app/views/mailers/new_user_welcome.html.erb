@@ -1,0 +1,40 @@
+<p style="margin: 10px 0;">Dear <%= @user.first_name? ? @user.first_name : @user.email %>,</p>
+
+<h3 style="color:#456189">Congratulations on joining PodKeeper</h3>
+
+<p style="margin: 10px 0;">Now you can connect with the people in your group in a whole new way:</p>
+
+<h3 style="margin-bottom:0;">Discussions</h3>
+<ul style="margin-top:0;">
+  <li>Access the group’s information in one central location</li>
+  <li>Ask the members of the group a question in a way that is less obtrusive than asking in a "Reply All" email</li>
+  <li>Provide or receive important group updates</li>
+</ul>
+
+<h3 style="margin-bottom:0;">Events Calendar</h3>
+<ul style="margin-top:0;">
+  <li>RSVP to an event and see who else is coming</li>
+  <li>Easily save the date and details of the group’s events to your personal calendar (Gmail, Yahoo Mail, Outlook, iCal)</li>
+  <li>Access the Events Calendar from your mobile device and get directions to an event using Google Maps</li>
+</ul>
+
+<p style="margin: 10px 0;">And more!</p>
+
+<%= link_to image_tag('http://podanize-images.s3.amazonaws.com/email-images/start-using-podkeeper-blue.png', alt: 'Start Using PodKeeper', width: '264', height: '40', border: 0), root_url, style: 'display: block; margin: 0 auto; font-size:18px;height:40px; width: 264px; color:#15c;' %>
+
+<p style="margin: 10px 0;">For questions, suggestions or feedback, you can reach us at <%= link_to 'podinfo@podkeeper.com', 'mailto: podinfo@podkeeper.com', style: 'color: #456189' %>. For Frequently Asked Questions, go to: <%= link_to faq_url, faq_url, style: 'color: #456189' %></p>
+
+<p style="margin: 10px 0;">All the best,<br>
+The PodKeeper Team</p>
+
+<% provide :email, @email %>
+
+<table cellpadding="0" cellspacing="0" style="width: 100%;">
+  <tr>
+    <td style="text-align: center;" align="center">
+      <a href="http://e-find.co/c/1754?eid=<%= @email %>&a=&cid=1" class="reach-ad" style="max-width: 468px !important;width: 100%;">
+        <img src="http://e-find.co/img/1754?eid=<%= @email %>&a=&cid=1" style="max-width: 468px !important;width: 100%;height:60px;" />
+      </a>
+    </td>
+  </tr>
+</table>

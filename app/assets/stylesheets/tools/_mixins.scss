@@ -1,8 +1,8 @@
 /*==========  Font Mixins  ==========*/
 
 @function calculateRem($size) {
-  $remSize: $size / $body-size;
-  @return $remSize * 1rem;
+  $remsize: $size / $body-size;
+  @return $remsize * 1rem;
 }
 
 @mixin font-size($size) {
