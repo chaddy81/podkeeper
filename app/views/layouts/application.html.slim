@@ -14,24 +14,30 @@ html
     /! inject svg's for use inline throughout app
     = render 'svg_declaration'
 
-    /! push menu for mobile
-    .visible-xs
-      = render 'mobile_menu'
+    - if current_user
+      /! push menu for mobile
+      .visible-xs
+        = render 'mobile_menu'
 
     main#main.panel.clearfix
-      .visible-xs
-        = render 'mobile_header'
-        = render 'site_nav_mobile'
-      .hidden-xs
-        = render 'desktop_header'
-        = render 'site_nav_desktop'
+      - if current_user
+        .visible-xs
+          = render 'mobile_header'
+          = render 'site_nav_mobile'
+        .hidden-xs
+          = render 'desktop_header'
+          = render 'site_nav_desktop'
+      - else
+        = render 'logged_out_nav'
+
       .error-messages
         = flash_messages
       = yield
 
-    /! overlay for selecting new pod
-    = render 'add_menu' if action_name == 'index'
-    = render 'pod_select'
+    - if current_user
+      /! overlay for selecting new pod
+      = render 'add_menu' if action_name == 'index'
+      = render 'pod_select'
 
     javascript:
       var slideout = new Slideout({

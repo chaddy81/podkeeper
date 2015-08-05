@@ -1,5 +1,6 @@
 .registration {
   background: $blue-gray;
+  margin-bottom: 25px;
   max-width: 680px;
   width: 100%;
 
@@ -43,6 +44,7 @@
   }
 
   h4 {
+    color: $gray;
     font-family: 'Raleway';
     margin: 15px auto;
 
@@ -89,6 +91,7 @@
 
 @media ( min-width: 768px ) {
   .registration {
+    margin-bottom: 50px;
     margin-top: 50px;
 
     .registration__header {
