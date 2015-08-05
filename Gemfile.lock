@@ -62,8 +62,6 @@ GEM
       bcrypt (>= 3.1.3)
     bootstrap-datepicker-rails (1.4.0)
       railties (>= 3.0)
-    bounscale (0.0.4)
-      json
     builder (3.2.2)
     bullet (4.14.7)
       activesupport (>= 3.0.0)
@@ -338,6 +336,7 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
+    puma (2.12.3)
     quiet_assets (1.1.0)
       railties (>= 3.1, < 5.0)
     rack (1.6.4)
@@ -485,7 +484,6 @@ DEPENDENCIES
   autoprefixer-rails
   bcrypt-ruby
   bootstrap-datepicker-rails
-  bounscale
   bullet
   byebug
   capybara
@@ -520,6 +518,7 @@ DEPENDENCIES
   poltergeist
   prettyphoto-rails
   protected_attributes
+  puma
   quiet_assets
   rack-mini-profiler
   rails (~> 4.2)
