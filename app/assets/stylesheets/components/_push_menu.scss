@@ -1,10 +1,9 @@
 #main {
-  -webkit-transform: translate3d(0, 0, 0);
   background: #fff;
   box-shadow: 3px 0 3px rgba(0,0,0,0.2);
   min-height: 100vh;
   position: relative;
-  width: 100%;
+  transform: translate3d(0, 0, 0);
 }
 
 .slideout-menu {
@@ -37,4 +36,11 @@
 
 .slideout-open .add-menu__trigger {
   display: none;
+}
+
+@media ( min-width: 768px ) {
+  #main {
+    box-shadow: none;
+    min-height: auto;
+  }
 }

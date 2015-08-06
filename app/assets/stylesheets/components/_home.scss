@@ -1,0 +1,88 @@
+.home-page {
+
+  .home-page__hero {
+    background: image-url('hero-back.jpg') no-repeat center center;
+    background-size: cover;
+    height: 432px;
+    width: 320px
+  }
+
+  .home-page__tagline {
+    background: $dark-blue;
+    color: #fff;
+    font-family: 'Raleway';
+  }
+}
+
+@media (min-width: 768px) {
+  .home-page {
+    .home-page__hero {
+      background: image-url('hero-back-desktop.jpg') no-repeat center right;
+      background-size: cover;
+      height: 360px;
+      position: relative;
+      width: 100%;
+    }
+
+    .home-page__hero-content {
+      color: #fff;
+
+      h3 {
+        font-family: 'Raleway';
+        font-weight: 500;
+
+        @include font-size(62px);
+      }
+
+      p {
+        @include font-size(18px);
+      }
+    }
+
+    .home-page__hero-video {
+      height: 220px;
+      position: absolute;
+      right: 47px;
+      top: 51px;
+      width: 399px;
+    }
+
+    .home-page__nav {
+      padding: 40px 0 35px;
+    }
+
+    .home-page__nav-item {
+      color: $gray;
+      font-family: 'Raleway';
+      text-decoration: none;
+
+      @include font-size(25px);
+    }
+
+    .home-page__tagline {
+      padding: 35px 0;
+
+      @include font-size(28px);
+    }
+  }
+}
+
+@media (min-width: 992px) {
+  .home-page {
+    .home-page__hero {
+      background: image-url('hero-back-desktop.jpg') no-repeat center right;
+      background-size: cover;
+      height: 437px;
+      position: relative;
+      width: 100%;
+    }
+
+    .home-page__hero-video {
+      height: 268px;
+      position: absolute;
+      right: 60px;
+      top: 62px;
+      width: 483px;
+    }
+  }
+}

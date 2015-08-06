@@ -3,10 +3,10 @@
   margin-bottom: 25px;
   max-width: 680px;
   width: 100%;
+  -webkit-border-radius: 5px;
 
   .registration__header {
     border-bottom: 1px solid $dark-blue;
-    // padding: 25px 94px 15px;
     padding: 12px 32px 10px;
 
     h3 {
@@ -14,13 +14,8 @@
       font-family: 'Raleway';
       margin: 0;
 
-      // @include font-size(30px);
       @include font-size(15px);
     }
-  }
-
-  .form-group {
-    // margin: 0 60px;
   }
 
   .blue-line {
@@ -48,7 +43,6 @@
     font-family: 'Raleway';
     margin: 15px auto;
 
-    // @include font-size(35px);
     @include font-size(18px);
   }
 

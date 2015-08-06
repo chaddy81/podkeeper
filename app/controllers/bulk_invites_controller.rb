@@ -54,7 +54,7 @@ class BulkInvitesController < ApplicationController
         flash[:notice] = "#{view_context.pluralize already_invited_emails.count, 'person'} are either Members or have been invited - #{already_invited_emails}"
       end
     end
-    redirect_to pod_invite_path(current_pod.id)
+    redirect_to invite_pods_path
   end
 
 end
