@@ -7,10 +7,116 @@
     width: 320px
   }
 
+  .home-page__hero-content {
+    color: #fff;
+
+    h3 {
+      font-family: 'Raleway';
+      font-weight: 500;
+      margin-bottom: 5px;
+
+      @include font-size(54px);
+    }
+
+    em {
+      font-family: 'Open Sans';
+      @include font-size(18px);
+    }
+
+    .btn {
+      display: table;
+      font-family: 'Open Sans';
+      font-weight: 300;
+      margin: 35px auto 0;
+
+      @include font-size(20px);
+    }
+  }
+
   .home-page__tagline {
     background: $dark-blue;
     color: #fff;
     font-family: 'Raleway';
+  }
+
+  .home-page__description-box {
+    position: relative;
+
+    h5 {
+      color: $dark-blue;
+      font-family: 'Open Sans';
+
+      @include font-size(18px);
+    }
+
+    p {
+      
+    }
+
+    img {
+      width: 100%;
+    }
+
+    .icon {
+      position: absolute;
+    }
+
+    .content {
+      background: $blue-gray;
+      padding: 10px;
+    }
+  }
+
+  .home-page__examples {
+    background: $dark-blue;
+  }
+
+  .home-page__example {
+    color: #fff;
+    font-family: 'Open Sans';
+    padding: 30px 0 25px;
+
+    h5 {
+      font-weight: 300;
+      line-height: 1.4;
+    }
+  }
+
+  .home-page__sign-up {
+    margin-top: 45px;
+
+    ul {
+      display: table;
+      list-style-type: none;
+      margin: 0 auto;
+
+      li {
+        color: $dark-blue;
+        font-family: 'Raleway';
+        margin-bottom: 25px;
+        text-align: left;
+
+        @include font-size(20px);
+      }
+    }
+
+    .btn {
+      border-radius: 0 !important;
+      font-family: 'Raleway';
+      font-weight: 300;
+      margin-bottom: 40px;
+      margin-top: 20px;
+      padding: 12px 55px 15px;
+
+      @include font-size(36px);
+    }
+
+    p {
+      color: $dark-blue;
+      font-family: 'Raleway';
+
+      @include font-size(22px);
+    }
   }
 }
 
@@ -26,16 +132,28 @@
 
     .home-page__hero-content {
       color: #fff;
+      width: 320px;
 
       h3 {
         font-family: 'Raleway';
         font-weight: 500;
 
-        @include font-size(62px);
+        @include font-size(42px);
       }
 
-      p {
-        @include font-size(18px);
+      em {
+        font-family: 'Open Sans';
+
+        @include font-size(14px);
+      }
+
+      .btn {
+        display: table;
+        font-family: 'Open Sans';
+        font-weight: 300;
+        margin: 0 auto;
+
+        @include font-size(16px);
       }
     }
 
@@ -64,6 +182,35 @@
 
       @include font-size(28px);
     }
+
+    .home-page__description-box {
+      padding: 15px;
+
+      h5 {
+        color: $dark-blue;
+        font-family: 'Open Sans';
+
+        @include font-size(20px);
+      }
+
+      p {
+        
+      }
+
+      img {
+        width: 100%;
+      }
+
+      .icon {
+        position: absolute;
+      }
+
+      .content {
+        background: $blue-gray;
+        height: 194px;
+        padding: 10px;
+      }
+    }
   }
 }
 
@@ -77,12 +224,76 @@
       width: 100%;
     }
 
+    .home-page__hero-content {
+      color: #fff;
+      left: 15px;
+      position: absolute;
+      top: 100px;
+      width: 325px;
+
+      h3 {
+        font-family: 'Raleway';
+        font-weight: 500;
+
+        @include font-size(42px);
+      }
+
+      em {
+        font-family: 'Open Sans';
+
+        @include font-size(14px);
+      }
+
+      .btn {
+        display: table;
+        font-family: 'Open Sans';
+        font-weight: 300;
+        margin: 25px auto 0;
+
+        @include font-size(16px);
+      }
+    }
+
     .home-page__hero-video {
       height: 268px;
       position: absolute;
       right: 60px;
       top: 62px;
       width: 483px;
+    }
+  }
+}
+
+@media (min-width: 1170px) {
+  .home-page {
+    .home-page__hero-content {
+      color: #fff;
+      left: 55px;
+      position: absolute;
+      top: 85px;
+      width: 460px;
+
+      h3 {
+        font-family: 'Raleway';
+        font-weight: 500;
+
+        @include font-size(54px);
+      }
+
+      em {
+        font-family: 'Open Sans';
+
+        @include font-size(20px);
+      }
+
+      .btn {
+        display: table;
+        font-family: 'Open Sans';
+        font-weight: 300;
+        margin: 35px auto 0;
+
+        @include font-size(18px);
+      }
     }
   }
 }

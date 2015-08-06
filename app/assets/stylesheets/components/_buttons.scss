@@ -16,3 +16,16 @@
   background: $green;
   color: #fff;
 }
+
+.btn--signup {
+  background: transparent;
+  border: 2px solid #fff;
+  border-radius: 0;
+  color: #fff;
+  outline: none;
+  text-transform: uppercase;
+
+  &:hover, &:active, &:visited {
+    color: #fff;
+  }
+}
