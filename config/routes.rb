@@ -43,7 +43,7 @@ Rails.application.routes.draw do
     get :update_last_visit, on: :collection
   end
   resources :list_items, except: [:index, :show]
-  resources :notes, only: [:index, :create, :edit, :update, :destroy] do
+  resources :notes do
     get :update_last_visit, on: :collection
   end
   resources :password_resets, only: [:new, :create, :edit, :update]

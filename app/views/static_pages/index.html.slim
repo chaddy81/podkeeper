@@ -1,5 +1,5 @@
-.container
-  .home-page
+.home-page
+  .container
     .home-page__hero
       .home-page__hero-content
         h3 Join PodKeeper
@@ -12,8 +12,9 @@
       a.home-page__nav-item.col-md-4 How Pods Work
       a.home-page__nav-item.col-md-4 Features
       a.home-page__nav-item.col-md-4 Get Started
-    .home-page__tagline.text-center
-      | PodKeeper is the one place for Moms and Dads to manage it all!
+  .home-page__tagline.text-center.container-fluid
+    | PodKeeper is the one place for Moms and Dads to manage it all!
+  .container
     .home-page__description.clearfix
       h3.text-center What’s a Pod?
       p.text-center
@@ -24,64 +25,149 @@
       .row
         .col-md-3.home-page__description-box.text-center
           = image_tag 'for-family.jpg'
-          .icon
+          svg.icon viewbox="0 0 1024 1024"
+            use xlink:href="#icon-podkeeper-parents"
           .content
             h5 For Your Family
             p As a parent, you now have a better way to handle your family’s busy schedule. See events from all of your pods in one place, and sync them to your other calendars!
         .col-md-3.home-page__description-box.text-center
           = image_tag 'for-class.jpg'
-          .icon
+          svg.icon viewbox="0 0 1024 1024"
+            use xlink:href="#icon-podkeeper-school-pta"
           .content
             h5 For Your Class
-            p As a room parent, you have one central place to share events, get RSVPs, distribute ﬁles like permission slips, and manage sign-up lists.
+            p As a room parent, you have one central place to share events, get RSVPs, distribute files like permission slips, and manage sign-up lists.
         .col-md-3.home-page__description-box.text-center
           = image_tag 'for-team.jpg'
-          .icon
+          svg.icon viewbox="0 0 1024 1024"
+            use xlink:href="#icon-podkeeper-soccer"
           .content
             h5 For Your Team
             p As a coach, it’s easy to make sure the kids arrives at the right place at the right time—and manage the snack list too.
         .col-md-3.home-page__description-box.text-center
           = image_tag 'for-troop.jpg'
-          .icon
+          svg.icon viewbox="0 0 1024 1024"
+            use xlink:href="#icon-podkeeper-scouts"
           .content
             h5 For Your Troop
             p As a scout leader, create sign-up lists, share packing lists and permission slips, schedule camping trips, and keep everyone updated in between meetings.
-    .home-page__icons
-    .home-page__media
-    .home-page__examples.clearfix
-      .row
-        .col-md-3.home-page__example.text-center
-          svg.icon viewbox="0 0 1024 1024" style="width: 48px; fill: #fff;"
-            use xlink:href="#icon-podkeeper-discussion"
-          h5 
-            | Provide Updates 
-            br
-            | and Stay Informed
-        .col-md-3.home-page__example.text-center
-          svg.icon viewbox="0 0 1024 1024" style="width: 48px; fill: #fff;"
-            use xlink:href="#icon-podkeeper-user"
-          h5 
-            | Plan Events, 
-            br
-            | Meetings, Trips, 
-            br
-            | and More
-        .col-md-3.home-page__example.text-center
-          svg.icon viewbox="0 0 1024 1024" style="width: 48px; fill: #fff;"
-            use xlink:href="#icon-podkeeper-calendar"
-          h5 
-            | Sync to Google, 
-            br 
-            | Calendar, Outlook, and 
-            br
-            | iCal
-        .col-md-3.home-page__example.text-center
-          svg.icon viewbox="0 0 1024 1024" style="width: 48px; fill: #fff;"
-            use xlink:href="#icon-podkeeper-list"
-          h5 
-            | Create Sign-up 
-            br
-            | Lists
+    .home-page__icons.text-center
+      svg.icon viewbox="0 0 1024 1024"
+        use xlink:href="#icon-podkeeper-lacrosse"
+
+      svg.icon viewbox="0 0 1024 1024"
+        use xlink:href="#icon-podkeeper-baseball"
+
+      svg.icon viewbox="0 0 1024 1024"
+        use xlink:href="#icon-podkeeper-basketball"
+
+      svg.icon viewbox="0 0 1024 1024"
+        use xlink:href="#icon-podkeeper-camp"
+
+      svg.icon viewbox="0 0 1024 1024"
+        use xlink:href="#icon-podkeeper-cooking"
+
+      svg.icon viewbox="0 0 1024 1024"
+        use xlink:href="#icon-podkeeper-dance"
+
+      svg.icon viewbox="0 0 1024 1024"
+        use xlink:href="#icon-podkeeper-drama"
+
+      svg.icon viewbox="0 0 1024 1024"
+        use xlink:href="#icon-podkeeper-football"
+
+      svg.icon viewbox="0 0 1024 1024"
+        use xlink:href="#icon-podkeeper-golf"
+
+      svg.icon viewbox="0 0 1024 1024"
+        use xlink:href="#icon-podkeeper-gym"
+
+      svg.icon viewbox="0 0 1024 1024"
+        use xlink:href="#icon-podkeeper-gymnastics"
+
+      svg.icon viewbox="0 0 1024 1024"
+        use xlink:href="#icon-podkeeper-karate"
+
+      br
+
+      svg.icon viewbox="0 0 1024 1024"
+        use xlink:href="#icon-podkeeper-music"
+
+      svg.icon viewbox="0 0 1024 1024"
+        use xlink:href="#icon-podkeeper-other-art"
+
+      svg.icon viewbox="0 0 1024 1024"
+        use xlink:href="#icon-podkeeper-other"
+
+      svg.icon viewbox="0 0 1024 1024"
+        use xlink:href="#icon-podkeeper-other-sports"
+
+      svg.icon viewbox="0 0 1024 1024"
+        use xlink:href="#icon-podkeeper-playgroup"
+
+      svg.icon viewbox="0 0 1024 1024"
+        use xlink:href="#icon-podkeeper-running"
+
+      svg.icon viewbox="0 0 1024 1024"
+        use xlink:href="#icon-podkeeper-school-pta"
+
+      svg.icon viewbox="0 0 1024 1024"
+        use xlink:href="#icon-podkeeper-scouts"
+
+      svg.icon viewbox="0 0 1024 1024"
+        use xlink:href="#icon-podkeeper-swimming"
+
+      svg.icon viewbox="0 0 1024 1024"
+        use xlink:href="#icon-podkeeper-tennis"
+
+      svg.icon viewbox="0 0 1024 1024"
+        use xlink:href="#icon-podkeeper-volunteer"
+
+      svg.icon viewbox="0 0 1024 1024"
+        use xlink:href="#icon-podkeeper-religious"
+
+  .container-fluid
+    .row
+      .home-page__media.text-center
+        h3 There are words that will go here. At least one big row.
+        h5 Interesting Sub Heading
+        = image_tag 'media-image.jpg'
+  .container-fluid
+    .row
+      .home-page__examples.clearfix
+        .container
+          .col-md-3.home-page__example.text-center
+            svg.icon viewbox="0 0 1024 1024" style="width: 48px; fill: #fff;"
+              use xlink:href="#icon-podkeeper-discussion"
+            h5 
+              | Provide Updates 
+              br
+              | and Stay Informed
+          .col-md-3.home-page__example.text-center
+            svg.icon viewbox="0 0 1024 1024" style="width: 48px; fill: #fff;"
+              use xlink:href="#icon-podkeeper-user"
+            h5 
+              | Plan Events, 
+              br
+              | Meetings, Trips, 
+              br
+              | and More
+          .col-md-3.home-page__example.text-center
+            svg.icon viewbox="0 0 1024 1024" style="width: 48px; fill: #fff;"
+              use xlink:href="#icon-podkeeper-calendar"
+            h5 
+              | Sync to Google, 
+              br 
+              | Calendar, Outlook, and 
+              br
+              | iCal
+          .col-md-3.home-page__example.text-center
+            svg.icon viewbox="0 0 1024 1024" style="width: 48px; fill: #fff;"
+              use xlink:href="#icon-podkeeper-list"
+            h5 
+              | Create Sign-up 
+              br
+              | Lists
 
     .home-page__sign-up.text-center
       ul

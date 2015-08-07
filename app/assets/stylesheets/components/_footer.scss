@@ -1,0 +1,159 @@
+.footer {
+  background: $gray;
+  height: 100px;
+  padding-top: 20px;
+  width: 100%;
+
+  @media (min-width: 1171px) and (max-width: 1199px) {
+    height: 100px;
+  }
+
+  .container {
+    
+  }
+
+  .navbar-brand {
+    background: image-url('footer-logo.png') top left no-repeat;
+    background-size: 142px 37px;
+    display: inline-block;
+    float: none;
+    height: 37px;
+    margin-right: 25px;
+    text-indent: -9999px;
+    width: 142px;
+
+    @media (max-width: 768px) {
+      margin-right: 0;
+    }
+  }
+
+  ul {
+    list-style-type: none;
+
+    li {
+      display: inline-block;
+      margin-right: 14px;
+      margin-top: 10px;
+
+      a {
+        color: #fff;
+
+        @include font-size(12px);
+      }
+    }
+  }
+
+  select {
+    @media (max-width: 992px) {
+      margin-top: 8px;
+      z-index: 1000;
+    }
+
+    @media (max-width: 768px) {
+      margin-bottom: 8px;
+      margin-top: -5px;
+      z-index: 1000;
+    }
+  }
+
+  .copyright {
+    bottom: 0;
+    color: #fff;
+    left: 0;
+    margin-bottom: 10px;
+    margin-top: 10px;
+
+    @include font-size(11px);
+
+    @media (min-width: 769px) and (max-width: 881px) {
+      margin-top: 10px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    height: 195px;
+    text-align: center;
+  }
+
+  .formerly {
+    bottom: 0;
+    color: #fff;
+    left: 0;
+    margin-bottom: 10px;
+    margin-left: 15px;
+    margin-top: 10px;
+
+    a {
+      color: #fff;
+      text-decoration: underline;
+    }
+
+    @include font-size(11px);
+  }
+}
+
+#wrap {
+  margin-bottom: 103px;
+  min-height: 100%;
+
+  @media (min-width: 1171px) and (max-width: 1199px) {
+    margin-bottom: 116px;
+  }
+}
+
+.social-container {
+  text-align: right;
+
+  .social {
+    display: inline-block;
+    height: 36px;
+    margin-left: 14px;
+    text-align: left;
+    text-indent: -9999px;
+    width: 36px;
+
+    &.social--facebook {
+      background: image-url('social-facebook.png');
+      //@include icons-sprite(social-facebook);
+    }
+
+    &.social--twitter {
+      background: image-url('social-twitter.png');
+      //@include icons-sprite(social-twitter);
+
+      @media (max-width: 768px) {
+        margin-left: 0;
+      }
+    }
+
+    &.social--google {
+      background: image-url('social-google.png');
+      //@include icons-sprite(social-google);
+    }
+
+    &.social--pinterest {
+      background: image-url('social-pinterest.png');
+      //@include icons-sprite(social-pinterest);
+    }
+  }
+
+  @media (max-width: 768px) {
+    margin-bottom: 5px;
+    text-align: center;
+  }
+}
+
+body.sessions, body.registrations, body.create_user_and_pod {
+  .copyright {
+    color: #333;
+    margin: 15px 0;
+
+    @include font-size(11px);
+  }
+}
+
+@media (max-width: 768px) {
+  .bbb img {
+    width: 75px;
+  }
+}

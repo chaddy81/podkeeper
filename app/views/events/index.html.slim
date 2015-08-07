@@ -6,6 +6,7 @@
 .col-sm-12.col-md-10
   .row
     .col-sm-6.col-md-5
+      p= link_to 'New Event', new_event_path
       - if @events && @events.count > 0
         .event-calendar
           = render 'calendar'

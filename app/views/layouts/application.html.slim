@@ -34,6 +34,8 @@ html
         = flash_messages
       = yield
 
+    = render 'footer'
+
     - if current_user
       /! overlay for selecting new pod
       = render 'add_menu' if action_name == 'index'

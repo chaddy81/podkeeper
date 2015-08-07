@@ -2,9 +2,11 @@ class NotesController < ApplicationController
   before_filter :can_view?, only: [:index, :new, :show]
 
   def index
-    @pod = current_pod
-    @note = Note.new(pod_id: @pod.id)
-    @notes = @pod.notes.order('sort_by_date DESC')
+    @notes = current_pod.notes.order('sort_by_date DESC')
+  end
+
+  def new
+    @note = Note.new(pod_id: current_pod.id)
   end
 
   def create
@@ -17,7 +19,7 @@ class NotesController < ApplicationController
       flash[:success] = 'Note was created successfully!'
       @note.update_sort_by_date
       @new_note = current_user.notes.new(pod_id: current_pod.id)
-      redirect_to notes_path(pod_id: current_pod.id)
+      redirect_to notes_path
     else
       @topic_count = params[:note][:topic_count]
       @body_count  = params[:note][:body_count]
@@ -31,6 +33,7 @@ class NotesController < ApplicationController
   end
 
   def show
+    @notes = current_pod.notes.order('sort_by_date DESC')
     @note = Note.includes(:comments).find(params[:id])
   end
 

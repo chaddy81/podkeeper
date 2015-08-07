@@ -2,6 +2,7 @@
   .row
     - if @notes.count > 0
       .col-sm-6.col-md-5
+        p= link_to 'New Discussion', new_note_path
         - @notes.each do |discussion|
           .discussions
             = render @notes, discussion: discussion
@@ -12,21 +13,24 @@
         p Select a discussion from the left to view, or click “New Discussion” to get a conversation started!
     - else
       .col-sm-12.col-md-10
-        p There are no discussions for this Pod. Click “New Discussion” above to get a conversation started!
+        p
+          ' There are no discussions for this Pod. Click
+          = link_to 'New Discussion', new_discussion_path
+          ' to get a conversation started!
 
-javascript:
-  function getFormat() {
-    if (window.innerWidth < 768) {
-      $('.event, .discussion').parent('a').removeAttr('data-remote');
-    }else{
-      $('.event, .discussion').parent('a').attr('data-remote', true);
-    }
-  }
+/ javascript:
+/   function getFormat() {
+/     if (window.innerWidth < 768) {
+/       $('.event, .discussion').parent('a').removeAttr('data-remote');
+/     }else{
+/       $('.event, .discussion').parent('a').attr('data-remote', true);
+/     }
+/   }
 
-  $(function() {
-    getFormat();
+/   $(function() {
+/     getFormat();
 
-    $(window).on('resize', function() {
-      getFormat();
-    });
-  });
+/     $(window).on('resize', function() {
+/       getFormat();
+/     });
+/   });

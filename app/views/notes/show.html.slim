@@ -1,5 +1,10 @@
 .discussion-thread
-  .col-xs-12.discussion
+  .col-sm-6.col-md-5
+    - @notes.each do |discussion|
+      .discussions
+        = render @notes, discussion: discussion
+
+  .col-xs-12.col-md-5.discussion
     img.pull-left src="#{get_gravatar(@note.user.email, 32)}" /
     .discussion-info
       .discussion-meta.clearfix
@@ -16,6 +21,6 @@
           span.pull-right= comment.created_at.strftime("%b %d, %Y, %l:%M%P")
         p= comment.body
 
-form.col-xs-12.new-comment
+form.col-xs-12.col-md-10.new-comment
   input.col-xs-9 placeholder=("Add a Comment") type="text" /
   button type="submit"  Post

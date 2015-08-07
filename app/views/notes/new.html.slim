@@ -1,0 +1,31 @@
+= simple_form_for @note do |f|
+
+  = f.input :pod_id, as: :hidden, input_html: { value: @note.pod_id }
+  = f.input :user_id, as: :hidden, input_html: { value: current_user.id }
+  = f.input :topic_count, as: :hidden
+  = f.input :body_count, as: :hidden
+
+  h2 New Discussion
+  .form-group.step-2.hide-step
+    .row
+      .col-sm-2
+        label for="topic2" Title *
+      .col-sm-8
+        = f.input :topic, label: false, input_html: { class: 'form-control' }
+      .col-sm-2
+        = topic_counter @note, @topic_count
+    .row
+      .col-sm-2
+        label for="details" Message *
+      .col-sm-8
+        = f.input :body, label: false,input_html: { class: 'form-controls' }
+      .col-sm-2
+        = details_counter @note, @body_count
+    .row
+      .col-sm-6
+        label Is this discussion urgent?
+        = f.input :is_urgent, label: false, as: :boolean, boolean_style: :inline, wrapper: false
+
+    .discussion-new__controls.col-sm-12
+      = link_to 'Cancel', '#', class: 'back', 'data-cancel-note' => 'true'
+      = f.submit 'Post', disable_with: 'Posting...', class: 'btn btn-default btn-blue'
