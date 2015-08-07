@@ -11,8 +11,6 @@ class NotesController < ApplicationController
 
   def create
     @note = Note.new(params[:note])
-    @pod = Pod.find(@note.pod_id)
-    @notes = current_pod.notes.order('sort_by_date DESC')
     @topic_count = nil
     @body_count = nil
     if @note.save
