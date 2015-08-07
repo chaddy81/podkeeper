@@ -3,9 +3,8 @@
     - if @notes.count > 0
       .col-sm-6.col-md-5
         p= link_to 'New Discussion', new_note_path
-        - @notes.each do |discussion|
-          .discussions
-            = render @notes, discussion: discussion
+        .discussions
+          = render @notes
 
       .hidden-xs.col-sm-6.col-md-5.discussion-thread--desktop
         svg.icon.icon-events.center-block viewbox="0 0 1024 1024" style="width: 144px"
@@ -17,20 +16,3 @@
           ' There are no discussions for this Pod. Click
           = link_to 'New Discussion', new_discussion_path
           ' to get a conversation started!
-
-/ javascript:
-/   function getFormat() {
-/     if (window.innerWidth < 768) {
-/       $('.event, .discussion').parent('a').removeAttr('data-remote');
-/     }else{
-/       $('.event, .discussion').parent('a').attr('data-remote', true);
-/     }
-/   }
-
-/   $(function() {
-/     getFormat();
-
-/     $(window).on('resize', function() {
-/       getFormat();
-/     });
-/   });

@@ -1,15 +1,15 @@
-= link_to discussion do
-  .discussion.clearfix data-discussion-id="#{discussion.id}"
+= link_to note do
+  .discussion.clearfix data-discussion-id="#{note.id}"
     .col-xs-3.discussion-icon.text-center.pull-left
       svg.icon.center-block viewbox="0 0 1024 1024"
         use xlink:href="#icon-podkeeper-discussion-light"
-      - if show_note_notification(current_pod, discussion)
+      - if show_note_notification(current_pod, note)
         span.comment-count 1
     .discussion-info.pull-left
-      h4= discussion.topic
-      p.discussion-time #{time_ago_in_words(discussion.created_at)} ago
-      p.discussion-author= discussion.user.full_name
+      h4= note.topic
+      p.discussion-time #{time_ago_in_words(note.created_at)} ago
+      p.discussion-author= note.user.full_name
     span.discussion-urgent.pull-right
-      - if discussion.is_urgent?
+      - if note.is_urgent?
         svg.icon.icon-more.center-block viewbox="0 0 1024 1024"
           use xlink:href="#icon-podkeeper-info-yellow"
