@@ -84,7 +84,7 @@ class SessionsController < ApplicationController
   def destroy
     puts cookies[:auth_token]
     sign_out
-    redirect_to signin_path(event: 'signout')
+    redirect_to login_path
   end
 
 end

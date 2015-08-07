@@ -54,7 +54,7 @@ module SessionsHelper
     else signed_in?
       store_location
       respond_to do |format|
-        format.html { redirect_to signin_path, notice: 'Please sign in.' }
+        format.html { redirect_to login_path, notice: 'Please sign in.' }
         format.js { render js: "window.location = '/signin'" }
       end
     end

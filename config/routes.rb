@@ -98,7 +98,7 @@ Rails.application.routes.draw do
   get 'members', to: 'pods#members'
   get 'register', to: 'pods#new_with_code'
 
-  get 'signin',  to: 'sessions#new'
+  get 'login',  to: 'sessions#new'
   delete 'signout', to: 'sessions#destroy'
 
   get 'no_script',   to: 'static_pages#no_script'
@@ -118,7 +118,7 @@ Rails.application.routes.draw do
   get 'feedback',           to: 'static_pages#feedback'
   post 'create_feedback', to: 'feedbacks#create'
 
-  get 'signup',           to: 'users#new'
+  get 'signup',           to: 'registrations#new'
   post 'update_time_zone', to: 'users#update_time_zone'
   get 'update_fb_time_zone', to: 'users#update_fb_time_zone'
   get 'settings',         to: 'users#edit'
