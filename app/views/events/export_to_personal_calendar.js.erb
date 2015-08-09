@@ -1,0 +1,12 @@
+if ($('.addtocalendar').length == 0) {
+  $('body').append("<%= j(render 'export_to_personal_calendar', event: @event) %>");
+} else {
+  $('.addtocalendar').replaceWith("<%= j(render 'export_to_personal_calendar', event: @event) %>");
+}
+
+$('.addtocalendar').modal();
+
+// close modal five seconds after calendar click
+$('.addtocalendar .options a').click(function() {
+  $('.modal').delay(5000).modal('hide');
+});

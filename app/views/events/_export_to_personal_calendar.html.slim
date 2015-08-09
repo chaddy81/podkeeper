@@ -1,0 +1,30 @@
+.modal.fade.addtocalendar aria-hidden="true" aria-labelledby="addtocalendar" role="dialog" tabindex="-1"
+  .modal-dialog
+    .modal-content
+      .modal-header
+        button.close data-dismiss="modal" type="button"
+          span aria-hidden="true"  &times;
+          span.sr-only Close
+        h4.modal-title Add to Calendar
+      .modal-body
+        p Add this event to your personal calendar by choosing one of the options below.
+        ul style="display: table; width: 100%;"
+          li style="display: table-cell"
+            = link_to export_to_google_calendar_link(event), target: '_blank' do
+              = image_tag 'calendar-ico-1.png', alt: 'google calendar'
+              p Google Calendar
+
+          li style="display: table-cell"
+            = link_to event_export_to_ical_path(event) do
+              = image_tag 'calendar-ico-2.png', alt: 'ical'
+              p iCal
+
+          li style="display: table-cell"
+            = link_to event_export_to_ical_path(event) do
+              = image_tag 'calendar-ico-3.png', alt: 'outlook calendar'
+              p Outlook Calendar
+
+          li style="display: table-cell"
+            = link_to export_to_yahoo_link(event), target: '_blank' do
+              = image_tag 'calendar-ico-4.png', alt: 'yahoo calendar'
+              p Yahoo Calendar

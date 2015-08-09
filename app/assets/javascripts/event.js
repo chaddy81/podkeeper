@@ -4,6 +4,11 @@ $(function() {
     $('.rsvp-count__user, .rsvp-comment').hide();
   });
 
+  $(document).on('click', '.rsvp-count-comment .cancel', function() {
+    $('.rsvp-count-comment').hide();
+    $('.rsvp-count__user, .rsvp-comment').show();
+  });
+
   $('#new_rsvp .cancel').on('click', function(e) {
     e.preventDefault();
     $('.rsvp-count-comment').hide();

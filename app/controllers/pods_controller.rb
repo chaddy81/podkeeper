@@ -126,6 +126,7 @@ class PodsController < ApplicationController
   def set_pod
     pod = Pod.find(params[:pod_id])
     set_current_pod(pod)
+    render js: "window.location = '#{events_path}'"
   end
 
   def update

@@ -1,3 +1,5 @@
+console.log("Updated");
+
 if (window.innerWidth >= 768) {
   $('.event-details--desktop').html("<%= escape_javascript render 'events/show' %>");
   $('.spinner').spinner({ min: 0, icons: { down: "icon-arrow-down", up: "icon-arrow-up" } });

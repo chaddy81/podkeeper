@@ -6,13 +6,15 @@ h4.header Details
       .pull-left.col-xs-6
         p= event.start_date.strftime("%a. %b %d, %Y")
         p= event.start_time.strftime('%l:%M%p %Z')
-      a.save-web.pull-right.col-xs-6 Save to Web Calendar
+      = link_to 'Save to Web Calendar', event_export_to_personal_calendar_path(event), class: 'save-web pull-right col-xs-6', remote: true
   .event-details__where
     h3 Where
     .row
       .pull-left.col-xs-6
+        = event.address
         p= event.location
-      a.view-map.pull-right.col-xs-6 View in Google Maps
+
+      = link_to 'View in Google Maps', "http://maps.google.com/?q=#{event.address}", class: 'view-map pull-right col-xs-6', target: '_blank'
   - if event.description
     .event-details__detail
       h3 Details
