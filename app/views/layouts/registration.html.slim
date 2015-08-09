@@ -14,5 +14,7 @@ html
     /! inject svg's for use inline throughout app
     = render 'svg_declaration'
     = render 'logged_out_nav'
+    .error-messages
+      = flash_messages
     = yield
     = render 'footer'
