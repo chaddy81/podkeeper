@@ -1,12 +1,19 @@
-hidden-xs.col-sm-6.col-md-5
-    .event-calendar
-      = render 'events/calendar'
-    = render @events
+.hidden-xs.col-sm-6.col-md-5
+  = render @events
 
 col-xs-12.col-sm-6.col-md-5
+  h3.visible-xs= @event.name.humanize
   .event-details-container
     = render 'event_details', event: @event
   .event-rsvp-container
     = render 'event_rsvp', event: @event
   .event-attending-container
     = render 'event_attending', event: @event
+
+
+javascript:
+  $(function() {
+    var eventId = "#{params[:id]}";
+
+    $('.event').data('event-id', eventId).addClass('active');
+  });
