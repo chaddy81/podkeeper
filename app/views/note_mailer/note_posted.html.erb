@@ -1,0 +1,51 @@
+<p style="margin: 10px 0;"><%= link_to @note.user.full_name, "mailto:#{@note.user.email}" %> posted <%= @note.is_urgent? ? 'an':'a' %> <%= ' Urgent' if @note.is_urgent? %> Discussion for <%= @note.pod.name.upcase %><%= " regarding the event called #{@note.event.name}" unless @note.event.nil? %></p>
+
+<div>
+  <span style="display: block;font-size: 14px;font-weight: bold;margin:0 0 -10px;"><%= @note.topic %></span>
+  <%= auto_link(simple_format(@note.body), :all) %>
+</div>
+
+<% unless @user.class.to_s == 'User' %>
+
+<!-- its an invite, send them to the signup page -->
+  <p style="margin: 10px 0;">In order to comment on the Discussion, as well as see any other conversations going on among the group members, you will need to join our Pod.</p>
+
+  <p style="margin: 10px 0;">Don’t forget you have a pending invitation to join the Pod called <%= @user.pod.name %>. By joining the Pod you’ll be able to stay better connected with the other members, be better informed and get more organized. It takes only 1 minute to join.</p>
+
+  <% if User.find_by_email(@user.email) %>
+    <%= link_to image_tag('http://podanize-images.s3.amazonaws.com/email-images/join-the-pod-blue.png', alt: 'Join the Pod', width: '186', height: '40', border: 0), invites_url(invite_id: @user.id), style: 'display:block; margin: 0 auto; font-size:18px; height: 40px; width:186px; color:#15c;' %>
+  <% else %>
+    <%= link_to image_tag('http://podanize-images.s3.amazonaws.com/email-images/join-the-pod-blue.png', alt: 'Join the Pod', width: '186', height: '40', border: 0), signup_url(auth_token: @user.auth_token), style: 'display:block; margin: 0 auto; font-size:18px; height: 40px; width:186px; color:#15c;' %>
+  <% end %>
+<% end %>
+
+<% if @user.class.to_s == 'User' %>
+  <div style='padding: 10px 20px; margin: 30px 0;background-color:#f0f0f0;'>
+    <p><b style="color:#456189;">You can now post comments directly from this email.</b><br>
+      <b>Simply REPLY to this email - An email will be sent to all Pod members and invitees, and saved to PodKeeper</b>
+    </p>
+
+    <p>
+      To email the person who originally started this Discussion,
+      <%= link_to 'Click Here', "mailto:#{@note.user.email}" %>
+    </p>
+
+    <p>
+      To add a comment or view all of the comments,
+      <%= link_to 'Go to PodKeeper', notes_url(pod_id: @note.pod.id) %>
+    </p>
+
+  </div>
+<% end %>
+
+<% provide :email, @email %>
+
+<table cellpadding="0" cellspacing="0" style="width: 100%;">
+  <tr>
+    <td style="text-align: center;" align="center">
+      <a href="http://e-find.co/c/1754?eid=<%= @email %>&a=&cid=1" class="reach-ad" style="max-width: 468px !important;width: 100%;">
+        <img src="http://e-find.co/img/1754?eid=<%= @email %>&a=&cid=1" style="max-width: 468px !important;width: 100%;height:60px;" />
+      </a>
+    </td>
+  </tr>
+</table>

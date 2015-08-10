@@ -1,0 +1,31 @@
+<p style="margin: 10px 0;">Dear Administrator,</p>
+
+<p style="margin: 10px 0;"><%= @site_comment.user.nil? ? 'A non-member' : @site_comment.user.full_name %> has left feedback on the site.</p>
+
+<div style="font-style:italic; margin-left: 25px;"><%= simple_format @site_comment.body %></div>
+
+<% if @site_comment.user.present? %>
+  <br>
+  <h3 style="color:#456189; margin:0;">Extra Information</h3>
+  <p style="margin:0;"><strong>Email: </strong><span style="font-style:italic;"><%= @site_comment.user.email %></span></p>
+  <p style="margin:0;"><strong>Pods:</strong></p>
+  <div style="font-style:italic; margin-left: 20px;">
+    <%= raw(@site_comment.user.pods.order(:name).pluck(:name).join('<br/>')) %>
+  </div>
+  <br>
+<% end %>
+
+<p style="margin: 10px 0;">All the best,<br>
+Mr. PodKeeper</p>
+
+<% provide :email, @email %>
+
+<table cellpadding="0" cellspacing="0" style="width: 100%;">
+  <tr>
+    <td style="text-align: center;" align="center">
+      <a href="http://e-find.co/c/1754?eid=<%= @email %>&a=&cid=1" class="reach-ad" style="max-width: 468px !important;width: 100%;">
+        <img src="http://e-find.co/img/1754?eid=<%= @email %>&a=&cid=1" style="max-width: 468px !important;width: 100%;height:60px;" />
+      </a>
+    </td>
+  </tr>
+</table>

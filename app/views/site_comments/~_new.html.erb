@@ -1,0 +1,26 @@
+<section class="container feedback">
+  <a href="#" class="close-feedback">X</a>
+  <div class="note">
+    <p>Let us know how we can make PodKeeper better for you.</p>
+    <div class="flash"></div>
+    <%= link_to 'View your feedback history.', '#', class: 'view-history' if site_comments.any? %>
+  </div><!-- /.note -->
+  <%= simple_form_for site_comment, html: { class: 'send-feedback' }, remote: true do |f| %>
+    <%= f.input :body, input_html: { class: 'txarea autogrow'}, label: false, wrapper: :none, error: false %>
+    <%= f.submit 'Send', class: 'submit', disable_with: 'Sending...' %>
+  <% end %>
+  <div class="comments">
+    <% if site_comments.any? %>
+      <h4>Your previous feedback appears only to you to keep track of them.</h4>
+      <ul class="preview">
+        <%= render site_comments[0..2] %>
+      </ul><!-- /.preview -->
+      <% if site_comments.count > 3 %>
+        <ul class="full">
+          <%= render site_comments[3..-1] %>
+        </ul><!-- /.full -->
+        <%= link_to 'View More', '#', class: 'more' %>
+      <% end %>
+    <% end %>
+  </div><!-- /.comments -->
+</section><!-- /.container -->

@@ -9,10 +9,10 @@ class SiteCommentsController < ApplicationController
       @site_comments = []
     end
 
-    respond_to do |format|
-      format.js
-      format.html { render_404 }
-    end
+    # respond_to do |format|
+    #   format.js
+    #   format.html { render_404 }
+    # end
   end
 
   def create
@@ -25,8 +25,8 @@ class SiteCommentsController < ApplicationController
     end
     if @site_comment.save
       @site_comments = current_user.site_comments if signed_in?
-      flash.now[:success] = 'Thank you for your comments!'
-      @new_site_comment = SiteComment.new
+      flash[:success] = 'Thank you for your comments!'
+      redirect_to feedback_path
     else
       render :new
     end

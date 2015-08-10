@@ -1,0 +1,23 @@
+- if current_user
+
+  .container-fluid
+    .col-md-10
+      h5 Let us know how we can make PodKeeper better for you.
+
+      = simple_form_for @site_comment do |f|
+        .form-group
+          = f.input :body, label: false, input_html: { rows: 5, id: 'comment', class: 'form-control' }
+          = link_to 'Cancel', :back
+          = f.submit 'Send Feedback', class: 'btn btn-default btn-blue'
+
+- else
+
+  .container
+    .col-md-10
+      h5 Let us know how we can make PodKeeper better for you.
+
+      = simple_form_for @site_comment do |f|
+        .form-group
+          = f.input :body, label: false, input_html: { rows: 5, id: 'comment', class: 'form-control' }
+          = link_to 'Cancel', :back
+          = f.submit 'Send Feedback', class: 'btn btn-default btn-blue'
