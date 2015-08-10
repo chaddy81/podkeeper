@@ -1,7 +1,7 @@
 = simple_form_for rsvp, html: { class: 'col-xs-12' }, remote: true do |f|
     = f.input :event_id, as: :hidden, input_html: { value: rsvp.event_id }
     .row
-      = f.association :rsvp_option, as: :radio_buttons, label_method: :display_name, label: false, collection: RsvpOption.order('id ASC'), item_wrapper_class: 'col-xs-4 button-container'
+      = f.association :rsvp_option, as: :radio_buttons, label_method: :display_name, label: false, collection: RsvpOption.order('id ASC'), item_wrapper_class: 'col-xs-4 button-container text-center'
 
     .clearfix
     .row

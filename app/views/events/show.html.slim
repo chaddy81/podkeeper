@@ -1,4 +1,5 @@
 .hidden-xs.col-sm-6.col-md-5
+  .event-container
   = render @events
 
 col-xs-12.col-sm-6.col-md-5
@@ -13,7 +14,8 @@ col-xs-12.col-sm-6.col-md-5
 
 javascript:
   $(function() {
-    var eventId = "#{params[:id]}";
+    var eventId = #{params[:id]};
 
-    $('.event').data('event-id', eventId).addClass('active');
+    $('.event').removeClass('active');
+    $('[data-event-id=' + eventId + ']').addClass('active');
   });

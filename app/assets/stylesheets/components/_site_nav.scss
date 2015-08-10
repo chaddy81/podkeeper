@@ -96,6 +96,10 @@
 }
 
 @media (min-width: 768px) {
+  .site-nav-container {
+    margin-bottom: 20px !important;
+  }
+
   .site-nav {
     display: inline-block;
     width: auto;

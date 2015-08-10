@@ -4,3 +4,10 @@
     width: 54px;
   }
 }
+
+@media ( min-width: 768px ) {
+  .view-toggle {
+    float: right;
+    margin-top: -10px;
+  }
+}

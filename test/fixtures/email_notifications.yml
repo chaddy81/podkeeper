@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  email: MyString
+  sg_event_id: MyString
+  sg_message_id: MyString
+  timestamp: 2015-06-25 12:38:46
+  smtp-id: MyString
+  event: MyString
+  id: MyString
+  uid: MyString
+
+two:
+  email: MyString
+  sg_event_id: MyString
+  sg_message_id: MyString
+  timestamp: 2015-06-25 12:38:46
+  smtp-id: MyString
+  event: MyString
+  id: MyString
+  uid: MyString
