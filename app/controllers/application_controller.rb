@@ -30,10 +30,7 @@ class ApplicationController < ActionController::Base
   end
 
   def render_404
-    respond_to do |format|
-      format.html { render file: 'public/404', layout: false }
-      format.all { redirect_to controller: 'application', action: 'render_404' }
-    end
+    render file: "#{Rails.root.to_s}/public/404.html",  :status => 404
   end
 
 

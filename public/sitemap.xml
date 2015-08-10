@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+<url>
+  <loc>http://www.podkeeper.com/</loc>
+  <image:image>
+    <image:loc>http://www.podkeeper.com/assets/baseball-scheduling-software.jpg</image:loc>
+    <image:title>Baseball Scheduling Software</image:title>
+  </image:image>
+  <image:image>
+    <image:loc>http://www.podkeeper.com/assets/sports-scheduling-system.jpg</image:loc>
+    <image:title>Sports Scheduling System</image:title>
+  </image:image>
+  <image:image>
+    <image:loc>http://www.podkeeper.com/assets/app-little-league-coaching.jpg</image:loc>
+    <image:title>App Little League Coaching</image:title>
+  </image:image>
+</url>
+<url>
+  <loc>http://www.podkeeper.com/</loc>
+  <changefreq>never</changefreq>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>http://www.podkeeper.com/password_resets/new</loc>
+  <changefreq>never</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://www.podkeeper.com/sessions/new</loc>
+  <changefreq>never</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://www.podkeeper.com/how-pods-work</loc>
+  <changefreq>never</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://www.podkeeper.com/our-mission</loc>
+  <changefreq>never</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://www.podkeeper.com/faq</loc>
+  <changefreq>never</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://www.podkeeper.com/mobile</loc>
+  <changefreq>never</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://www.podkeeper.com/terms-of-service</loc>
+  <changefreq>never</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://www.podkeeper.com/privacy-policy</loc>
+  <changefreq>never</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://www.podkeeper.com/contact-us</loc>
+  <changefreq>never</changefreq>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>http://getorganized.podkeeper.com/</loc>
+  <changefreq>never</changefreq>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>http://getorganized.podkeeper.com/basketball/</loc>
+  <changefreq>never</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://getorganized.podkeeper.com/free-basketball-league-scheduling-software/</loc>
+  <changefreq>never</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://getorganized.podkeeper.com/free-basketball-schedule-maker/</loc>
+  <changefreq>never</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://getorganized.podkeeper.com/basketball-league-management-software/</loc>
+  <changefreq>never</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://getorganized.podkeeper.com/basketball-scheduling-software/</loc>
+  <changefreq>never</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://getorganized.podkeeper.com/basketball-league-scheduling-software/</loc>
+  <changefreq>never</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://getorganized.podkeeper.com/basketball-team-management-software/</loc>
+  <changefreq>never</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://getorganized.podkeeper.com/basketball-league-scheduling/</loc>
+  <changefreq>never</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://getorganized.podkeeper.com/family-calendar/</loc>
+  <changefreq>never</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://getorganized.podkeeper.com/best-apps-for-busy-moms/</loc>
+  <changefreq>never</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://getorganized.podkeeper.com/best-online-family-organizer/</loc>
+  <changefreq>never</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://getorganized.podkeeper.com/keeping-my-family-organized/</loc>
+  <changefreq>never</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://getorganized.podkeeper.com/keeping-track-of-kids-activities/</loc>
+  <changefreq>never</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://getorganized.podkeeper.com/managing-kids-activities/</loc>
+  <changefreq>never</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://getorganized.podkeeper.com/family</loc>
+  <changefreq>never</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://getstarted.podkeeper.com/</loc>
+  <changefreq>never</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://getstarted.podkeeper.com/online-organizer/</loc>
+  <changefreq>never</changefreq>
+  <priority>0.80</priority>
+</url>  
+<url>
+  <loc>http://www.podkeeper.com/video</loc>
+  <changefreq>never</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://video.podkeeper.com/</loc>
+  <changefreq>never</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://join.podkeeper.com/</loc>
+  <changefreq>never</changefreq>
+  <priority>0.80</priority>
+</url>
+</urlset>
