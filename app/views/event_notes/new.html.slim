@@ -1,8 +1,8 @@
-.col-md-3
+.col-md-3.hidden-xs
   .event-details-container.event-reminder
     = render 'events/details', event: @event
 
-.col-md-4
+.col-xs-12.col-md-4
   = simple_form_for @event_note, html: { class: 'event-send-reminders' } do |f|
     p You can send additional event reminders or updates to everyone or to select members based on their current RSVP response.
     p.note * Required field
