@@ -115,7 +115,7 @@ Rails.application.routes.draw do
   get 'how-pods-work',    to: 'static_pages#how_pods_work',    as: 'overview'
   get 'get-started',      to: 'static_pages#get_started',      as: 'get_started'
   get 'video',            to: 'static_pages#video',            as: 'video'
-  get 'feedback',           to: 'static_pages#feedback'
+  get 'feedback',         to: 'site_comments#new',             as: 'feedback'
   post 'create_feedback', to: 'feedbacks#create'
 
   get 'signup',           to: 'registrations#new'
