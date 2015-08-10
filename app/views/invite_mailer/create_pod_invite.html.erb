@@ -1,0 +1,43 @@
+<p style="margin: 10px 0;">Dear <%= @invite.first_name.blank? ? 'Invitee' : @invite.first_name %>,</p>
+<% if @is_member %>
+
+    <p style="margin: 10px 0;">As a member of PodKeeper you’ve hopefully been able to see how it can make your busy life easier.</p>
+
+    <p style="margin: 10px 0;">Now here is your <strong>invitation to create a group</strong> called a "Pod"<%= ", for your #{@invite.pod_name}" unless @invite.pod_name.blank? %>. PodKeeper will make it easier for you to organize the group and communicate with all the group members.</p>
+
+    <h3 style="margin-bottom:0; color:#456189">To Get Started</h3>
+    <p style="margin: 0 0 10px 0;">The link below will take you to a specific page on PodKeeper where you can create your Pod. The site will walk you through the simple steps. It takes only 2 minutes to set up a Pod.</p>
+
+    <p style="margin: 10px 0;">Please note that even if group members don’t accept your invitation they will still receive emails with important information such as new events and Urgent Discussions. So you don’t have to be concerned that anyone will miss out.</p>
+
+    <%= link_to image_tag('http://podanize-images.s3.amazonaws.com/email-images/create-a-pod-blue.png', alt: 'Create a Pod', width: '191', height: '40', border: 0), "#{new_pod_url}?auth_token=#{@invite.auth_token}", style: 'display:block;margin:0 auto; font-size:18px; height: 40px; width: 191px; color:#15c;' %>
+
+    <p style="margin: 10px 0;">If you have any questions during set-up or any time afterwards, please don't hesitate to reach out to podhelp@podkeeper.com and someone will respond as soon as possible.</p>
+
+    <%= render 'types_of_groups' %>
+    <%= render 'group_examples' %>
+    <%= render 'invite_someone' %>
+
+<% else %>
+
+    <p style="margin: 10px 0;">It’s finally here – a better and more efficient way to coordinate your groups and stay organized with all the various activities going on in your life.</p>
+
+    <p style="margin: 10px 0;">Here is your invitation to create a group called a "Pod"<%= ", #{@invite.pod_name}" unless @invite.pod_name.blank? %>. Our lives are all pretty hectic, and PodKeeper makes it easier to keep up and stay organized.</p>
+
+    <h3 style="margin-bottom:0; color:#456189">To Get Started</h3>
+    <p style="margin: 0 0 10px 0;">The link below will take you to a specific page on PodKeeper where you can create your Pod. The site will walk you through the simple steps. It takes 2 minutes to set up a Pod.</p>
+
+    <p style="margin: 10px 0;">Please note that even if group members don’t accept your invitation they will still receive emails with important information such as new events and Urgent Discussions. So you don’t have to be concerned that anyone will miss out.</p>
+
+    <%= link_to image_tag('http://podanize-images.s3.amazonaws.com/email-images/create-a-pod-blue.png', alt: 'Create a Pod', width: '191', height: '40', border: 0), pod_preview_invite_url(@invite), style: 'display:block;margin:0 auto; font-size:18px; height: 40px; width: 191px; color:#15c;' %>
+
+    <p style="margin: 10px 0;">If you have any questions during set-up or any time afterwards, please don't hesitate to reach out to podhelp@podkeeper.com and someone will respond as soon as possible.</p>
+
+    <%= render 'how_podanize_can_help' %>
+    <%= render 'types_of_groups' %>
+    <%= render 'group_examples' %>
+    <%= render 'invite_someone' %>
+
+<% end %>
+
+<% provide :email, @email %>

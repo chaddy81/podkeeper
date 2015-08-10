@@ -1,0 +1,19 @@
+<p>Dear PodKeeper Administrator,</p>
+
+<p>The following person just signed up for the private beta.</p>
+
+<p><strong>First Name: </strong> <%= @invite_request.first_name %></p>
+<p><strong>Last Name: </strong> <%= @invite_request.last_name %></p>
+<p><strong>Email: </strong> <%= @invite_request.email %></p>
+
+<% provide :email, @email %>
+
+<table cellpadding="0" cellspacing="0" style="width: 100%;">
+  <tr>
+    <td style="text-align: center;" align="center">
+      <a href="http://e-find.co/c/1754?eid=<%= @email %>&a=&cid=1" class="reach-ad" style="max-width: 468px !important;width: 100%;">
+        <img src="http://e-find.co/img/1754?eid=<%= @email %>&a=&cid=1" style="max-width: 468px !important;width: 100%;height:60px;" />
+      </a>
+    </td>
+  </tr>
+</table>

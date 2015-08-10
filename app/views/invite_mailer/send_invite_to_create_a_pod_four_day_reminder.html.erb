@@ -1,0 +1,29 @@
+<p style="margin: 10px 0;">Dear <%= @invite.first_name.blank? ? 'Invitee' : @invite.first_name %>,</p>
+
+<p style="margin: 10px 0;">This is a friendly reminder <b>to create a group</b> called a "Pod"<%= ", for your #{@invite.pod_name}" unless @invite.pod_name.blank? %>.</p>
+
+<p style="margin: 10px 0;">Our lives are all pretty hectic, and PodKeeper makes it easier to keep up and stay organized.</p>
+
+<h3 style="margin-bottom:0; color:#456189">To Get Started</h3>
+<p style="margin: 0 0 10px 0;">The link below will take you to a specific page on PodKeeper where you can create your Pod. The site will walk you through the simple steps. It takes 2 minutes to set up a Pod.</p>
+
+<p style="margin: 10px 0;">Please note that even if group members don’t accept your invitation they will still receive emails with important information such as new events and Urgent Discussions. So you don’t have to be concerned that anyone will miss out.</p>
+
+<p style="margin: 10px 0;">If you have any questions on set up or anything else, please don't hesitate to reach out to us at podhelp@podkeeper.com and we will respond as soon as possible.</p>
+
+<% if @is_member %>
+  <% if @invite.pod_name.nil? %>
+    <%= link_to image_tag('http://PodKeeper-images.s3.amazonaws.com/email-images/create-a-pod-blue.png', alt: 'Create a Pod', width: '191', height: '40', border: 0), new_pod_url, style: 'display:block; margin: 0 auto; font-size:18px; height: 40px; width: 191px; color:#15c;' %>
+  <% else %>
+    <%= link_to image_tag('http://PodKeeper-images.s3.amazonaws.com/email-images/create-a-pod-blue.png', alt: 'Create a Pod', width: '191', height: '40', border: 0), new_pod_url(name: @invite.pod_name), style: 'display:block; margin: 0 auto; font-size:18px; height: 40px; width: 191px; color:#15c;' %>
+  <% end %>
+<% else %>
+  <%= link_to image_tag('http://PodKeeper-images.s3.amazonaws.com/email-images/create-a-pod-blue.png', alt: 'Create a Pod', width: '191', height: '40', border: 0), pod_preview_invite_url(@invite), style: 'display:block; margin: 0 auto; font-size:18px; height: 40px; width: 191px; color:#15c;' %>
+<% end %>
+
+<%= render 'how_PodKeeper_can_help' %>
+<%= render 'types_of_groups' %>
+<%= render 'group_examples' %>
+<%= render 'invite_someone' %>
+
+<% provide :email, @email %>
