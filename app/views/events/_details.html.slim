@@ -1,0 +1,26 @@
+.container.event-details
+  h3 style="margin-top: 0" Event Details
+  .event-details__when
+    h3 When
+    .row
+      .pull-left.col-xs-6
+        p= event.start_date.strftime("%a. %b %d, %Y")
+        p= event.start_time.strftime('%l:%M%p %Z')
+
+  .event-details__where
+    h3 Where
+    .row
+      .pull-left.col-xs-6
+        = event.address
+        p= event.location
+
+  - if event.description
+    .event-details__detail
+      h3 Details
+      p= event.description
+  .event-details__contact
+    h3 Event Contact
+    .vcard
+      p.fn= event.organizer.full_name
+      p.tel= event.organizer.phone
+      p.email= event.organizer.email

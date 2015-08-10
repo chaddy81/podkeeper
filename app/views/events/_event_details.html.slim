@@ -27,8 +27,8 @@ h4.header Details
       p.email= event.organizer.email
   - if current_user?(event.organizer) || is_at_least_pod_admin?
     .event-details__actions.text-center
-      =link_to 'Edit', edit_event_path(event), class: 'btn'
-      .btn Send Reminder
+      = link_to 'Edit', edit_event_path(event), class: 'btn'
+      = link_to 'Send Reminder', new_event_note_path(event_id: event.id), class: 'btn'
   - if event.require_rsvp?
     - if my_rsvp(event).rsvp_option
       div class="event-rsvp event-rsvp--#{my_rsvp(event).rsvp_option.name} text-center"= rsvp_message(my_rsvp(event).rsvp_option.name)

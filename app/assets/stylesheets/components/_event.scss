@@ -107,11 +107,21 @@
     color: $blue;
     font-weight: 300;
 
-    @include font-size(16px);
+    @include font-size(1px);
   }
 
   p {
     margin: 0;
+  }
+
+  &.event-reminder {
+    h3 {
+      font-weight: 600;
+
+      @include font-size(18px);
+    }
+
+    @include font-size(14px);
   }
 
   @include font-size(12px);
@@ -154,6 +164,41 @@
 
 .save-web, .view-map {
   color: $save-to-calendar;
+}
+
+.event-send-reminders {
+  textarea {
+    height: 150px;
+    width: 100%;
+  }
+
+  label {
+    font-weight: 300;
+  }
+
+  input[type=checkbox] {
+    margin-right: 5px;
+    vertical-align: top;
+  }
+
+  input[type=submit], input[type=submit]:hover {
+    border-radius: 3px;
+    color: #fff;
+    font-weight: 300;
+    line-height: 1.2;
+    margin-left: 20px;
+    padding: 9px 25px;
+    vertical-align: 1px;
+  }
+
+  .btn--cancel {
+    border-radius: 3px;
+    color: $red;
+    padding: 9px 25px;
+    text-decoration: none;
+
+    @include font-size(16px);
+  }
 }
 
 @media (min-width: 768px) {

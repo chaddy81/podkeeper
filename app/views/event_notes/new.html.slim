@@ -1,41 +1,31 @@
-- provide :title, 'Send Reminders'
-= render 'layouts/banner', banner_content: current_pod.name
+.col-md-3
+  .event-details-container.event-reminder
+    = render 'events/details', event: @event
 
-#wrap
-  .container
-    .row
-      = render 'layouts/page_nav'
-      = render 'layouts/side_nav'
+.col-md-4
+  = simple_form_for @event_note, html: { class: 'event-send-reminders' } do |f|
+    p You can send additional event reminders or updates to everyone or to select members based on their current RSVP response.
+    p.note * Required field
 
-      .main-contents.col-xs-12.col-sm-12.col-md-9.col-lg-9
-        .main-contents__body
-          .col-md-6
-            = render 'events/details', event: @event
+    .form-group
+      label Reminder Message
+      = f.input :note, as: :text, label: false, input_html: { value: f.object.note, style: 'width: 100%;' }
 
-          .col-md-6
-            = simple_form_for @event_note, defaults: { wrapper: :none }, html: { class: 'send-reminders' } do |f|
-              p You can send additional event reminders or updates to everyone or to select members based on their current RSVP response.
-              = render 'shared/error_messages', f: f
-              p.note * Required field
+    .form-group
+      - if @event.require_rsvp?
+        p Select members who should receive this reminder message. *
+        = f.input :all_pod_members, label: 'All Pod members', as: :boolean
+        = f.input :rsvp_yes, label: 'All Yes responses', as: :boolean
+        = f.input :rsvp_no, label: 'All No responses', as: :boolean
+        = f.input :rsvp_maybe, label: 'All Maybe responses', as: :boolean
+        = f.input :havent_responded, label: 'All who haven\'t responded', as: :boolean
+        = f.input :all_except_no_responses, label: 'Everyone but the No responses', as: :boolean
+      - else
+        = f.input :all_pod_members, as: :hidden, input_html: { value: '1' }
+    = f.input :event_id, as: :hidden, input_html: { value: @event.id }
+    .clearfix
 
-              .form-group
-                = f.input :note, as: :text, label: 'Reminder Message', wrapper_html: { style: 'margin-bottom: 20px;' }, input_html: { value: f.object.note, rows: 7 }, error_html: { style: 'display:none;' }
-
-              .form-group
-                - if @event.require_rsvp?
-                  p Select members who should receive this reminder message. *
-                  = f.input :all_pod_members, label: 'All Pod members', as: :boolean, wrapper: :checkbox
-                  = f.input :rsvp_yes, label: 'All Yes responses', as: :boolean, wrapper: :checkbox
-                  = f.input :rsvp_no, label: 'All No responses', as: :boolean, wrapper: :checkbox
-                  = f.input :rsvp_maybe, label: 'All Maybe responses', as: :boolean, wrapper: :checkbox
-                  = f.input :havent_responded, label: 'All who haven\'t responded', as: :boolean, wrapper: :checkbox
-                  = f.input :all_except_no_responses, label: 'Everyone but the No responses', as: :boolean, wrapper: :checkbox
-                - else
-                  = f.input :all_pod_members, as: :hidden, input_html: { value: '1' }
-              = f.input :event_id, as: :hidden, input_html: { value: @event.id }
-              .clearfix
-
-              .form-controls
-                .pull-right
-                  = link_to 'Cancel', event_path(@event), class: 'back'
-                  = f.submit 'Send', class: 'btn btn-default', disable_with: 'Sending...'
+    .form-controls
+      .pull-right
+        = link_to 'Cancel', event_path(@event), class: 'back btn--cancel'
+        = f.submit 'Send', class: 'btn btn--green', disable_with: 'Sending...'
