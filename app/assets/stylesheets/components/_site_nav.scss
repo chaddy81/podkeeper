@@ -129,5 +129,14 @@
       padding: 6px 22px 4px;
       width: auto;
     }
+
+    .site-nav__item--more {
+      padding: 6px 22px 4px;
+      width: auto;
+
+      svg {
+        width: 24px;
+      }
+    }
   }
 }
