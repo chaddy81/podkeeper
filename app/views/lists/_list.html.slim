@@ -17,9 +17,11 @@
       i.icons.icons__minimize.icons__minimize--open
       - if current_user?(list.creator) || is_at_least_pod_admin?
         = link_to edit_list_path(list) do
-          i.icons.icons__edit
+          svg.icon.icon-edit viewbox="0 0 1024 1024" style="margin: 0 5px;width: 16px"
+            use xlink:href="#icon-podkeeper-edit"
         = link_to list_path(list), id: "delete_list_#{list.id}", class: 'delete', method: :delete, data: { confirm: 'Are you sure you want to delete this list? All list items will also be deleted.' } do |f|
-          i.icons.icons__delete
+          svg.icon.icon-edit viewbox="0 0 1024 1024" style="margin: 0 5px;width: 16px"
+            use xlink:href="#icon-podkeeper-no"
 
   - if current_user?(list.creator) && !list.notification_has_been_sent?
     p
