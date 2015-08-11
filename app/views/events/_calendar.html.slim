@@ -2,7 +2,7 @@
   - if date == Date.today
     span.event-calendar__today.center-block
   - if meetings.length > 0
-    = link_to 'http://www.google.com', target: '_blank' do
+    = link_to calendar_events_events_path(start_date: date), remote: true do
       = date.strftime('%e')
       span.event-calendar__event.center-block dot
   - else

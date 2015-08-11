@@ -412,6 +412,10 @@ class EventsController < ApplicationController
     redirect_to new_event_path
   end
 
+  def calendar_events
+    @events = current_pod.events.confirmed.where(start_date: params[:start_date]).includes(:organizer, :pod, :rsvps, pod: :organizer).order('start_date ASC').order('start_time ASC')
+  end
+
   private
 
   def can_create?

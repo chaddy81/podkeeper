@@ -6,7 +6,7 @@ class RsvpsController < ApplicationController
     @rsvp = current_user.rsvps.new(rsvp_params)
     if @rsvp.save!
       flash.now[:success] = 'You have RSVP\'d successfully!'
-      render :rsvp_updated
+      render :update
     else
       flash.now[:error] = @rsvp.errors.full_messages.first
     end

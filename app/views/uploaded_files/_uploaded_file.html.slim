@@ -3,7 +3,7 @@ tr
     - if %w(edit update).include?(params[:action]) && uploaded_file.id == params[:id].to_i
       = simple_form_for uploaded_file do |f|
         .form-group
-          = f.input :description, label: false, wrapper: :none, input_html: { class: 'form-control', 'maxlength' => '45' }, placeholder: 'Add a description'
+          = f.input :description, label: false, input_html: { class: 'form-control', 'maxlength' => '45' }, placeholder: 'Add a description'
         .form-controls
           = f.submit 'Save', class: 'btn btn-default btn-blue'
           = link_to 'Cancel', '#', class: 'back', 'data-cancel-description-edit' => true, style: 'display: inline-block;line-height: 34px;margin: 0 20px;'

@@ -20,6 +20,7 @@ Rails.application.routes.draw do
     get 'export_to_ical'
     get 'export_to_personal_calendar'
     get 'clear_fields'
+    get 'calendar_events', on: :collection
     get :update_last_visit, on: :collection
     get :cancel_notes_editing, on: :member
     get :edit_notes, on: :member
