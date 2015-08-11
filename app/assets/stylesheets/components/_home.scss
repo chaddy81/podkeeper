@@ -599,3 +599,48 @@
     }
   }
 }
+
+@media only screen
+and (min-device-width : 320px)
+and (max-device-width : 568px)
+and (orientation : landscape) {
+  .home-page {
+
+    .container {
+      width: 100%;
+    }
+
+    .home-page__hero {
+      background: image-url('hero-back-desktop.jpg') no-repeat center right;
+      background-size: cover;
+      height: 360px;
+      margin: 0;
+      position: relative;
+      width: 100%;
+    }
+
+    .home-page__hero-content {
+      display: none;
+    }
+
+    .home-page__hero-video {
+      height: 220px;
+      position: absolute;
+      left: 90px;
+      top: 51px;
+      width: 399px;
+    }
+
+    .home-page__tagline {
+      padding: 15px 0;
+
+      @include font-size(18px);
+    }
+
+    .home-page__description-box {
+      .icon {
+        top: 315px;
+      }
+    }
+  }
+}
