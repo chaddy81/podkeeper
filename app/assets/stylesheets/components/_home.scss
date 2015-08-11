@@ -500,6 +500,12 @@
     .home-page__icons {
       display: block;
     }
+
+    .home-page__media {
+      img {
+        width: auto;
+      }
+    }
   }
 }
 
@@ -580,6 +586,12 @@
         width: 60px;
       }
     }
+
+    .home-page__media {
+      img {
+        width: auto;
+      }
+    }
   }
 }
 
@@ -617,6 +629,12 @@
         margin: 35px auto 0;
 
         @include font-size(22px);
+      }
+    }
+
+    .home-page__media {
+      img {
+        width: auto;
       }
     }
   }
@@ -695,6 +713,33 @@ and (orientation : portrait) {
       position: absolute;
       top: 196px;
       width: 245px;
+    }
+
+    .home-page__tagline {
+      padding: 15px 0;
+
+      @include font-size(18px);
+    }
+  }
+}
+
+@media only screen
+and (min-device-width : 375px)
+and (max-device-width : 667px)
+and (orientation : landscape) {
+  .home-page {
+
+    .container {
+      width: 100%;
+    }
+
+    .home-page__hero-video {
+      height: 228px;
+      left: auto;
+      position: absolute;
+      right: 48px;
+      top: 48px;
+      width: 400px;
     }
 
     .home-page__tagline {
