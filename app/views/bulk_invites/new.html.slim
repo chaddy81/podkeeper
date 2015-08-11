@@ -1,0 +1,16 @@
+.col-sm-12.col-md-10
+  .invites
+    p.italic Copy and paste a list of email addresses (separated by commas or semi-colons) into the box below. The list can be from a list in an email, a Word doc, an Excel doc, a CSV file, etc. It doesn’t matter whether or not the list also contains their names.
+
+    p If they don’t join right away, they’ll receive an email reminder after 2 days, and one more after 9 days. You can also send additional reminders at any time.
+
+    = form_tag bulk_invites_path, class: 'form-horizontal invites__form invites__form--multiple col-sm-12'
+      .form-group
+        label.col-sm-2.hidden-xs for="multiple-email" Email Addresses
+        .col-sm-5
+          / textarea.form-control#first-name placeholder="Enter email addresses"
+          = text_area_tag :emails, nil, class: 'form-control', placeholder: "Enter email addresses"
+      .form-group
+        .col-sm-7
+          .pull-right
+            button.btn.btn-default.btn-blue type="submit" Send Invites

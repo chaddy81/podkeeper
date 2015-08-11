@@ -5,7 +5,7 @@
   }
 
   &.warning {
-    background: $red;
+    background: $event-border;
     color: #fff;
 
     a {
@@ -14,10 +14,16 @@
     }
   }
 
+  &.error {
+    background: $red;
+    color: #fff;
+  }
+
   .close {
     color: #fff;
     font-family: 'Open Sans';
     opacity: 1;
+    outline: none;
     text-shadow: none;
 
     @include font-size(16px);
