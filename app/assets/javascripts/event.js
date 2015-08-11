@@ -39,9 +39,9 @@ $(function() {
     }
   });
 
-  $("form[id^=edit_rsvp_]").on("ajax:success", function(e, data, status, xhr) {
-    $('.error-messages .alert').addClass('alert-success').text('RSVP was updated successfully!');
-  }).on("ajax:error", function(e, xhr, status, error) {
-    $('.error-messages .alert').addClass('alert-danger').text(xhr.responseText);
-  });
+  // $("form[id^=edit_rsvp_]").on("ajax:success", function(e, data, status, xhr) {
+  //   $('.error-messages .alert').addClass('alert-success').text('RSVP was updated successfully!');
+  // }).on("ajax:error", function(e, xhr, status, error) {
+  //   $('.error-messages .alert').addClass('alert-danger').text(xhr.responseText);
+  // });
 });
