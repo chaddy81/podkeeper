@@ -1,7 +1,7 @@
 .registration {
   background: $blue-gray;
   margin-bottom: 25px;
-  max-width: 680px;
+  max-width: 460px;
   width: 100%;
   -webkit-border-radius: 5px;
 
@@ -92,7 +92,7 @@
       padding: 25px 94px 15px;
 
       h3 {
-        @include font-size(30px);
+        @include font-size(20px);
       }
     }
 
@@ -105,7 +105,7 @@
         margin-bottom: 35px;
         margin-top: 5px;
 
-        @include font-size(19px);
+        @include font-size(14px);
       }
     }
 
@@ -113,35 +113,43 @@
       border: 1px solid $dark-blue;
       border-radius: 18px;
       font-family: 'Open Sans';
-      height: 70px;
-      padding: 0 34px;
+      height: 40px;
+      padding: 0 15px;
 
-      @include font-size(22px);
+      @include font-size(14px);
     }
 
-    .checkbox {
+    .checkbox, input[type=checkbox] {
       input {
-        margin-top: 6px;
+        margin-top: 3px;
       }
 
-      @include font-size(19px);
+      @include font-size(16px);
+    }
+
+    label {
+      color: $text-color;
+      font-weight: 300;
+      margin-left: 5px;
+
+      @include font-size(16px);
     }
 
     button, button:hover, button:active {
       border-radius: 0;
       font-weight: 500;
-      height: 75px;
+      height: 34px;
       outline: none;
 
-      @include font-size(35px)
+      @include font-size(18px)
     }
 
     .terms {
-      @include font-size(19px);
+      @include font-size(14px);
     }
 
     h4 {
-      @include font-size(35px);
+      @include font-size(18px);
     }
   }
 }
