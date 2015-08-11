@@ -644,3 +644,53 @@ and (orientation : landscape) {
     }
   }
 }
+
+@media only screen
+and (min-device-width : 375px)
+and (max-device-width : 667px)
+and (orientation : portrait) {
+  .home-page {
+
+    .content {
+      width: 100%;
+    }
+
+    .home-page__hero {
+      background: image-url('hero-back.jpg') no-repeat center center;
+      background-size: cover;
+      height: 432px;
+      margin: 0 -15px;
+      position: relative;
+      width: 375px
+    }
+
+    .home-page__hero-content {
+      display: block;
+
+      p {
+        padding: 0 10px;
+        width: 100%;
+      }
+    }
+
+    .home-page__hero-video {
+      height: 137px;
+      left: 70px;
+      position: absolute;
+      top: 196px;
+      width: 245px;
+    }
+
+    .home-page__tagline {
+      padding: 15px 0;
+
+      @include font-size(18px);
+    }
+
+    .home-page__description-box {
+      .icon {
+        top: 185px;
+      }
+    }
+  }
+}
