@@ -59,3 +59,19 @@
     width: 24px;
   }
 }
+
+.discussion-thread--desktop {
+  svg {
+    display: table;
+    margin-top: 50px;
+  }
+
+  p {
+    color: $dark-blue;
+    font-weight: 300;
+    margin-top: 25px;
+    text-align: center;
+
+    @include font-size(18px);
+  }
+}

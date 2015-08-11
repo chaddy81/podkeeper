@@ -9,10 +9,19 @@
       .hidden-xs.col-sm-6.col-md-5.discussion-thread--desktop
         svg.icon.icon-events.center-block viewbox="0 0 1024 1024" style="width: 144px"
           use xlink:href="#icon-podkeeper-discussion"
-        p Select a discussion from the left to view, or click “New Discussion” to get a conversation started!
+        p
+          ' Select a discussion from the left to
+          br
+          'view, or click
+          = link_to '“New Discussion”', new_note_path
+          br
+          ' to get a conversation started!
     - else
       .col-sm-12.col-md-10
         p
           ' There are no discussions for this Pod. Click
           = link_to 'New Discussion', new_note_path
           ' to get a conversation started!
+
+  = render 'ad_leaderboard'
+= render 'ad_skyscraper'

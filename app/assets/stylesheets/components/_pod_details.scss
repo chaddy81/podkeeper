@@ -1,0 +1,12 @@
+.pod-details-container {
+  background: $blue-gray;
+  padding: 20px;
+
+  h4 {
+    margin: 0 0 10px;
+  }
+
+  p {
+    @include font-size(16px);
+  }
+}

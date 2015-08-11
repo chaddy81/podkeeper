@@ -1,25 +1,31 @@
-.col-sm-6.col-md-5
-  - if @events && @events.count > 0
-    .view-toggle
-      svg viewbox="0 0 1024 1024"
-        use xlink:href="#icon-podkeeper-list-view"
-  p.pull-left.hidden-xs= link_to 'New Event', new_event_path
-  .clearfix
-  - if @events && @events.count > 0
-    .event-calendar
-      = render 'calendar'
-    .event-container
-      = render @events
-  - else
-    ' This pod currently has no events.
-    = link_to 'Create a new event', new_event_path
-    | .
+.col-md-10
+  .col-sm-6.col-md-5
+    - if @events && @events.count > 0
+      .view-toggle
+        svg viewbox="0 0 1024 1024"
+          use xlink:href="#icon-podkeeper-list-view"
+    p.pull-left.hidden-xs= link_to 'New Event', new_event_path
+    .clearfix
+    - if @events && @events.count > 0
+      .event-calendar
+        = render 'calendar'
+      .event-container
+        = render @events
+    - else
+      ' This pod currently has no events.
+      = link_to 'Create a new event', new_event_path
+      | .
 
-.hidden-xs.col-sm-6.col-md-5.event-details--desktop
-  svg.icon.icon-events.center-block viewbox="0 0 1024 1024" style="width: 144px"
-    use xlink:href="#icon-podkeeper-calendar"
-  p
-    | Select an event from the left to <br />
-    | view details, and RSVP if required. <br />
-    | Click “New Event” above to schedule<br />
-    | something!
+  .hidden-xs.col-sm-6.col-md-5.event-details--desktop
+    svg.icon.icon-events.center-block viewbox="0 0 1024 1024" style="width: 144px"
+      use xlink:href="#icon-podkeeper-calendar"
+    p
+      | Select an event from the left to <br />
+      | view details, and RSVP if required. <br />
+      ' Click
+      = link_to '“New Event”', new_event_path
+      | above to schedule<br />
+      | something!
+
+  = render 'ad_leaderboard'
+= render 'ad_skyscraper'

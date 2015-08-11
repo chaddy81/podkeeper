@@ -30,7 +30,9 @@
     }
 
     &.open {
-      background: transparent;
+      a {
+        background: transparent;
+      }
     }
   }
 
