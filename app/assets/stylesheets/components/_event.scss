@@ -94,6 +94,16 @@
   }
 }
 
+.event-details-name {
+  background: $dark-blue;
+  color: #fff;
+  line-height: 1.2;
+  margin: 0;
+  padding: 10px 15px;
+
+  @include font-size(20px);
+}
+
 .event-details-container {
   color: $text-color;
   padding-bottom: 15px;
@@ -107,7 +117,7 @@
     color: $blue;
     font-weight: 300;
 
-    @include font-size(1px);
+    @include font-size(16px);
   }
 
   p {

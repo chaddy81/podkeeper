@@ -3,7 +3,7 @@
   = render @events
 
 col-xs-12.col-sm-6.col-md-5
-  h3.visible-xs= @event.name.humanize
+  h3.event-details-name= @event.name.humanize
   .event-details-container
     = render 'event_details', event: @event
   .event-rsvp-container
