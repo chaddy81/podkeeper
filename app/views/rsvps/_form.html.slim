@@ -36,5 +36,5 @@
         = f.input :comments, as: :text, label: false, input_html: { class: 'col-xs-12' }
 
       .btn-toolbar
-        = link_to 'Cancel', event_path(@event), class: 'back button btn cancel pull-left'
+        = link_to 'Cancel', event_url(@event), class: 'back button btn cancel pull-left', data: { 'turbo-links': false }
         button.btn.submit.pull-right Save

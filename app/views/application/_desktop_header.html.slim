@@ -12,6 +12,8 @@ nav.navbar.navbar-default.desktop-header
             | Create a New Pod
         li.pod-invites
           = link_to 'Pod Invites', invites_path
+      li
+        a href="#{overview_path}" Overview
       li.dropdown
         a.dropdown-toggle aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#" role="button"
           | About
@@ -19,19 +21,15 @@ nav.navbar.navbar-default.desktop-header
         ul.dropdown-menu
           li = link_to 'Our Mission', our_mission_path
           li = link_to 'Mobile', mobile_path
-          li = link_to 'Feedback', feedback_path
-          / li = link_to 'Feedback', new_site_comment_path, remote: true
-          li = link_to 'Contact Us', contact_path
 
       li.dropdown
         a.dropdown-toggle aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#" role="button"
           | Help
           span.caret
         ul.dropdown-menu
-          li = link_to 'Overview', overview_path
-          / li
-          /   a href="#"  Take a Tour
           li = link_to 'FAQs', faq_path
+          li = link_to 'Feedback', feedback_path
+          li = link_to 'Contact Us', contact_path
       li.dropdown
         - if current_user
           a.dropdown-toggle aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#" role="button"

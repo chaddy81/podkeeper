@@ -8,7 +8,7 @@
     background: image-url('hero-back.jpg') no-repeat center center;
     background-size: cover;
     height: 432px;
-    margin: 0 -15px;
+    margin: 0;
     position: relative;
     width: 320px
   }
@@ -84,7 +84,7 @@
       fill: $light-green;
       left: 50%;
       position: absolute;
-      top: 145px;
+      top: -42.5px;
       transform: translateX(-50%);
       width: 85px;
     }
@@ -92,6 +92,7 @@
     .content {
       background: $blue-gray;
       padding: 45px 10px 10px;
+      position: relative;
     }
   }
 
@@ -216,16 +217,17 @@
 }
 
 @media (min-width: 600px) {
-  /*.container {
-    width: 100%;
-  }*/
-
   .home-page {
+
+    .container {
+      width: 100%;
+    }
 
     .home-page__hero {
       background: image-url('hero-back-desktop.jpg') no-repeat center right;
       background-size: cover;
       height: 360px;
+      margin: 0;
       position: relative;
       width: 100%;
     }
@@ -236,25 +238,33 @@
 
     .home-page__hero-video {
       height: 220px;
+      left: auto;
       position: absolute;
       right: 47px;
       top: 51px;
       width: 399px;
     }
+
+    .home-page__tagline {
+      padding: 15px 0;
+
+      @include font-size(18px);
+    }
   }
 }
 
 @media (min-width: 768px) {
-  .container {
-    width: 100%;
-  }
-
   .home-page {
+
+    .container {
+      width: 100%;
+    }
 
     .home-page__hero {
       background: image-url('hero-back-desktop.jpg') no-repeat center right;
       background-size: cover;
       height: 360px;
+      margin: 0;
       position: relative;
       width: 100%;
     }
@@ -264,6 +274,7 @@
       display: block;
       left: 20px;
       position: absolute;
+      text-align: left;
       top: 85px;
       width: 325px;
 
@@ -280,7 +291,7 @@
 
       em {
         font-family: 'Open Sans';
-        width: 200px;
+        // width: 200px;
 
         @include font-size(14px);
       }
@@ -295,11 +306,12 @@
     }
 
     .home-page__hero-video {
-      height: 220px;
+      height: 223px;
+      left: auto;
       position: absolute;
-      right: 47px;
-      top: 51px;
-      width: 399px;
+      right: 50px;
+      top: 49px;
+      width: 400px;
     }
 
     .home-page__nav {
@@ -337,7 +349,7 @@
 
       .icon {
         position: absolute;
-        top: 95px;
+        top: -27.5px;
         width: 55px;
       }
 
@@ -422,19 +434,24 @@
       left: 15px;
       position: absolute;
       top: 100px;
-      width: 325px;
+      width: 345px;
 
       h3 {
         font-family: 'Raleway';
         font-weight: 500;
 
-        @include font-size(42px);
+        @include font-size(44px);
+      }
+
+      p {
+        width: 100%;
       }
 
       em {
         font-family: 'Open Sans';
+        width: 100%;
 
-        @include font-size(14px);
+        @include font-size(15px);
       }
 
       .btn {
@@ -449,6 +466,7 @@
 
     .home-page__hero-video {
       height: 268px;
+      left: auto;
       position: absolute;
       right: 60px;
       top: 62px;
@@ -494,16 +512,16 @@
 
     .home-page__hero-content {
       color: #fff;
-      left: 20px;
+      left: 60px;
       position: absolute;
-      top: 100px;
-      width: 322px;
+      top: 90px;
+      width: 460px;
 
       h3 {
         font-family: 'Raleway';
         font-weight: 500;
 
-        @include font-size(42px);
+        @include font-size(54px);
       }
 
       p {
@@ -513,7 +531,7 @@
       em {
         font-family: 'Open Sans';
 
-        @include font-size(18px);
+        @include font-size(20px);
       }
 
       .btn {
@@ -542,7 +560,7 @@
       }
 
       .icon {
-        top: 115px
+
       }
 
       .content {
@@ -567,6 +585,10 @@
 
 @media (min-width: 1200px) {
   .home-page {
+
+    .container {
+      width: 1170px;
+    }
 
     .home-page__hero-content {
       color: #fff;
@@ -636,12 +658,6 @@ and (orientation : landscape) {
 
       @include font-size(18px);
     }
-
-    .home-page__description-box {
-      .icon {
-        top: 315px;
-      }
-    }
   }
 }
 
@@ -651,7 +667,7 @@ and (max-device-width : 667px)
 and (orientation : portrait) {
   .home-page {
 
-    .content {
+    .container {
       width: 100%;
     }
 
@@ -685,12 +701,6 @@ and (orientation : portrait) {
       padding: 15px 0;
 
       @include font-size(18px);
-    }
-
-    .home-page__description-box {
-      .icon {
-        top: 185px;
-      }
     }
   }
 }
