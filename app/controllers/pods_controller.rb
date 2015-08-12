@@ -53,6 +53,7 @@ class PodsController < ApplicationController
 
     if @pod_user.valid?
       @pod_user.time_zone = adjust_time_zone(@pod_user.time_zone)
+
       @user = User.create!(email: @pod_user.email,
                            time_zone: @pod_user.time_zone,
                            remember_me: @pod_user.remember_me,
@@ -61,21 +62,28 @@ class PodsController < ApplicationController
       sign_in @user, @user.remember_me
       UserMailer.delay.new_user_welcome(@user)
       flash[:success] = 'Welcome to PodKeeper!'
-
-      if params[:authenticity_token]
-        pod = Invite.find_by_auth_token()
+      if params[:pod_user][:pod_id].present?
+        pod = Pod.find(params[:pod_user][:pod_id])
+        Invite.find_by_id(@pod_user.invite_id).accept!
       else
         pod = Pod.where(id: @user.last_pod_visited_id).first || @user.pods.last
       end
-      pod.present? ? redirect_back_or(events_path) : redirect_to(new_pod_path)
+      set_current_pod(pod)
+      redirect_to events_path
     else
       @invite = Invite.find_by_id(@pod_user.invite_id)
       if @invite
         flash[:error] = @pod_user.errors.full_messages.first
+        session[:error] = "failed"
         render :new_with_code
       else
         flash[:error] = @pod_user.errors.full_messages.first
-        render 'registrations/new'
+        # redirect_to new_session_path
+        if session[:reg_page] == '1'
+          render 'registrations/new'
+        else
+          render 'sessions/new'
+        end
       end
     end
   end

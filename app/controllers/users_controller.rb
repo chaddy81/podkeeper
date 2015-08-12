@@ -41,30 +41,34 @@ class UsersController < ApplicationController
     if @user.save
       sign_in @user, @user.remember_me
       UserMailer.delay.new_user_welcome(@user)
-
-      # assign invites from original invite email (in case it was changed in signup form)
-      invite = Invite.find(@user.invite_id)
-      @user.assign_invites(invite.email)
-
-      @user.received_invites.where(pod_id: @user.pod_id).each do |invite|
-        invite.accept!
-        unless @user.pods.include?(invite.pod) || invite.pod.nil?
-          @user.pod_memberships.create(pod: invite.pod, access_level: AccessLevel.member)
-        end
-        set_current_pod(@user.pod_memberships.last.pod)
-      end
-
-      Comment.where(invite_id: invite.id).each do |comment|
-        comment.convert_to_user_comment(@user.id)
-      end
-
       flash[:success] = 'Welcome to PodKeeper!'
-      session[:signup] = "success"
-      redirect_to thank_you_path(join: 'success')
+
+      unless @user.invite_id.blank?
+        # assign invites from original invite email (in case it was changed in signup form)
+        invite = Invite.find(@user.invite_id)
+        @user.assign_invites(invite.email)
+
+        @user.received_invites.where(pod_id: @user.pod_id).each do |invite|
+          invite.accept!
+          unless @user.pods.include?(invite.pod) || invite.pod.nil?
+            @user.pod_memberships.create(pod: invite.pod, access_level: AccessLevel.member)
+          end
+          set_current_pod(@user.pod_memberships.last.pod)
+        end
+
+        Comment.where(invite_id: invite.id).each do |comment|
+          comment.convert_to_user_comment(@user.id)
+        end
+
+        redirect_to events_path
+      else
+        redirect_to new_pod_path
+      end
+
+
     else
       @pod = Pod.find(@user.pod_id) unless @user.pod_id.nil?
-      session[:signup] = "failure"
-      render :new
+      render 'registrations/new'
     end
   end
 

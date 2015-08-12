@@ -1,4 +1,6 @@
-= simple_form_for @pod_user, url: pod_create_user_and_pod_path(0) do |f|
+= simple_form_for @user do |f|
+  = f.input :invite_id, as: :hidden
+  = f.input :pod_id, as: :hidden, input_html: { value: @pod.id } unless @pod.nil?
   = f.input :time_zone, as: :hidden, input_html: { id: 'set_user_time_zone' }
 
   .registration.center-block.clearfix

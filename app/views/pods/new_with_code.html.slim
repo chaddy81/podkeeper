@@ -1,113 +1,50 @@
-- provide :title, 'Create Pod'
-= render 'layouts/banner', banner_content: "My Account"
+= simple_form_for @pod_user, url: pod_create_user_and_pod_path(0) do |f|
+  = f.input :invite_id, as: :hidden
+  = f.input :pod_id, as: :hidden, input_html: { value: @pod.id } unless @pod.nil?
+  = f.input :time_zone, as: :hidden, input_html: { id: 'set_user_time_zone' }
 
-.container
-  .row
-    .main-contents__body
-      .row
-        .col-sm-12.col-md-6
-          .create-pod
-            h2 About this Invite
-            p
-              = @invite.inviter.full_name
-              '  thought it would be a good idea for you to create a Pod on PodKeeper to better manage your group. Just complete the form on the right and then follow the easy steps to invite all the members, add the upcoming events, and create a Pod note to provide some important information or start a conversation. It’s quick and will make it a lot easier to manage your group!
+  .registration.center-block.clearfix
+    .registration__header.clearfix
+      h3.pull-left Sign Up
+      h3.pull-right It’s Free. Always.
 
-            = simple_form_for @pod_user, defaults: { wrapper: :none }, url: pod_create_user_and_pod_path(0), html: { class: 'form-horizontal create-pod-invite__form' } do |f|
-              .create-pod-member.col-md-12
-                h3 Create a Pod
-                br
-                / = render 'shared/error_messages', f: f
-                .form-group
-                  label.control-label.col-sm-4 Pod Name *
-                  .col-sm-7.col-sm-offset-1
-                    = f.input :name, label: false, input_html: { class: 'create-pod__pod-name form-control', maxlength: 50 }
+    .form-group
+      .text-center
+        = link_to "/auth/facebook", class: 'registration__facebook' do
+          svg.icon.icon-facebook.center-block.visible-xs viewbox="0 0 8664 1024"
+            use xlink:href="#icon-podkeeper-facebook"
 
-                / .form-group
-                /   label.control-label.col-sm-4 Description
-                /   .col-sm-7.col-sm-offset-1
-                /     = f.input :description, label: false, input_html: { class: 'create-pod__description form-control', rows: 7 }
+          svg.icon.icon-facebook.center-block.hidden-xs viewbox="0 0 8810 1024"
+            use xlink:href="#icon-podkeeper-facebook-desktop"
+        p
+          span.blue-line
+          | OR
+          span.blue-line
 
-                .form-group
-                  label.control-label.col-sm-4 Category
-                  .col-sm-7.col-sm-offset-1
-                    = f.association :pod_category, label: false, label_method: :display_name, collection: PodCategory.in_order, input_html: { class: 'create-pod__category form-control' }
+    .form-group.text-center
+      = f.input :email, label: false, input_html: { placeholder: 'Enter Your Email Address' }
 
-                .form-group
-                  label.control-label.col-sm-4 More Specifically
-                  .col-sm-7.col-sm-offset-1
-                    = f.association :pod_sub_category, label: false, label_method: :display_name, input_html: { class: 'create-pod__sub-category form-control' }
+    .form-group.text-center
+      = f.input :password, label: false, input_html: { placeholder: 'Choose Password' }
 
-                = f.input :time_zone, as: :hidden, input_html: { id: 'set_user_time_zone' }
-                = f.input :invite_id, as: :hidden
+    .form-group
+      .text-center
+        = f.input :remember_me, as: :boolean, label: 'Remember Me', input_html: { class: 'user-info__remember', style: 'float:none;', checked: 'checked' }, inline_label: true
 
-              .user-info
-                h3 Your Information
-                br
-                .form-group
-                  label.control-label.col-sm-4 First Name
-                  .col-sm-7.col-sm-offset-1
-                    = f.input :first_name, label: false, wrapper: :no_wrap, error: false, input_html: { class: 'user-info__name form-control', value: f.object.first_name }
+    .form-group
+      .col-sm-12
+        input name="OI_FORM_IDENTIFIER" type="hidden" value=""
+        script src="//www.clear-request.com/oi/a/23504568.js" type="text/javascript"
 
-                .form-group
-                  label.control-label.col-sm-4 Last Name
-                  .col-sm-7.col-sm-offset-1
-                    = f.input :last_name, label: false, wrapper: :no_wrap, input_html: { class: 'user-info__name form-control' }, error: false
+      .text-center
+        = button_tag(type: 'submit', class: "btn btn-default btn-green btn-registration") do
+          | Sign Up for my Free Account
 
-                .form-group
-                  label.control-label.col-sm-4 Email
-                  .col-sm-7.col-sm-offset-1
-                    = f.input :email, label: false, wrapper: :no_wrap, input_html: { class: 'user-info__email form-control' }
+    p.terms.text-center
+      ' By creating an account you agree to the
+      = link_to 'Terms of Service', terms_of_service_path, target: '_blank'
+      | .
 
-                .form-group
-                  label.control-label.col-sm-4 Create Password
-                  .col-sm-7.col-sm-offset-1
-                    = f.input :password, label: false, wrapper: :no_wrap, input_html: { class: 'user-info__password form-control' }
-
-                / .form-group
-                /   label.control-label.col-sm-4 Confirm Password
-                /   .col-sm-7.col-sm-offset-1
-                /     = f.input :password_confirmation, label: false, wrapper: :no_wrap, input_html: { class: 'user-info__password form-control' }
-
-                .checkbox
-                  .col-sm-7.col-sm-offset-5
-                    label
-                      = f.input :remember_me, as: :boolean, label: 'Remember me on this computer', input_html: { checked: 'checked' }
-
-                .form-group
-                  .col-sm-12
-                    = f.submit 'Create and Join', class: 'user-info__submit btn btn-default', disable_with: 'Joining...'
-
-                p.user-info__disclaimer
-                  ' By completing this form and clicking the submit button you are becoming a member of PodKeeper. Which allows you to access this Pod and any other Pods you may create or get invited to. For additional details please view our
-                  = link_to 'Terms of Service.', terms_of_service_path, target: '_blank'
-
-        .col-sm-12.col-md-6
-          h2 What is PodKeeper?
-          p PodKeeper is the best way to coordinate your groups and stay organized with all the various activities going on in your life. You can:
-
-          ul style="list-style-type: disc; margin-left: 20px;"
-            li
-              p Set up events, RSVP to them, reference details and easily add them to your own online calendar
-            li
-              p Receive important updates to your regular email
-            li
-              p Easily communicate with other members, provide important upates, and coordinate all group logistics
-
-          p Oh, did we mention PodKeeper is free.
-
-- if session[:error] == 'failed'
-  javascript:
-    $(function() {
-      ga('send', 'event', 'register create pod', 'register', 'failure');
-    });
-
-  - session[:error] == ''
-
-javascript:
-  $(function() {
-    window.onbeforeunload = function() {
-      if ($('#pod_user_password').val() == '') {
-        ga('send', 'event', 'register create pod', 'exit', 'no input');
-      }
-    };
-  });
+    h4.text-center
+      ' Already have an account?
+      = link_to 'Log In', login_path
