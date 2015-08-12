@@ -1,18 +1,18 @@
-= link_to event do
-  .event.col-xs-12 data-event-id="#{event.id}"
-    .event-date.col-xs-3
-      svg.event-date__icon.center-block viewbox="0 0 1024 1024"
-        use xlink:href="#icon-podkeeper-date"
-      span.event-date__month= event.start_date.strftime("%b")
-      span.event-date__day= event.start_date.strftime("%d")
-    span.event-meta.pull-left
-      h4= truncate event.name, :length => 20
-      p
-        = event.start_date.strftime("%a. %b %d, %Y")
-        br
-        = event.start_time.strftime('%l:%M%P %Z')
-      p= event.location
-    span.event-rsvp.text-center.pull-right
+a.event.col-xs-12.clearfix data-event-id="#{event.id}" href="#{event_path(event)}"
+  .event-date.col-xs-3
+    svg.event-date__icon.center-block viewbox="0 0 1024 1024"
+      use xlink:href="#icon-podkeeper-date"
+    span.event-date__month= event.start_date.strftime("%b")
+    span.event-date__day= event.start_date.strftime("%d")
+  span.event-meta.pull-left
+    h4= truncate event.name, :length => 20
+    p
+      = event.start_date.strftime("%a. %b %d, %Y")
+      br
+      = event.start_time.strftime('%l:%M%P %Z')
+    p= event.location
+  span.event-rsvp.text-center.pull-right
+    - if event.require_rsvp?
       - if my_rsvp(event).rsvp_option
         svg.icon.icon-more.center-block viewbox="0 0 1024 1024"
           use xlink:href="#icon-podkeeper-#{my_rsvp(event).rsvp_option.name}"
@@ -24,5 +24,11 @@
 
       br
 
+      svg.icon.icon-more.center-block.hidden-xs viewbox="0 0 1024 1024" style="fill: #9FC03B;margin-top: 10px;width: 18px"
+        use xlink:href="#icon-podkeeper-arrow-right-green"
+    - else
+      span.icon.icon-no-rsvp
+      p.visible-xs No RSVP Required
+      br
       svg.icon.icon-more.center-block.hidden-xs viewbox="0 0 1024 1024" style="fill: #9FC03B;margin-top: 10px;width: 18px"
         use xlink:href="#icon-podkeeper-arrow-right-green"

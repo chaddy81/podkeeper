@@ -9,7 +9,7 @@
     - if @events && @events.count > 0
       .event-calendar
         = render 'calendar'
-      .event-container
+      .event-container.clearfix
         = render @events
     - else
       ' This pod currently has no events.
