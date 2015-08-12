@@ -33,12 +33,12 @@
               use xlink:href="#icon-podkeeper-file"
             | Files
         li
-           a.site-nav__item.site-nav__item--files.text-center href="#{invite_pods_path}"
+          = link_to invite_pods_path, class: "site-nav__item site-nav__item--files text-center #{is_active?(invite_pods_path)}"
             svg.icon.icon-files.center-block viewbox="0 0 1024 1024"
               use xlink:href="#icon-podkeeper-user"
             | Invite Others
         li
-           a.site-nav__item.site-nav__item--files.text-center href="#{details_pods_path}"
+          = link_to details_pods_path, class: "site-nav__item site-nav__item--files text-center #{is_active?(details_pods_path)}"
             svg.icon.icon-files.center-block viewbox="0 0 1024 1024"
               use xlink:href="#icon-podkeeper-information"
             | Pod Details

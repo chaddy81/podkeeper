@@ -53,38 +53,27 @@ class PodsController < ApplicationController
 
     if @pod_user.valid?
       @pod_user.time_zone = adjust_time_zone(@pod_user.time_zone)
-
-      #@user = User.create!(first_name: @pod_user.first_name,
-                           #last_name: @pod_user.last_name,
-                           #time_zone: @pod_user.time_zone,
-                           #password: @pod_user.password,
-                           ## password_confirmation: @pod_user.password_confirmation,
-                           #email: @pod_user.email,
-                           #remember_me: @pod_user.remember_me)
-
       @user = User.create!(email: @pod_user.email,
                            time_zone: @pod_user.time_zone,
                            remember_me: @pod_user.remember_me,
                            password: @pod_user.password)
 
-     # @pod = Pod.create!(name: @pod_user.name, description: @pod_user.description, pod_category_id: @pod_user.pod_category_id, pod_sub_category_id: @pod_user.pod_sub_category_id,organizer_id: @user.id)
-      #@pod.add_organizer
-
       sign_in @user, @user.remember_me
       UserMailer.delay.new_user_welcome(@user)
       flash[:success] = 'Welcome to PodKeeper!'
-      session[:register] = 'success'
-      #redirect_to thank_you_path(create: 'success')
-      pod = Pod.where(id: @user.last_pod_visited_id).first || @user.pods.last
-      pod.present? ? redirect_back_or(events_path(pod.slug, login: 'success')) : redirect_to(new_pod_path)
+
+      if params[:authenticity_token]
+        pod = Invite.find_by_auth_token()
+      else
+        pod = Pod.where(id: @user.last_pod_visited_id).first || @user.pods.last
+      end
+      pod.present? ? redirect_back_or(events_path) : redirect_to(new_pod_path)
     else
       @invite = Invite.find_by_id(@pod_user.invite_id)
       if @invite
         flash[:error] = @pod_user.errors.full_messages.first
-        session[:error] = "failed"
         render :new_with_code
       else
-        puts "PodUser invalid, bad render"
         flash[:error] = @pod_user.errors.full_messages.first
         render 'registrations/new'
       end
@@ -209,16 +198,6 @@ class PodsController < ApplicationController
   def update_pod_sub_category
     pod_category = PodCategory.find(params[:id])
     render json: pod_category.subcategories_in_order.to_json
-  end
-
-  def show_get_ready_bar
-    current_pod_membership.show_get_ready_bar! unless current_pod_membership.nil?
-    render :refresh_get_ready_bar
-  end
-
-  def hide_get_ready_bar
-    current_pod_membership.hide_get_ready_bar! unless current_pod_membership.nil?
-    render :refresh_get_ready_bar
   end
 
   def switch
