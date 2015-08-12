@@ -14,13 +14,22 @@
     }
   }
 
+  &.notice {
+    background: $blue-gray;
+    color: $text-color;
+
+    a {
+      color: $text-color;
+      text-decoration: underline;
+    }
+  }
+
   &.error {
     background: $red;
     color: #fff;
   }
 
   .close {
-    color: #fff;
     font-family: 'Open Sans';
     opacity: 1;
     outline: none;
