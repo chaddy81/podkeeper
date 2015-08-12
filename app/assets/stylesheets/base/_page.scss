@@ -16,3 +16,31 @@ body {
 a {
   outline: none;
 }
+
+.page-sign-up {
+  background: $blue-gray;
+  display: table;
+  margin: 35px auto 20px;
+  padding: 20px 40px;
+
+  .btn--green {
+    border-radius: 0;
+    display: table;
+    margin-bottom: 15px;
+    padding: 14px 36px;
+
+    &:hover {
+      color: #fff;
+    }
+
+    @include font-size(24px);
+  }
+
+  p {
+    color: $text-color;
+    font-weight: 500;
+    margin: 0;
+
+    @include font-size(21px);
+  }
+}
