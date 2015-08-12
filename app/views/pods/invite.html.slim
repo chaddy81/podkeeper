@@ -16,37 +16,37 @@
           .pull-right
             button.btn.btn-default.btn-blue type="submit" Send Invites
 
-    / h4 Send Reminders
-    / p.italic
-    /   | The following people have been invited to join your Pod but have not yet responded to the invitation.
-    /   br
-    /   | Please check all the names of those whom you wish to remind.
-    / .invites__reminders.table-responsive
-    /   - if @outstanding_invites.any?
-    /     = form_tag reminders_path, class: 'event-add-guest', remote: true do |f|
-    /       table.table
-    /         thead
-    /           tr
-    /             th
-    /               / input.invite__select-all type="checkbox"
-    /               = check_box_tag :select_all, nil, false, 'data-select-all' => true
-    /             th Name
-    /             th Email
-    /             th Sent
-    /             th Last Reminder
-    /             th Date Invited
+    h4 Send Reminders
+    p.italic
+      | The following people have been invited to join your Pod but have not yet responded to the invitation.
+      br
+      | Please check all the names of those whom you wish to remind.
+    .invites__reminders.table-responsive
+      - if @outstanding_invites.any?
+        = form_tag reminders_path, class: 'event-add-guest', remote: true do |f|
+          table.table
+            thead
+              tr
+                th
+                  / input.invite__select-all type="checkbox"
+                  = check_box_tag :select_all, nil, false, 'data-select-all' => true
+                th Name
+                th Email
+                th Sent
+                th Last Reminder
+                th Date Invited
 
-    /         tbody
-    /           - @outstanding_invites.each do |invite|
-    /             tr
-    /               td = check_box_tag("reminders[#{invite.id}", true, false)
-    /               td = render 'users/name', user: invite
-    /               td = invite.email
-    /               td = invite.reminders.count
-    /               td = l invite.reminders.last.created_at, format: '%a. %b %e, %Y' if invite.reminders.any?
-    /               td = l invite.created_at, format: '%a. %b %e, %Y'
+            tbody
+              - @outstanding_invites.each do |invite|
+                tr
+                  td = check_box_tag("reminders[#{invite.id}", true, false)
+                  td = render 'users/name', user: invite
+                  td = invite.email
+                  td = invite.reminders.count
+                  td = l invite.reminders.last.created_at, format: '%a. %b %e, %Y' if invite.reminders.any?
+                  td = l invite.created_at, format: '%a. %b %e, %Y'
 
-    /       .col-sm-12
-    /         .pull-right
-    /           a.cancel Cancel
-    /           = submit_tag 'Send Reminders', disable_with: 'Sending Reminders...', class: 'btn btn-default btn-blue'
+          .col-sm-12
+            .pull-right
+              a.cancel Cancel
+              = submit_tag 'Send Reminders', disable_with: 'Sending Reminders...', class: 'btn btn-default btn-blue'

@@ -10,7 +10,7 @@
     height: 432px;
     margin: 0;
     position: relative;
-    width: 320px
+    width: 100%;
   }
 
   .home-page__hero-content {
@@ -42,11 +42,11 @@
   }
 
   .home-page__hero-video {
-    height: 116px;
-    left: 61px;
+    height: 131px;
+    left: 69px;
     position: absolute;
-    top: 199px;
-    width: 207px;
+    top: 197px;
+    width: 241px;
   }
 
   .home-page__nav {
@@ -58,6 +58,8 @@
     color: #fff;
     font-family: 'Raleway';
     padding: 10px 0;
+
+    @include font-size(16px);
   }
 
   .home-page__description-box {
