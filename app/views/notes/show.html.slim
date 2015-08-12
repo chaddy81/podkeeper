@@ -11,15 +11,17 @@
         span.pull-right= @note.created_at.strftime("%b %d, %Y, %l:%M%P")
       p= @note.body
 
-  - @note.comments.each do |comment|
-    .col-xs-12.comment
-      img.pull-left src="#{get_gravatar(@note.user.email, 32)}" /
-      .comment-info
-        .discussion-meta.clearfix
-          span.pull-left= comment.user.full_name
-          span.pull-right= comment.created_at.strftime("%b %d, %Y, %l:%M%P")
-        p= comment.body
+    - @note.comments.each do |comment|
+      .col-xs-12.comment
+        img.pull-left src="#{get_gravatar(@note.user.email, 32)}" /
+        .comment-info
+          .discussion-meta.clearfix
+            span.pull-left= comment.user.full_name
+            span.pull-right= comment.created_at.strftime("%b %d, %Y, %l:%M%P")
+          p= comment.body
 
-form.col-xs-12.col-md-10.new-comment
-  input.col-xs-9 placeholder=("Add a Comment") type="text" /
-  button type="submit"  Post
+    = simple_form_for @note.comments.new, html: { class: ' col-xs-12 col-md-10 new-comment' } do |f|
+      = f.input :body, as: :text, label: false, input_html: { class: 'col-xs-9', placeholder: 'Add a Comment' }
+
+      = f.submit 'Post'
+      = f.input :note_id, as: :hidden, value: @note.id

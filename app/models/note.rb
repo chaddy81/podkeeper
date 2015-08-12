@@ -27,7 +27,7 @@ class Note < ActiveRecord::Base
 
   before_create :generate_token
 
-  # after_create :send_notifications
+  after_create :send_notifications
 
   def update_sort_by_date
     self.update_column(:sort_by_date, DateTime.now)
@@ -42,12 +42,12 @@ class Note < ActiveRecord::Base
 
   private
 
-  # def send_notifications
-  #   if is_urgent?
-  #     Notifications.new.urgent_note_posted(self)
-  #   else
-  #     Notifications.new.note_posted(self)
-  #   end
-  # end
+  def send_notifications
+    if is_urgent?
+      Notifications.new.urgent_note_posted(self)
+    else
+      Notifications.new.note_posted(self)
+    end
+  end
 
 end

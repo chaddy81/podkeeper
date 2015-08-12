@@ -8,7 +8,7 @@ class CommentsController < ApplicationController
       @comments = @comment.note.comments.includes(:user)
       @note = @comment.note
       @notes = @note.pod.notes.order('sort_by_date DESC')
-      redirect_to notes_path(pod_id: current_pod.id)
+      redirect_to note_path(@note)
     else
       flash[:error] = @comment.errors.full_messages.first
       redirect_to :back

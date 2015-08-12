@@ -12,7 +12,7 @@ class Comment < ActiveRecord::Base
   belongs_to :invite
   belongs_to :note
 
-  # after_create :send_notification
+  after_create :send_notification
   after_save :update_note_timestamp_for_sorting
 
   def convert_to_user_comment user_id
@@ -25,9 +25,9 @@ class Comment < ActiveRecord::Base
 
   private
 
-  # def send_notification
-  #   Notifications.new.reply_to_my_note(self)
-  # end
+  def send_notification
+    Notifications.new.reply_to_my_note(self)
+  end
 
   def update_note_timestamp_for_sorting
     self.note.update_sort_by_date
