@@ -2,8 +2,6 @@
 
 - total_maybe = total_adults(event.rsvps.undecided) + total_kids(event.rsvps.undecided)
 
-- total_no = total_adults(event.rsvps.rejected) + total_kids(event.rsvps.rejected)
-
 - user_ids = event.rsvps.pluck(:user_id)
 
 - no_answer = event.pod.users.where('users.id NOT IN (?)', user_ids)
@@ -23,7 +21,7 @@
       a.pull-left.rsvp-users.rsvp-users--no
         svg.icon.center-block viewbox=("0 0 1024 1024")
           use xlink:href="#icon-podkeeper-no"
-        p #{total_no} Not Going
+        p #{event.rsvps.rejected.count} No
       a.pull-left.rsvp-users.rsvp-users--rsvp
         svg.icon.center-block viewbox=("0 0 1024 1024")
           use xlink:href="#icon-podkeeper-rsvp"
@@ -54,10 +52,10 @@
         thead
           tr
             th
-            th.rsvp-results__adults
+            th.rsvp-results__adults.text-center
               svg.icon viewbox=("0 0 1024 1024")
                 use xlink:href="#icon-podkeeper-user"
-            th.rsvp-results__kids
+            th.rsvp-results__kids.text-center
               svg.icon viewbox=("0 0 1024 1024")
                 use xlink:href="#icon-podkeeper-user"
         tbody
@@ -69,15 +67,15 @@
               td.text-center= rsvp.number_of_adults
               td.text-center= rsvp.number_of_kids
 
-    - if total_no > 0
+    - if event.rsvps.rejected.count > 0
       table.rsvp-results.rsvp-results--no.col-xs-12
         thead
           tr
             th
-            th.rsvp-results__adults
+            th.rsvp-results__adults.text-center
               svg.icon viewbox=("0 0 1024 1024")
                 use xlink:href="#icon-podkeeper-user"
-            th.rsvp-results__kids
+            th.rsvp-results__kids.text-center
               svg.icon viewbox=("0 0 1024 1024")
                 use xlink:href="#icon-podkeeper-user"
         tbody
@@ -94,10 +92,10 @@
         thead
           tr
             th
-            th.rsvp-results__adults
+            th.rsvp-results__adults.text-center
               svg.icon viewbox=("0 0 1024 1024")
                 use xlink:href="#icon-podkeeper-user"
-            th.rsvp-results__kids
+            th.rsvp-results__kids.text-center
               svg.icon viewbox=("0 0 1024 1024")
                 use xlink:href="#icon-podkeeper-user"
         tbody
