@@ -10,7 +10,8 @@ $(function() {
   });
 
   $(document).on('click', '.rsvp-users', function() {
-    $('.rsvp-results').removeClass('active');
+    $('.rsvp-results, .rsvp-users').removeClass('active');
+    $(this).addClass('active');
     if($(this).hasClass('rsvp-users--yes')) {
       if ($('.rsvp-results--yes').length) {
         $('.rsvp-results--yes').addClass('active');

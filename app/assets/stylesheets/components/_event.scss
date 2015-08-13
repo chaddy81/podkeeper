@@ -213,7 +213,11 @@
   }
 }
 
-#new_event, #edit_event {
+.new_event, .edit_event {
+  .error {
+    display: none;
+  }
+
   .end-date-time {
     display: none;
   }

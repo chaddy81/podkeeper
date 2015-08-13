@@ -242,6 +242,10 @@
     width: 20px;
   }
 
+  &.active {
+    color: $text-color;
+  }
+
   &.rsvp-users---yes.active, &.rsvp-users---yes:hover, &.rsvp-users---yes:active {
     color: $green;
     text-decoration: underline;
