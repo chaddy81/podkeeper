@@ -4,6 +4,10 @@
   min-height: 100vh;
   position: relative;
   transform: translate3d(0, 0, 0);
+
+  &.panel {
+    margin-bottom: 0;
+  }
 }
 
 .slideout-menu {
