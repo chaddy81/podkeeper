@@ -23,7 +23,7 @@
       | Please check all the names of those whom you wish to remind.
     .invites__reminders.table-responsive
       - if @outstanding_invites.any?
-        = form_tag reminders_path, class: 'event-add-guest', remote: true do |f|
+        = form_tag reminders_path, class: 'event-add-guest' do |f|
           table.table
             thead
               tr
@@ -48,5 +48,5 @@
 
           .col-sm-12
             .pull-right
-              a.cancel Cancel
-              = submit_tag 'Send Reminders', disable_with: 'Sending Reminders...', class: 'btn btn-default btn-blue'
+              = link_to 'Cancel', invite_pods_path, class: 'btn btn--cancel'
+              = submit_tag 'Send Reminders', disable_with: 'Sending Reminders...', class: 'btn btn-default btn-blue', data: { 'turbo-links': false }
