@@ -22,7 +22,7 @@
       .col-sm-8
         .pull-right
           - if current_pod
-            = link_to 'Cancel', events_path, class: 'back'
+            = link_to 'Cancel', events_path, class: 'back btn btn--cancel'
           - else
-            = link_to 'Cancel', no_pod_path, class: 'back'
+            = link_to 'Cancel', no_pod_path, class: 'back btn btn--cancel'
           input.user-info__submit.btn type="submit" value="Create a Pod"
