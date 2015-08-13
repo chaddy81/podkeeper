@@ -9,7 +9,7 @@
           ul.dropdown-menu
             - current_user.pods.includes(:pod_memberships).sort_by{|p| p.name.humanize}.each do |pod|
               li
-                a href="#{set_pod_pods_path(pod_id: pod.id)}" data-remote="true" = pod.name.humanize
+                a href="#{set_pod_pods_path(pod_id: pod.id)}" data-remote="true" = pod.name
 
       ul.nav.navbar-nav.navbar-right.site-nav
         li
