@@ -1,0 +1,16 @@
+.col-sm-12.col-md-8
+  .decline-pod
+    h3
+      | Are you sure you want to decline this pod?
+      h3.pod-name
+        = @invite.pod_name
+      p If you decline, you will not receive any communications including updates or event notifications from this Pod
+
+      .actions
+        = link_to decline_pod_invite_url(@invite, declined: true), class: 'btn btn-lg blue' do
+          | Decline
+
+        = link_to signup_path(auth_token: @invite.auth_token), class: 'btn btn-lg green' do
+          | Actually, I’d like to
+          br
+            span Join
