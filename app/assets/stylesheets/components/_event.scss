@@ -213,6 +213,87 @@
   }
 }
 
+#new_event, #edit_event {
+  .end-date-time {
+    display: none;
+  }
+
+  .multiple-event {
+    display: none;
+  }
+
+  .single-event.show-end, .single-event.hide-end {
+    cursor: pointer;
+    display: none;
+    position: relative;
+
+    .icons {
+      position: relative;
+
+      @include font-size(28px);
+    }
+
+    .icons__delete {
+      color: $red;
+    }
+
+    span {
+      vertical-align: 7px;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    &.active {
+      display: inline-block;
+    }
+  }
+
+  &.weekly-series {
+
+    .single-event {
+      display: none;
+    }
+
+    .multiple-event {
+      display: block;
+    }
+
+    .single-event.show-end, .single-event.hide-end {
+      display: none;
+    }
+
+    .show-end, .hide-end {
+      cursor: pointer;
+      display: none;
+      position: relative;
+
+      .icons {
+        position: relative;
+
+        @include font-size(28px);
+      }
+
+      .icons__delete {
+        color: $red;
+      }
+
+      span {
+        vertical-align: 7px;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+
+      &.active {
+        display: inline-block;
+      }
+    }
+  }
+}
+
 @media (min-width: 768px) {
   .event-details-container, .event-rsvp-container, .event-attending-container {
     .container {
