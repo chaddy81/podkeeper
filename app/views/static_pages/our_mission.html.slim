@@ -16,10 +16,11 @@
 
       p It’s quick, easy and free to get organized with PodKeeper.
 
-      .page-sign-up
-        .btn.btn--green.center-block Sign Up
+      - unless current_user
+        .page-sign-up
+          .btn.btn--green.center-block href="#{signup_path}" Sign Up
 
-        p.text-center It’s 100% Free!
+          p.text-center It’s 100% Free!
 
     /   = render 'ad_leaderboard'
 

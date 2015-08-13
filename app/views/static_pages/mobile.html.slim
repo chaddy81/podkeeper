@@ -7,9 +7,10 @@
         | Simply open up your browser from your mobile device and type in:
         = link_to 'podkeeper.com', root_url
 
-      .page-sign-up
-        .btn.btn--green.center-block Sign Up
+      - unless current_user
+        .page-sign-up
+          .btn.btn--green.center-block href="#{signup_path}" Sign Up
 
-        p.text-center It’s 100% Free!
+          p.text-center It’s 100% Free!
 
     .clearfix

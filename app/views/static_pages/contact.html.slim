@@ -21,7 +21,8 @@
 
       p PodKeeper, 222 South Church Street, Suite 100, Charlotte, NC 28202
 
-      .page-sign-up
-        .btn.btn--green.center-block Sign Up
+      - unless current_user
+        .page-sign-up
+          .btn.btn--green.center-block href="#{signup_path}" Sign Up
 
-        p.text-center It’s 100% Free!
+          p.text-center It’s 100% Free!
