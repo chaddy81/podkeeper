@@ -27,7 +27,8 @@
     p
       ' Once you fill out the List, have an email sent out:
       = link_to 'Notify the Pod of this List', notify_pod_list_path(list)
-      = image_tag 'ico-info.png', 'data-toggle' => "tooltip", 'data-placement' => "auto", "data-html" => "true", title: "When you click this link, an email will be sent to all Pod members and invitees", style: 'margin-left: 5px;width: 14px;', class: 'reminder-tooltip'
+      svg.icon viewbox="0 0 1024 1024" style="width: 21px; margin-left: 10px;vertical-align: middle;" data-toggle="tooltip" data-placement="auto" data-html="true" title="When you click this link, an email will be sent to all Pod members and invitees"
+        use xlink:href="#icon-podkeeper-info-yellow"
 
 .list__items data-list-id="#{list.id}"
   .table-responsive

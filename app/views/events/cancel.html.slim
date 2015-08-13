@@ -1,0 +1,15 @@
+.col-sm-12.col-md-10
+  .col-md-6
+    p Please note that if you cancel an event, all information associated with that event (Discussions, Event Details and RSVPs) will be deleted.
+
+  .col-md-6
+    h5 The following note will be sent to all members:
+    = render 'cancel_email_text', event: @event
+    p
+      | All the best,
+      br/
+      = @event.organizer.full_name
+
+    .pull-right
+      = link_to 'Never mind', event_path(@event), class: 'back btn--cancel'
+      = link_to 'Cancel event &amp; Send email'.html_safe, event_path(@event), method: :delete, class: 'btn btn--green', disable_with: 'Processing...'

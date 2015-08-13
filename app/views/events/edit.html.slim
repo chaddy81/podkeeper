@@ -1,6 +1,10 @@
-.col-sm-12
+.col-sm-12.col-md-8
   h3.event-details__header EDIT AN EVENT
-  p Make any changes and click Save. For Events in a Weekly Series, edit each Event individually.
+  p.pull-left Make any changes and click Save. For Events in a Weekly Series, edit each Event individually.
+
+  = link_to 'Cancel Event', event_cancel_path(@event.id), class: 'btn btn--cancel pull-right'
+
+  .clearfix
 
   = simple_nested_form_for @event do |f|
     .col-sm-12.col-md-6
@@ -28,7 +32,7 @@
 
     .col-sm-12.col-md-6
       h4 When
-      .form-group
+      .form-group.clearfix
         = label_tag 'Begin *'
         = f.input :start_date, as: :string, label: false, input_html: { class: 'form-control dt-date datepicker', value: datepicker_format(f.object.start_date), style: 'float:left; width: 28%;margin-right: 10px' }
         span.pull-left at
@@ -39,7 +43,7 @@
 
         = f.input :time_zone, collection: TIME_ZONE_OPTIONS, include_blank: false, label: false, input_html: { class: 'timezone form-control', style: 'width: 29%;float:left;margin-left:10px;' }
 
-      .form-group
+      .form-group.clearfix
         = label_tag 'End'
         = f.input :end_date, as: :string, label: false, input_html: { class: 'form-control dt-date datepicker', value: datepicker_format(f.object.end_date), style: 'float:left; width: 28%;margin-right: 10px' }
         span.pull-left at
@@ -49,13 +53,14 @@
           = f.input :end_time, as: :string, label: false, input_html: { class: 'form-control dt-time timepicker pull-left', style: 'float:left;width:28%;margin-left: 10px' }, wrapper_html: { class: 'bootstrap-timepicker' }
 
 
-      .form-group
-        = f.input :notify_members_of_update, as: :boolean, input_html: { class: 'checkbox', style: 'margin:4px 6px 0 -20px;' }, label: '<p>Send email with the updated information to Pod Members.</p>'.html_safe
+      .form-group.clearfix
+        = f.input :notify_members_of_update, as: :boolean, input_html: { class: 'checkbox', style: 'margin:4px 6px 0 0;display: inline-block' }, label: '<p>Send email with the updated information to Pod Members.</p>'.html_safe
 
       h4.specify-reminders
         a
           | Reminders
-        = image_tag 'ico-info.png', 'data-toggle' => "tooltip", 'data-placement' => "auto", "data-html" => "true", title: "<p><strong>The following reminders will be sent unless you change them:</strong></p><p>To Pod Members who haven't RSVP'd (if one was requested):<br/>   14 days & 4 days prior to event</p><p>To all Pod members (except those who RSVP'd No)<br/>   7 days & 1 day prior to event</p>", style: 'width: 14px;', class: 'reminder-tooltip'
+        svg.icon viewbox="0 0 1024 1024" style="width: 21px; margin-left: 10px;vertical-align: middle;" data-toggle="tooltip" data-placement="auto" data-html="true" title="<p><strong>The following reminders will be sent unless you change them:</strong></p><p>To Pod Members who haven't RSVP'd (if one was requested):<br/>   14 days &amp; 4 days prior to event</p><p>To all Pod members (except those who RSVP'd No)<br/>   7 days &amp; 1 day prior to event</p>"
+          use xlink:href="#icon-podkeeper-info-yellow"
 
       .event-details__reminders
         p We will send automatic reminders to RSVP (if one is required) and that the event is coming up. You can adjust when these will be sent.
@@ -79,5 +84,5 @@
 
       .event-details__form-controls
         .pull-right
-          = link_to 'Cancel', events_path, class: 'back'
+          = link_to 'Cancel', events_path, class: 'back btn btn--cancel'
           = f.submit 'Save', class: 'submit btn', disable_with: 'Saving...'

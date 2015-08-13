@@ -1,4 +1,4 @@
-.col-sm-12
+.col-sm-12.col-md-8
   - if params[:action] == 'duplicate'
     h3.event-details__header DUPLICATE AN EVENT
     p Change any information to create a new event. You can click Duplicate this Event once it’s saved if you have more to create.
@@ -9,7 +9,7 @@
     .col-sm-12
       .form-group
         = f.input :single_event, label: false, collection: [['Single Event', true], ['Repeat as a Weekly Series', false]],
-           as: :radio_buttons, item_wrapper_class: 'inline'
+           as: :radio_buttons, item_wrapper_class: 'inline', input_html: { style: 'margin-left: 0;' }
     .col-sm-12.col-md-6
       h4 Event Details
       .form-group
@@ -82,7 +82,8 @@
       h4.specify-reminders
         a
           | Reminders
-        = image_tag 'ico-info.png', 'data-toggle' => "tooltip", 'data-placement' => "auto", "data-html" => "true", title: "<p><strong>The following reminders will be sent unless you change them:</strong></p><p>To Pod Members who haven't RSVP'd (if one was requested):<br/>   14 days & 4 days prior to event</p><p>To all Pod members (except those who RSVP'd No)<br/>   7 days & 1 day prior to event</p>", style: 'width: 14px;', class: 'reminder-tooltip'
+        svg.icon viewbox="0 0 1024 1024" style="width: 21px; margin-left: 10px;vertical-align: middle;" data-toggle="tooltip" data-placement="auto" data-html="true" title="<p><strong>The following reminders will be sent unless you change them:</strong></p><p>To Pod Members who haven't RSVP'd (if one was requested):<br/>   14 days &amp; 4 days prior to event</p><p>To all Pod members (except those who RSVP'd No)<br/>   7 days &amp; 1 day prior to event</p>"
+          use xlink:href="#icon-podkeeper-info-yellow"
 
       .event-details__reminders
         p We will send automatic reminders to RSVP (if one is required) and that the event is coming up. You can adjust when these will be sent.
@@ -108,5 +109,5 @@
         / = link_to 'Clear All Fields', event_clear_fields_path(@event), id: 'clear-event-form', class: 'pull-left back'
 
         .pull-right
-          = link_to 'Cancel', events_path, class: 'back'
+          = link_to 'Cancel', events_path, class: 'back btn btn--cancel'
           = f.submit 'Save', class: 'submit btn btn-blue', disable_with: 'Saving...'

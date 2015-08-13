@@ -28,8 +28,6 @@ $(function() {
       }
     });
 
-    console.log($('input[name="event[single_event]"]:checked').val());
-
     if ($('input[name="event[single_event]"]:checked').val() == 'false') {
       $('#new_event, #edit_event').addClass('weekly-series');
       if($('#event_end_date').val() != '' || $('#event_end_time').val() != '') {
@@ -139,9 +137,9 @@ $(function() {
         $('#time-zone-modal input#time_zone').val($('#current_user_time_zone').val());
     });
 
-    // $('#event_phone').mask('?999-999-9999');
+    $('#event_phone').mask('?999-999-9999');
 
-    // $('#event_start_time').timepicker();
+    $('#event_start_time').timepicker();
 
     $('[data-rsvp-reminders] .remove_nested_fields:first').remove();
     $('[data-event-reminders] .remove_nested_fields:first').remove();
@@ -387,13 +385,13 @@ function initializeEndTime() {
           meridian = new_time.getHours() > 12 ? 'pm':'am',
           end_time = hours + ':' + minutes + meridian;
 
-      // $(this).timepicker({
-      //     'setTime': end_time,
-      //     'timeFormat': 'g:ia'
-      // });
+      $(this).timepicker({
+          'setTime': end_time,
+          'timeFormat': 'g:ia'
+      });
       $(this).val(end_time);
-      // $(this).timepicker('hide');
-      // $(this).timepicker('show');
+      $(this).timepicker('hide');
+      $(this).timepicker('show');
 
       $(".ui-timepicker-list:visible li:contains('" + end_time + "')").addClass('ui-timepicker-selected');
   });

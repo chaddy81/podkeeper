@@ -62,10 +62,7 @@ class SessionsController < ApplicationController
         sign_in user, params[:remember_me]
         user.update_attribute :last_login, DateTime.now
         pod = Pod.where(id: user.last_pod_visited_id).first || user.pods.last
-        # redirect_to dashboard_pod_path(pod.slug)
-        # pod.present? ? redirect_back_or(events_path(pod.slug, login: 'success')) : redirect_to(no_pod_path)
         pod.present? ? redirect_back_or(events_path) : redirect_to(new_pod_path)
-
       else
         session[:email] = params[:email]
         session[:login] = "failure"

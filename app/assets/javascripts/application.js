@@ -14,7 +14,13 @@
 //= require jquery.turbolinks
 //= require jquery_ujs
 //= require jquery_nested_form
-//= require bootstrap
-//= require turbolinks
 //= require jquery-ui
+//= require jquery.timepicker.js
+//= require detect_timezone
+//= require jquery.detect_timezone
+//= require auto-grow-textareas
+//= require jquery.maskedInput
+//= require bootstrap
+//= require bootstrap-datepicker
+//= require turbolinks
 //= require_tree .

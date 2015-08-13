@@ -1,0 +1,12 @@
+p
+  ' We want to let you know that
+  = event.name
+  ', an event with
+  = event.pod.name
+  ', has been cancelled for
+  = event.start_date.strftime("%A, %b %d")
+  '  at
+  = l @event.start_time.in_time_zone(@event.time_zone), format: '%I:%M%p %Z'
+  ' .  If you would like more information feel free to contact me.
+
+p Please note that all information associated with this event, including Discussions, Event Details and RSVPs, will no longer be available.</p>
