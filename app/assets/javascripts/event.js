@@ -9,11 +9,6 @@ $(function() {
     $('.rsvp-count__user, .rsvp-comment').show();
   });
 
-  // $('#new_rsvp .cancel').on('click', function(e) {
-  //   e.preventDefault();
-  //   $('.rsvp-count-comment').hide();
-  // });
-
   $(document).on('click', '.rsvp-users', function() {
     $('.rsvp-results').removeClass('active');
     if($(this).hasClass('rsvp-users--yes')) {
@@ -38,10 +33,4 @@ $(function() {
       }
     }
   });
-
-  // $("form[id^=edit_rsvp_]").on("ajax:success", function(e, data, status, xhr) {
-  //   $('.error-messages .alert').addClass('alert-success').text('RSVP was updated successfully!');
-  // }).on("ajax:error", function(e, xhr, status, error) {
-  //   $('.error-messages .alert').addClass('alert-danger').text(xhr.responseText);
-  // });
 });
