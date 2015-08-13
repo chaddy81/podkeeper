@@ -22,7 +22,8 @@ h4.header Details
   .event-details__contact
     h3 Event Contact
     .vcard
-      p.fn= event.organizer.full_name
+      - if event.organizer.full_name != event.organizer.email
+        p.fn= event.organizer.full_name
       p.tel= event.organizer.phone
       p.email= event.organizer.email
   - if current_user?(event.organizer) || is_at_least_pod_admin?
