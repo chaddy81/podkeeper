@@ -3,7 +3,7 @@
 
     h2.section-title Files
     .main-contents__body
-      = link_to 'Add a File', '#', class: 'btn btn-default btn-blue', 'data-new-file' => 'true'
+      = link_to 'Add a File', '#', class: 'btn btn--green', 'data-new-file' => 'true'
       .files
         = simple_form_for @uploaded_file, defaults: { label: false, error_html: { style: 'display:none' } }, html: { class: 'files__new', 'data-show-form' => 'true', novalidate: true, remote: true } do |f|
           .form-group
@@ -17,8 +17,8 @@
               = f.input :remote_file_url, as: :string, input_html: { placeholder: 'Type or paste a web link', class: 'form-control pull-left' }
             = f.input :pod_membership_id, as: :hidden
           .form-controls.pull-right
-            = f.submit 'Save', class: 'submit btn btn-default btn-blue', disable_with: 'Save'
-            = link_to 'Cancel', uploaded_files_path, class: 'back', style: 'margin-left: 20px;'
+            = f.submit 'Save', class: 'submit btn', disable_with: 'Save'
+            = link_to 'Cancel', uploaded_files_path, class: 'back btn btn--cancel'
 
         - if @uploaded_files.any?
           .table-responsive

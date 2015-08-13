@@ -9,3 +9,16 @@
   font-size: $size;
   font-size: calculateRem($size);
 }
+
+/*==========  Clearfix  ==========*/
+
+@mixin clearfix() {
+  &:before,
+  &:after {
+      content: "";
+      display: table;
+  }
+  &:after {
+      clear: both;
+  }
+}

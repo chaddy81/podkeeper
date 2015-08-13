@@ -5,5 +5,5 @@
     = f.input :name, label: false, placeholder: 'Name', input_html: { class: 'form-control' }
     = f.association :pod, as: :hidden,  input_html: { value: pod.id }
     = f.association :user, as: :hidden, input_html: { value: current_user.id }
-    = f.submit 'Save', disable_with: 'Saving...', class: 'btn btn-default btn-blue'
+    = f.submit 'Save', disable_with: 'Saving...', class: 'btn'
     = link_to 'Cancel', '#', class: 'back', 'data-dismiss' => 'modal'

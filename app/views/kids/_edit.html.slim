@@ -3,5 +3,5 @@
     h3 Edit Child's Name
     p Uh-oh! Spelled someone's name wrong? Better fix it!
     = f.input :name, label: false, input_html: { class: 'form-control' }
-    = f.submit 'Save', disable_with: 'Saving...', class: 'btn btn-default btn-blue'
+    = f.submit 'Save', disable_with: 'Saving...', class: 'btn'
     = link_to 'Cancel', '#', class: 'back', 'data-dismiss' => 'modal'

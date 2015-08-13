@@ -1,0 +1,38 @@
+.files {
+  margin-top: 20px;
+
+  .files__new {
+    display: none;
+    padding: 20px 0;
+
+    @include clearfix();
+  }
+
+  .files-info {
+    margin-top: 20px;
+
+    .files-info__description {
+      width: 40%;
+    }
+    .icons {
+      vertical-align: 3px;
+
+      @include font-size(28px);
+    }
+    .icons__edit {
+      color: #939598;
+    }
+  }
+
+  .files__link {
+    max-width: 410px;
+    word-wrap: break-word;
+  }
+}
+
+.file__edit, .file__delete {
+  color: $gray;
+  line-height: 1.5;
+
+  @include font-size(24px);
+}

@@ -8,7 +8,7 @@
         .form-group
           = f.input :body, label: false, input_html: { rows: 5, id: 'comment', class: 'form-control' }
           = link_to 'Cancel', :back
-          = f.submit 'Send Feedback', class: 'btn btn-default btn-blue'
+          = f.submit 'Send Feedback', class: 'btn'
 
 - else
 
@@ -20,4 +20,4 @@
         .form-group
           = f.input :body, label: false, input_html: { rows: 5, id: 'comment', class: 'form-control' }
           = link_to 'Cancel', :back
-          = f.submit 'Send Feedback', class: 'btn btn-default btn-blue'
+          = f.submit 'Send Feedback', class: 'btn'

@@ -13,7 +13,7 @@
             h4 Primary Contact
           .col-sm-6
             p
-              = @pod.organizer.full_name
+              = @pod.organizer.full_name if @pod.organizer.full_name != @pod.organizer.email
               br
               = link_to @pod.organizer.email, "mailto: #{@pod.organizer.email}"
               - if @pod.organizer.phone

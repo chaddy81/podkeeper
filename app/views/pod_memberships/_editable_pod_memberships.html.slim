@@ -16,7 +16,7 @@
           = pod_membership.access_level.display_name
       span.user-permissions__controls
         - if pod_membership_to_edit == pod_membership
-          = f.submit 'Save', class: 'btn btn-default btn-blue'
+          = f.submit 'Save', class: 'btn'
           = link_to 'Cancel', pod_memberships_path(pod_id: pod_membership.pod_id)
         - else
           - if is_pod_admin_with_sharing?

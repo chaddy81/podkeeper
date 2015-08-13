@@ -47,7 +47,7 @@
         .update-info__controls
           .form-group
             .col-sm-12
-              a href="#" Cancel
+              = link_to 'Cancel', settings_path, class: 'btn btn--cancel'
               = f.submit 'Save', class: 'btn btn-default btn-blue'
     .notifications.tab-pane#notifications
       - if current_pod
@@ -84,8 +84,8 @@
                   = f.input :event_reminder_notice, label: 'Reminder to RSVP & Reminder of upcoming Event'
               .controls.col-sm-9
                 .pull-right
-                  = f.submit 'save', disable_with: 'Saving...', class: 'btn btn-default', style: 'margin-right: 10px;'
-                  = link_to 'Cancel', settings_path, class: 'back'
+                  = f.submit 'Save', disable_with: 'Saving...', class: 'btn', style: 'margin-right: 10px;'
+                  = link_to 'Cancel', settings_path, class: 'back btn btn--cancel'
             .clearfix
         .col-sm-12.col-md-8
           = paginate @settings, params: { anchor: 'notifications' }
@@ -108,9 +108,9 @@
                   td= pod_membership.pod.name
                   td
                     - if current_user? pod_membership.pod.organizer && pod_membership.pod.pod_memberships.where(id: [AccessLevel.member.id, AccessLevel.pod_admin.id]).count <=1
-                      = link_to 'Leave Pod', pod_membership_path(pod_membership), method: :delete, remote: true, class: 'btn btn-default btn-blue'
+                      = link_to 'Leave Pod', pod_membership_path(pod_membership), method: :delete, remote: true, class: 'btn'
                     - else
-                      = link_to 'Leave Pod', pod_membership_path(pod_membership), method: :delete, class: 'btn btn-default btn-blue', data: { confirm: 'Are you sure you want to leave this Pod?' }
+                      = link_to 'Leave Pod', pod_membership_path(pod_membership), method: :delete, class: 'btn', data: { confirm: 'Are you sure you want to leave this Pod?' }
       - else
         hr
         p

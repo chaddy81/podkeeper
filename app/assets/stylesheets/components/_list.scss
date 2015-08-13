@@ -1,0 +1,158 @@
+.list__create {
+  margin-bottom: 20px;
+}
+
+.list {
+
+  .list__row {
+    background: #fff;
+    margin-bottom: 5px;
+    padding: 20px;
+    position: relative;
+
+    @include clearfix();
+  }
+
+  .list__title {
+    margin-top: 0;
+  }
+
+  .list__meta {
+    .list__title {
+      line-height: 1;
+      margin-bottom: 10px;
+    }
+
+  }
+
+  .list__details {
+    .list__type {
+      line-height: normal;
+    }
+    .list__detail {
+      margin-top: 10px;
+    }
+
+  }
+
+  .list__controls {
+    text-align: right;
+
+    .icons__minimize {
+      display: block;
+      text-align: left;
+
+    }
+
+    .icons__minimize--open {
+      text-align: right;
+    }
+
+  }
+
+  .icons__edit, .icons__minimize {
+    color: #939598;
+
+    @include font-size(32px);
+
+  }
+
+  .icons__delete {
+
+    @include font-size(32px);
+
+  }
+
+}
+
+.list__items {
+  display: block;
+  margin-bottom: 20px;
+
+  label {
+    margin: 0 5px;
+  }
+
+  .list__controls {
+    text-align: right;
+  }
+
+  .icons__edit {
+    color: #939598;
+
+    @include font-size(32px);
+  }
+
+  .icons__delete {
+
+    @include font-size(32px);
+  }
+
+  table {
+    margin-top: 20px;
+
+    thead {
+      background: $green;
+      color: #fff;
+    }
+  }
+  .list__item-new {
+    margin-bottom: 10px;
+
+    .form-group {
+      padding: 10px;
+
+      &:last-child {
+        text-align: center;
+      }
+    }
+
+    input[type=radio] {
+      &+label {
+        margin-bottom: 10px;
+        text-transform: none;
+
+        span {
+          vertical-align: middle;
+        }
+
+        @include font-size(14px);
+      }
+    }
+
+    .btn {
+      margin-bottom: 5px;
+      padding: 5px 18px;
+    }
+
+    .help-inline {
+      display: block;
+      margin-bottom: -12px;
+    }
+  }
+  .item {
+    width: 222px;
+  }
+  .who {
+    width: 203px;
+  }
+  .notes {
+    width: 222px;
+  }
+  #pod-users {
+    width: 166px;
+  }
+}
+
+.list__new {
+  margin-top: 20px;
+
+  .controls {
+    text-align: right;
+
+    a {
+      margin-right: 10px;
+      text-decoration: underline;
+    }
+  }
+}

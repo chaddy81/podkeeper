@@ -1,20 +1,38 @@
 .btn {
+  background: $green;
+  border: 1px solid $green;
   border-radius: 5px;
+  color: #fff;
   display: inline-block;
   line-height: 1;
+  margin: 0 5px;
   padding: 9px 25px;
+
+  &:hover, &:active, &:visited, &:focus {
+    background: $green;
+    color: #fff;
+  }
 
   @include font-size(16px);
 }
 
 .btn--cancel {
+  background: transparent;
   border: 1px solid $red;
   color: $red;
+  margin: 0 5px;
+  padding: 9px 25px;
+
+  &:hover, &:active, &:visited, &:focus {
+    background: transparent;
+    color: $red;
+  }
 }
 
 .btn--green {
   background: $green;
   color: #fff;
+  margin: 0 5px;
 }
 
 .btn--signup {
@@ -22,10 +40,11 @@
   border: 2px solid #fff;
   border-radius: 0;
   color: #fff;
+  margin: 0 5px;
   outline: none;
   text-transform: uppercase;
 
-  &:hover, &:active, &:visited {
+  &:hover, &:active, &:visited, &:focus {
     color: #fff;
     outline: none;
   }
