@@ -1,26 +1,27 @@
-nav.site-nav.site-nav__mobile
-  = link_to events_path, class: "site-nav__item site-nav__item--events text-center #{is_active?(events_path)}" do
-    svg.icon.icon-events.center-block viewbox="0 0 1024 1024"
-      use xlink:href="#icon-podkeeper-calendar"
-    | Events
-  = link_to notes_path, class: "site-nav__item site-nav__item--discussions text-center #{is_active?(notes_path)}" do
-    svg.icon.icon-discussions.center-block viewbox="0 0 1024 1024"
-      use xlink:href="#icon-podkeeper-discussion"
-    | Discussions
-  = link_to lists_path, class: "site-nav__item site-nav__item--lists text-center #{is_active?(lists_path)}"
-    svg.icon.icon-lists.center-block viewbox="0 0 1024 1024"
-      use xlink:href="#icon-podkeeper-list"
-    | Lists
-  = link_to uploaded_files_path, class: "site-nav__item site-nav__item--files text-center #{is_active?(uploaded_files_path)}"
-    svg.icon.icon-files.center-block viewbox="0 0 1024 1024"
-      use xlink:href="#icon-podkeeper-file"
-    | Files
-  span.site-nav__item.site-nav__item--more.text-center
-    svg.icon.icon-more.center-block viewbox="0 0 1024 1024"
-      use xlink:href="#icon-podkeeper-more"
-    | More
-    nav.site-nav__item--sub-menu
-      = link_to 'Invite Others', invite_pods_path
-      = link_to 'Members', members_path
-      = link_to 'Pod Details', details_pods_path
-      = link_to 'Pod Admin', pod_memberships_path, data: { "no-turbolink" => "true" }
+- if current_user.pods.any?
+  nav.site-nav.site-nav__mobile
+    = link_to events_path, class: "site-nav__item site-nav__item--events text-center #{is_active?(events_path)}" do
+      svg.icon.icon-events.center-block viewbox="0 0 1024 1024"
+        use xlink:href="#icon-podkeeper-calendar"
+      | Events
+    = link_to notes_path, class: "site-nav__item site-nav__item--discussions text-center #{is_active?(notes_path)}" do
+      svg.icon.icon-discussions.center-block viewbox="0 0 1024 1024"
+        use xlink:href="#icon-podkeeper-discussion"
+      | Discussions
+    = link_to lists_path, class: "site-nav__item site-nav__item--lists text-center #{is_active?(lists_path)}"
+      svg.icon.icon-lists.center-block viewbox="0 0 1024 1024"
+        use xlink:href="#icon-podkeeper-list"
+      | Lists
+    = link_to uploaded_files_path, class: "site-nav__item site-nav__item--files text-center #{is_active?(uploaded_files_path)}"
+      svg.icon.icon-files.center-block viewbox="0 0 1024 1024"
+        use xlink:href="#icon-podkeeper-file"
+      | Files
+    span.site-nav__item.site-nav__item--more.text-center
+      svg.icon.icon-more.center-block viewbox="0 0 1024 1024"
+        use xlink:href="#icon-podkeeper-more"
+      | More
+      nav.site-nav__item--sub-menu
+        = link_to 'Invite Others', invite_pods_path
+        = link_to 'Members', members_path
+        = link_to 'Pod Details', details_pods_path
+        = link_to 'Pod Admin', pod_memberships_path, data: { "no-turbolink" => "true" }

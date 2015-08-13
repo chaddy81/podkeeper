@@ -21,12 +21,6 @@ class SessionsController < ApplicationController
       else
         redirect_to new_pod_path
       end
-    elsif params[:lp]
-      user = Unbounce.find_by_token(params[:lp])
-      @pod_user = PodUser.new
-      @pod_user.first_name = user.first_name
-      @pod_user.last_name = user.last_name
-      @pod_user.email = user.email
     else
       @pod_user = PodUser.new
     end
@@ -70,7 +64,7 @@ class SessionsController < ApplicationController
         pod = Pod.where(id: user.last_pod_visited_id).first || user.pods.last
         # redirect_to dashboard_pod_path(pod.slug)
         # pod.present? ? redirect_back_or(events_path(pod.slug, login: 'success')) : redirect_to(no_pod_path)
-        pod.present? ? redirect_back_or(events_path) : redirect_to(no_pod_path)
+        pod.present? ? redirect_back_or(events_path) : redirect_to(new_pod_path)
 
       else
         session[:email] = params[:email]
