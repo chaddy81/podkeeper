@@ -48,7 +48,7 @@ class InvitesController < ApplicationController
     @invite.accept!
 
     if current_user.pod_memberships.with_deleted.pluck(:pod_id).include?(@invite.pod_id)
-      current_user.pod_memberships.with_deleted.where(pod_id: @invite.pod_id).first.recover
+      current_user.pod_memberships.with_deleted.where(pod_id: @invite.pod_id).first.restore
     else
       current_user.pod_memberships.create(pod: @invite.pod, access_level: AccessLevel.member)
     end
