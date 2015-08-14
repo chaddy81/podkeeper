@@ -1,6 +1,15 @@
 .hidden-xs.col-sm-6.col-md-5
+  - if @events && @events.count > 0
+    .view-toggle
+      svg viewbox="0 0 1024 1024"
+        use xlink:href="#icon-podkeeper-list-view"
+    p.pull-left.hidden-xs= link_to 'New Event', new_event_path
+    .clearfix
+  - if @events && @events.count > 0
+    .event-calendar
+      = render 'calendar'
   .event-container.clearfix
-  = render @events
+    = render @events
 
 col-xs-12.col-sm-6.col-md-5
   h3.event-details-name= @event.name.humanize

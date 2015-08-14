@@ -10,16 +10,17 @@ tr
         span data-original-description="" style="display:none;" = uploaded_file.description
     - else
       - if show_file_notification(current_pod, uploaded_file)
-        i.icons__notification style="color: #f7941e;margin-right: 2px;"
+        svg.icon.icon-edit viewbox="0 0 1024 1024" style="margin: 0 5px;width: 16px; height: 16px"
+          use xlink:href="#icon-podkeeper-info-yellow"
       = uploaded_file.description
 
   td style=("padding: 10px 10px 0;")
     - if current_user?(uploaded_file.pod_membership.user) || is_at_least_pod_admin?
       = link_to edit_uploaded_file_path(uploaded_file), class: 'edit tooltip-base', title: 'Edit Description', 'data-placement' => 'right', 'data-toggle' => 'tooltip' do
-        svg.icon.icon-edit viewbox="0 0 1024 1024" style="margin: 0 5px;width: 16px"
+        svg.icon.icon-edit viewbox="0 0 1024 1024" style="margin: 0 5px;width: 16px; height: 16px"
           use xlink:href="#icon-podkeeper-edit"
       = link_to uploaded_file_path(uploaded_file), id: "delete_uploaded_file_#{uploaded_file.id}", method: :delete, class: 'delete tooltip-base', title: "Delete #{uploaded_file.file.present? ? 'File' : 'Link'}", 'data-placement' => 'right', 'data-toggle' => 'tooltip', data: { confirm: 'Are you sure you want to remove this file?' } do
-        svg.icon.icon-edit viewbox="0 0 1024 1024" style="margin: 0 5px;width: 16px"
+        svg.icon.icon-edit viewbox="0 0 1024 1024" style="margin: 0 5px;width: 16px; height: 16px"
           use xlink:href="#icon-podkeeper-no"
 
   td.link-tooltips

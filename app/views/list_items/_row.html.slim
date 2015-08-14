@@ -9,9 +9,9 @@ tr data-list-item-id="#{list_item.id}"
     .list__controls
       - if current_user?(list_item.list.creator) || is_at_least_pod_admin? || current_user?(list_item.user) || !list_item.user.try(:full_name)
         = link_to edit_list_item_path(list_item), remote: true do
-          svg.icon.icon-edit viewbox="0 0 1024 1024" style="margin: 0 5px;width: 16px"
+          svg.icon.icon-edit viewbox="0 0 1024 1024" style="margin: 0 5px;width: 16px;height: 16px;"
             use xlink:href="#icon-podkeeper-edit"
       - if current_user?(list_item.list.creator) || is_at_least_pod_admin?
         = link_to list_item_path(list_item), method: :delete, remote: true, data: { confirm: 'Are you sure you want to delete this item?' } do
-          svg.icon.icon-no viewbox="0 0 1024 1024" style="margin: 0 5px;width: 16px"
+          svg.icon.icon-no viewbox="0 0 1024 1024" style="margin: 0 5px;width: 16px;height: 16px;"
             use xlink:href="#icon-podkeeper-no"

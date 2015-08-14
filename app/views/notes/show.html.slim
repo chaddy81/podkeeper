@@ -1,6 +1,7 @@
 .discussion-thread
   .col-sm-6.col-md-5
-    .discussions
+    p= link_to 'New Discussion', new_note_path
+    .discussions.hidden-xs
       = render @notes
 
   .col-xs-12.col-md-5.discussion

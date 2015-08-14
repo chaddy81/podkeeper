@@ -84,6 +84,7 @@
       background: #fff;
       border-radius: 170px;
       fill: $light-green;
+      height: 85px;
       left: 50%;
       position: absolute;
       top: -42.5px;
@@ -132,6 +133,7 @@
 
     svg {
       fill: $light-green;
+      height: 70px;
       margin: 12px 12px;
       width: 70px;
     }
@@ -147,6 +149,7 @@
     padding: 15px 0 10px;
 
     svg {
+      height: 40px;
       width: 40px;
     }
 
@@ -350,6 +353,7 @@
       }
 
       .icon {
+        height: 55px;
         position: absolute;
         top: -27.5px;
         width: 55px;
@@ -584,6 +588,7 @@
 
       svg {
         fill: $light-green;
+        height: 60px;
         margin: 8px 8px;
         width: 60px;
       }

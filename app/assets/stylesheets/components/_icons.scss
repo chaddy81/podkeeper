@@ -7,6 +7,7 @@
   background-size: 14px;
   display: inline-block;
   fill: #ddd;
+  height: 14px;
   opacity: .5;
   text-indent: -999em;
   width: 14px;
@@ -17,6 +18,7 @@
   background-size: 14px;
   display: inline-block;
   fill: #ddd;
+  height: 14px;
   opacity: .5;
   text-indent: -999em;
   width: 14px;
@@ -45,35 +47,42 @@
 .icon-menu {
   display: block;
   fill: #fff;
+  height: 22px;
   width: 22px;
 }
 
 .icon-events {
   fill: $blue;
+  height: 24px;
   width: 24px
 }
 
 .icon-event-date {
   fill: $blue;
+  max-height: 70px;
   width: 100%;
 }
 
 .icon-discussions {
   fill: $blue;
+  height: 24px;
   width: 24px
 }
 
 .icon-lists {
   fill: $blue;
+  height: 24px;
   width: 24px
 }
 
 .icon-files {
   fill: $blue;
+  height: 24px;
   width: 24px
 }
 
 .icon-more {
   fill: $blue;
+  height: 21px;
   width: 21px
 }

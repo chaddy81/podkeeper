@@ -1,9 +1,12 @@
 .event-container {
   border-top: 1px solid $event-border;
+  margin: 0 -15px;
 }
 .event {
   border-bottom: 1px solid $event-border;
+  display: block;
   padding: 8px 8px 0;
+  position: relative;
 
   h4 {
     color: $blue;
@@ -33,9 +36,11 @@
 
 .event-date {
   position: relative;
+  text-align: center;
 
   .event-date__icon {
     fill: $blue;
+    height: 50px;
     position: relative;
     width: 50px;
   }
