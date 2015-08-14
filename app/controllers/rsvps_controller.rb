@@ -1,10 +1,9 @@
 class RsvpsController < ApplicationController
   before_filter :correct_user, only: :update
-  respond_to :html, :js
 
   def create
     @rsvp = current_user.rsvps.new(rsvp_params)
-    if @rsvp.save!
+    if @rsvp.save
       flash[:success] = 'You have RSVP\'d successfully!'
       render :update
     else
@@ -15,6 +14,8 @@ class RsvpsController < ApplicationController
   def update
     if rsvp.update(rsvp_params)
       flash[:success] = 'RSVP has been updated successfully!'
+    else
+      flash[:error] = @rsvp.errors.full_messages.first
     end
   end
 
