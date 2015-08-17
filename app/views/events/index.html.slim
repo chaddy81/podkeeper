@@ -11,20 +11,20 @@
         = link_to 'New Event', new_event_path
     .clearfix
     - if @events && @events.count > 0
-      .col-sm-6.col-md-5
+      .col-sm-6.col-md-6
         .event-calendar
           = render 'calendar'
         .event-container.clearfix
           = render @events
 
-      .hidden-xs.col-sm-6.col-md-5.event-details--desktop
+      .hidden-xs.col-sm-6.col-md-6.event-details--desktop
         svg.icon.icon-events.center-block viewbox="0 0 1024 1024" style="width: 144px;height: 144px;"
           use xlink:href="#icon-podkeeper-calendar"
         p
           | Select an event from the left to <br />
           | view details, and RSVP if required. <br />
     - else
-      .hidden-xs.col-sm-12.event-details--desktop
+      .col-sm-12.event-details--desktop
         svg.icon.icon-events.center-block viewbox="0 0 1024 1024" style="width: 144px;height: 144px;"
           use xlink:href="#icon-podkeeper-calendar"
         p
@@ -34,7 +34,7 @@
           br
           | Select "
           = link_to 'New Event', new_event_path
-          | " above to
+          | " to
           br
           | schedule something!
 

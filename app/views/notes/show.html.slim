@@ -1,28 +1,33 @@
-.discussion-thread
-  .col-sm-6.col-md-5
-    p= link_to 'New Discussion', new_note_path
-    .discussions.hidden-xs
-      = render @notes
+.col-sm-12.col-md-10.discussion-thread
+  .row
+    .col-sm-12
+      p.new-content.hidden-xs
+        svg.icon.icon-events.center-block viewbox="0 0 1024 1024" style="width: 21px; height: 21px;"
+          use xlink:href="#icon-podkeeper-add"
+        = link_to 'New Discussion', new_note_path
+    .col-sm-6.col-md-5
+      .discussions.hidden-xs
+        = render @notes
 
-  .col-xs-12.col-md-5.discussion
-    img.pull-left src="#{get_gravatar(@note.user.email, 32)}" /
-    .discussion-info
-      .discussion-meta.clearfix
-        span.pull-left= @note.user.full_name
-        span.pull-right= @note.created_at.strftime("%b %d, %Y, %l:%M%P")
-      p= @note.body
+    .col-xs-12.col-md-7.discussion
+      img.pull-left src="#{get_gravatar(@note.user.email, 32)}" /
+      .discussion-info
+        .discussion-meta.clearfix
+          span.pull-left= @note.user.full_name
+          span.pull-right= @note.created_at.strftime("%b %d, %Y, %l:%M%P")
+        p= @note.body
 
-    - @note.comments.each do |comment|
-      .col-xs-12.comment
-        img.pull-left src="#{get_gravatar(@note.user.email, 32)}" /
-        .comment-info
-          .discussion-meta.clearfix
-            span.pull-left= comment.user.full_name
-            span.pull-right= comment.created_at.strftime("%b %d, %Y, %l:%M%P")
-          p= comment.body
+      - @note.comments.each do |comment|
+        .col-xs-12.comment
+          img.pull-left src="#{get_gravatar(@note.user.email, 32)}" /
+          .comment-info
+            .discussion-meta.clearfix
+              span.pull-left= comment.user.full_name
+              span.pull-right= comment.created_at.strftime("%b %d, %Y, %l:%M%P")
+            p= comment.body
 
-    = simple_form_for @note.comments.new, html: { class: ' col-xs-12 col-md-10 new-comment' } do |f|
-      = f.input :body, as: :text, label: false, input_html: { class: 'col-xs-9', placeholder: 'Add a Comment' }
+      = simple_form_for @note.comments.new, html: { class: ' col-xs-12 col-md-10 new-comment' } do |f|
+        = f.input :body, as: :text, label: false, input_html: { class: 'col-xs-9', placeholder: 'Add a Comment' }
 
-      = f.submit 'Post'
-      = f.input :note_id, as: :hidden, value: @note.id
+        = f.submit 'Post'
+        = f.input :note_id, as: :hidden, value: @note.id
