@@ -51,7 +51,8 @@ html
 
       .error-messages
         = flash_messages
-      = yield
+      .container
+        = yield
 
     = render 'footer'
 
@@ -66,6 +67,7 @@ html
         'menu': document.getElementById('menu'),
         'padding': 256,
         'side': 'right',
+        'touch': 'false',
         'tolerance': 70
       });
 
