@@ -11,14 +11,14 @@
       .col-sm-2
         label for="topic2" Title *
       .col-sm-8
-        = f.input :topic, label: false, input_html: { class: 'form-control' }
+        = f.input :topic, label: false, input_html: { class: 'form-control', maxlength: 10000 }
       .col-sm-2
         = topic_counter @note, @topic_count
     .row
       .col-sm-2
         label for="details" Message *
       .col-sm-8
-        = f.input :body, label: false,input_html: { class: 'form-controls' }
+        = f.input :body, label: false,input_html: { class: 'form-control', maxlength: 10000 }
       .col-sm-2
         = details_counter @note, @body_count
     .row
