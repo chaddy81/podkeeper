@@ -61,7 +61,7 @@ class InvitesController < ApplicationController
 
     @visible_invites = current_user.received_invites.unaccepted.where('pod_id IS NOT NULL').includes(:pod, pod: :organizer)
     if @visible_invites.any?
-      flash[:success] = "You have successfully joined this Pod #{view_context.link_to 'Go to this Pod', dashboard_pod_path(@invite.pod)}"
+      flash[:success] = "You have successfully joined this Pod #{view_context.link_to 'Go to this Pod', events_path(@invite.pod)}"
       redirect_to invites_path
     else
       flash[:success] = 'You have successfully joined this Pod'
