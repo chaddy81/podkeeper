@@ -1,0 +1,1 @@
+$('.errors').html("<%= '<div class=\"alert alert-warning\">'.html_safe<< @rsvp.errors.full_messages.join(', ')  <<'</div>'.html_safe %>");

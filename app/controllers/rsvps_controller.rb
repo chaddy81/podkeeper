@@ -7,7 +7,7 @@ class RsvpsController < ApplicationController
       flash[:success] = 'You have RSVP\'d successfully!'
       render :update
     else
-      flash[:error] = @rsvp.errors.full_messages.first
+      render :form
     end
   end
 
