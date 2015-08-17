@@ -7,3 +7,17 @@
 *
 * Styles that belong here: Helpers and overrides.
 **/
+
+.new-content {
+  a {
+    color: $green;
+  }
+
+  svg {
+    fill: $green;
+    margin-right: 5px;
+    vertical-align: middle;
+  }
+
+  @include font-size(16px);
+}

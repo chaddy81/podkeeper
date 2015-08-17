@@ -2,7 +2,10 @@
   .row
     - if @notes.count > 0
       .col-sm-6.col-md-5
-        p= link_to 'New Discussion', new_note_path
+        p.new-content
+          svg.icon.icon-events.center-block viewbox="0 0 1024 1024" style="width: 21px; height: 21px;"
+            use xlink:href="#icon-podkeeper-add"
+          = link_to 'New Discussion', new_note_path
         .discussions
           = render @notes
 
@@ -14,11 +17,18 @@
           br
           'view details.
     - else
-      .col-sm-12.col-md-10
-        p
+      .col-sm-6.col-md-5
+        p.new-content
+          svg.icon.icon-events.center-block viewbox="0 0 1024 1024" style="width: 21px; height: 21px;"
+            use xlink:href="#icon-podkeeper-add"
+          = link_to 'New Discussion', new_note_path
+      .col-sm-12.discussion-thread--desktop
+        svg.icon.icon-events.center-block viewbox="0 0 1024 1024" style="width: 144px; height: 144px;"
+          use xlink:href="#icon-podkeeper-discussion"
+        p.col-sm-4.col-sm-offset-4
           ' There are no discussions for this Pod. Click
           = link_to 'New Discussion', new_note_path
-          ' to get a conversation started!
+          '  to get a conversation started!
 
   = render 'ad_leaderboard'
 = render 'ad_skyscraper'
