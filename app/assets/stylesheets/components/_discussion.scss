@@ -76,3 +76,9 @@
     @include font-size(18px);
   }
 }
+
+#new_note {
+  .counter { color: $green; }
+  .red     { color: $red;   }
+}
+
