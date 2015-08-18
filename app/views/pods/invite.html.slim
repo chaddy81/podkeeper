@@ -1,53 +1,53 @@
 .col-sm-12.col-md-10
-  .invites
-    p.italic Copy and paste a list of email addresses (separated by commas or semi-colons) into the box below. The list can be from a list in an email, a Word doc, an Excel doc, a CSV file, etc. It doesn’t matter whether or not the list also contains their names.
+  .row
+    .invites.col-sm-12.col-md-10
+      p Copy and paste (or type in) one or more email addresses and each person will be sent an invitation on your behalf to join the Pod.
 
-    p If they don’t join right away, they’ll receive an email reminder after 2 days, and one more after 9 days. You can also send additional reminders at any time.
-
-    / form.form-horizontal.invites__form.invites__form--multiple.col-sm-12 role="form"
-    = form_tag bulk_invites_path, class: 'form-horizontal invites__form invites__form--multiple col-sm-12'
-      .form-group
-        label.col-sm-2.hidden-xs for="multiple-email" Email Addresses
-        .col-sm-5
-          / textarea.form-control#first-name placeholder="Enter email addresses"
+      = form_tag bulk_invites_path, class: 'form-horizontal invites__form invites__form--multiple col-sm-12'
+        .form-group
           = text_area_tag :emails, nil, class: 'form-control', placeholder: "Enter email addresses"
-      .form-group
-        .col-sm-7
-          .pull-right
-            button.btn type="submit" Send Invites
+          p The list of email addresses needs to be separated by commas or semi-colons. It’s fine if the list includes other information (such as names) as our system will filter out just the email addresses.
 
-    h4 Send Reminders
-    p.italic
-      | The following people have been invited to join your Pod but have not yet responded to the invitation.
-      br
-      | Please check all the names of those whom you wish to remind.
-    .invites__reminders
-      - if @outstanding_invites.any?
-        = form_tag reminders_path, class: 'event-add-guest' do |f|
-          .table-responsive
-            table.table
-              thead
-                tr
-                  th
-                    / input.invite__select-all type="checkbox"
-                    = check_box_tag :select_all, nil, false, 'data-select-all' => true
-                  th Name
-                  th Email
-                  th Sent
-                  th Last Reminder
-                  th Date Invited
+        .form-group.text-center
+          = link_to 'Cancel', events_path, class: 'btn btn--cancel'
+          button.btn.btn--green type="submit" Send Invites
 
-              tbody
-                - @outstanding_invites.each do |invite|
+      p Reminders are automatically sent out 2 days later and 9 days later to anyone who doesn’t join.  You can also send additional reminders at any time.
+
+      .clearfix
+
+      h4 style="margin-top: 25px;" Send Reminders
+      p.italic
+        | The following people have been invited to join your Pod but have not yet responded to the invitation.
+        br
+        | Please check all the names of those whom you wish to remind.
+      .invites__reminders
+        - if @outstanding_invites.any?
+          = form_tag reminders_path, class: 'event-add-guest' do |f|
+            .table-responsive
+              table.table
+                thead
                   tr
-                    td = check_box_tag("reminders[#{invite.id}", true, false)
-                    td = render 'users/name', user: invite
-                    td = invite.email
-                    td = invite.reminders.count
-                    td = l invite.reminders.last.created_at, format: '%a. %b %e, %Y' if invite.reminders.any?
-                    td = l invite.created_at, format: '%a. %b %e, %Y'
+                    th
+                      / input.invite__select-all type="checkbox"
+                      = check_box_tag :select_all, nil, false, 'data-select-all' => true
+                    th Name
+                    th Email
+                    th Sent
+                    th Last Reminder
+                    th Date Invited
 
-          .col-sm-12
-            .pull-right
-              = link_to 'Cancel', invite_pods_path, class: 'btn btn--cancel'
-              = submit_tag 'Send Reminders', disable_with: 'Sending Reminders...', class: 'btn btn-default btn-blue', data: { 'turbo-links': false }
+                tbody
+                  - @outstanding_invites.each do |invite|
+                    tr
+                      td = check_box_tag("reminders[#{invite.id}", true, false)
+                      td = render 'users/name', user: invite
+                      td = invite.email
+                      td = invite.reminders.count
+                      td = l invite.reminders.last.created_at, format: '%a. %b %e, %Y' if invite.reminders.any?
+                      td = l invite.created_at, format: '%a. %b %e, %Y'
+
+            .col-sm-12
+              .pull-right
+                = link_to 'Cancel', invite_pods_path, class: 'btn btn--cancel'
+                = submit_tag 'Send Reminders', disable_with: 'Sending Reminders...', class: 'btn btn-default btn-blue', data: { 'turbo-links': false }
