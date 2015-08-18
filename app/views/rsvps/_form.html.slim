@@ -4,7 +4,7 @@
       .errors
         = render 'form_errors', f: f
 
-      = f.association :rsvp_option, as: :radio_buttons, label_method: :display_name, label: false, collection: RsvpOption.order('id ASC'), item_wrapper_class: 'col-xs-4 button-container text-center'
+      = f.association :rsvp_option, as: :radio_buttons, label_method: :display_name, label: false, collection: RsvpOption.ordered, item_wrapper_class: 'col-xs-4 button-container text-center'
 
     .clearfix
     .row

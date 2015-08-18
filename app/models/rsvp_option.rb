@@ -15,4 +15,12 @@ class RsvpOption < ActiveRecord::Base
     RsvpOption.find_by_name('maybe')
   end
 
+  def self.ordered
+    options = []
+    options << RsvpOption.find_by_name('yes')
+    options << RsvpOption.find_by_name('maybe')
+    options << RsvpOption.find_by_name('no')
+    options
+  end
+
 end
