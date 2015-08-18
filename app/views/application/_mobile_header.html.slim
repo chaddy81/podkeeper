@@ -1,8 +1,15 @@
 header.page-head
   nav.pod-nav
-    a.pod-nav__home.pull-left href="#{root_path}"
-      svg.icon.icon-logo viewbox="0 0 1024 1024"
-        use xlink:href="#icon-podkeeper-logo"
+    - if action_name == "index" || controller_name == 'pods' || controller_name == 'static_pages'
+      a.pod-nav__home.pull-left href="#{root_path}"
+        svg.icon.icon-logo viewbox="0 0 1024 1024"
+          use xlink:href="#icon-podkeeper-logo"
+    - else
+      / a.pod-nav__back.pull-left href="#{}"
+      = link_to class: 'pod-nav__back pull-left', action: 'index' do
+        .pod-nav__back.pull-left
+          svg.icon viewbox="0 0 1024 1024"
+            use xlink:href="#icon-podkeeper-arrow-left"
     a.pod-nav__menu.pull-right
       svg.icon.icon-menu viewbox="0 0 1024 1024"
         use xlink:href="#icon-podkeeper-menu"
