@@ -3,6 +3,9 @@
   = f.input :pod_id, as: :hidden, input_html: { value: @pod.id } unless @pod.nil?
   = f.input :time_zone, as: :hidden, input_html: { id: 'set_user_time_zone' }
 
+  - if @invite
+    h5.text-center style="margin-bottom: 20px;" You’ve been invited to join the Pod called #{@pod.name} by #{@pod.organizer.full_name}
+
   .registration.center-block.clearfix
     .registration__header.clearfix
       h3.pull-left Sign Up
