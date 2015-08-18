@@ -11,18 +11,18 @@ class NotesController < ApplicationController
 
   def create
     @note = Note.new(params[:note])
-    # @topic_count = nil
-    # @body_count = nil
+    @topic_count = nil
+    @body_count = nil
     if @note.save
       flash[:success] = 'Note was created successfully!'
       @note.update_sort_by_date
       # @new_note = current_user.notes.new(pod_id: current_pod.id)
       redirect_to notes_path
     else
-      # @topic_count = params[:note][:topic_count]
-      # @body_count  = params[:note][:body_count]
+      @topic_count = params[:note][:topic_count]
+      @body_count  = params[:note][:body_count]
       flash[:error] = @note.errors.full_messages.first
-      render :index
+      render :new
     end
   end
 
