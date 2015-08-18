@@ -1,0 +1,67 @@
+.update-info {
+  h4 {
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+  }
+
+  .update-info__password {
+    h4 {
+      cursor: pointer;
+      position: relative;
+
+      &:after {
+        border-left: 7px solid transparent;
+        border-right: 7px solid transparent;
+        border-top: 7px solid $gray;
+        content: '';
+        margin-left: 5px;
+        position: absolute;
+        top: 5px;
+      }
+    }
+
+    h4.expand {
+      &:after {
+        border-left: 7px solid transparent;
+        border-right: 7px solid transparent;
+        border-bottom: 7px solid $gray;
+        border-top: none;
+        content: '';
+        margin-left: 5px;
+        position: absolute;
+        top: 5px;
+      }
+    }
+  }
+
+  .expand {
+    & + .password-container {
+      display: block;
+    }
+  }
+
+  .password-container {
+    display: none;
+  }
+
+  .update-info__controls {
+    margin-top: 20px;
+    text-align: right;
+
+    a {
+      margin-right: 10px;
+      text-decoration: underline;
+    }
+  }
+}
+
+.notification-container {
+  border-top: 1px solid #ddd;
+  margin-bottom: 30px;
+  padding: 20px 0;
+
+  .controls {
+    margin-top: 10px;
+  }
+}

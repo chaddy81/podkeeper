@@ -1,0 +1,19 @@
+.invites {
+  form {
+    margin: 25px 0;
+
+    label {
+      padding: 0;
+    }
+  }
+}
+
+.pod-invites {
+  .icons__delete {
+    color: $red;
+    vertical-align: middle;
+  }
+  .full {
+    display: none;
+  }
+}
