@@ -6,11 +6,12 @@ tr
     p= invite.pod.name
     - unless invite.pod.description.blank?
       - if invite.pod.description.length > 60
-        span more
-
-      .preview = "#{auto_link invite.pod.description[0..60].html_safe, :all, target: '_blank'}#{'...' if invite.pod.description.length > 60}"
+      .preview
+        = "#{auto_link invite.pod.description[0..60].html_safe, :all, target: '_blank'}#{'...' if invite.pod.description.length > 60}"
+        a.expand  more
 
       .full = auto_link(simple_format(invite.pod.description), :all, target: '_blank', class: 'web-link')
+    br
     p
       ' Organizer:
       = pod_organizer invite.pod

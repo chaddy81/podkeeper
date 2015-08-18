@@ -3,14 +3,13 @@ $(function() {
   // expand/collapse description
   // $('.open-invites .full').hide();
   $('.open-invites .expand').click(function() {
-      $(this).toggleClass('switch');
-      if ($(this).siblings('.preview').is(':visible')) {
-        $(this).siblings('.preview').fadeOut(50, function() {
-            $(this).siblings('.full').fadeIn(50);
+      if ($(this).parent().is(':visible')) {
+        $(this).parent().fadeOut(50, function() {
+            $(this).parents().find('.full').fadeIn(50);
         });
       } else {
-        $(this).siblings('.full').fadeOut(50, function() {
-            $(this).siblings('.preview').fadeIn(50);
+        $(this).parents().find('.full').fadeOut(50, function() {
+            $(this).parent().fadeIn(50);
         });
       }
   });
