@@ -1,0 +1,44 @@
+.col-sm-12.col-md-10
+  .row
+    .col-sm-6
+      - if @events && @events.count > 0
+        .view-toggle
+          svg viewbox="0 0 1024 1024"
+            use xlink:href="#icon-podkeeper-list-view"
+    .clearfix
+    - if @events && @events.count > 0
+      .col-sm-6.col-md-6
+        .event-calendar
+          = render 'events/calendar'
+        .event-container.clearfix
+          = render @events
+
+      .hidden-xs.col-sm-6.col-md-6.event-details--desktop
+        svg.icon.icon-events.center-block viewbox="0 0 1024 1024" style="width: 144px;height: 144px;"
+          use xlink:href="#icon-podkeeper-calendar"
+        p
+          | Select an event from the left to <br />
+          | view details, and RSVP if required. <br />
+    - else
+      .col-sm-12.event-details--desktop
+        svg.icon.icon-events.center-block viewbox="0 0 1024 1024" style="width: 144px;height: 144px;"
+          use xlink:href="#icon-podkeeper-calendar"
+        p
+          | There are no events currently
+          br
+          | scheduled for this Pod.
+          br
+          | Select "
+          = link_to 'New Event', new_event_path
+          | " to
+          br
+          | schedule something!
+
+
+  = render 'ad_leaderboard'
+= render 'ad_skyscraper'
+
+javascript:
+  $(function() {
+    $('.event').removeClass('active');
+  });

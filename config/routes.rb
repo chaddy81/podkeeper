@@ -27,6 +27,7 @@ Rails.application.routes.draw do
     patch :update_notes, on: :member
     patch :update_duplicate, on: :member
   end
+  resources :calendar, only: :index
   resources :email_notifications, only: :create
   resources :event_notes, only: [:new, :create]
   resources :invalid_emails, only: :destroy

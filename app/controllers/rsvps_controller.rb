@@ -15,7 +15,7 @@ class RsvpsController < ApplicationController
     if rsvp.update(rsvp_params)
       flash[:success] = 'RSVP has been updated successfully!'
     else
-      flash[:error] = @rsvp.errors.full_messages.first
+      render :form
     end
   end
 
