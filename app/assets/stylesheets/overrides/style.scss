@@ -25,3 +25,10 @@
 .border-gray {
   border: 1px solid $event-border;
 }
+
+.error {
+  color: $red;
+  font-style: italic;
+
+  @include font-size(12px);
+}
