@@ -5,7 +5,10 @@
         .view-toggle
           svg viewbox="0 0 1024 1024"
             use xlink:href="#icon-podkeeper-list-view"
-        p.pull-left.hidden-xs= link_to 'New Event', new_event_path
+        p.new-content.pull-left.hidden-xs
+          svg.icon.icon-events.center-block viewbox="0 0 1024 1024" style="width: 21px; height: 21px;"
+            use xlink:href="#icon-podkeeper-add"
+          = link_to 'New Event', new_event_path
         .clearfix
       - if @events && @events.count > 0
         .event-calendar
