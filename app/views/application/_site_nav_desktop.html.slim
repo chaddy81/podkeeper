@@ -42,16 +42,16 @@
                 use xlink:href="#icon-podkeeper-user"
               | Invite Others
           li
-            = link_to details_pods_path, class: "site-nav__item site-nav__item--files text-center #{is_active?(details_pods_path)}"
+            = link_to members_path, class: "site-nav__item site-nav__item--files text-center #{is_active?(members_path)}"
               svg.icon.icon-files.center-block viewbox="0 0 1024 1024"
-                use xlink:href="#icon-podkeeper-information"
-              | Pod Details
+                use xlink:href="#icon-podkeeper-user"
+              | Members
           li
             span.site-nav__item.site-nav__item--more.text-center
               svg.icon.icon-more.center-block viewbox="0 0 1024 1024"
                 use xlink:href="#icon-podkeeper-more"
               | More
               nav.site-nav__item--sub-menu
-                = link_to 'Members', members_path
+                = link_to 'Pod Details', details_pods_path
                 - if is_at_least_pod_admin?
                   = link_to 'Pod Admin', pod_memberships_path, data: { "no-turbolink" => "true" }
