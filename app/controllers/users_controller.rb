@@ -97,7 +97,7 @@ class UsersController < ApplicationController
       redirect_to edit_user_path(@user)
     else
       session[:user_updated] = false
-      @settings = @user.settings.all
+      @settings = @user.settings.page(params[:page]).per(5)
       @pod_memberships = current_user.pod_memberships.joins(:pod).order('pods.name')
       flash[:error] = @user.errors.full_messages.first
       render :edit
