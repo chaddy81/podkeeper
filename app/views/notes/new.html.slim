@@ -27,5 +27,5 @@
         = f.input :is_urgent, label: false, as: :boolean, boolean_style: :inline, wrapper: false
 
     .discussion-new__controls.col-sm-12
-      = link_to 'Cancel', '#', class: 'back', 'data-cancel-note' => 'true'
-      = f.submit 'Post', disable_with: 'Posting...', class: 'btn'
+      = link_to 'Cancel', notes_path, class: 'back btn btn--cancel'
+      = f.submit 'Post', disable_with: 'Posting...', class: 'btn btn--green'
