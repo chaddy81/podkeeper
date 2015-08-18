@@ -3,13 +3,17 @@
     .container
       ul.nav.navbar-nav.navbar-left
         li.dropdown.pod-name
-          a.dropdown-toggle aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#" role="button"
-            = current_pod ? current_pod.name : "No Pod Selected"
-            span.caret
-          ul.dropdown-menu
-            - current_user.pods.includes(:pod_memberships).sort_by{|p| p.name.humanize}.each do |pod|
-              li
-                a href="#{set_pod_pods_path(pod_id: pod.id)}" data-remote="true" = pod.name
+          - if current_pod
+            a.dropdown-toggle aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#" role="button"
+              = current_pod.name
+              span.caret
+            ul.dropdown-menu
+              - current_user.pods.includes(:pod_memberships).sort_by{|p| p.name.humanize}.each do |pod|
+                li
+                  a href="#{set_pod_pods_path(pod_id: pod.id)}" data-remote="true" = pod.name
+          - else
+            | You Have No Pods
+
       - if current_user.pods.any?
         ul.nav.navbar-nav.navbar-right.site-nav
           li
