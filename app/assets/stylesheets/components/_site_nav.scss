@@ -134,6 +134,17 @@
       width: auto;
     }
 
+    .site-nav__item--members {
+      padding: 6px 22px 4px;
+      width: auto;
+
+      svg {
+        height: 30px;
+        margin-bottom: -1px;
+        width: 30px;
+      }
+    }
+
     .site-nav__item--more {
       padding: 6px 22px 4px;
       width: auto;
