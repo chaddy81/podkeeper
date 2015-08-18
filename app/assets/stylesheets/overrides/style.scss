@@ -21,3 +21,7 @@
 
   @include font-size(16px);
 }
+
+.border-gray {
+  border: 1px solid $event-border;
+}
