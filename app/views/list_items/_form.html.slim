@@ -2,7 +2,7 @@
 
 = simple_form_for list_item, html: { class: 'form-inline list__item-new', role: 'form', data: { list: list_item.list.id, 'list-item' => rand } }, remote: true do |f|
   .form-group
-    = f.input :item, input_html: { placeholder: 'Item or Time Slot', rows: 2, cols: 20, class: 'form-control list__item--item' }
+    = f.input :item, input_html: { placeholder: 'Item or Time Slot', rows: 2, cols: 20, class: 'form-control list__item--item' }, label: false
   .form-group
     input type="radio" id="list__name--current-#{list_item.list.id}" class="list__name--current" name="user" checked=(current_user?(list_item.user) ? "" : "checked")
     label for="list__name--current-#{list_item.list.id}" Sign Me Up
@@ -14,7 +14,7 @@
 
     = f.input :user_id, as: :hidden
   .form-group
-    = f.input :notes, input_html: { placeholder: 'Notes', rows: 2, cols: 20, class: 'form-control list__item--item' }
+    = f.input :notes, input_html: { placeholder: 'Notes', rows: 2, cols: 20, class: 'form-control list__item--item' }, label: false
   .form-group
     = f.submit 'Save', disable_with: 'Saving...', class: 'btn btn--green'
     = link_to 'Remove row', '#', class: 'btn btn--cancel', 'data-remove-row' => 'true' if list_item.new_record?
