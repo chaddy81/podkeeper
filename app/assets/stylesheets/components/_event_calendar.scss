@@ -78,6 +78,30 @@
       cursor: pointer;
       text-decoration: none;
     }
+
+    a.active {
+      color: #fff;
+      z-index: 2;
+
+      &:after {
+        background: $green;
+        border-radius: 39px;
+        content: '';
+        height: 39px;
+        left: 50%;
+        margin-top: 1px;
+        position: absolute;
+        transform: translate(-50%, -50%);
+        top: 50%;
+        width: 39px;
+        z-index: -1;
+      }
+
+      .event-calendar__event {
+        background: #fff;
+        z-index: 2;
+      }
+    }
   }
 }
 

@@ -35,5 +35,9 @@ $(function() {
     }
   });
 
+  $(document).on('click', '.day.has-events a', function() {
+    $(this).addClass('active');
+  });
+
   $('[data-toggle="tooltip"]').tooltip();
 });
