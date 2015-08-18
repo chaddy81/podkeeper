@@ -1,6 +1,24 @@
 .col-sm-12.col-md-10
-  = link_to 'Create a List', new_list_path(pod_id: @pod.id), class: 'list__create btn'
-  = render @pod.lists if @pod.lists.any?
+  .row
+    .col-sm-6
+      p.new-content.pull-left.hidden-xs
+        svg.icon.icon-events.center-block viewbox="0 0 1024 1024" style="width: 21px; height: 21px;"
+          use xlink:href="#icon-podkeeper-add"
+        = link_to 'New List', new_list_path(pod_id: @pod.id)
+    .clearfix
+    - if @pod.lists.any?
+      = render @pod.lists
+    - else
+      .col-sm-12.event-details--desktop
+        svg.icon.icon-events.center-block viewbox="0 0 1024 1024" style="width: 144px;height: 144px;"
+          use xlink:href="#icon-podkeeper-list"
+        p
+          | There are no lists currently
+          br
+          | for this Pod. Select
+          br
+          = link_to '"New List"', new_list_path(pod_id: @pod.id)
+          |  to create one!
 
 javascript:
   $(function() {

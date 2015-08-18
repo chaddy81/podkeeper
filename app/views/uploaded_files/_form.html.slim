@@ -1,0 +1,14 @@
+= simple_form_for @uploaded_file, defaults: { label: false, error_html: { style: 'display:none' } }, html: { class: 'files__new', novalidate: true } do |f|
+  .form-group
+    .col-md-12
+      = f.input_field :file, input_html: { class: 'pull-left', style: 'width: 30%;' }
+
+  p OR
+
+  .form-group
+    .col-md-5
+      = f.input :remote_file_url, as: :string, input_html: { placeholder: 'Type or paste a web link', class: 'form-control pull-left' }
+    = f.input :pod_membership_id, as: :hidden
+  .form-controls.pull-right
+    = f.submit 'Save', class: 'submit btn', disable_with: 'Save'
+    = link_to 'Cancel', uploaded_files_path, class: 'back btn btn--cancel'

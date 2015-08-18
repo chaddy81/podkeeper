@@ -8,6 +8,10 @@ class UploadedFilesController < ApplicationController
     # current_user.update_last_visit(current_pod, :last_visit_files)
   end
 
+  def new
+    @uploaded_file = UploadedFile.new
+  end
+
   def create
     @uploaded_file = UploadedFile.new(params[:uploaded_file])
     @uploaded_file.pod_membership = current_pod_membership
@@ -29,10 +33,10 @@ class UploadedFilesController < ApplicationController
 
       if @uploaded_file.save
         flash[:success] = 'Link to file was added sucessfully'
-        render :create
+        redirect_to uploaded_files_path
       else
         flash.now[:error] = 'There was an error trying to upload the file. Make sure you enter a fully qualified url (ie "http://www.podkeeper.com")'
-        render :create_error
+        render :new
       end
     end
   end

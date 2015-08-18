@@ -1,43 +1,39 @@
 .col-sm-12.col-md-10
-  .main-contents
-    .main-contents__body
-      = link_to 'Add a File', '#', class: 'btn btn--green', 'data-new-file' => 'true'
+  .row
+    .col-sm-6
+      p.new-content.pull-left.hidden-xs
+        svg.icon.icon-events.center-block viewbox="0 0 1024 1024" style="width: 21px; height: 21px;"
+          use xlink:href="#icon-podkeeper-add"
+        = link_to 'New File', new_uploaded_file_path
+    .clearfix
+    - if @uploaded_files.any?
       .files
-        = simple_form_for @uploaded_file, defaults: { label: false, error_html: { style: 'display:none' } }, html: { class: 'files__new', 'data-show-form' => 'true', novalidate: true, remote: true } do |f|
-          .form-group
-            .col-md-12
-              = f.input_field :file, input_html: { class: 'pull-left', style: 'width: 30%;' }
-
-          p OR
-
-          .form-group
-            .col-md-5
-              = f.input :remote_file_url, as: :string, input_html: { placeholder: 'Type or paste a web link', class: 'form-control pull-left' }
-            = f.input :pod_membership_id, as: :hidden
-          .form-controls.pull-right
-            = f.submit 'Save', class: 'submit btn', disable_with: 'Save'
-            = link_to 'Cancel', uploaded_files_path, class: 'back btn btn--cancel'
-
-        - if @uploaded_files.any?
-          .table-responsive
-            table.table
-              thead
-                tr
-                  th style="width:345px;"  Description
-                  th
-                  th File/Link
-                  th Kind
-                  th
-                    | Size
-                    / span.tooltip-base data-placement="right" data-toggle="tooltip" title=("Maximum file size is 5 MB") i
-                  th Member
-                  th Added
-              tbody
-                = render @uploaded_files
-            = paginate @uploaded_files
-        - else
-          .none-scheduled
-            p There aren't any files for this Pod.
+        .table-responsive
+          table.table
+            thead
+              tr
+                th style="width:345px;"  Description
+                th
+                th File/Link
+                th Kind
+                th
+                  | Size
+                th Member
+                th Added
+            tbody
+              = render @uploaded_files
+          = paginate @uploaded_files
+    - else
+      .col-sm-12.event-details--desktop
+        svg.icon.icon-events.center-block viewbox="0 0 1024 1024" style="width: 144px;height: 144px;"
+          use xlink:href="#icon-podkeeper-file"
+        p
+          | There are no files currently
+          br
+          | for this Pod. Select
+          br
+          = link_to '"New File"', new_uploaded_file_path()
+          |  to upload one!
 
 javascript:
   $(function() {
