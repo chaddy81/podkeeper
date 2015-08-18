@@ -114,7 +114,7 @@ Rails.application.routes.draw do
   get 'mobile',           to: 'static_pages#mobile'
   get 'site_maintenance', to: 'static_pages#site_maintenance'
   get 'disable-tracking', to: 'static_pages#disable_tracking', as: 'disable_tracking'
-  get 'how-pods-work',    to: 'static_pages#how_pods_work',    as: 'overview'
+  get 'overview',    to: 'static_pages#how_pods_work',    as: 'overview'
   get 'get-started',      to: 'static_pages#get_started',      as: 'get_started'
   get 'video',            to: 'static_pages#video',            as: 'video'
   get 'feedback',         to: 'site_comments#new',             as: 'feedback'
