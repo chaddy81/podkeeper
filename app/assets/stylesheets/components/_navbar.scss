@@ -63,6 +63,22 @@
       color: $green;
     }
 
+    span {
+      background: #F7941E;
+      border-radius: 16px;
+      color: #fff;
+      font-weight: 300;
+      height: 16px;
+      line-height: 16px;
+      position: absolute;
+      right: 4px;
+      text-align: center;
+      top: 6px;
+      width: 16px;
+
+      @include font-size(12px);
+    }
+
     &:after {
       background: $event-border;
       content: '';

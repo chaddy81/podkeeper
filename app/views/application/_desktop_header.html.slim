@@ -12,6 +12,8 @@ nav.navbar.navbar-default.desktop-header
             | Create a New Pod
         li.pod-invites
           = link_to 'Pod Invites', invites_path
+          - if invite_count > 0
+            span= invite_count
       li
         a href="#{overview_path}" Overview
       li.dropdown
