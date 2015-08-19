@@ -6,7 +6,7 @@ header.page-head
           use xlink:href="#icon-podkeeper-logo"
     - else
       / a.pod-nav__back.pull-left href="#{}"
-      = link_to class: 'pod-nav__back pull-left', action: 'index' do
+      = link_to controller: controller_name, action: 'index' do
         .pod-nav__back.pull-left
           svg.icon viewbox="0 0 1024 1024"
             use xlink:href="#icon-podkeeper-arrow-left"
