@@ -33,10 +33,10 @@ class User < ActiveRecord::Base
   validates :first_name, presence: true, allow_blank: true
   validates :last_name,  presence: true, allow_blank: true
   validates :phone,      length: { is: 12, message: 'is the wrong length (should be 10 digits)' }, allow_blank: true
-  validates :email, presence:   true,
-                    format:     { with: VALID_EMAIL_REGEX },
-                    uniqueness: true
-
+  # validates :email, presence:   true,
+  #                   format:     { with: VALID_EMAIL_REGEX },
+  #                   uniqueness: true
+  validates :uniqueness_of_email, presence: true
   validates :time_zone,  presence: true
   validates :password, length: { minimum: 6, maximum: 128, allow_blank: true }, if: :test_password?
   validates :password_confirmation, length: { minimum: 6, maximum: 128, allow_blank: true }, if: :test_password_confirmation?
@@ -129,6 +129,13 @@ class User < ActiveRecord::Base
       user.password = user.password_confirmation = SecureRandom.hex(12)
       user.time_zone = "none"
       user.save!
+    end
+  end
+
+  def uniqueness_of_email
+    existing_record = User.find_by_email(self.email)
+    unless existing_record.nil?
+      errors.add(:email, "Email has already been taken. Perhaps you’ve previously joined.")
     end
   end
 

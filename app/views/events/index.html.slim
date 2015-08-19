@@ -45,4 +45,12 @@
 javascript:
   $(function() {
     $('.event').removeClass('active');
+    $('.view-toggle svg').on('click', function() {
+      $('.event-calendar').toggle();
+      if ($('.event-calendar:visible').length) {
+        $(this).find('use').attr('xlink:href', '#icon-podkeeper-calendar-view');
+      } else {
+        $(this).find('use').attr('xlink:href', '#icon-podkeeper-list-view');
+      }
+    });
   });
