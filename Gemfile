@@ -52,8 +52,6 @@ gem 'uglifier'
 gem 'autoprefixer-rails'
 gem 'simple_calendar', '~> 1.1.0'
 gem 'modernizr-rails'
-gem 'turbolinks'
-gem 'jquery-turbolinks'
 gem 'puma'
 
 group :production do

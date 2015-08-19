@@ -325,3 +325,30 @@
     }
   }
 }
+
+@media only screen
+and (min-device-width : 320px)
+and (orientation : portrait) {
+  .new_event, .edit_event {
+    .event_start_time, .event_end_time {
+
+      input {
+        width: 35% !important;
+      }
+      @include clearfix();
+    }
+
+    .event_start_date, .event_end_date {
+
+      input {
+        width: 35% !important;
+      }
+    }
+
+    .timezone {
+      float: none !important;
+      margin: 10px 0 0 !important;
+      width: 100% !important;
+    }
+  }
+}

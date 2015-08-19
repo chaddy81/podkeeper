@@ -11,7 +11,6 @@
 // about supported directives.
 //
 //= require jquery
-//= require jquery.turbolinks
 //= require jquery_ujs
 //= require jquery_nested_form
 //= require jquery-ui
@@ -22,5 +21,4 @@
 //= require jquery.maskedInput
 //= require bootstrap
 //= require bootstrap-datepicker
-//= require turbolinks
 //= require_tree .

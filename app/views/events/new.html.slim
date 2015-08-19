@@ -4,110 +4,110 @@
     p Change any information to create a new event. You can click Duplicate this Event once it’s saved if you have more to create.
   - else
     h3.event-details__header CREATE AN EVENT
+  .row
+    = simple_nested_form_for @event do |f|
+      .col-sm-12
+        .form-group
+          = f.input :single_event, label: false, collection: [['Single Event', true], ['Repeat as a Weekly Series', false]],
+             as: :radio_buttons, item_wrapper_class: 'inline', input_html: { style: 'margin-left: 0;' }
+      .col-sm-12.col-md-6
+        h4 Event Details
+        .form-group
+          = f.input :name, input_html: { class: 'form-control', maxlength: 40 }
+        .form-group
+          = f.input :description, input_html: { class: 'form-control', rows: 2, style: 'resize: vertical;' }
+        .form-group
+          = f.input :location, input_html: { class: 'form-control' }
+        .form-group
+          = f.input :street, input_html: { class: 'form-control' }
+        .form-group
+          = label_tag "City, State, Zip"
+          = f.input :city, input_html: { id: 'loc-city', class: 'pull-left form-control', style: 'width: 48%' }, label: false
+          = f.input :state, collection: STATES, label: false, include_blank: true, input_html: { id: 'loc-state', class: 'pull-left form-control', style: 'margin: 0 10px;width: 23%' }
+          = f.input :zipcode, label: false, input_html: { id: 'loc-zip', class: 'pull-left form-control', style: 'width: 22%' }, label: false
+        .form-group
+          = f.input :phone, input_html: { class: 'phone form-control', autocomplete: 'off' }
+        .form-group
+          / = label_tag 'RSVP Required'
+          = f.input :require_rsvp, label: 'RSVP Required'
+        .form-group
+          = f.input :custom_reminders_specified, as: :hidden
 
-  = simple_nested_form_for @event do |f|
-    .col-sm-12
-      .form-group
-        = f.input :single_event, label: false, collection: [['Single Event', true], ['Repeat as a Weekly Series', false]],
-           as: :radio_buttons, item_wrapper_class: 'inline', input_html: { style: 'margin-left: 0;' }
-    .col-sm-12.col-md-6
-      h4 Event Details
-      .form-group
-        = f.input :name, input_html: { class: 'form-control', maxlength: 40 }
-      .form-group
-        = f.input :description, input_html: { class: 'form-control', rows: 2, style: 'resize: vertical;' }
-      .form-group
-        = f.input :location, input_html: { class: 'form-control' }
-      .form-group
-        = f.input :street, input_html: { class: 'form-control' }
-      .form-group
-        = label_tag "City, State, Zip"
-        = f.input :city, input_html: { id: 'loc-city', class: 'pull-left form-control', style: 'width: 48%' }, label: false
-        = f.input :state, collection: STATES, label: false, include_blank: true, input_html: { id: 'loc-state', class: 'pull-left form-control', style: 'margin: 0 10px;width: 23%' }
-        = f.input :zipcode, label: false, input_html: { id: 'loc-zip', class: 'pull-left form-control', style: 'width: 22%' }, label: false
-      .form-group
-        = f.input :phone, input_html: { class: 'phone form-control', autocomplete: 'off' }
-      .form-group
-        / = label_tag 'RSVP Required'
-        = f.input :require_rsvp, label: 'RSVP Required'
-      .form-group
-        = f.input :custom_reminders_specified, as: :hidden
+      .col-sm-12.col-md-6
+        h4 When
+        .form-group
+          = label_tag do
+            | Begin
+            abbr title="required" *
+          = f.input :start_date, as: :string, label: false, input_html: { class: 'form-control dt-date datepicker', value: datepicker_format(f.object.start_date), style: 'float:left; width: 28%;margin-right: 10px' }
+          span.pull-left at
+          - if f.object.start_time.present?
+            = f.input :start_time, as: :string, label: false, input_html: { class: 'form-control dt-time timepicker pull-left', value: timepicker_format(f.object.start_time.in_time_zone), style: 'float:left;width:28%;margin-left: 10px' }, wrapper_html: { class: 'bootstrap-timepicker' }
+          - else
+            = f.input :start_time, as: :string, label: false, input_html: { class: 'form-control dt-time timepicker pull-left', style: 'float:left;width:28%;margin-left: 10px' }, wrapper_html: { class: 'bootstrap-timepicker' }
+          span
+            = f.input :time_zone, collection: TIME_ZONE_OPTIONS, include_blank: false, label: false, input_html: { class: 'timezone form-control', style: 'width: 29%;float:left;margin-left:10px;' }
 
-    .col-sm-12.col-md-6
-      h4 When
-      .form-group
-        = label_tag do
-          | Begin
-          abbr title="required" *
-        = f.input :start_date, as: :string, label: false, input_html: { class: 'form-control dt-date datepicker', value: datepicker_format(f.object.start_date), style: 'float:left; width: 28%;margin-right: 10px' }
-        span.pull-left at
-        - if f.object.start_time.present?
-          = f.input :start_time, as: :string, label: false, input_html: { class: 'form-control dt-time timepicker pull-left', value: timepicker_format(f.object.start_time.in_time_zone), style: 'float:left;width:28%;margin-left: 10px' }, wrapper_html: { class: 'bootstrap-timepicker' }
-        - else
-          = f.input :start_time, as: :string, label: false, input_html: { class: 'form-control dt-time timepicker pull-left', style: 'float:left;width:28%;margin-left: 10px' }, wrapper_html: { class: 'bootstrap-timepicker' }
-        span
-          = f.input :time_zone, collection: TIME_ZONE_OPTIONS, include_blank: false, label: false, input_html: { class: 'timezone form-control', style: 'width: 29%;float:left;margin-left:10px;' }
+        .form-group.single-event.show-end.active
+          i.icons.icons__create
+          span Add End Time
 
-      .form-group.single-event.show-end.active
-        i.icons.icons__create
-        span Add End Time
+        .form-group.multiple-event.show-end
+          i.icons.icons__create
+          span Add End Time
 
-      .form-group.multiple-event.show-end
-        i.icons.icons__create
-        span Add End Time
+        .form-group.end-date-time
+          = label_tag 'End'
+          = f.input :end_date, as: :string, label: false, input_html: { class: 'form-control dt-date datepicker', value: datepicker_format(f.object.end_date), style: 'float:left; width: 28%;margin-right: 10px' }
+          span.pull-left at
+          - if f.object.end_time.present?
+            = f.input :end_time, as: :string, label: false, input_html: { class: 'form-control pull-left', value: timepicker_format(f.object.end_time.in_time_zone), style: 'float:left;width:28%;margin-left: 10px' }, wrapper_html: { class: 'bootstrap-timepicker' }
+          - else
+            = f.input :end_time, as: :string, label: false, input_html: { class: 'form-control dt-time timepicker pull-left', style: 'float:left;width:28%;margin-left: 10px' }, wrapper_html: { class: 'bootstrap-timepicker' }
 
-      .form-group.end-date-time
-        = label_tag 'End'
-        = f.input :end_date, as: :string, label: false, input_html: { class: 'form-control dt-date datepicker', value: datepicker_format(f.object.end_date), style: 'float:left; width: 28%;margin-right: 10px' }
-        span.pull-left at
-        - if f.object.end_time.present?
-          = f.input :end_time, as: :string, label: false, input_html: { class: 'form-control pull-left', value: timepicker_format(f.object.end_time.in_time_zone), style: 'float:left;width:28%;margin-left: 10px' }, wrapper_html: { class: 'bootstrap-timepicker' }
-        - else
-          = f.input :end_time, as: :string, label: false, input_html: { class: 'form-control dt-time timepicker pull-left', style: 'float:left;width:28%;margin-left: 10px' }, wrapper_html: { class: 'bootstrap-timepicker' }
+        .form-group.single-event.hide-end
+          i.icons.icons__delete
+          span Remove End Time
 
-      .form-group.single-event.hide-end
-        i.icons.icons__delete
-        span Remove End Time
+        .form-group.multiple-event.hide-end
+          i.icons.icons__delete
+          span Remove End Time
 
-      .form-group.multiple-event.hide-end
-        i.icons.icons__delete
-        span Remove End Time
+        .form-group.total-weeks.multiple-event
+          span Total # of weeks in Weekly Series
+          = f.input :weeks, label: false, input_html: { type: 'text', value: "#{@event.weeks? ? @event.weeks : '2'}", oninput: 'setmax()', class: 'form-control' }
 
-      .form-group.total-weeks.multiple-event
-        span Total # of weeks in Weekly Series
-        = f.input :weeks, label: false, input_html: { type: 'text', value: "#{@event.weeks? ? @event.weeks : '2'}", oninput: 'setmax()', class: 'form-control' }
+        p.multiple-event You can edit the details of each Event individually after the Weekly Series is created.
 
-      p.multiple-event You can edit the details of each Event individually after the Weekly Series is created.
+        h4.specify-reminders
+          a
+            | Reminders
+          svg.icon viewbox="0 0 1024 1024" style="width: 21px;height: 21px; margin-left: 10px;vertical-align: middle;" data-toggle="tooltip" data-placement="auto" data-html="true" title="<p><strong>The following reminders will be sent unless you change them:</strong></p><p>To Pod Members who haven't RSVP'd (if one was requested):<br/>   14 days &amp; 4 days prior to event</p><p>To all Pod members (except those who RSVP'd No)<br/>   7 days &amp; 1 day prior to event</p>"
+            use xlink:href="#icon-podkeeper-info-yellow"
 
-      h4.specify-reminders
-        a
-          | Reminders
-        svg.icon viewbox="0 0 1024 1024" style="width: 21px;height: 21px; margin-left: 10px;vertical-align: middle;" data-toggle="tooltip" data-placement="auto" data-html="true" title="<p><strong>The following reminders will be sent unless you change them:</strong></p><p>To Pod Members who haven't RSVP'd (if one was requested):<br/>   14 days &amp; 4 days prior to event</p><p>To all Pod members (except those who RSVP'd No)<br/>   7 days &amp; 1 day prior to event</p>"
-          use xlink:href="#icon-podkeeper-info-yellow"
+        .event-details__reminders
+          p We will send automatic reminders to RSVP (if one is required) and that the event is coming up. You can adjust when these will be sent.
+          div data-rsvp-reminders=''
+            = f.simple_fields_for :rsvp_reminders do |ff|
+              .form-group data-rsvp-reminders=''
+                = ff.input :days_before, label: false, collection: (1..21).to_a.reverse, input_html: { class: 'form-control pull-left', style: 'width: auto;margin-right:5px' }, include_blank: false, selected: ff.object.days_before || '2'
+                span days prior to event to Anyone who hasn't RSVP'd yet
+                = ff.link_to_remove 'Delete', class: 'pull-right'
 
-      .event-details__reminders
-        p We will send automatic reminders to RSVP (if one is required) and that the event is coming up. You can adjust when these will be sent.
-        div data-rsvp-reminders=''
-          = f.simple_fields_for :rsvp_reminders do |ff|
-            .form-group data-rsvp-reminders=''
-              = ff.input :days_before, label: false, collection: (1..21).to_a.reverse, input_html: { class: 'form-control pull-left', style: 'width: auto;margin-right:5px' }, include_blank: false, selected: ff.object.days_before || '2'
-              span days prior to event to Anyone who hasn't RSVP'd yet
-              = ff.link_to_remove 'Delete', class: 'pull-right'
+            = f.link_to_add 'Add RSVP Reminder', :rsvp_reminders
 
-          = f.link_to_add 'Add RSVP Reminder', :rsvp_reminders
+          div data-event-reminders=''
+            = f.simple_fields_for :event_reminders do |ff|
+              .form-group
+                = ff.input :days_before, label: false, collection: (1..21).to_a.reverse, input_html: { class: 'form-control pull-left', style: 'width: auto;margin-right:5px' }, include_blank: false, selected: ff.object.days_before || '2'
+                span days prior to event
+                = ff.link_to_remove 'Delete', class: 'pull-right'
 
-        div data-event-reminders=''
-          = f.simple_fields_for :event_reminders do |ff|
-            .form-group
-              = ff.input :days_before, label: false, collection: (1..21).to_a.reverse, input_html: { class: 'form-control pull-left', style: 'width: auto;margin-right:5px' }, include_blank: false, selected: ff.object.days_before || '2'
-              span days prior to event
-              = ff.link_to_remove 'Delete', class: 'pull-right'
+            = f.link_to_add 'Add Event Reminder', :event_reminders
 
-          = f.link_to_add 'Add Event Reminder', :event_reminders
+        .event-details__form-controls
+          / = link_to 'Clear All Fields', event_clear_fields_path(@event), id: 'clear-event-form', class: 'pull-left back'
 
-      .event-details__form-controls
-        / = link_to 'Clear All Fields', event_clear_fields_path(@event), id: 'clear-event-form', class: 'pull-left back'
-
-        .pull-right
-          = link_to 'Cancel', events_path, class: 'back btn btn--cancel'
-          = f.submit 'Save', class: 'submit btn btn-blue', disable_with: 'Saving...'
+          .pull-right
+            = link_to 'Cancel', events_path, class: 'back btn btn--cancel'
+            = f.submit 'Save', class: 'submit btn btn--green', disable_with: 'Saving...'
