@@ -31,8 +31,8 @@
         .form-controls
           .col-sm-7.col-md-8
             .pull-right
-              a.cancel.back href="#{:back}" Cancel
-              input.user-info__submit.btn type="submit" value="Save"
+              = link_to 'Cancel', :back, class: 'back btn btn--cancel'
+              input.user-info__submit.btn.btn--green type="submit" value="Save"
 
         .clearfix
 
