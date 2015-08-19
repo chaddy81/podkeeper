@@ -5,7 +5,10 @@ h4.header Details
     .row
       .pull-left.col-xs-6
         p= event.start_date.strftime("%a. %b %d, %Y")
-        p= event.start_time.strftime('%l:%M%p %Z')
+        - if event.end_time
+          p #{event.start_time.strftime('%l:%M%p')} - #{event.end_time.strftime('%l:%M%p %Z')}
+        - else
+          p= event.start_time.strftime('%l:%M%p %Z')
       = link_to 'Save to Web Calendar', event_export_to_personal_calendar_path(event), class: 'save-web pull-right col-xs-6', remote: true
   .event-details__where
     h3 Where
