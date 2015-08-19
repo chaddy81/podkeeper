@@ -94,7 +94,7 @@
 @media (orientation: landscape) {
   .add-menu__menu {
     display: table;
-    margin: 18% 0 0;
+    margin: 12% 0 0;
   }
   .add-menu__menu-item {
     display: table-cell;
@@ -102,7 +102,8 @@
     width: 20%;
 
     .icon-back {
-      margin-left: 0;
+      display: block;
+      margin: 5px auto 0;
     }
   }
 }
