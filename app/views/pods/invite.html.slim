@@ -47,7 +47,6 @@
                       td = l invite.reminders.last.created_at, format: '%a. %b %e, %Y' if invite.reminders.any?
                       td = l invite.created_at, format: '%a. %b %e, %Y'
 
-            .col-sm-12
-              .pull-right
-                = link_to 'Cancel', invite_pods_path, class: 'btn btn--cancel'
-                = submit_tag 'Send Reminders', disable_with: 'Sending Reminders...', class: 'btn btn-default btn-blue', data: { 'turbo-links': false }
+            .form-group.text-center
+              = link_to 'Cancel', invite_pods_path, class: 'btn btn--cancel'
+              = submit_tag 'Send Reminders', disable_with: 'Sending Reminders...', class: 'btn btn-default btn-blue', data: { 'turbo-links': false }

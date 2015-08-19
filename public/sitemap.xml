@@ -31,7 +31,12 @@
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>http://www.podkeeper.com/how-pods-work</loc>
+  <loc>http://www.podkeeper.com/overview</loc>
+  <changefreq>never</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://www.podkeeper.com/feedback</loc>
   <changefreq>never</changefreq>
   <priority>0.80</priority>
 </url>
@@ -156,7 +161,7 @@
   <loc>http://getstarted.podkeeper.com/online-organizer/</loc>
   <changefreq>never</changefreq>
   <priority>0.80</priority>
-</url>  
+</url>
 <url>
   <loc>http://www.podkeeper.com/video</loc>
   <changefreq>never</changefreq>
