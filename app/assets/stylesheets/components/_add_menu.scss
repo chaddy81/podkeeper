@@ -88,3 +88,19 @@
     margin-left: -14px;
   }
 }
+
+@media (orientation: landscape) {
+  .add-menu__menu {
+    display: table;
+    margin: 18% 0 0;
+  }
+  .add-menu__menu-item {
+    display: table-cell;
+    text-align: center;
+    width: 20%;
+
+    .icon-back {
+      margin-left: 0;
+    }
+  }
+}
