@@ -9,5 +9,5 @@
 
   nav.pod-select__pod-list
     p.pod-select__my-pods My Pods
-    - current_user.pods.includes(:pod_memberships).order('pod_memberships.created_at desc').each do |pod|
+    - current_user.pods.includes(:pod_memberships).sort_by{|p| p.name.humanize}.each do |pod|
       a href="#{set_pod_pods_path(pod_id: pod.id)}" data-remote="true" = pod.name
