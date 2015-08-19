@@ -1,34 +1,33 @@
 a.event.clearfix data-event-id="#{event.id}" href="#{event_path(event)}"
-  .row
-    .event-date.col-xs-3
-      svg.event-date__icon.center-block viewbox="0 0 1024 1024"
-        use xlink:href="#icon-podkeeper-date"
-      span.event-date__month= event.start_date.strftime("%b")
-      span.event-date__day= event.start_date.strftime("%d")
-    span.event-meta.pull-left
-      h4= truncate event.name, :length => 20
-      p
-        = event.start_date.strftime("%a. %b %d, %Y")
-        br
-        = event.start_time.strftime('%l:%M%P %Z')
-      p= event.location
-    span.event-rsvp.text-center.pull-right
-      - if event.require_rsvp?
-        - if my_rsvp(event).rsvp_option
-          svg.icon.icon-more.center-block viewbox="0 0 1024 1024"
-            use xlink:href="#icon-podkeeper-#{my_rsvp(event).rsvp_option.name}"
-          p.visible-xs= rsvp_message(my_rsvp(event).rsvp_option.name)
-        - else
-          svg.icon.icon-more.center-block viewbox="0 0 1024 1024"
-              use xlink:href="#icon-podkeeper-rsvp"
-          p.visible-xs Please RSVP
-
+  .event-date.col-xs-3
+    svg.event-date__icon.center-block viewbox="0 0 1024 1024"
+      use xlink:href="#icon-podkeeper-date"
+    span.event-date__month= event.start_date.strftime("%b")
+    span.event-date__day= event.start_date.strftime("%d")
+  span.event-meta.pull-left
+    h4= truncate event.name, :length => 20
+    p
+      = event.start_date.strftime("%a. %b %d, %Y")
+      br
+      = event.start_time.strftime('%l:%M%P %Z')
+    p= event.location
+  span.event-rsvp.text-center.pull-right
+    - if event.require_rsvp?
+      - if my_rsvp(event).rsvp_option
+        svg.icon.icon-more.center-block viewbox="0 0 1024 1024"
+          use xlink:href="#icon-podkeeper-#{my_rsvp(event).rsvp_option.name}"
+        p.visible-xs= rsvp_message(my_rsvp(event).rsvp_option.name)
       - else
-        span.icon.icon-no-rsvp
-        p.visible-xs No RSVP Required
+        svg.icon.icon-more.center-block viewbox="0 0 1024 1024"
+            use xlink:href="#icon-podkeeper-rsvp"
+        p.visible-xs Please RSVP
 
-    br
+    - else
+      span.icon.icon-no-rsvp
+      p.visible-xs No RSVP Required
 
-    span.text-center.pull-right style="width: 63px"
-      svg.icon.icon-more.hidden-xs viewbox="0 0 1024 1024" style="fill: #9FC03B;margin-top: 15px;width: 18px;height: 18px;margin-left: -30px;"
-        use xlink:href="#icon-podkeeper-arrow-right-green"
+  br
+
+  span.text-center.pull-right style="width: 63px"
+    svg.icon.icon-more.hidden-xs viewbox="0 0 1024 1024" style="fill: #9FC03B;margin-top: 15px;width: 18px;height: 18px;"
+      use xlink:href="#icon-podkeeper-arrow-right-green"

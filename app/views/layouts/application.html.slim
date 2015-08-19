@@ -51,7 +51,7 @@ html
 
       .error-messages
         = flash_messages
-      .container
+      .container.mobile-collapse
         = yield
 
     = render 'footer'
@@ -77,7 +77,7 @@ html
       });
 
       $(function() {
-        $('.view-toggle svg').on('click', function() {
+        $(document).on('click', '.view-toggle svg', function() {
           $('.event-calendar').toggle();
           if ($('.event-calendar:visible').length) {
             $(this).find('use').attr('xlink:href', '#icon-podkeeper-calendar-view');

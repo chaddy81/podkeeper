@@ -32,3 +32,13 @@
 
   @include font-size(12px);
 }
+
+.mobile-collapse {
+  padding: 0;
+}
+
+@media (min-width: 768px ) {
+  .mobile-collapse {
+    padding: 0 15px;
+  }
+}
