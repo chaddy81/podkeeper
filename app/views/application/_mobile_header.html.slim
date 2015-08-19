@@ -1,6 +1,6 @@
 header.page-head
   nav.pod-nav
-    - if action_name == "index" || controller_name == 'pods' || controller_name == 'static_pages' || controller_name == 'users'
+    - if action_name == "index" || controller_name == 'pods' || controller_name == 'static_pages' || controller_name == 'users' || controller_name == 'site_comments'
       a.pod-nav__home.pull-left href="#{root_path}"
         svg.icon.icon-logo viewbox="0 0 1024 1024"
           use xlink:href="#icon-podkeeper-logo"
