@@ -9,14 +9,14 @@
       .modal-body
         p Add this event to your personal calendar by choosing one of the options below.
         ul style="display: table; width: 100%;"
-          li style="display: table-cell"
+          li.text-center style="display: table-cell"
             = link_to 'Google', export_to_google_calendar_link(event), target: '_blank'
 
-          li style="display: table-cell"
+          li.text-center style="display: table-cell"
             = link_to 'iCal', event_export_to_ical_path(event)
 
-          li style="display: table-cell"
+          li.text-center style="display: table-cell"
             = link_to 'Outlook', event_export_to_ical_path(event)
 
-          li style="display: table-cell"
+          li.text-center style="display: table-cell"
             = link_to 'Yahoo', export_to_yahoo_link(event), target: '_blank'
