@@ -135,7 +135,7 @@ class User < ActiveRecord::Base
   def uniqueness_of_email
     existing_record = User.find_by_email(self.email)
     unless existing_record.nil?
-      errors.add(:email, "Email has already been taken. Perhaps you’ve previously joined.")
+      errors.add(:email, "Email has already been taken. Perhaps you already have an account.")
     end
   end
 
