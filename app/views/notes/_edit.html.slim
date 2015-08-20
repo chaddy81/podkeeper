@@ -1,0 +1,6 @@
+= simple_form_for note, remote: true do |f|
+  = render 'notes/fields', f: f
+
+  .form-controls
+    = f.submit 'Update', disable_with: 'Updating...', class: 'btn btn-default'
+    = link_to 'Cancel', '#', class: 'back spaced', 'data-dismiss' => 'modal'

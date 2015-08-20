@@ -9,7 +9,7 @@
   @include font-size(12px);
 }
 
-.new_note {
+#new_note {
   input[type=text], textarea {
     border: 1px solid $event-border;
     margin-bottom: 20px;

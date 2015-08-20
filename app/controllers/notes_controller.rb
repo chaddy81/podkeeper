@@ -40,7 +40,7 @@ class NotesController < ApplicationController
     if @note.update_attributes(params[:note])
       @note.update_sort_by_date
       @notes = current_pod.notes.order('sort_by_date DESC')
-      flash.now[:success] = 'Your note was updated successfully!'
+      flash[:success] = 'Your note was updated successfully!'
     else
       render :edit
     end
@@ -50,7 +50,7 @@ class NotesController < ApplicationController
     @note = Note.find(params[:id])
     @note.destroy
     flash[:success] = 'Discussion was deleted successfully'
-    redirect_to :back
+    redirect_to notes_path
   end
 
   def sort

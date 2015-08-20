@@ -1,0 +1,7 @@
+.form-group
+  label.pull-left for="topic2" Title *
+  = f.input :topic, label: false, input_html: { class: 'form-control', maxlength: 10000 }
+
+.form-group
+  label.pull-left for="details" Message *
+  = f.input :body, label: false,input_html: { class: 'form-control', maxlength: 10000 }
