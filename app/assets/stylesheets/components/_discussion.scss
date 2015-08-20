@@ -1,9 +1,11 @@
-.discussions {
-  margin-top: 10px;
+.avatar {
+  border-radius: 42px;
+  margin-right: 10px;
 }
 
 .discussion {
   border-bottom: 1px solid $event-border;
+  outline: none;
   padding-bottom: 7px;
   padding-top: 7px;
 }
@@ -33,7 +35,9 @@
   }
 }
 
-.discussion-info {
+.discussion-info, .comment-info {
+  overflow: auto;
+
   h4 {
     color: $blue;
     font-weight: 300;
@@ -55,9 +59,8 @@
   margin-right: 15px;
 
   svg {
-    height: 24px;
-    margin-top: 10px;
-    width: 24px;
+    height: 21px;
+    width: 21px;
   }
 }
 
@@ -77,8 +80,96 @@
   }
 }
 
+.discussion-container {
+  h4 {
+    color: $blue;
+    font-weight: normal;
+    margin-top: 5px;
+
+    @include font-size(24px);
+  }
+  .discussion-info, .comment-info {
+    margin-bottom: 20px;
+
+    p {
+      font-weight: 300;
+
+      @include font-size(14px);
+    }
+  }
+
+  .comment-info {
+    background: #fff;
+    border: 1px solid $event-border;
+    border-radius: 5px;
+    padding: 5px 10px;
+  }
+
+  .discussion-info {
+    background: $blue-gray;
+    border: 1px solid $event-border;
+    border-radius: 5px;
+    padding: 5px 10px;
+  }
+
+  .discussion-meta {
+    color: $blue;
+
+    span, em {
+      font-weight: 500;
+
+      @include font-size(12px);
+    }
+  }
+}
+
 #new_note {
   .counter { color: $green; }
   .red     { color: $red;   }
 }
 
+.new-comment {
+  border-top: 1px solid $event-border;
+
+  .comment_body {
+    display: inline-block;
+    margin-top: 15px;
+    padding-left: 15px;
+    vertical-align: middle;
+    width: 84%;
+
+    textarea {
+      border-color: $event-border;
+      border-radius: 8px;
+      box-sizing: border-box;
+      height: 38px;
+      line-height: 24px;
+      max-height: 38px;
+      outline: none;
+      padding: 6px 15px;
+      resize: none;
+      width: 100%;
+
+      @include font-size(14px);
+    }
+  }
+
+  input[type=submit] {
+    background: none;
+    border: none;
+    color: $blue;
+    font-weight: 400;
+    margin-left: 10px;
+    outline: none;
+    vertical-align: -5px;
+  }
+}
+
+@media (min-width: 768px) {
+  .new-comment {
+    .comment_body {
+      padding-left: 0;
+      width: 90%;
+    }
+  }
+}

@@ -11,5 +11,8 @@
       p.discussion-author= note.user.full_name
     span.discussion-urgent.pull-right
       - if note.is_urgent?
-        svg.icon.icon-more.center-block viewbox="0 0 1024 1024"
+        svg.icon.center-block viewbox="0 0 1024 1024"
           use xlink:href="#icon-podkeeper-info-yellow"
+      br
+      svg.icon.icon-more.hidden-xs viewbox="0 0 1024 1024" style="fill: #9FC03B;margin-top: 5px;width: 16px;height: 16px;"
+        use xlink:href="#icon-podkeeper-arrow-right-green"
