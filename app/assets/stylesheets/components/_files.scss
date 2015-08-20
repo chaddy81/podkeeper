@@ -36,3 +36,17 @@
 
   @include font-size(24px);
 }
+
+.files__new {
+  h4 {
+    color: $blue;
+
+    @include font-size(24px);
+  }
+
+  p, label {
+    font-weight: normal;
+
+    @include font-size(14px);
+  }
+}

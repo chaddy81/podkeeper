@@ -2,7 +2,7 @@ $(function() {
 
   $('#note_topic').on('input', function(e) {
       remaining = 60 - $('#note_topic').val().length;
-      $('#topic-counter').text(remaining + ' / 60');
+      $('#topic-counter').text(remaining + ' / 60 characters');
       $('#note_topic_count').val(remaining);
       if (remaining < 0) {
         $('#topic-counter').addClass('red');
@@ -14,7 +14,7 @@ $(function() {
 
     $('#note_body').on('input', function(e) {
       remaining = 2000 - $('#note_body').val().length;
-      $('#details-counter').text(remaining + ' / 2000');
+      $('#details-counter').text(remaining + ' / 2000 characters');
       $('#note_body_count').val(remaining);
       if (remaining < 0) {
         $('#details-counter').addClass('red');

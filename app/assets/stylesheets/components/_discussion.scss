@@ -3,6 +3,30 @@
   margin-right: 10px;
 }
 
+.counters {
+  color: $blue;
+
+  @include font-size(12px);
+}
+
+.new_note {
+  input[type=text], textarea {
+    border: 1px solid $event-border;
+    margin-bottom: 20px;
+  }
+
+  textarea {
+    height: 150px;
+    resize: none;
+  }
+
+  h4 {
+    color: $blue;
+
+    @include font-size(24px);
+  }
+}
+
 .discussion {
   border-bottom: 1px solid $event-border;
   outline: none;
@@ -85,6 +109,14 @@
     color: $blue;
     font-weight: normal;
     margin-top: 5px;
+
+    & + p {
+      color: $blue;
+      font-weight: normal;
+      margin-bottom: 15px;
+
+      @include font-size(14px);
+    }
 
     @include font-size(24px);
   }

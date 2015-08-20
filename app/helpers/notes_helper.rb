@@ -9,9 +9,9 @@ module NotesHelper
 
   def topic_counter(note, remaining_chars)
     if note.topic.blank?
-      content_tag(:span, "60 / 60", class: "counter", id: "topic-counter")
+      content_tag(:span, "60 / 60 characters", id: "topic-counter")
     else
-      content = "#{ remaining_chars } / 60"
+      content = "#{ remaining_chars } / 60 characters"
       classes = ['counter']
       if remaining_chars.to_i < 0
         classes << 'red'
@@ -22,9 +22,9 @@ module NotesHelper
 
   def details_counter(note, remaining_chars)
     if note.body.blank?
-      content_tag(:span, "2000 / 2000", class: "counter", id: "details-counter")
+      content_tag(:span, "2000 / 2000 characters", id: "details-counter")
     else
-      content = "#{ remaining_chars } / 2000"
+      content = "#{ remaining_chars } / 2000 characters"
       classes = ['counter']
       if remaining_chars.to_i < 0
         classes << 'red'
