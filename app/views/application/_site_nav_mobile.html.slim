@@ -24,4 +24,5 @@
         = link_to 'Invite Others', invite_pods_path
         = link_to 'Members', members_path
         = link_to 'Pod Details', details_pods_path
-        = link_to 'Pod Admin', pod_memberships_path, data: { "no-turbolink" => "true" }
+        - if is_at_least_pod_admin?
+          = link_to 'Pod Admin', pod_memberships_path
