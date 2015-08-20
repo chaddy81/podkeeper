@@ -12,5 +12,6 @@
  *
  *= require_self
  *= require bootstrap
+ *= require jquery.timepicker.css
  *= require podkeeper
  */

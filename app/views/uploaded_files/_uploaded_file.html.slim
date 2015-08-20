@@ -29,9 +29,9 @@ tr
         - if IMAGE_EXTENSIONS.include? uploaded_file.file.file.extension.downcase
           = link_to image_tag(uploaded_file.file.thumb.url), uploaded_file.file.file.url, class: 'thumbnail-image', target: '_blank'
         - else
-          span.tooltip-unstyled data-placement="right" data-toggle="tooltip" data-html="true" title="<nobr>#{truncate(uploaded_file.identifier, length: 70)}</nobr>" = link_to 'Download File', uploaded_file.file.file.url, class: 'thumbnail-image', target: '_blank'
+          span= link_to 'Download File', uploaded_file.file.file.url, class: 'thumbnail-image', target: '_blank'
       - else
-        span.tooltip-unstyled data-placement="right" data-toggle="tooltip" title=truncate(uploaded_file.url, length: 70) = link_to 'Visit Link', uploaded_file.url, target: '_blank'
+        span= link_to 'Visit Link', uploaded_file.url, target: '_blank'
 
   td
     - if uploaded_file.file.file.nil?
