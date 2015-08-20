@@ -7,10 +7,10 @@
   background-size: 14px;
   display: inline-block;
   fill: #ddd;
-  height: 14px;
+  height: 21px;
   opacity: .5;
   text-indent: -999em;
-  width: 14px;
+  width: 21px;
 }
 
 .icon-arrow-up {
@@ -18,10 +18,10 @@
   background-size: 14px;
   display: inline-block;
   fill: #ddd;
-  height: 14px;
+  height: 21px;
   opacity: .5;
   text-indent: -999em;
-  width: 14px;
+  width: 21px;
 }
 
 .icon-back {
@@ -85,4 +85,11 @@
   fill: $blue;
   height: 21px;
   width: 21px
+}
+
+@media (min-width: 768px) {
+  .icon-arrow-down, .icon-arrow-up {
+    height: 14px;
+    width: 14px;
+  }
 }

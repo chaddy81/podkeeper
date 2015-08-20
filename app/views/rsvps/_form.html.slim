@@ -28,10 +28,10 @@
       .row
         .rsvp-count.clearfix
           .col-xs-6.text-center
-            = f.input :number_of_adults, as: :string, label: false, input_html: { class: 'spinner' }
+            = f.input :number_of_adults, as: :string, label: false, input_html: { class: 'spinner', readonly: 'readonly' }
             label Adults
           .col-xs-6.text-center
-            = f.input :number_of_kids, as: :string, label: false, input_html: { class: 'spinner' }
+            = f.input :number_of_kids, as: :string, label: false, input_html: { class: 'spinner', readonly: 'readonly' }
             label Kids
         p
           label Quick Comment

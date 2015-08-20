@@ -6,6 +6,7 @@
   .spinner {
     border: none;
     color: $green;
+    margin: 5px 0;
     outline: none;
     text-align: center;
     width: 55px;
@@ -23,7 +24,7 @@
   .ui-spinner-up {
     left: 50%;
     position: absolute;
-    top: -12px;
+    top: -17px;
     transform: translateX(-50%);
   }
 }
