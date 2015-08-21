@@ -1,10 +1,10 @@
 - if current_user.pods.any?
   nav.site-nav.site-nav__mobile
-    = link_to events_path, class: "site-nav__item site-nav__item--events text-center #{is_active?(events_path)}" do
+    = link_to events_path, class: "site-nav__item site-nav__item--events text-center #{'active' if controller_name == 'events'}" do
       svg.icon.icon-events.center-block viewbox="0 0 1024 1024"
         use xlink:href="#icon-podkeeper-calendar"
       | Events
-    = link_to notes_path, class: "site-nav__item site-nav__item--discussions text-center #{is_active?(notes_path)}" do
+    = link_to notes_path, class: "site-nav__item site-nav__item--discussions text-center #{'active' if controller_name == 'notes'}" do
       svg.icon.icon-discussions.center-block viewbox="0 0 1024 1024"
         use xlink:href="#icon-podkeeper-discussion"
       | Discussions
