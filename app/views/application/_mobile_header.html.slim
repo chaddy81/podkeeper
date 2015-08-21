@@ -14,6 +14,6 @@ header.page-head
       svg.icon.icon-menu viewbox="0 0 1024 1024"
         use xlink:href="#icon-podkeeper-menu"
     a.pod-nav__pod-name
-      span= current_pod ? current_pod.name : "No Pod Selected"
+      span= current_pod ? truncate(current_pod.name, length: 25, omission: '') : "No Pod Selected"
       svg viewbox="0 0 1024 1024"
         use xlink:href="#icon-podkeeper-arrow-down"

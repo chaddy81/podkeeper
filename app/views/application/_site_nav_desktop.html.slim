@@ -9,8 +9,11 @@
               span.caret
             ul.dropdown-menu
               - current_user.pods.includes(:pod_memberships).sort_by{|p| p.name.humanize}.each do |pod|
-                li
-                  a href="#{set_pod_pods_path(pod_id: pod.id)}" data-remote="true" = pod.name
+                li.hidden-sm
+                  a href="#{set_pod_pods_path(pod_id: pod.id)}" data-remote="true" = truncate(pod.name, length: 40, omission: '')
+                li.visible-sm.hidden-md.hidden-lg
+                  a href="#{set_pod_pods_path(pod_id: pod.id)}" data-remote="true" = truncate(pod.name, length: 25, omission: '')
+
           - else
             | You Have No Pods
 
