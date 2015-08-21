@@ -1,33 +1,35 @@
-.ui-spinner {
-  height: 50px;
-  overflow: visible;
-  width: 45px;
+.event-rsvp-container {
+  .ui-spinner {
+    height: 50px;
+    overflow: visible;
+    width: 45px;
 
-  .spinner {
-    border: none;
-    color: $green;
-    display: inline-block;
-    margin: 5px 0;
-    outline: none;
-    text-align: center;
-    width: 85px;
+    .spinner {
+      border: none;
+      color: $green;
+      display: inline-block;
+      margin: 5px 0;
+      outline: none;
+      text-align: center;
+      width: 85px;
 
-    @include font-size(36px);
-  }
+      @include font-size(36px);
+    }
 
-  .ui-spinner-down {
-    bottom: 20px;
-    left: 50%;
-    padding: 5px;
-    position: absolute;
-    transform: translateX(-50%);
-  }
+    .ui-spinner-down {
+      bottom: 20px;
+      left: 50%;
+      padding: 5px;
+      position: absolute;
+      transform: translateX(-50%);
+    }
 
-  .ui-spinner-up {
-    left: 50%;
-    padding: 5px;
-    position: absolute;
-    top: -17px;
-    transform: translateX(-50%);
+    .ui-spinner-up {
+      left: 50%;
+      padding: 5px;
+      position: absolute;
+      top: -17px;
+      transform: translateX(-50%);
+    }
   }
 }

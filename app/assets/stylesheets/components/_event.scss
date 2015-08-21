@@ -301,6 +301,24 @@
       }
     }
   }
+
+  .multiple-event {
+    position: relative;
+
+    .ui-spinner-up {
+      position: absolute;
+      right: 5px;
+      text-decoration: none;
+      top: 19px;
+    }
+
+    .ui-spinner-down {
+      position: absolute;
+      right: 5px;
+      text-decoration: none;
+      top: 36px;
+    }
+  }
 }
 
 .specify-reminders {
