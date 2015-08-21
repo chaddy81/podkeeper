@@ -84,12 +84,14 @@ function addPodSubCategoryEventHandler()
 function hideShowPodSubCategory()
 {
     $('.create-pod__sub-category').parents('.form-group').hide();
-    pod_category_text = $('#pod_user_pod_category_id option:selected').text();
+    pod_category_text = $('#pod_pod_category_id option:selected').text();
     if (pod_category_text == 'Arts/Music' ||
         pod_category_text == 'Sports'  ||
         pod_category_text == 'Parents Activity') {
+        populatePodSubCategory($('#pod_pod_category_id option:selected').val());
         $('.create-pod__sub-category').parents('.form-group').show();
     }
+    console.log($('#pod_pod_category_id option:selected').val());
 }
 
 function populatePodSubCategory(category_id) {
