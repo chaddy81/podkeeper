@@ -32,6 +32,10 @@
   outline: none;
   padding-bottom: 7px;
   padding-top: 7px;
+
+  &.active {
+    background: $blue-gray;
+  }
 }
 
 .discussion-icon {

@@ -42,3 +42,11 @@
 
           = f.submit 'Post'
           = f.input :note_id, as: :hidden, value: @note.id
+
+javascript:
+  $(function() {
+    var discussionId = #{params[:id]};
+
+    $('.discussions .discussion').removeClass('active');
+    $('[data-discussion-id=' + discussionId + ']').addClass('active');
+  });
