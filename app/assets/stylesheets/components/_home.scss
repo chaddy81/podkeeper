@@ -637,12 +637,13 @@
       color: #fff;
       left: 30px;
       position: absolute;
-      top: 65px;
+      top: 45px;
       width: 595px;
 
       h3 {
         font-family: 'Raleway';
         font-weight: 500;
+        line-height: 1.4;
 
         @include font-size(36px);
       }
