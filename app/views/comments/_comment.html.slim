@@ -18,3 +18,11 @@
         em style="margin-left: 10px;"= comment.created_at.strftime("%b %d, %Y, %l:%M%P")
     p= comment.body
 .clearfix
+
+javascript:
+  $(function() {
+    $('[data-confirm]').on('touchstart', function(e) {
+      e.preventDefault();
+      $(this).click();
+    });
+  });
