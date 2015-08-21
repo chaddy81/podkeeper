@@ -306,17 +306,19 @@
     position: relative;
 
     .ui-spinner-up {
+      padding: 5px;
       position: absolute;
       right: 5px;
       text-decoration: none;
-      top: 19px;
+      top: 13px;
     }
 
     .ui-spinner-down {
+      padding: 5px;
       position: absolute;
       right: 5px;
       text-decoration: none;
-      top: 36px;
+      top: 33px;
     }
   }
 }
