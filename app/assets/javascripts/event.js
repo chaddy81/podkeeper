@@ -1,5 +1,5 @@
 $(function() {
-  $(document).on('click', '.rsvp-count__edit, .button-container label', function() {
+  $(document).on('click touchstart', '.rsvp-count__edit, .button-container label', function() {
     $('.rsvp-count-comment').show();
     $('.rsvp-count__user, .rsvp-comment').hide();
   });
