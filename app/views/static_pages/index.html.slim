@@ -2,10 +2,11 @@
   .container
     .home-page__hero
       .home-page__hero-content
-        h3 Join PodKeeper
-        p
-          em The free online organizer for all the groups in your life.
+        h3 Room Parents, Scout Leaders, Coaches & Group Organizers:
+        p We’re here to help
+
         a.btn.btn--signup href="#{signup_path}" Sign Up
+        span.free 100% Free
       iframe.home-page__hero-video src="//player.vimeo.com/video/114944804" frameborder="none" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen="true"
 
     .home-page__nav.text-center.clearfix
@@ -18,10 +19,10 @@
     .home-page__description.clearfix
       h3.text-center What’s a Pod?
       p.text-center
-        | A pod is an online hub for your real-world group. Within your pod, you can schedule
+        | A Pod is an online hub for your real-world group. Within your Pod, you can schedule
         br
         | events, assign tasks, share forms—whatever your group needs!
-      h4.text-center Add 1 pod for your family...and 1 pod for any group that should be more organized.
+      h4.text-center Add a Pod for your Family ... and a Pod for each Group you want to keep organized.
       .row
         .col-sm-3.col-md-3.home-page__description-box.text-center
           = image_tag 'for-family.jpg'
@@ -29,7 +30,7 @@
             svg.icon viewbox="0 0 1024 1024"
               use xlink:href="#icon-podkeeper-parents"
             h5 For Your Family
-            p As a parent, you now have a better way to handle your family’s busy schedule. See events from all of your pods in one place, and sync them to your other calendars!
+            p As a parent, you now have a better way to handle your family’s busy schedule. See events from all of your Pods in one place, and save them to your other calendars!
         .col-sm-3.col-md-3.home-page__description-box.text-center
           = image_tag 'for-class.jpg'
           .content
@@ -43,14 +44,15 @@
             svg.icon viewbox="0 0 1024 1024"
               use xlink:href="#icon-podkeeper-soccer"
             h5 For Your Team
-            p As a coach, it’s easy to make sure the kids arrives at the right place at the right time—and manage the snack list too.
+            p As a coach, it’s easy to make sure the kids arrive at the right place at the right time—and manage the snack list too.
         .col-sm-3.col-md-3.home-page__description-box.text-center
           = image_tag 'for-troop.jpg'
           .content
             svg.icon viewbox="0 0 1024 1024"
               use xlink:href="#icon-podkeeper-scouts"
             h5 For Your Troop
-            p As a scout leader, create sign-up lists, share packing lists and permission slips, schedule camping trips, and keep everyone updated in between meetings.
+            p As a scout leader, coordinate fundraisers and schedule camping trips.
+
     .home-page__icons.text-center
       svg.icon viewbox="0 0 1024 1024"
         use xlink:href="#icon-podkeeper-lacrosse"
@@ -129,8 +131,10 @@
   .container-fluid
     .row
       .home-page__media.text-center
-        h3 There are words that will go here. At least one big row.
-        h5 Interesting Sub Heading
+        h3 PodKeeper.com is so simple to use.
+        h3 You will not believe what you can get done in 5 minutes.
+
+        / h5 Interesting Sub Heading
         = image_tag 'media-image.jpg'
   .container-fluid
     .row
@@ -171,9 +175,9 @@
 
     .home-page__sign-up.text-center
       ul
-        li &#x2714; No more asking, “Didn’t you see my note!?”
-        li &#x2714; No more showing up at the wrong time or location
-        li &#x2714; No more winging it.  Your kids are relying on you.
+        li &#x2714; No more wasting time sending reminders manually
+        li &#x2714; No more worrying if everyone will show up
+        li &#x2714; No more winging it. The kids are relying on you.
 
 
       a.btn.btn--green.center-block href="#{signup_path}" Sign Up
