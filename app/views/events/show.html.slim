@@ -30,4 +30,9 @@ javascript:
 
     $('.event').removeClass('active');
     $('[data-event-id=' + eventId + ']').addClass('active');
+
+    $.ajax({
+      type: 'GET',
+      url: "/events/update_last_visit"
+    })
   });

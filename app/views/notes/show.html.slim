@@ -49,4 +49,8 @@ javascript:
 
     $('.discussions .discussion').removeClass('active');
     $('[data-discussion-id=' + discussionId + ']').addClass('active');
+    $.ajax({
+      type: 'GET',
+      url: "/notes/update_last_visit"
+    });
   });
