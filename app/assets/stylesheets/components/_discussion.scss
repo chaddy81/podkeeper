@@ -38,6 +38,13 @@
   }
 }
 
+.discussions {
+  .discussion-info {
+    max-width: 180px;
+    word-wrap: break-word;
+  }
+}
+
 .discussion-icon {
   svg {
     fill: $blue;
@@ -113,6 +120,7 @@
     color: $blue;
     font-weight: normal;
     margin-top: 5px;
+    word-wrap: break-word;
 
     & + p {
       color: $blue;
