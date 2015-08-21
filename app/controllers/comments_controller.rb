@@ -16,13 +16,15 @@ class CommentsController < ApplicationController
   end
 
   def edit
+    @comment = Comment.find(params[:id])
+    @note = @comment.note
   end
 
   def update
     if @comment.update_attributes(params[:comment])
       @comments = @comment.note.comments.includes(:user)
       @notes = current_pod.notes.order('sort_by_date DESC')
-      flash.now[:success] = 'Comment was updated successfully!'
+      flash[:success] = 'Comment was updated successfully!'
     else
       render :edit
     end

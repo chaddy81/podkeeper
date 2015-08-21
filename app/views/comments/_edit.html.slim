@@ -1,0 +1,5 @@
+= simple_form_for comment, html: { class: 'new-comment mobile-collapse' }, remote: true do |f|
+  = f.input :body, as: :text, label: false, input_html: { placeholder: 'Add a Comment', rows: 1 }
+
+  = f.submit 'Post'
+  = link_to 'Cancel', '#', class: 'btn btn--cancel', data: { dismiss: 'modal'}

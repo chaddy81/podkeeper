@@ -34,14 +34,8 @@
       .clearfix
 
       - @note.comments.each do |comment|
-        .comment
-          / img.avatar.pull-left src="#{get_gravatar(@note.user.email, 42)}"
-          .comment-info
-            .discussion-meta.clearfix
-              span.pull-left= comment.user.full_name
-              span.pull-right= comment.created_at.strftime("%b %d, %Y, %l:%M%P")
-            p= comment.body
-        .clearfix
+        = render 'comments/comment', comment: comment
+
       .row
         = simple_form_for @note.comments.new, html: { class: 'new-comment mobile-collapse' } do |f|
           = f.input :body, as: :text, label: false, input_html: { placeholder: 'Add a Comment', rows: 1 }
