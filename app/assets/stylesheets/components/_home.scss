@@ -685,6 +685,38 @@
 @media only screen
 and (min-device-width : 320px)
 and (max-device-width : 568px)
+and (orientation: portrait) {
+  .home-page {
+    .home-page__hero-video {
+      height: 115px;
+      left: 45px;
+      position: absolute;
+      top: 200px;
+      width: 208px;
+    }
+
+    .home-page__hero-content {
+      h3 {
+        @include font-size(20px);
+      }
+
+      p {
+        color: $light-green;
+
+        @include font-size(20px);
+      }
+
+      .btn {
+        margin-bottom: 5px;
+        @include font-size(16px);
+      }
+    }
+  }
+}
+
+@media only screen
+and (min-device-width : 320px)
+and (max-device-width : 568px)
 and (orientation : landscape) {
   .home-page {
 
@@ -804,38 +836,6 @@ and (orientation : landscape) {
       padding: 15px 0;
 
       @include font-size(18px);
-    }
-  }
-}
-
-@media only screen
-and (min-device-width : 320px)
-and (max-device-width : 568px)
-and (orientation: portrait) {
-  .home-page {
-    .home-page__hero-video {
-      height: 115px;
-      left: 45px;
-      position: absolute;
-      top: 200px;
-      width: 208px;
-    }
-
-    .home-page__hero-content {
-      h3 {
-        @include font-size(20px);
-      }
-
-      p {
-        color: $light-green;
-
-        @include font-size(20px);
-      }
-
-      .btn {
-        margin-bottom: 5px;
-        @include font-size(16px);
-      }
     }
   }
 }
