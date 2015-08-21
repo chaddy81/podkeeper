@@ -4,7 +4,6 @@ class SessionsController < ApplicationController
   layout 'registration', only: :new
 
   def new
-    session[:view_count] = 0
     if signed_in?
       flash.keep
       if current_user.pods.any?
@@ -28,7 +27,6 @@ class SessionsController < ApplicationController
   end
 
   def create
-    session[:view_count] = 0
     if params[:provider].present?
       auth = env["omniauth.auth"]
 
@@ -67,7 +65,7 @@ class SessionsController < ApplicationController
         session[:email] = params[:email]
         session[:login] = "failure"
         flash[:error] = 'Invalid email address/password combination'
-        redirect_to :back
+        render :new
       end
     end
   end
