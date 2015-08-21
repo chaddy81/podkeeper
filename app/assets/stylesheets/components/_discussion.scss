@@ -178,9 +178,9 @@
       border-color: $event-border;
       border-radius: 8px;
       box-sizing: border-box;
-      height: 38px;
+      height: 85px;
       line-height: 24px;
-      max-height: 38px;
+      max-height: 85px;
       outline: none;
       padding: 6px 15px;
       resize: none;
@@ -206,6 +206,12 @@
     .comment_body {
       padding-left: 0;
       width: 90%;
+
+      textarea {
+        height: 85px;
+        max-height: none;
+        resize: vertical;
+      }
     }
   }
 }
