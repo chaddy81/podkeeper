@@ -21,8 +21,13 @@
 
 javascript:
   $(function() {
-    $('[data-confirm]').on('touchstart', function(e) {
+    $('[data-confirm]').on('touchend', function(e) {
       e.preventDefault();
-      $(this).click();
+      $(this).unbind('click');
+
+      /*$.ajax({
+        method: 'DELETE',
+        url: $(this).attr('href')
+      });*/
     });
   });
