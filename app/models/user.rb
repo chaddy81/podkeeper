@@ -81,7 +81,7 @@ class User < ActiveRecord::Base
 
   def new_events(pod)
     last_visit = self.pod_memberships.where(pod_id: pod.id).first.last_visit_events
-    pod.events.upcoming.where('created_at > ? and organizer_id != ?', last_visit, self.id).count
+    pod.events.confirmed.upcoming.where('created_at > ? and organizer_id != ?', last_visit, self.id).count
   end
 
   def new_lists(pod)
