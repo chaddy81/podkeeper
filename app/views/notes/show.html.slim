@@ -43,6 +43,9 @@
           = f.submit 'Post'
           = f.input :note_id, as: :hidden, value: @note.id
 
+  = render 'ad_leaderboard'
+= render 'ad_skyscraper'
+
 javascript:
   $(function() {
     var discussionId = #{params[:id]};

@@ -20,6 +20,9 @@
           = link_to '"New List"', new_list_path(pod_id: @pod.id)
           |  to create one!
 
+= render 'ad_skyscraper'
+= render 'ad_leaderboard'
+
 javascript:
   $(function() {
     $.ajax({
