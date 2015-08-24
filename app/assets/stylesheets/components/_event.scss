@@ -195,6 +195,10 @@
 
     @include font-size(18px);
   }
+
+  a {
+    color: $green;
+  }
 }
 
 .save-web, .view-map {

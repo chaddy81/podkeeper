@@ -113,6 +113,10 @@
 
     @include font-size(18px);
   }
+
+  a {
+    color: $green;
+  }
 }
 
 .discussion-container {
