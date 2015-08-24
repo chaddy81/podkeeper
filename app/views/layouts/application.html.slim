@@ -36,6 +36,8 @@ html
       = render 'layouts/bing_ads'
 
   body
+    - if Rails.env.production?
+      = render 'layouts/google_remarketing'
     /! inject svg's for use inline throughout app
     = render 'svg_declaration'
 
