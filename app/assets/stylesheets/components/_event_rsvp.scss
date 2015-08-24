@@ -2,11 +2,11 @@
   color: #fff;
   font-weight: 300;
   margin: 0;
-  padding: 6px 0;
+  padding: 6px 5px;
   position: absolute;
   right: 0;
   top: 0;
-  width: 80px;
+  width: 110px;
 
   &.event-rsvp--rsvp {
     background: $text-color;
@@ -22,6 +22,10 @@
 
   &.event-rsvp--maybe {
     background: $new-count;
+  }
+
+  &.event-rsvp--not-required {
+    background: $gray;
   }
 }
 
