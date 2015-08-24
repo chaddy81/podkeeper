@@ -24,6 +24,10 @@
           | OR
           span.blue-line
 
+    .form-group.text-center.clearfix
+      = f.input :first_name, label: false, input_html: { placeholder: 'First Name' }
+      = f.input :last_name, label: false, input_html: { placeholder: 'Last Name' }
+
     .form-group.text-center
       = f.input :email, label: false, input_html: { placeholder: 'Enter Your Email Address' }
 

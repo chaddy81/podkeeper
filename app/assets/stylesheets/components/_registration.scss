@@ -58,7 +58,7 @@
     }
   }
 
-  input[type=email], input[type=password] {
+  input[type=email], input[type=password], input[type=text] {
     border: 1px solid $dark-blue;
     border-radius: 18px;
     font-family: 'Open Sans';
@@ -81,6 +81,27 @@
 
   .terms {
     @include font-size(12px);
+  }
+
+  .user_first_name, .user_last_name {
+    float: left;
+    width: 50%;
+  }
+
+  .user_first_name, .user_last_name {
+    input {
+      width: 100%;
+    }
+  }
+
+  .user_first_name {
+    padding-left: 25px;
+    padding-right: 10px;
+  }
+
+  .user_last_name {
+    padding-left: 10px;
+    padding-right: 25px;
   }
 }
 
