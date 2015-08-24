@@ -50,7 +50,15 @@
   }
 
   .home-page__nav {
-    display: none;
+    // display: none;
+  }
+
+  .home-page__nav-item {
+    color: $text-color;
+    font-weight: normal;
+    padding: 15px 0;
+
+    @include font-size(16px);
   }
 
   .home-page__tagline {

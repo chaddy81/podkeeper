@@ -10,13 +10,14 @@
       iframe.home-page__hero-video src="//player.vimeo.com/video/114944804" frameborder="none" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen="true"
 
     .home-page__nav.text-center.clearfix
-      a.home-page__nav-item.col-xs-4 How Pods Work
-      a.home-page__nav-item.col-xs-4 Features
-      a.home-page__nav-item.col-xs-4 Get Started
+      .row
+        a.home-page__nav-item.col-xs-4 href="#how-pods-work" How Pods Work
+        a.home-page__nav-item.col-xs-4 href="#features" Features
+        a.home-page__nav-item.col-xs-4 href="#get-started" Get Started
   .home-page__tagline.text-center.container-fluid
     | PodKeeper is the simple way to keep your groups organized
   .container
-    .home-page__description.clearfix
+    #how-pods-work.home-page__description.clearfix
       h3.text-center What’s a Pod?
       p.text-center
         | A Pod is an online hub for your real-world group. Within your Pod, you can schedule
@@ -138,7 +139,7 @@
         = image_tag 'media-image.jpg'
   .container-fluid
     .row
-      .home-page__examples.clearfix
+      #features.home-page__examples.clearfix
         .container
           .col-sm-3.col-md-3.home-page__example.text-center
             svg.icon viewbox="0 0 1024 1024" style="width: 48px; fill: #fff;"
@@ -173,7 +174,7 @@
               br
               | Lists
 
-    .home-page__sign-up.text-center
+    #get-started.home-page__sign-up.text-center
       ul
         li &#x2714; No more wasting time sending reminders manually
         li &#x2714; No more worrying if everyone will show up
