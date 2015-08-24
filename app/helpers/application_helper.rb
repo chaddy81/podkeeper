@@ -7,15 +7,6 @@ module ApplicationHelper
     notice: 'alert-info'
   }
 
-  def full_title(page_title)
-    base_title = 'PodKeeper'
-    if page_title.empty?
-      base_title
-    else
-      "#{page_title} | #{base_title}".html_safe
-    end
-  end
-
   def page_description(description)
     default_desc = 'Keep your family and groups organized in one place for free. Moms, dads, volunteers and coaches use our easy scheduling software to manage a school class, scout troop, sports team.'
     if description.empty?

@@ -4,8 +4,7 @@ hr
     .list__meta.col-sm-4
       h4.list__title
         - if show_list_notification(current_pod, list)
-          svg.icon.icon-edit viewbox="0 0 1024 1024" style="margin: 0 5px;width: 16px; height: 16px"
-            use xlink:href="#icon-podkeeper-info-yellow"
+          span.comment-count
         = list.name
       .list__author
         small = list.creator.full_name
