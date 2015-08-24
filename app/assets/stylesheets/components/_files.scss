@@ -26,7 +26,25 @@
 
   .files__link {
     max-width: 410px;
+    position: relative;
     word-wrap: break-word;
+
+    .comment-count {
+      background: $new-count;
+      border: 1px solid #fff;
+      border-radius: 28px;
+      color: #fff;
+      display: inline-block;
+      height: 14px;
+      left: -21px;
+      line-height: 14px;
+      margin-right: 3px;
+      text-align: center;
+      vertical-align: middle;
+      width: 14px;
+
+      @include font-size(12px);
+    }
   }
 }
 

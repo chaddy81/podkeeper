@@ -15,6 +15,23 @@
 
   .list__title {
     margin-top: 0;
+    position: relative;
+
+    .comment-count {
+      background: $new-count;
+      border: 1px solid #fff;
+      border-radius: 36px;
+      color: #fff;
+      display: inline-block;
+      height: 18px;
+      left: -21px;
+      line-height: 18px;
+      position: absolute;
+      text-align: center;
+      width: 18px;
+
+      @include font-size(12px);
+    }
   }
 
   .list__meta {
