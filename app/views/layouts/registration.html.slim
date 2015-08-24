@@ -29,6 +29,12 @@ html
     = javascript_include_tag :modernizr
     = csrf_meta_tags
 
+    - if Rails.env.production?
+        = render 'layouts/analytics'
+        = render 'layouts/tag_manager'
+        = render 'layouts/facebook_remarketing'
+        = render 'layouts/bing_ads'
+
   body
     /! inject svg's for use inline throughout app
     = render 'svg_declaration'
