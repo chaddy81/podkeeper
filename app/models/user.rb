@@ -30,8 +30,8 @@ class User < ActiveRecord::Base
   after_create  :assign_invites
   before_validation :downcase_email
 
-  validates :first_name, presence: true, allow_blank: true
-  validates :last_name,  presence: true, allow_blank: true
+  validates :first_name, presence: true
+  validates :last_name,  presence: true
   validates :phone,      length: { is: 12, message: 'is the wrong length (should be 10 digits)' }, allow_blank: true
   validates :email, presence:   true,
                     format:     { with: VALID_EMAIL_REGEX },

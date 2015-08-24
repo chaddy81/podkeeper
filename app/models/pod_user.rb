@@ -5,7 +5,7 @@ class PodUser < ActiveRecord::Base
                 :description, :invites_attributes, :name, :first_name, :last_name, :email, :password, :phone,
                 :remember_me, :time_zone, :invite_id
 
-  attr_accessor :testing_name, :testing_pod_category, :testing_first_name, :testing_last_name
+  attr_accessor :testing_name, :testing_pod_category
 
   column :first_name
   column :last_name
@@ -29,8 +29,8 @@ class PodUser < ActiveRecord::Base
   validates :pod_category_id, presence: true, if: :test_pod_category?
   validates :pod_sub_category_id, presence: true, if: :validate_sub_category?
 
-  validates :first_name, presence: true, if: :test_first_name?
-  validates :last_name,  presence: true, if: :test_last_name?
+  validates :first_name, presence: true
+  validates :last_name,  presence: true
   validates :phone,      length: { is: 12, message: 'is the wrong length (should be 10 digits)' }, allow_blank: true
   validates :email,      presence: true,
                          format:   { with: VALID_EMAIL_REGEX }
@@ -45,14 +45,6 @@ class PodUser < ActiveRecord::Base
 
   def test_pod_category?
     return true unless testing_pod_category == false
-  end
-
-  def test_first_name?
-    return true unless testing_first_name == false
-  end
-
-  def test_last_name?
-    return true unless testing_last_name == false
   end
 
   def validate_sub_category?
