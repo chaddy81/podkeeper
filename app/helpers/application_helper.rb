@@ -109,6 +109,7 @@ module ApplicationHelper
               concat sanitize(message)
              end)
     end
+    flash.clear
     nil
   end
 
