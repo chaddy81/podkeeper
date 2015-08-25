@@ -9,8 +9,8 @@ tr
           = link_to 'Cancel', '#', class: 'back', 'data-cancel-description-edit' => true, style: 'display: inline-block;line-height: 34px;margin: 0 20px;'
         span data-original-description="" style="display:none;" = uploaded_file.description
     - else
-      / - if show_file_notification(current_pod, uploaded_file)
-      span.comment-count
+      - if show_file_notification(current_pod, uploaded_file)
+        span.comment-count
       = uploaded_file.description
 
   td style=("padding: 10px 10px 0;")
