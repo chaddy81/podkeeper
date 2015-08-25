@@ -24,33 +24,33 @@
               svg.icon.icon-events.center-block viewbox="0 0 1024 1024"
                 use xlink:href="#icon-podkeeper-calendar"
               | Events
-              / - unless current_user.new_events(current_pod).zero?
-              /   span.site-nav__notification
-              /     = current_user.new_events(current_pod)
+              - unless current_user.new_events(current_pod).zero?
+                span.site-nav__notification
+                  = current_user.new_events(current_pod)
           li
             = link_to notes_path, class: "site-nav__item site-nav__item--discussions text-center #{'active' if controller_name == 'notes'}" do
               svg.icon.icon-discussions.center-block viewbox="0 0 1024 1024"
                 use xlink:href="#icon-podkeeper-discussion"
               | Discussions
-              / - unless current_user.new_discussions(current_pod).zero?
-              /   span.site-nav__notification
-              /     = current_user.new_discussions(current_pod)
+              - unless current_user.new_discussions(current_pod).zero?
+                span.site-nav__notification
+                  = current_user.new_discussions(current_pod)
           li
             = link_to lists_path, class: "site-nav__item site-nav__item--lists text-center #{is_active?(lists_path)}"
               svg.icon.icon-lists.center-block viewbox="0 0 1024 1024"
                 use xlink:href="#icon-podkeeper-list"
               | Lists
-              / - unless current_user.new_lists(current_pod).zero?
-              /   span.site-nav__notification
-              /     = current_user.new_lists(current_pod)
+              - unless current_user.new_lists(current_pod).zero?
+                span.site-nav__notification
+                  = current_user.new_lists(current_pod)
           li
             = link_to uploaded_files_path, class: "site-nav__item site-nav__item--files text-center #{is_active?(uploaded_files_path)}"
               svg.icon.icon-files.center-block viewbox="0 0 1024 1024"
                 use xlink:href="#icon-podkeeper-file"
               | Files
-              / - unless current_user.new_files(current_pod).zero?
-              /   span.site-nav__notification
-              /     = current_user.new_files(current_pod)
+              - unless current_user.new_files(current_pod).zero?
+                span.site-nav__notification
+                  = current_user.new_files(current_pod)
           li
             = link_to invite_pods_path, class: "site-nav__item site-nav__item--files text-center #{is_active?(invite_pods_path)}"
               svg.icon.icon-files.center-block viewbox="0 0 1024 1024"
