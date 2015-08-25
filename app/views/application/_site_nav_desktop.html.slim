@@ -24,7 +24,7 @@
               svg.icon.icon-events.center-block viewbox="0 0 1024 1024"
                 use xlink:href="#icon-podkeeper-calendar"
               | Events
-              - unless current_user.new_events(current_pod).zero?
+              - if current_pod && !current_user.new_events(current_pod).zero?
                 span.site-nav__notification
                   = current_user.new_events(current_pod)
           li
@@ -32,7 +32,7 @@
               svg.icon.icon-discussions.center-block viewbox="0 0 1024 1024"
                 use xlink:href="#icon-podkeeper-discussion"
               | Discussions
-              - unless current_user.new_discussions(current_pod).zero?
+              - if current_pod && !current_user.new_discussions(current_pod).zero?
                 span.site-nav__notification
                   = current_user.new_discussions(current_pod)
           li
@@ -40,7 +40,7 @@
               svg.icon.icon-lists.center-block viewbox="0 0 1024 1024"
                 use xlink:href="#icon-podkeeper-list"
               | Lists
-              - unless current_user.new_lists(current_pod).zero?
+              - if current_pod && !current_user.new_lists(current_pod).zero?
                 span.site-nav__notification
                   = current_user.new_lists(current_pod)
           li
@@ -48,7 +48,7 @@
               svg.icon.icon-files.center-block viewbox="0 0 1024 1024"
                 use xlink:href="#icon-podkeeper-file"
               | Files
-              - unless current_user.new_files(current_pod).zero?
+              - if current_pod && !current_user.new_files(current_pod).zero?
                 span.site-nav__notification
                   = current_user.new_files(current_pod)
           li
