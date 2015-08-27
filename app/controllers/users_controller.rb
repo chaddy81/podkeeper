@@ -74,11 +74,11 @@ class UsersController < ApplicationController
 
   def edit
     @user = current_user
-    @settings = @user.settings.page(params[:page]).per(5)
+    @settings = @user.settings.includes(:pod).page(params[:page]).per(5)
     if params[:pod_id].present?
       @pod = current_user.pods.where(id: params[:pod_id]).first
     else
-      @pod_memberships = current_user.pod_memberships.joins(:pod).order('pods.name')
+      @pod_memberships = current_user.pod_memberships.includes(:pod).order('pods.name')
     end
   end
 

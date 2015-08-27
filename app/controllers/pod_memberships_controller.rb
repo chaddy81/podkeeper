@@ -6,7 +6,7 @@ class PodMembershipsController < ApplicationController
   def index
     pod = current_pod
     render_404 and return if pod.nil?
-    @pod_memberships = pod.pod_memberships
+    @pod_memberships = pod.pod_memberships.includes(:user, :access_level)
     @invites = pod.invites.unaccepted
   end
 

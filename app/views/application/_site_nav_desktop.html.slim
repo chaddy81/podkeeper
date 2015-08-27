@@ -17,7 +17,7 @@
           - else
             | You Have No Pods
 
-      - if current_user.pods.any?
+      - if @accessible_pods.any?
         ul.nav.navbar-nav.navbar-right.site-nav
           li
             = link_to events_path, class: "site-nav__item site-nav__item--events text-center #{'active' if controller_name == 'events'}" do

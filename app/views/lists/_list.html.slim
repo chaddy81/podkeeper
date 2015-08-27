@@ -42,8 +42,7 @@ hr
           th
 
       tbody id="list_#{list.id}"
-        - list.list_items.each do |list_item|
-          = render 'list_items/row', list_item: list_item
+        = render partial:'list_items/row', collection: list.list_items, as: :list_item
 
   = render 'list_items/form', list: list, list_item: list.list_items.build
   = link_to 'Add a row', add_list_item_list_path(list), remote: true, class: 'list__items--add-row'

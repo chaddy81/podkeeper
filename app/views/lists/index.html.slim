@@ -6,8 +6,9 @@
           use xlink:href="#icon-podkeeper-add"
         = link_to 'New List', new_list_path(pod_id: @pod.id)
     .clearfix
-    - if @pod.lists.any?
-      = render @pod.lists
+
+    - if @lists.any?
+      = render @lists
     - else
       .col-sm-12.event-details--desktop
         svg.icon.icon-events.center-block viewbox="0 0 1024 1024" style="width: 144px;height: 144px;"
