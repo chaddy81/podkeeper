@@ -1,3 +1,5 @@
+= content_for :title, 'Sign Up'
+
 = simple_form_for @user do |f|
   = f.input :invite_id, as: :hidden
   = f.input :pod_id, as: :hidden, input_html: { value: @pod.id } unless @pod.nil?
