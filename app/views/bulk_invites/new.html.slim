@@ -52,7 +52,7 @@
               = submit_tag 'Send Reminders', disable_with: 'Sending Reminders...', class: 'btn btn-default btn-blue', data: { 'turbo-links': false }
       - if @invalid_emails.any?
         h4 Invalid Email Addresses
-        p.note When you’ve identified each person’s correct email address, return to Send Invites to invite them and then delete the invalid email address below.
+        p.note When you’ve identified each person’s correct email address, delete their invalid emails below, and then enter the correct email addresses in the field at the top of the page and click Send Invites.
         .table-responsive
           table.table
             thead
