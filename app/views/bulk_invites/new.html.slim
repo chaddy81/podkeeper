@@ -53,14 +53,15 @@
       - if @invalid_emails.any?
         h4 Invalid Email Addresses
         p.note When you’ve identified each person’s correct email address, return to Send Invites to invite them and then delete the invalid email address below.
-        table.invitees
-          thead>
-            tr
-              th Email
-              th
-
-          tbody
-            - @invalid_emails.each do |invalid_email|
+        .table-responsive
+          table.table
+            thead
               tr
-                td= invalid_email.email
-                td= link_to '', invalid_email_path(invalid_email), method: :delete, class: 'delete', data: { confirm: 'Are you sure you want to delete this email?' }
+                th style="border-bottom: 2px solid #ddd; padding: 10px;" Email
+                th style="border-bottom: 2px solid #ddd; padding: 10px;"
+
+            tbody
+              - @invalid_emails.each do |invalid_email|
+                tr
+                  td style="padding: 5px;"= invalid_email.email
+                  td style="padding: 5px;"= link_to 'Delete Invalid Email', invalid_email_path(invalid_email), method: :delete, class: 'delete', data: { confirm: 'Are you sure you want to delete this email?' }, style: 'color: #9FC03B'
