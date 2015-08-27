@@ -13,7 +13,8 @@ class BulkInvitesController < ApplicationController
 
   def create
     @outstanding_invites = current_pod.invites.unaccepted.includes(:reminders)
-    @invalid_emails = current_pod.invalid_emails.where(user_id: current_user.id)
+    # @invalid_emails = current_pod.invalid_emails.where(user_id: current_user.id)
+    @invalid_emails = InvalidEmail.where(pod_id: current_pod.id, user_id: current_user.id)
     if params[:emails].blank?
       flash.now[:error] = 'Please enter email addresses to import.'
       render :new and return
