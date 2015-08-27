@@ -41,6 +41,9 @@ class SessionsController < ApplicationController
           if user.save
             sign_in user, true
             user.update_attribute :last_login, DateTime.now
+            if user.time_zone.nil? || user.time_zone == 'none'
+              user.update_attribute :time_zone, 'Eastern Time (US & Canada)'
+            end
             pod = Pod.where(id: user.last_pod_visited_id).first || user.pods.last
             pod.present? ? redirect_back_or(events_path(login: 'success')) : redirect_to(new_pod_path)
           else
@@ -50,6 +53,9 @@ class SessionsController < ApplicationController
           user = User.from_omniauth(auth)
           sign_in user, params[:remember_me]
           user.update_attribute :last_login, DateTime.now
+          if user.time_zone.nil? || user.time_zone == 'none'
+            user.update_attribute :time_zone, 'Eastern Time (US & Canada)'
+          end
           pod = Pod.where(id: user.last_pod_visited_id).first || user.pods.last
           pod.present? ? redirect_back_or(events_path(login: 'success')) : redirect_to(new_pod_path)
         end
