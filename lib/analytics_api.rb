@@ -22,4 +22,6 @@ class GoogleAnalyticsApi
     end
   end
 
+  handle_asynchronously :event
+
 end
