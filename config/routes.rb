@@ -64,7 +64,6 @@ Rails.application.routes.draw do
     get  :invite, on: :collection
     post 'create_invite'
     get  :details, on: :collection
-    get :dashboard, on: :member
   end
   resources :pod_memberships, only: [:index, :edit, :update, :destroy] do
     post :reassign_organizer, on: :member

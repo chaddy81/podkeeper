@@ -2,7 +2,7 @@ class PodsController < ApplicationController
   skip_before_filter :signed_in_user, only: [:new_with_code, :create, :create_user_and_pod, :update_pod_sub_category]
   skip_before_filter :get_pods, only: :no_pod
   skip_before_filter :set_time_zone, only: :no_pod
-  before_filter :user_belongs_to_pod?, only: [:show, :dashboard]
+  before_filter :user_belongs_to_pod?, only: [:show]
   before_filter :is_organizer?, only: [:edit, :update, :destroy]
   before_filter :can_access?, only: :invite
 

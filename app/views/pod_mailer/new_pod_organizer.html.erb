@@ -2,7 +2,7 @@
 
 <p style="margin: 10px 0;">The prior contact person, <em><%= @last_organizer %></em> has left the Pod called <%= @pod.name %>, and has assigned you as the new Contact Person. You now have full admin privileges and are listed as the Pod Organizer.</p>
 
-<%= link_to image_tag('http://podanize-images.s3.amazonaws.com/email-images/go-to-the-pod-blue.png', alt: 'Go to the Pod', width: '204', height: '40', border: 0), dashboard_pod_url(@pod), style: 'display: block; margin: 0 auto; height: 40px; width: 204px; font-size:18px; color:#15c;' %>
+<%= link_to image_tag('http://podanize-images.s3.amazonaws.com/email-images/go-to-the-pod-blue.png', alt: 'Go to the Pod', width: '204', height: '40', border: 0), events_url(@pod), style: 'display: block; margin: 0 auto; height: 40px; width: 204px; font-size:18px; color:#15c;' %>
 
 <p style="margin: 10px 0;">All the best,<br>
 The PodKeeper Team</p>
