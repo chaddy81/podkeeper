@@ -8,7 +8,7 @@ class EventsController < ApplicationController
   include Icalendar
 
   def index
-    @events = @pod.events.confirmed.where(completed: completed).order('start_date ASC').order('start_time ASC')
+    @events = current_pod.events.confirmed.where(completed: completed).order('start_date ASC').order('start_time ASC')
   end
 
   def new
