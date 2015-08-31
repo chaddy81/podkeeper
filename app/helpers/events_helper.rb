@@ -37,7 +37,7 @@ module EventsHelper
   end
 
   def export_to_yahoo_link(event)
-    "http://calendar.yahoo.com/?v=60&TITLE=#{CGI::escape event.name}&ST=#{calendar_format_start_date_time(event)}&ET=#{calendar_format_end_date_time(event)}&in_loc=#{CGI::escape event.location}#{' - ' unless event.address.blank?}#{CGI::escape event.address}&in_st#{CGI::escape event.street}&in_csz=#{CGI::escape event.city} #{CGI::escape event.state} #{event.zipcode}&desc=#{CGI::escape event.description}&URL=#{pod_url(event.pod)}"
+    "http://calendar.yahoo.com/?v=60&TITLE=#{CGI::escape event.name}&ST=#{calendar_format_start_date_time(event)}&ET=#{calendar_format_end_date_time(event)}&in_loc=#{CGI::escape event.location}#{' - ' unless event.address.blank?}#{CGI::escape event.address}&in_st#{CGI::escape event.street}&in_csz=#{CGI::escape event.city} #{CGI::escape event.state} #{event.zipcode}&desc=#{CGI::escape event.description}&URL=#{events_url(event.pod)}"
   end
 
   def export_to_google_calendar_link(event)
