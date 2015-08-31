@@ -30,14 +30,11 @@ html
     = csrf_meta_tags
 
     - if Rails.env.production?
-        = render 'layouts/analytics'
-        = render 'layouts/tag_manager'
-        = render 'layouts/facebook_remarketing'
-        = render 'layouts/bing_ads'
+        = render 'analytics'
+        = render 'facebook_remarketing'
+        = render 'bing_ads'
 
   body
-    - if Rails.env.production?
-      = render 'layouts/google_remarketing'
     /! inject svg's for use inline throughout app
     = render 'svg_declaration'
     = render 'logged_out_nav'
