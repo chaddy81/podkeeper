@@ -30,7 +30,7 @@ class StaticPagesController < ApplicationController
   end
 
   def no_script
-    render :layout => 'none'
+
   end
 
   def get_started
