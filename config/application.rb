@@ -33,7 +33,7 @@ module Podkeeper
 
     config.active_job.queue_adapter = :delayed_job
 
-    config.autoload_paths << Rails.root.join('lib')
+    config.autoload_paths += %W(#{config.root}/lib)
 
     config.beginning_of_week = :sunday
 

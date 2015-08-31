@@ -1,4 +1,4 @@
-development:
+testing:
   endpoint: "http://www.google-analytics.com/collect"
   version: 1
   tracking_code: UA-40704539-3

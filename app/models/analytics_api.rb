@@ -1,14 +1,14 @@
-require 'rest_client'
+require 'rest-client'
 
 class GoogleAnalyticsApi
 
-  def event(category, action, client_id = '555')
+  def send_event(category, action, client_id = '555')
     return unless GOOGLE_ANALYTICS_SETTINGS[:tracking_code].present?
 
     params = {
       v: GOOGLE_ANALYTICS_SETTINGS[:version],
       tid: GOOGLE_ANALYTICS_SETTINGS[:tracking_code],
-      cid: client_id
+      cid: client_id,
       t: "event",
       ec: category,
       ea: action
@@ -21,7 +21,5 @@ class GoogleAnalyticsApi
       return false
     end
   end
-
-  handle_asynchronously :event
 
 end

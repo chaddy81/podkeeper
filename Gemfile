@@ -28,6 +28,7 @@ gem 'rinku', require: 'rails_rinku'
 gem 'rmagick'
 gem 'simple_form'
 gem 'griddler', '0.6.1'
+gem 'rest-client'
 
 gem 'activerecord-tableless', '>= 1.3.4',  git:'https://github.com/david135/activerecord-tableless.git'
 

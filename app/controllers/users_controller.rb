@@ -62,11 +62,10 @@ class UsersController < ApplicationController
 
         redirect_to events_path
       else
-        GoogleAnalyticsApi.new.event('register join pod', 'register', 'success')
         redirect_to new_pod_path
       end
 
-
+      GoogleAnalyticsApi.new.send_event('user', 'create')
     else
       @pod = Pod.find(@user.pod_id) unless @user.pod_id.nil?
       render 'registrations/new'
