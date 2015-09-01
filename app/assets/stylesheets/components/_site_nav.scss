@@ -70,13 +70,15 @@
       position: absolute;
       right: 5px;
       text-align: left;
-      width: 110px;
+      width: 130px;
       z-index: 10;
 
       a {
         cursor: pointer;
         display: block;
         margin-bottom: 10px;
+
+        @include font-size(14px);
       }
     }
   }
