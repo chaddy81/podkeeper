@@ -192,6 +192,7 @@ class PodsController < ApplicationController
   end
 
   def create_invite
+    puts "Pods create invite"
     @invite = Invite.new(params[:invite])
     @outstanding_invites = @invite.pod.invites.unaccepted.includes(:reminders)
     if @invite.save
