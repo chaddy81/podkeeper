@@ -1,0 +1,82 @@
+<p style="line-height: 15px;margin: 0;font-weight: bold;">Events</p>
+
+<% unless pm.pod.events.confirmed.updated_yesterday.empty? && pm.pod.events.confirmed.where(start_date: Date.today).empty? %>
+
+  <% unless pm.pod.events.confirmed.updated_yesterday.empty? %>
+    <p style="line-height: 15px;margin: 0;">Added</p>
+    <div class="new-events">
+      <% pm.pod.events.confirmed.updated_yesterday.each do |event| %>
+        <div style="display: inline-block;width: 30%;line-height: 20px;"><%= link_to event.name, events_url(pod_id: pm.pod.id) %></div>
+        <div style="display: inline-block;width: 30%;line-height: 20px;"><%= event.start_date.strftime('%a %b %d') %>, <%= event.start_time.in_time_zone(@user.time_zone).strftime('%l:%M %p') %></div>
+        <div style="display: inline-block;width: 30%;line-height: 20px;">
+          <% if event.require_rsvp.blank? %>
+            <%= image_tag asset_url 'rsvp-not-required.png', width: 15, style: 'margin-bottom: -3px;' %>
+          <% else %>
+            <% if event.rsvps.where(user_id: @user.id).empty? %>
+              <%= image_tag image_path 'rsvp-no-response.png', width: 32, style: 'margin-bottom: -3px;' %>
+
+            <% elsif event.rsvps.where(user_id: @user.id).last.rsvp_option_id == 1 %>
+              <%= image_tag image_url 'rsvp-yes.png', width: 15, style: 'margin-bottom: -3px;' %>
+
+              <%= image_tag image_url 'events-guest-large.png', width: 13, style: 'margin-bottom: -3px;margin-left: 5px;' %>
+              <%= event.rsvps.where(user_id: @user.id).last.number_of_adults %>
+
+              <%= image_tag image_url 'events-guest-small.png', width: 10, style: 'margin-bottom: -3px;margin-left: 5px;' %>
+              <%= event.rsvps.where(user_id: @user.id).last.number_of_kids %>
+
+            <% elsif event.rsvps.where(user_id: @user.id).last.rsvp_option_id == 2 %>
+              <%= image_tag image_url 'rsvp-no.png', width: 15, style: 'margin-bottom: -3px;' %>
+
+            <% elsif event.rsvps.where(user_id: @user.id).last.rsvp_option_id == 3 %>
+              <%= image_tag image_url 'rsvp-maybe.png', width: 15, style: 'margin-bottom: -3px;' %>
+
+            <% end %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+
+  <% unless pm.pod.events.confirmed.where(start_date: Date.today).empty? %>
+    <p style="line-height: 15px;margin: 10px 0 0;">Today’s Event(s)</p>
+    <div class="events-today">
+      <% pm.pod.events.confirmed.where(start_date: Date.today).each do |event| %>
+        <div style="display: inline-block;width: 30%;"><%= link_to event.name, events_url(pod_id: pm.pod.id) %></div>
+        <div style="display: inline-block;width: 30%;"><%= event.start_date.strftime('%a %b %d') %>, <%= event.start_time.in_time_zone(@user.time_zone).strftime('%l:%M %p') %></div>
+        <div style="display: inline-block;width: 30%;line-height: 20px;">
+          <% if event.require_rsvp.blank? %>
+            <%= image_tag image_url 'rsvp-not-required.png', width: 15, style: 'margin-bottom: -3px;' %>
+          <% else %>
+            <% if event.rsvps.where(user_id: @user.id).empty? %>
+              <%= image_tag image_url 'rsvp-no-response.png', width: 32, style: 'margin-bottom: -3px;' %>
+
+            <% elsif event.rsvps.where(user_id: @user.id).last.rsvp_option_id == 1 %>
+              <%= image_tag image_url 'rsvp-yes.png', width: 15, style: 'margin-bottom: -3px;' %>
+
+              <%= image_tag image_url 'events-guest-large.png', width: 13, style: 'margin-bottom: -3px;margin-left: 5px;' %>
+              <%= event.rsvps.where(user_id: @user.id).last.number_of_adults %>
+
+              <%= image_tag image_url 'events-guest-small.png', width: 10, style: 'margin-bottom: -3px;margin-left: 5px;' %>
+              <%= event.rsvps.where(user_id: @user.id).last.number_of_kids %>
+
+            <% elsif event.rsvps.where(user_id: @user.id).last.rsvp_option_id == 2 %>
+              <%= image_tag image_url 'rsvp-no.png', width: 15, style: 'margin-bottom: -3px;' %>
+
+            <% elsif event.rsvps.where(user_id: @user.id).last.rsvp_option_id == 3 %>
+              <%= image_tag image_url 'rsvp-maybe.png', width: 15, style: 'margin-bottom: -3px;' %>
+
+            <% end %>
+          <% end %>
+        </div>
+        <div>
+          <%= event_location(event) %>
+          <%= event.zipcode + ', ' unless event.zipcode.empty? %>
+          <%= link_to 'Google Map', google_map_link(event.gmaps_address), target: '_blank' unless event.gmaps_address.blank? %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+<% else %>
+  No new event information
+<% end %>
+<hr style="display:block;height:1px;border:0;border-top: 1px solid #ccc;margin:1em 0;padding: 0;" />

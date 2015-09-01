@@ -1,0 +1,48 @@
+<p>Here’s a summary of activity for all your Pods over the past 24 hours, along with information on upcoming events.</p>
+
+<p style="margin-bottom: 10px;">To view all your Pods: <%= link_to 'Go to PodKeeper', root_url %></p>
+
+<% @pod_memberships.each do |pm| %>
+  <h2>
+    <span style="display: inline-block;font-size: 13px;color:#8eae43;position:relative;line-height:16px;margin-bottom:0;<%= pm.pod.name.chars.length > 15 ? 'width: 200px;' : 'width: 120px;' %>">
+      <%= pm.pod.name %>
+    </span>
+    <% if !pm.pod_admin? && !new_items(pm) %>
+      <span style="color: #333;display: inline-block;font-size: 11px;font-weight: normal;line-height: 16px;margin-bottom:0;">Nothing New</span>
+    <% end %>
+
+    <% if pm.pod_admin? && (PodMembership.joined_yesterday(pm.pod, pm.user).empty? && Invite.declined_yesterday(pm.pod).empty? && PodMembership.left_yesterday(pm.pod).empty?) %>
+      <span style="color: #333;display: inline-block;font-size: 11px;font-weight: normal;line-height: 16px;margin-bottom:0;">Nothing New</span>
+    <% end %>
+  </h2>
+  <% if pm.pod_admin? || new_items(pm) %>
+
+    <% if pm.access_level_id == 3 %>
+      <% if PodMembership.joined_yesterday(pm.pod, pm.user).any? || Invite.declined_yesterday(pm.pod).any? || PodMembership.left_yesterday(pm.pod).any? %>
+        <%= render 'pod_admin', pm: pm %>
+      <% end %>
+    <% end %>
+
+    <% if pm.pod.events.confirmed.updated_yesterday.any? ||
+          pm.pod.events.confirmed.where(start_date: Date.today).any? ||
+          pm.pod.notes.updated_yesterday.any? ||
+          pm.pod.uploaded_files.updated_yesterday.any? %>
+      <%= render 'events', pm: pm %>
+      <%= render 'discussions', pm: pm %>
+      <%= render 'files', pm: pm %>
+    <% end %>
+
+  <% end %>
+<% end %>
+<p>To view all your Pods or create a new Pod:  <%= link_to "Go to PodKeeper", root_url %></p>
+<% provide :email, @email %>
+
+<table cellpadding="0" cellspacing="0" style="width: 100%;">
+  <tr>
+    <td style="text-align: center;" align="center">
+      <a href="http://e-find.co/c/1754?eid=<%= @email %>&a=&cid=1" class="reach-ad" style="max-width: 468px !important;width: 100%;">
+        <img src="http://e-find.co/img/1754?eid=<%= @email %>&a=&cid=1" style="max-width: 468px !important;width: 100%;height:60px;" />
+      </a>
+    </td>
+  </tr>
+</table>

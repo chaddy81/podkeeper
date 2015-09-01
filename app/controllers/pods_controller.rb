@@ -94,6 +94,7 @@ class PodsController < ApplicationController
     if @pod.save
       @pod.add_organizer
       flash[:success] = 'Congratulations! You have added a new Pod'
+      GoogleAnalyticsApi.new.send_event('pod', 'create')
       set_current_pod(@pod) # Moved from show method as being set after render
       redirect_to invite_pods_path
     else
