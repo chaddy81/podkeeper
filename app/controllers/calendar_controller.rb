@@ -1,7 +1,15 @@
 class CalendarController < ApplicationController
   def index
-    current_pod = ''
     @events = current_user_events
+  end
+
+  def show
+    @events = current_user_events
+    @event = Event.includes(:organizer).find(params[:id])
+  end
+
+  def calendar_events
+    @events = Event.confirmed.where(start_date: params[:start_date]).includes(:organizer, :pod, :rsvps, pod: :organizer).order('start_date ASC').order('start_time ASC')
   end
 
   private

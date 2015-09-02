@@ -9,9 +9,9 @@
     - if @events && @events.count > 0
       .col-sm-6.col-md-6
         .event-calendar
-          = render 'events/calendar'
+          = render 'calendar'
         .event-container.clearfix
-          = render @events
+          = render partial: 'calendar/event', collection: @events
 
       .hidden-xs.col-sm-6.col-md-6.event-details--desktop
         svg.icon.icon-events.center-block viewbox="0 0 1024 1024" style="width: 144px;height: 144px;"

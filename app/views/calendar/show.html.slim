@@ -1,0 +1,39 @@
+.col-sm-12.col-md-10
+  .row
+    .hidden-xs.col-sm-6.col-md-5
+      - if @events && @events.count > 0
+        .view-toggle
+          svg viewbox="0 0 1024 1024"
+            use xlink:href="#icon-podkeeper-list-view"
+        .clearfix
+      - if @events && @events.count > 0
+        .event-calendar
+          = render 'calendar'
+      .event-container.clearfix
+        = render partial: 'calendar/event', collection: @events
+
+    .col-xs-12.col-sm-6.col-md-5.mobile-collapse
+      h3.event-details-name= @event.name.humanize
+      .event-details-container.border-gray
+        = render 'events/event_details', event: @event
+      .event-rsvp-container.border-gray
+        = render 'events/event_rsvp', event: @event
+      .event-attending-container.border-gray
+        = render 'events/event_attending', event: @event
+
+  = render 'ad_leaderboard'
+= render 'ad_skyscraper'
+
+
+javascript:
+  $(function() {
+    var eventId = #{params[:id]};
+
+    $('.event').removeClass('active');
+    $('[data-event-id=' + eventId + ']').addClass('active');
+
+    $.ajax({
+      type: 'GET',
+      url: "/events/update_last_visit"
+    })
+  });

@@ -80,7 +80,7 @@
     }
 
     a.active {
-      color: #fff;
+      color: #fff !important;
       z-index: 2;
 
       &:after {

@@ -36,6 +36,7 @@ $(function() {
   });
 
   $(document).on('click', '.day.has-events a', function() {
+    $('.day.has-events a').removeClass('active');
     $(this).addClass('active');
   });
 
