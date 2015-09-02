@@ -13,6 +13,10 @@ body {
   width: 100%;
 }
 
+body.no-scroll {
+  overflow: hidden;
+}
+
 a {
   outline: none;
 }
