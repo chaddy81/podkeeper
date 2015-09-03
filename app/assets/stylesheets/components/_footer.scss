@@ -1,7 +1,6 @@
 .footer {
   background: $gray;
-  height: 100px;
-  padding-top: 20px;
+  padding: 20px 0;
   width: 100%;
 
   @media (min-width: 1171px) and (max-width: 1199px) {
@@ -9,7 +8,7 @@
   }
 
   .container {
-    
+
   }
 
   .navbar-brand {

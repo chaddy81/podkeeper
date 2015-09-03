@@ -10,7 +10,9 @@ Rails.application.routes.draw do
   get 'test-facebook', to: 'sessions#facebook'
 
   resources :bulk_invites, only: [:new, :create]
-  resources :calendar, only: [:index, :show]
+  resources :calendar, only: [:index, :show] do
+    get :calendar_events, on: :collection
+  end
   resources :comments, only: [:create, :edit, :update, :destroy]
   resources :events do
     get 'duplicate'
@@ -87,6 +89,8 @@ Rails.application.routes.draw do
   resources :unbounce, only: :create
 
   resources :registrations, only: :new
+
+  get 'invite-others', to: 'bulk_invites#new', as: 'invite_others'
 
   get 'event_sort', to: 'events#sort'
 

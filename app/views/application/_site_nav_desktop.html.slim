@@ -52,7 +52,7 @@
                 span.site-nav__notification
                   = current_user.new_files(current_pod)
           li
-            = link_to invite_pods_path, class: "site-nav__item site-nav__item--files text-center #{is_active?(invite_pods_path)}"
+            = link_to invite_others_path, class: "site-nav__item site-nav__item--files text-center #{is_active?(invite_pods_path)}"
               svg.icon.icon-files.center-block viewbox="0 0 1024 1024"
                 use xlink:href="#icon-podkeeper-user"
               | Invite Others
