@@ -39,54 +39,54 @@ class PodsController < ApplicationController
     end
   end
 
-  def create_user_and_pod
-    @pod_user = PodUser.new(pod_user_params)
+  # def create_user_and_pod
+  #   @pod_user = PodUser.new(pod_user_params)
 
-    if params[:pod_user][:time_zone] == ''
-      @pod_user.time_zone = 'America/New_York'
-    end
+  #   if params[:pod_user][:time_zone] == ''
+  #     @pod_user.time_zone = 'America/New_York'
+  #   end
 
-    @pod_user.testing_name = false
-    @pod_user.testing_pod_category = false
-    @pod_user.testing_first_name = false
-    @pod_user.testing_last_name = false
+  #   @pod_user.testing_name = false
+  #   @pod_user.testing_pod_category = false
+  #   @pod_user.testing_first_name = false
+  #   @pod_user.testing_last_name = false
 
-    if @pod_user.valid?
-      @pod_user.time_zone = adjust_time_zone(@pod_user.time_zone)
+  #   if @pod_user.valid?
+  #     @pod_user.time_zone = adjust_time_zone(@pod_user.time_zone)
 
-      @user = User.create!(email: @pod_user.email,
-                           time_zone: @pod_user.time_zone,
-                           remember_me: @pod_user.remember_me,
-                           password: @pod_user.password)
+  #     @user = User.create!(email: @pod_user.email,
+  #                          time_zone: @pod_user.time_zone,
+  #                          remember_me: @pod_user.remember_me,
+  #                          password: @pod_user.password)
 
-      sign_in @user, @user.remember_me
-      UserMailer.delay.new_user_welcome(@user)
-      flash[:success] = 'Welcome to PodKeeper!'
-      if params[:pod_user][:pod_id].present?
-        pod = Pod.find(params[:pod_user][:pod_id])
-        Invite.find_by_id(@pod_user.invite_id).accept!
-      else
-        pod = Pod.where(id: @user.last_pod_visited_id).first || @user.pods.last
-      end
-      set_current_pod(pod)
-      redirect_to events_path
-    else
-      @invite = Invite.find_by_id(@pod_user.invite_id)
-      if @invite
-        flash[:error] = @pod_user.errors.full_messages.first
-        session[:error] = "failed"
-        render :new_with_code
-      else
-        flash[:error] = @pod_user.errors.full_messages.first
-        # redirect_to new_session_path
-        if session[:reg_page] == '1'
-          render 'registrations/new'
-        else
-          render 'sessions/new'
-        end
-      end
-    end
-  end
+  #     sign_in @user, @user.remember_me
+  #     UserMailer.delay.new_user_welcome(@user)
+  #     flash[:success] = 'Welcome to PodKeeper!'
+  #     if params[:pod_user][:pod_id].present?
+  #       pod = Pod.find(params[:pod_user][:pod_id])
+  #       Invite.find_by_id(@pod_user.invite_id).accept!
+  #     else
+  #       pod = Pod.where(id: @user.last_pod_visited_id).first || @user.pods.last
+  #     end
+  #     set_current_pod(pod)
+  #     redirect_to events_path
+  #   else
+  #     @invite = Invite.find_by_id(@pod_user.invite_id)
+  #     if @invite
+  #       flash[:error] = @pod_user.errors.full_messages.first
+  #       session[:error] = "failed"
+  #       render :new_with_code
+  #     else
+  #       flash[:error] = @pod_user.errors.full_messages.first
+  #       # redirect_to new_session_path
+  #       if session[:reg_page] == '1'
+  #         render 'registrations/new'
+  #       else
+  #         render 'sessions/new'
+  #       end
+  #     end
+  #   end
+  # end
 
   def create
     @pod = Pod.new(params[:pod])
@@ -180,30 +180,30 @@ class PodsController < ApplicationController
     @declined_invites = declined_invites_with_all_info + declined_invites_with_only_first_name + declined_invites_with_only_last_name + declined_invites_with_only_email
   end
 
-  def invite
-    @pod = current_pod
-    invited_users = @pod.invites.unaccepted
-    invited_users_with_only_first_name = invited_users.where("(last_name IS NULL OR last_name = '') AND (first_name IS NOT NULL AND first_name != '')").order(:first_name)
-    invited_users_with_only_last_name = invited_users.where("(first_name IS NULL OR first_name = '') AND (last_name IS NOT NULL AND last_name != '')").order(:last_name)
-    invited_users_with_only_email = invited_users.where("(first_name IS NULL OR first_name = '') AND (last_name IS NULL OR last_name = '')").order(:email)
-    invited_users_with_all_info = invited_users - (invited_users_with_only_first_name + invited_users_with_only_last_name + invited_users_with_only_email)
-    @outstanding_invites = invited_users_with_all_info + invited_users_with_only_first_name + invited_users_with_only_last_name + invited_users_with_only_email
-    @invite = @pod.invites.new
-  end
+  # def invite
+  #   @pod = current_pod
+  #   invited_users = @pod.invites.unaccepted
+  #   invited_users_with_only_first_name = invited_users.where("(last_name IS NULL OR last_name = '') AND (first_name IS NOT NULL AND first_name != '')").order(:first_name)
+  #   invited_users_with_only_last_name = invited_users.where("(first_name IS NULL OR first_name = '') AND (last_name IS NOT NULL AND last_name != '')").order(:last_name)
+  #   invited_users_with_only_email = invited_users.where("(first_name IS NULL OR first_name = '') AND (last_name IS NULL OR last_name = '')").order(:email)
+  #   invited_users_with_all_info = invited_users - (invited_users_with_only_first_name + invited_users_with_only_last_name + invited_users_with_only_email)
+  #   @outstanding_invites = invited_users_with_all_info + invited_users_with_only_first_name + invited_users_with_only_last_name + invited_users_with_only_email
+  #   @invite = @pod.invites.new
+  # end
 
-  def create_invite
-    puts "Pods create invite"
-    @invite = Invite.new(params[:invite])
-    @outstanding_invites = @invite.pod.invites.unaccepted.includes(:reminders)
-    if @invite.save
-      @new_invite = @invite.pod.invites.new
-      flash[:success] = 'Invitation was sent successfully!'
-      InviteMailer.delay.pod_invite(@invite)
-      redirect_to pod_invite_path(pod_id: current_pod.id)
-    else
-      render :invite
-    end
-  end
+  # def create_invite
+  #   puts "Pods create invite"
+  #   @invite = Invite.new(params[:invite])
+  #   @outstanding_invites = @invite.pod.invites.unaccepted.includes(:reminders)
+  #   if @invite.save
+  #     @new_invite = @invite.pod.invites.new
+  #     flash[:success] = 'Invitation was sent successfully!'
+  #     InviteMailer.delay.pod_invite(@invite)
+  #     redirect_to pod_invite_path(pod_id: current_pod.id)
+  #   else
+  #     render :invite
+  #   end
+  # end
 
   def update_pod_sub_category
     pod_category = PodCategory.find(params[:id])

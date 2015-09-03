@@ -56,6 +56,8 @@ gem 'simple_calendar', '~> 1.1.0'
 gem 'modernizr-rails'
 gem 'puma'
 
+gem 'traceroute'
+
 group :production do
   gem 'rails_12factor'
 end

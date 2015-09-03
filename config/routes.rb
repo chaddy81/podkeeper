@@ -16,7 +16,6 @@ Rails.application.routes.draw do
   resources :comments, only: [:create, :edit, :update, :destroy]
   resources :events do
     get 'duplicate'
-    get 'review'
     get 'confirm'
     get 'cancel'
     get 'export_to_ical'
@@ -54,17 +53,12 @@ Rails.application.routes.draw do
 
   get 'no_pod', to: 'pods#no_pod', as: :no_pod
   resources :pods, except: :index do
-    get 'show_get_ready_bar'
-    get 'hide_get_ready_bar'
     get 'new_with_code'
     get 'show_past_events'
     get 'switch'
     post 'create_user_and_pod'
     get :set_pod, on: :collection
     get :set_current_pod, on: :member
-
-    get  :invite, on: :collection
-    post 'create_invite'
     get  :details, on: :collection
   end
   resources :pod_memberships, only: [:index, :edit, :update, :destroy] do
