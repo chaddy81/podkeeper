@@ -64,6 +64,10 @@ class ApplicationController < ActionController::Base
     time_zone
   end
 
+  def analytics_client_id
+    return !cookies["_ga"].nil? ? cookies["_ga"].split(".").last(2).join(".") : "555"
+  end
+
   private
 
   def detect_browser
