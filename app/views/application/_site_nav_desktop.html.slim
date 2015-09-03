@@ -18,6 +18,9 @@
               = current_pod.name
               span.caret
             ul.dropdown-menu
+              li
+                a href="#{calendar_index_path}" My Calendar
+              li.divider
               - current_user.pods.includes(:pod_memberships).sort_by{|p| p.name.humanize}.each do |pod|
                 li.hidden-sm
                   a href="#{set_pod_pods_path(pod_id: pod.id)}" data-remote="true" = truncate(pod.name, length: 40, omission: '')
