@@ -59,14 +59,16 @@ class UsersController < ApplicationController
         Comment.where(invite_id: invite.id).each do |comment|
           comment.convert_to_user_comment(@user.id)
         end
+        GoogleAnalyticsApi.new.send_page_view('/signup', 'Sign Up', analytics_client_id)
+        GoogleAnalyticsApi.new.send_event('registration', 'join a pod', 'success', analytics_client_id)
 
         redirect_to events_path
       else
+        GoogleAnalyticsApi.new.send_page_view('/signup', 'Sign Up', analytics_client_id)
+        GoogleAnalyticsApi.new.send_event('user', 'create', 'success', analytics_client_id)
+
         redirect_to new_pod_path
       end
-
-      GoogleAnalyticsApi.new.send_page_view('/signup', 'Sign Up', analytics_client_id)
-      GoogleAnalyticsApi.new.send_event('user', 'create', 'success', analytics_client_id)
     else
       @pod = Pod.find(@user.pod_id) unless @user.pod_id.nil?
       render 'registrations/new'
