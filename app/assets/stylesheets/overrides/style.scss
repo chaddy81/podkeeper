@@ -39,11 +39,21 @@
 
 .table-responsive > .table > tbody > tr > td {
   display: block !important;
+
+  &:first-child {
+    background: $blue-gray;
+    color: #fff;
+  }
 }
 
 @media (min-width: 768px ) {
   .table-responsive > .table > tbody > tr > td {
     display: table-cell !important;
+
+    &:first-child {
+      background: none;
+      color: $text-color;
+    }
   }
 
   .mobile-collapse {
