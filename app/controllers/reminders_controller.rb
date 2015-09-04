@@ -24,7 +24,7 @@ class RemindersController < ApplicationController
     invited_users_with_all_info = invited_users - (invited_users_with_only_first_name + invited_users_with_only_last_name + invited_users_with_only_email)
     @outstanding_invites = invited_users_with_all_info + invited_users_with_only_first_name + invited_users_with_only_last_name + invited_users_with_only_email
 
-    redirect_to invite_pods_path(pod_id: current_pod.id)
+    redirect_to invite_others_path
   end
 
 end
