@@ -28,9 +28,7 @@ class BulkInvitesController < ApplicationController
             word = word.delete('<').delete('>').delete('"').delete("'").delete('(').delete(')')
             if word =~ VALID_EMAIL_REGEX
               found = true
-              found_user = User.find_by_email(word)
               invite = current_user.sent_invites.create(email: word, pod_id: current_pod.id, pod_name: current_pod.name)
-              invite.update_attribute('invitee_id', found_user.id) if found_user
               if invite.new_record?
                 already_invited_emails << word
               else
