@@ -47,7 +47,7 @@ class PodMembershipsController < ApplicationController
 
   def destroy
     if @pod_membership.pod.users.count == 1
-      flash[:warning] = "You are the only member of this Pod. You can #{view_context.link_to 'Invite Others', invite_pods_path} and then leave, or you can #{view_context.link_to 'Delete this Pod', pod_path(@pod_membership.pod), method: :delete, data: { confirm: 'Are you sure you want to delete this pod? All associated information will also be deleted, including events, invites, and discussions.' }}"
+      flash[:warning] = "You are the only member of this Pod. You can #{view_context.link_to 'Invite Others', invite_others_path} and then leave, or you can #{view_context.link_to 'Delete this Pod', pod_path(@pod_membership.pod), method: :delete, data: { confirm: 'Are you sure you want to delete this pod? All associated information will also be deleted, including events, invites, and discussions.' }}"
       respond_to do |format|
         format.html { redirect_to :back and return }
         format.js { render 'shared/flash_messages' and return }

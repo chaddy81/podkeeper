@@ -96,7 +96,7 @@ class PodsController < ApplicationController
       flash[:success] = 'Congratulations! You have added a new Pod'
       GoogleAnalyticsApi.new.send_event('pod', 'create','success', analytics_client_id)
       set_current_pod(@pod) # Moved from show method as being set after render
-      redirect_to invite_pods_path
+      redirect_to invite_others_path
     else
       @active = 'pods'
       @invite = current_user.sent_invites.new
