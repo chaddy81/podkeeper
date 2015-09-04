@@ -48,7 +48,7 @@
                       td = l invite.created_at, format: '%a. %b %e, %Y'
 
             .form-group.text-center
-              = link_to 'Cancel', invite_pods_path, class: 'btn btn--cancel'
+              = link_to 'Cancel', invite_others_path, class: 'btn btn--cancel'
               = submit_tag 'Send Reminders', disable_with: 'Sending Reminders...', class: 'btn btn-default btn-blue', data: { 'turbo-links': false }
       - if @invalid_emails.any?
         h4 Invalid Email Addresses
