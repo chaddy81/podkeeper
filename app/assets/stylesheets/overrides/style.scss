@@ -38,12 +38,12 @@
 }
 
 table.table > td {
-  display: block;
+  display: block !important;
 }
 
 @media (min-width: 768px ) {
   table.table > td {
-    display: table-cell;
+    display: table-cell !important;
   }
 
   .mobile-collapse {
