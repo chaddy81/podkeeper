@@ -37,12 +37,12 @@
   padding: 0;
 }
 
-table.table > td {
+.table-responsive > .table > tbody > tr > td {
   display: block !important;
 }
 
 @media (min-width: 768px ) {
-  table.table > td {
+  .table-responsive > .table > tbody > tr > td {
     display: table-cell !important;
   }
 
