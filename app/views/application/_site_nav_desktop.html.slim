@@ -3,86 +3,10 @@
     .container
       ul.nav.navbar-nav.navbar-left
         li.dropdown.pod-name
-          - if controller_name == 'calendar'
-            a.dropdown-toggle aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#" role="button"
-              | My Calendar
-              span.caret
-            ul.dropdown-menu
-              - current_user.pods.includes(:pod_memberships).sort_by{|p| p.name.humanize}.each do |pod|
-                li.hidden-sm
-                  a href="#{set_pod_pods_path(pod_id: pod.id)}" data-remote="true" = truncate(pod.name, length: 40, omission: '')
-                li.visible-sm.hidden-md.hidden-lg
-                  a href="#{set_pod_pods_path(pod_id: pod.id)}" data-remote="true" = truncate(pod.name, length: 25, omission: '')
-          - elsif current_pod
-            a.dropdown-toggle aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#" role="button"
-              = current_pod.name
-              span.caret
-            ul.dropdown-menu
-              li
-                a href="#{calendar_index_path}" My Calendar
-              li.divider
-              - current_user.pods.includes(:pod_memberships).sort_by{|p| p.name.humanize}.each do |pod|
-                li.hidden-sm
-                  a href="#{set_pod_pods_path(pod_id: pod.id)}" data-remote="true" = truncate(pod.name, length: 40, omission: '')
-                li.visible-sm.hidden-md.hidden-lg
-                  a href="#{set_pod_pods_path(pod_id: pod.id)}" data-remote="true" = truncate(pod.name, length: 25, omission: '')
-
-          - else
-            | You Have No Pods
+          = render 'desktop_pod_dropdown'
 
       - if @accessible_pods.any? && controller_name != 'calendar'
-        ul.nav.navbar-nav.navbar-right.site-nav
-          li
-            = link_to events_path, class: "site-nav__item site-nav__item--events text-center #{'active' if controller_name == 'events'}" do
-              svg.icon.icon-events.center-block viewbox="0 0 1024 1024"
-                use xlink:href="#icon-podkeeper-calendar"
-              | Events
-              - if current_pod && !current_user.new_events(current_pod).zero?
-                span.site-nav__notification
-                  = current_user.new_events(current_pod)
-          li
-            = link_to notes_path, class: "site-nav__item site-nav__item--discussions text-center #{'active' if controller_name == 'notes'}" do
-              svg.icon.icon-discussions.center-block viewbox="0 0 1024 1024"
-                use xlink:href="#icon-podkeeper-discussion"
-              | Discussions
-              - if current_pod && !current_user.new_discussions(current_pod).zero?
-                span.site-nav__notification
-                  = current_user.new_discussions(current_pod)
-          li
-            = link_to lists_path, class: "site-nav__item site-nav__item--lists text-center #{is_active?(lists_path)}"
-              svg.icon.icon-lists.center-block viewbox="0 0 1024 1024"
-                use xlink:href="#icon-podkeeper-list"
-              | Lists
-              - if current_pod && !current_user.new_lists(current_pod).zero?
-                span.site-nav__notification
-                  = current_user.new_lists(current_pod)
-          li
-            = link_to uploaded_files_path, class: "site-nav__item site-nav__item--files text-center #{is_active?(uploaded_files_path)}"
-              svg.icon.icon-files.center-block viewbox="0 0 1024 1024"
-                use xlink:href="#icon-podkeeper-file"
-              | Files
-              - if current_pod && !current_user.new_files(current_pod).zero?
-                span.site-nav__notification
-                  = current_user.new_files(current_pod)
-          li
-            = link_to invite_others_path, class: "site-nav__item site-nav__item--files text-center #{is_active?(invite_others_path)}"
-              svg.icon.icon-files.center-block viewbox="0 0 1024 1024"
-                use xlink:href="#icon-podkeeper-user"
-              | Invite Others
-          li
-            = link_to members_path, class: "site-nav__item site-nav__item--members text-center #{is_active?(members_path)}"
-              svg.icon.icon-files.center-block viewbox="0 0 1024 1024"
-                use xlink:href="#icon-podkeeper-members"
-              | Members
-          li
-            span.site-nav__item.site-nav__item--more.text-center
-              svg.icon.icon-more.center-block viewbox="0 0 1024 1024"
-                use xlink:href="#icon-podkeeper-more"
-              | More
-              nav.site-nav__item--sub-menu
-                = link_to 'Pod Details', details_pods_path
-                - if is_at_least_pod_admin?
-                  = link_to 'Pod Admin', pod_memberships_path, data: { "no-turbolink" => "true" }
+        = render 'desktop_navbar'
 
       - elsif controller_name == 'calendar'
         ul.nav.navbar-nav.navbar-right.col-sm-7
