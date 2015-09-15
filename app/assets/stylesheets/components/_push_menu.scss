@@ -45,6 +45,8 @@
 @media ( min-width: 768px ) {
   #main {
     box-shadow: none;
-    min-height: auto;
+    margin: 0 auto -117px !important;
+    min-height: 100%;
+    z-index: 2;
   }
 }

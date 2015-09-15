@@ -1,7 +1,9 @@
 .footer {
   background: $gray;
   padding: 20px 0;
+  position: relative;
   width: 100%;
+  z-index: 10;
 
   @media (min-width: 1171px) and (max-width: 1199px) {
     height: 100px;

@@ -26,6 +26,7 @@ class PasswordResetsController < ApplicationController
     @user = User.find_by_password_reset_token!(params[:id])
     user_not_found and return if @user.nil?
     @user.testing_password = true
+    @user.testing_first_last_name = false
     if @user.password_reset_sent_at < 2.hours.ago
       flash[:error] = 'Password reset has expired.'
       redirect_to new_password_reset_path

@@ -1,9 +1,9 @@
 class User < ActiveRecord::Base
   attr_accessible :active, :emails_attributes, :first_name, :email, :is_admin, :last_login, :last_name, :password, :password_confirmation, :phone,
     :remember_me, :pod_id, :time_zone, :testing_password, :testing_password_confirmation, :last_pod_visited_id, :invite_id, :daily_digest,
-    :provider, :uid, :name, :oauth_token, :oauth_expires_at
+    :provider, :uid, :name, :oauth_token, :oauth_expires_at, :testing_first_last_name
 
-  attr_accessor :remember_me, :testing_password, :testing_password_confirmation, :pod_id, :invite_id
+  attr_accessor :remember_me, :testing_password, :testing_password_confirmation, :pod_id, :invite_id, :testing_first_last_name
 
   has_many :settings, -> { order('pod_id') }, dependent: :destroy
   has_many :comments,        dependent: :destroy
@@ -30,8 +30,8 @@ class User < ActiveRecord::Base
   after_create  :assign_invites
   before_validation :downcase_email
 
-  validates :first_name, presence: true
-  validates :last_name,  presence: true
+  validates :first_name, presence: true, if: :test_first_last_name?
+  validates :last_name,  presence: true, if: :test_first_last_name?
   validates :phone,      length: { is: 12, message: 'is the wrong length (should be 10 digits)' }, allow_blank: true
   validates :email, presence:   true,
                     format:     { with: VALID_EMAIL_REGEX },
@@ -147,6 +147,10 @@ class User < ActiveRecord::Base
 
   def test_password_confirmation?
     testing_password_confirmation
+  end
+
+  def test_first_last_name?
+    testing_first_last_name == false ? false : true
   end
 
   def capitalize_names
