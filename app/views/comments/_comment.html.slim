@@ -16,7 +16,7 @@
             svg.icon.center-block viewbox="0 0 1024 1024" style="width: 12px; height: 12px;margin-right: 5px;vertical-align: -2px"
               use xlink:href="#icon-podkeeper-no"
         em style="margin-left: 10px;"= comment.created_at.strftime("%b %d, %Y, %l:%M%P")
-    p= comment.body
+    p= simple_format comment.body
 .clearfix
 
 javascript:
