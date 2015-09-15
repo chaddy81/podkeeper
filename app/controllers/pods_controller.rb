@@ -169,7 +169,7 @@ class PodsController < ApplicationController
     invited_users_with_only_last_name = invited_users.where("(first_name IS NULL OR first_name = '') AND (last_name IS NOT NULL AND last_name != '')").order(:last_name)
     invited_users_with_only_email = invited_users.where("(first_name IS NULL OR first_name = '') AND (last_name IS NULL OR last_name = '')").order(:email)
     invited_users_with_all_info = invited_users - (invited_users_with_only_first_name + invited_users_with_only_last_name + invited_users_with_only_email)
-    members.sort_by { |u| [u.last_name, u.first_name] }
+    members.sort_by { |u| [(u.last_name || ''), (u.first_name || '')] }
     @users = members + invited_users_with_all_info + invited_users_with_only_first_name + invited_users_with_only_last_name + invited_users_with_only_email
 
     declined_invites = @pod.invites.declined
