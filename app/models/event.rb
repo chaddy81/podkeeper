@@ -41,7 +41,7 @@ class Event < ActiveRecord::Base
 
   validate :start_time_is_not_in_the_past
   validate :end_time_is_later_than_start_time
-  validate :must_be_unique, unless: :event_editing
+  validate :must_be_unique
   validate :no_duplicate_reminders
 
   def address
