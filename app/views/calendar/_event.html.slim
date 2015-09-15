@@ -5,9 +5,8 @@ a.event.clearfix data-event-id="#{event.id}" href="#{calendar_path(event)}"
     span.event-date__month= event.start_date.strftime("%b")
     span.event-date__day= event.start_date.strftime("%d")
   span.event-meta.pull-left
+    p= truncate event.pod.name, :length => 20
     h4
-      - if show_event_notification(current_pod, event)
-        span.comment-count
       = truncate event.name, :length => 20
     p
       = event.start_date.strftime("%a. %b %d, %Y")

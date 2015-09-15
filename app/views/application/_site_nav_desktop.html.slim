@@ -30,7 +30,7 @@
           - else
             | You Have No Pods
 
-      - if @accessible_pods.any?
+      - if @accessible_pods.any? && controller_name != 'calendar'
         ul.nav.navbar-nav.navbar-right.site-nav
           li
             = link_to events_path, class: "site-nav__item site-nav__item--events text-center #{'active' if controller_name == 'events'}" do
@@ -83,3 +83,7 @@
                 = link_to 'Pod Details', details_pods_path
                 - if is_at_least_pod_admin?
                   = link_to 'Pod Admin', pod_memberships_path, data: { "no-turbolink" => "true" }
+
+      - elsif controller_name == 'calendar'
+        ul.nav.navbar-nav.navbar-right.col-sm-7
+          li style="line-height: 60px; color: #337ab7;" Displaying events across all your pods

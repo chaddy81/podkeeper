@@ -2,12 +2,7 @@
   .row
     .hidden-xs.col-sm-6.col-md-5
       - if @events && @events.count > 0
-        .view-toggle
-          svg viewbox="0 0 1024 1024"
-            use xlink:href="#icon-podkeeper-list-view"
-        .clearfix
-      - if @events && @events.count > 0
-        .event-calendar
+        .event-calendar style="display: block;"
           = render 'calendar'
       .event-container.clearfix
         = render partial: 'calendar/event', collection: @events
