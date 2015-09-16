@@ -11,6 +11,7 @@ class ListItemsController < ApplicationController
 
   def edit
     @list_item = ListItem.find(params[:id])
+    respond_to :js
   end
 
   def update

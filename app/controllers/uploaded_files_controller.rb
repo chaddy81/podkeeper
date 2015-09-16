@@ -1,11 +1,9 @@
 class UploadedFilesController < ApplicationController
   before_filter :current_pod_exists
   before_filter :has_access, only: [:edit, :update, :destroy]
-  # before_filter :get_data, only: [:index, :edit, :create, :update]
   before_filter :get_data
 
   def index
-    # current_user.update_last_visit(current_pod, :last_visit_files)
   end
 
   def new
