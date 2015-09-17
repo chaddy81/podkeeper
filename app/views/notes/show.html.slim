@@ -30,7 +30,7 @@
                 svg.icon.center-block viewbox="0 0 1024 1024" style="width: 12px; height: 12px;margin-right: 5px;vertical-align: -2px"
                   use xlink:href="#icon-podkeeper-no"
             em style="margin-left: 10px"= @note.created_at.strftime("%b %d, %Y, %l:%M%P")
-        p= simple_format @note.body
+        p= @note.body.gsub("\n", "<br />").html_safe
       .clearfix
 
       - @note.comments.each do |comment|
