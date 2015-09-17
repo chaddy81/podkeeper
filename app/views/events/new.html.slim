@@ -110,4 +110,4 @@
 
           .pull-right
             = link_to 'Cancel', events_path, class: 'back btn btn--cancel'
-            = f.submit 'Save', class: 'submit btn btn--green', disable_with: 'Saving...'
+            = f.submit 'Save', class: 'submit btn btn--green', data: { disable_with: 'Saving...'}
