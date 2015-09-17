@@ -56,7 +56,12 @@
     text-align: right;
 
     .icons__minimize {
+      color: $gray;
       cursor: pointer;
+      margin-right: 5px;
+      vertical-align: 3px;
+
+      @include font-size(14px);
     }
 
     .icons__minimize--open {

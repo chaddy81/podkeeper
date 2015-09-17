@@ -21,6 +21,9 @@ $(function() {
 
   $('.list .icons__minimize').click(function(e) {
       e.preventDefault();
+      var text = $(this).text();
+
+      $(this).text(text == "Collapse" ? "Expand" : "Collapse");
       $(this).toggleClass('icons__minimize--open');
       $(this).parents('.list').next('.list__items').slideToggle();
   });

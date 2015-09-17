@@ -15,8 +15,8 @@ hr
       .list__detail
         small = simple_format list.details
     .list__controls.col-sm-4
-      svg.icon.icons__minimize viewbox="0 0 1024 1024" style="margin: 0 20px;width: 16px;height: 16px;fill: #456189;"
-        use xlink:href="#icon-podkeeper-arrow-down"
+      span.icons__minimize Collapse
+
       - if current_user?(list.creator) || is_at_least_pod_admin?
         = link_to edit_list_path(list) do
           svg.icon.icon-edit viewbox="0 0 1024 1024" style="margin: 0 5px;width: 16px;height: 16px;"
