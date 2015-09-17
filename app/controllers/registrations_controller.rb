@@ -4,8 +4,12 @@ class RegistrationsController < ApplicationController
   layout 'registration'
 
   def new
-    if params[:auth_token]
-      @invite = Invite.find_by_auth_token(params[:auth_token])
+    if params[:auth_token] || cookies.signed[:invite_token]
+      cookies.signed[:invite_token] = params[:auth_token] if !cookies.signed[:invite_token]
+
+      @invite = Invite.find_by_auth_token(cookies.signed[:invite_token])
+
+      puts cookies.signed[:invite_token]
 
       if signed_in?
         if current_user? @invite.invitee

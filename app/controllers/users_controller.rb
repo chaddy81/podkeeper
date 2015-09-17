@@ -15,7 +15,7 @@ class UsersController < ApplicationController
         if invite.invitee.present?
           redirect_to invites_path
         else
-          redirect_to signup_path(auth_token: params[:auth_token]) and return
+          redirect_to signup_path(auth_token: invite.auth_token) and return
         end
       end
     else
@@ -29,6 +29,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(params[:user])
+    @invite = Invite.find_by_auth_token(cookies.signed[:invite_token])
 
     if params[:user][:time_zone] == ''
       @user.time_zone = 'America/New_York'
@@ -42,6 +43,7 @@ class UsersController < ApplicationController
       sign_in @user, @user.remember_me
       UserMailer.delay.new_user_welcome(@user)
       flash[:success] = 'Welcome to PodKeeper!'
+      cookies.delete :invite_token
 
       unless @user.invite_id.blank?
         # assign invites from original invite email (in case it was changed in signup form)

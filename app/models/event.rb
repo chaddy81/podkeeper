@@ -23,6 +23,7 @@ class Event < ActiveRecord::Base
   scope :past,      -> { where(completed: true) }
   scope :upcoming,  -> { where(completed: false) }
   scope :confirmed, -> { where(confirmed: true) }
+  scope :requires_rsvp, -> { where(require_rsvp: true) }
   scope :updated_yesterday, -> { where(created_at: DateTime.yesterday.beginning_of_day..DateTime.yesterday.end_of_day) }
   scope :updated_three_days_ago, -> { where(created_at: (DateTime.now-3.days)..DateTime.yesterday.end_of_day) }
   scope :created_in_last_three_days, -> { where(confirmed_at: (DateTime.now.beginning_of_day-2.days)..DateTime.now.end_of_day) }

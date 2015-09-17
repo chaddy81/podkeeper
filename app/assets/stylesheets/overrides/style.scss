@@ -39,11 +39,6 @@
 
 .table-responsive > .table > tbody > tr > td {
   display: block !important;
-
-  &:first-child {
-    background: $blue;
-    color: #fff;
-  }
 }
 
 @media (min-width: 768px ) {
