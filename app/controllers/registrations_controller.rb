@@ -5,7 +5,7 @@ class RegistrationsController < ApplicationController
 
   def new
     if params[:auth_token] || cookies.signed[:invite_token]
-      cookies.signed[:invite_token] = params[:auth_token] if !cookies.signed[:invite_token]
+      cookies.signed[:invite_token] = params[:auth_token] if !params[:auth_token].blank?
 
       @invite = Invite.find_by_auth_token(cookies.signed[:invite_token])
 
