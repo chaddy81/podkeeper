@@ -128,10 +128,11 @@ class Event < ActiveRecord::Base
   end
 
   def must_be_unique
-    events = self.pod.events.confirmed.upcoming.where(self.attributes.select { |key, _| ['name', 'location', 'start_date', 'end_date', 'end_time'].include? key })
+    events = self.pod.events.confirmed.upcoming.where(self.attributes.select { |key, _| ['name', 'location', 'start_date', 'end_date'].include? key })
 
     events = events.where(end_time: self.end_time.change(month: 1, day: 1, year: 2000)) unless self.end_time.nil?
     events = events.where(start_time: self.start_time.change(month: 1, day: 1, year: 2000)) unless self.start_time.nil?
+
     if events.any?
       errors.add(:base, 'An identical event already exists. You must change at least 1 of these: Event Name, Location Name, Date, Time.')
       false
