@@ -1,18 +1,18 @@
 = render 'facebook_tracking'
 
-.col-sm-12.col-md-12.col-lg-12
-  h3 Create a Pod for each group you want to keep organized
-  p Don't worry -- you can change your Pod Name or Category at any time;
+.col-sm-12.col-md-8.col-md-offset-2.col-lg-8
+  h3.text-center Create a Pod for each group you want to keep organized
+  p.text-center Don't worry -- you can change your Pod Name or Category at any time;
 
   = simple_form_for @pod, html: { 'data-form' => 1, class: "create-pod__form form-horizontal" } do |f|
     .form-group
-      label.control-label.col-sm-4.col-md-2 Pod Name *
-      .col-sm-7.col-sm-offset-1.col-md-6.col-md-offset-0
+      label.control-label.col-sm-3.col-md-3.text-left Pod Name *
+      .col-sm-7
         = f.input :name, label: false, input_html: { class: 'create-pod__pod-name form-control', maxlength: 50 }
 
     .form-group
-      label.control-label.col-sm-4.col-md-2 Category *
-      .col-sm-7.col-sm-offset-1.col-md-6.col-md-offset-0
+      label.control-label.col-sm-3.col-md-3.text-left Category *
+      .col-sm-7
         = f.association :pod_category, label: false, label_method: :display_name, error: false, collection: PodCategory.in_order, prompt: '--Select--', input_html: { class: 'create-pod__category form-control' }
 
     .form-group
