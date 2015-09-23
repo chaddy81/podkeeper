@@ -1,0 +1,4 @@
+- if event.require_rsvp? && !event.completed
+  h4.header My RSVP
+  .container
+    = render 'rsvps/form', rsvp: my_rsvp(event)

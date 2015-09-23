@@ -1,0 +1,42 @@
+h4.header Details
+.container.event-details
+  .event-details__when
+    h3 When
+    .row
+      .pull-left.col-xs-6
+        p= event.start_date.strftime("%a. %b %d, %Y")
+        - if event.end_time
+          p #{event.start_time.strftime('%l:%M%p')} - #{event.end_time.strftime('%l:%M%p %Z')}
+        - else
+          p= event.start_time.strftime('%l:%M%p %Z')
+      = link_to 'Save to Web Calendar', event_export_to_personal_calendar_path(event), class: 'save-web pull-right col-xs-6', remote: true
+  .event-details__where
+    h3 Where
+    .row
+      .pull-left.col-xs-6
+        = event.address
+        p= event.location
+
+      = link_to 'View in Google Maps', "http://maps.google.com/?q=#{event.address}", class: 'view-map pull-right col-xs-6', target: '_blank'
+  - if event.description
+    .event-details__detail
+      h3 Details
+      p= event.description
+  .event-details__contact
+    h3 Event Contact
+    .vcard
+      - if event.organizer.full_name != event.organizer.email
+        p.fn= event.organizer.full_name
+      p.tel= event.organizer.phone
+      p.email= event.organizer.email
+  - if (current_user?(event.organizer) || is_at_least_pod_admin?) && !event.completed
+    .event-details__actions.text-center
+      = link_to 'Edit', edit_event_path(event), class: 'btn'
+      = link_to 'Send Reminder', new_event_note_path(event_id: event.id), class: 'btn'
+  - if event.require_rsvp?
+    - if my_rsvp(event).rsvp_option
+      div class="event-rsvp event-rsvp--#{my_rsvp(event).rsvp_option.name} text-center"= rsvp_message(my_rsvp(event).rsvp_option.name)
+    - else
+      .event-rsvp.event-rsvp--rsvp.text-center Please RSVP
+  - else
+    div class="event-rsvp event-rsvp--not-required text-center" No RSVP Required

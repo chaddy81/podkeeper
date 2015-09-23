@@ -1,4 +1,4 @@
-- if @accessible_pods.any?
+- if @accessible_pods.any? && controller_name != 'calendar'
   nav.site-nav.site-nav__mobile
     = link_to events_path, class: "site-nav__item site-nav__item--events text-center #{'active' if controller_name == 'events'}" do
       svg.icon.icon-events.center-block viewbox="0 0 1024 1024"
@@ -38,3 +38,7 @@
         = link_to 'Pod Details', details_pods_path
         - if is_at_least_pod_admin?
           = link_to 'Pod Admin', pod_memberships_path
+
+- else
+  .site-nav.site-nav__mobile
+    .site-nav__item.text-center style="cursor: auto;line-height: 60px; color: #337ab7;" Displaying events across all your pods

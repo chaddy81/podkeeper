@@ -127,7 +127,7 @@ module ApplicationHelper
 
   def events_ajax_previous_link
     ->(param, date_range) {
-      link_to events_path({param => date_range.first - 1.day}), class: 'event-calendar__prev', remote: :true do
+      link_to calendar_index_path({param => date_range.first - 1.day}), class: 'event-calendar__prev', remote: :true do
         "<svg class='icon center-block' viewbox='0 0 1024 1024'><use xlink:href='#icon-podkeeper-arrow-left'></use></svg>".html_safe
       end
     }
@@ -135,7 +135,7 @@ module ApplicationHelper
 
   def events_ajax_next_link
     ->(param, date_range) {
-      link_to events_path({param => date_range.last + 1.day}), class: 'event-calendar__next', remote: :true do
+      link_to calendar_index_path({param => date_range.last + 1.day}), class: 'event-calendar__next', remote: :true do
         "<svg class='icon center-block' viewbox='0 0 1024 1024'><use xlink:href='#icon-podkeeper-arrow-right'></use></svg>".html_safe
       end
     }

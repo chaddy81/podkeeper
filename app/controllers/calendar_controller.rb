@@ -1,6 +1,10 @@
 class CalendarController < ApplicationController
   def index
-    @events = current_user_events
+    if params[:start_date]
+      @events = current_user_events.select { |ev| ev.start_date.month == params[:start_date].to_date.month }
+    else
+      @events = current_user_events.select { |ev| ev.start_date.month == Date.today.month }
+    end
   end
 
   def show
@@ -16,7 +20,7 @@ class CalendarController < ApplicationController
 
   def current_user_events
     events = []
-    # Event.includes(pod: { :pod_memberships => :user}).where(pod_memberships: { user_id: current_user.id })
+
     current_user.pod_memberships.each do |pm|
       pm.pod.events.confirmed.order('start_date ASC').order('start_time ASC').each do |ev|
         events << ev
