@@ -1,4 +1,4 @@
-- if @accessible_pods.any? && controller_name != 'calendar'
+- if (current_pod || @accessible_pods.any?) && controller_name != 'calendar'
   nav.site-nav.site-nav__mobile
     = link_to events_path, class: "site-nav__item site-nav__item--events text-center #{'active' if controller_name == 'events'}" do
       svg.icon.icon-events.center-block viewbox="0 0 1024 1024"
