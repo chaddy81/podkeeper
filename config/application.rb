@@ -28,6 +28,10 @@ module Podkeeper
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
 
+    config.middleware.insert_before(Rack::Runtime, Rack::Rewrite) do
+        r301 '/how-pods-work',   '/overview'
+    end
+
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
 

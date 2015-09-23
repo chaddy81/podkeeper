@@ -56,7 +56,7 @@ gem 'simple_calendar', '~> 1.1.0'
 gem 'modernizr-rails'
 gem 'puma'
 
-gem 'traceroute'
+gem 'rack-rewrite', '~> 1.5.0'
 
 group :production do
   gem 'rails_12factor'
@@ -71,7 +71,7 @@ group :development do
   gem 'rack-mini-profiler'
   gem 'rubocop', require: false
   gem 'spring'
-  gem 'slack-notifier'
+  gem 'traceroute'
 end
 
 group :test do
