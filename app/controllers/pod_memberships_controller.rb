@@ -78,7 +78,9 @@ class PodMembershipsController < ApplicationController
       flash[:success] = 'Pod Member has been removed successfully'
       PodMailer.you_were_removed_from_pod(@pod_membership, current_user).deliver
     end
-    set_current_pod(current_user.pods.last)
+    if !current_pod
+      set_current_pod(current_user.pods.last)
+    end
     @pod_membership.destroy
 
     redirect_to :back
