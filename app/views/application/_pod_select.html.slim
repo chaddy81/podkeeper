@@ -1,16 +1,16 @@
 .pod-select__overlay
   .pod-select__pod
-    / - if controller_name == "calendar"
-    /   span My Calendar
-    /   svg viewbox="0 0 1024 1024"
-    /     use xlink:href="#icon-podkeeper-arrow-up"
-    / - else
-    span= current_pod ? current_pod.name : "No Pod Selected"
-    svg viewbox="0 0 1024 1024"
-      use xlink:href="#icon-podkeeper-arrow-up"
+    - if controller_name == "calendar"
+      span My Calendar
+      svg viewbox="0 0 1024 1024"
+        use xlink:href="#icon-podkeeper-arrow-up"
+    - else
+      span= current_pod ? current_pod.name : "No Pod Selected"
+      svg viewbox="0 0 1024 1024"
+        use xlink:href="#icon-podkeeper-arrow-up"
 
-  / .pod-select__calendar
-  /   a href="#{calendar_index_path}" My Calendar
+  .pod-select__calendar
+    a href="#{calendar_index_path}" My Calendar
 
   nav.pod-select__pod-list
     p.pod-select__my-pods My Pods
