@@ -14,7 +14,7 @@ User-agent: Googlebot
 Disallow:
 
 User-agent: AdsBot-Google
-Disallow:
+Disallow: /signup
 
 User-agent: Googlebot-Image
 Disallow:
