@@ -17,16 +17,7 @@
       .col-sm-12.event-details--desktop
         svg.icon.icon-events.center-block viewbox="0 0 1024 1024" style="width: 144px;height: 144px;"
           use xlink:href="#icon-podkeeper-calendar"
-        p
-          | There are no events currently
-          br
-          | scheduled for this Pod.
-          br
-          | Select "
-          = link_to 'New Event', new_event_path
-          | " to
-          br
-          | schedule something!
+        p There are no events in any of your Pods.
 
 
   = render 'ad_leaderboard'

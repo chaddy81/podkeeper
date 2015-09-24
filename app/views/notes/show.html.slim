@@ -22,7 +22,7 @@
         .discussion-meta.clearfix
           span.pull-left= @note.user.full_name
           span.pull-right
-            - if current_user?(@note.user)
+            - if current_user?(@note.user) || is_at_least_pod_admin?
               = link_to edit_note_path(@note), id: "edit_note_#{@note.id}", remote: true do
                 svg.icon.center-block viewbox="0 0 1024 1024" style="fill: #9FC03B;width: 12px; height: 12px;margin-right: 5px;vertical-align: -2px"
                   use xlink:href="#icon-podkeeper-edit"
