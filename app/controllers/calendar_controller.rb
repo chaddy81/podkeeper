@@ -21,7 +21,7 @@ class CalendarController < ApplicationController
   def current_user_events
     events = []
 
-    PodMembership.includes(:pod).where(user_id: current_user.id).each do |pm|
+    current_user.pod_memberships.includes(:pod).each do |pm|
       pm.pod.events.confirmed.order(:start_date, :start_time).each do |ev|
         events << ev
       end
