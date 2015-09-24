@@ -1,4 +1,4 @@
-a.event.clearfix data-event-id="#{event.id}" href="#{calendar_path(event)}"
+a.event.clearfix data-event-id="#{event.id}" href="#{calendar_path(event, start_date: event.start_date)}"
   .event-date.col-xs-3
     svg.event-date__icon.center-block viewbox="0 0 1024 1024"
       use xlink:href="#icon-podkeeper-date"

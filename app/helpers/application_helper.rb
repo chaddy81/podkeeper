@@ -124,10 +124,7 @@ module ApplicationHelper
   def event_calendar_title
     ->(start_date) {
       puts start_date
-      start_date = !session[:calendar_date].blank? ? session[:calendar_date] : start_date
-      puts start_date
-      content_tag :span, link_to("#{I18n.t("date.month_names")[start_date.month]} #{start_date.year}", calendar_index_path(start_date: start_date)), class: "event-calendar__month"
-    }
+      content_tag :span, link_to("#{I18n.t("date.month_names")[start_date.month]} #{start_date.year}", calendar_index_path(start_date: start_date)), class: "event-calendar__month"}
   end
 
   def events_ajax_previous_link
