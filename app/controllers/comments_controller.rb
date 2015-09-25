@@ -42,7 +42,7 @@ class CommentsController < ApplicationController
 
   def correct_user
     @comment = Comment.find(params[:id])
-    render_404 unless current_user?(@comment.user)
+    render_404 unless current_user?(@comment.user) || is_at_least_pod_admin?
   end
 
 end
