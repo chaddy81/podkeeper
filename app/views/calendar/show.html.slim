@@ -1,7 +1,7 @@
 .col-sm-12.col-md-10
   .row
     .hidden-xs.col-sm-6.col-md-5
-      - if @events && @events.count > 0
+      - if user_has_events?
         .event-calendar style="display: block;"
           = render 'calendar'
       .event-container.clearfix

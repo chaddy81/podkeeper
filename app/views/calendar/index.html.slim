@@ -1,6 +1,6 @@
 .col-sm-12.col-md-10
   .row
-    - if @events && @events.count > 0
+    - if user_has_events?
       .col-sm-6.col-md-6
         .event-calendar style="display: block"
           = render 'calendar'

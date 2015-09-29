@@ -10,4 +10,8 @@ module CalendarHelper
 
     return events
   end
+
+  def user_has_events?
+    current_user_events.count > 0
+  end
 end
