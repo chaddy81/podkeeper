@@ -61,13 +61,18 @@ class SessionsController < ApplicationController
         end
       end
     else
+      uri = session[:return_to].split('?').first if session[:return_to]
       user = User.find_by_email(params[:email].downcase)
       if user && user.authenticate(params[:password]) && user.active?
         sign_in user, params[:remember_me]
         user.update_attribute :last_login, DateTime.now
-        pod = Pod.where(id: user.last_pod_visited_id).first || user.pods.last
-        set_current_pod(pod)
-        pod.present? ? redirect_back_or(events_path) : redirect_to(new_pod_path)
+        if uri == '/invites'
+          redirect_to invites_path
+        else
+          pod = user.pods.where(id: user.last_pod_visited_id).first || user.pods.last
+          set_current_pod(pod)
+          pod.present? ? redirect_back_or(events_path) : redirect_to(new_pod_path)
+        end
       else
         session[:email] = params[:email]
         session[:login] = "failure"
