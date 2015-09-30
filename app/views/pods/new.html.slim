@@ -16,8 +16,8 @@
         = f.association :pod_category, label: false, label_method: :display_name, error: false, collection: PodCategory.in_order, prompt: '--Select--', input_html: { class: 'create-pod__category form-control' }
 
     .form-group
-      label.control-label.col-sm-4.col-md-2 More Specifically *
-      .col-sm-7.col-sm-offset-1.col-md-6.col-md-offset-0
+      label.control-label.col-sm-3.col-md-3 More Specifically *
+      .col-sm-7
         = f.association :pod_sub_category, label: false, label_method: :display_name, input_html: { class: 'create-pod__sub-category form-control' }
 
     .form-group
