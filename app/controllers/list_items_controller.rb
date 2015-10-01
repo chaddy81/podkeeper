@@ -15,6 +15,7 @@ class ListItemsController < ApplicationController
   end
 
   def update
+    puts params.to_yaml
     @list_item = ListItem.find(params[:id])
     params[:list_item][:user_id] = current_user.id if params[:list_item][:sign_me_up] == 'true'
     @row_number = params[:list_item][:row_number]

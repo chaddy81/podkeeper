@@ -26,7 +26,7 @@ html
     link rel="icon" type="image/png" href="/favicons/favicon-96x96.png" sizes="96x96"
     = stylesheet_link_tag    'application', 'http://fonts.googleapis.com/css?family=Roboto:400,500,300,700,500italic,400italic,300italic', 'http://fonts.googleapis.com/css?family=Raleway:400,500', 'http://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic', media: 'all'
     = javascript_include_tag 'application'
-    = javascript_include_tag :modernizr
+    / = javascript_include_tag :modernizr
     = csrf_meta_tags
 
     - if Rails.env.production?
@@ -89,6 +89,61 @@ html
       });
 
       $(function() {
+        $('a[data-remote="true"]').on('click', function(e) {
+          e.preventDefault();
+
+          var $target = $(this);
+          $target.unbind('click');
+
+          var method = $target.data('method');
+          var url = $target.attr('href');
+          var data = $target.data('params');
+
+          $.ajax({
+            url: url,
+            method: method || 'GET',
+            data: data
+          });
+
+          return false;
+        });
+
+        $(document).on('click', 'a[data-remote="true"]', function(e) {
+          e.preventDefault();
+
+          var $target = $(this);
+          $target.unbind('click');
+
+          var method = $target.data('method');
+          var url = $target.attr('href');
+          var data = $target.data('params');
+
+          $.ajax({
+            url: url,
+            method: method || 'GET',
+            data: data
+          });
+
+          return false;
+        });
+
+        $(document).on('submit', 'form[data-remote="true"]', function(e) {
+          e.preventDefault();
+
+          var $target = $(this);
+          var method = $target.find('input[name="_method"]') ? $target.find('input[name="_method"]').val() : $target.data('method');
+          var url = $target.attr('action');
+          var data = $target.serializeArray();;
+
+          $.ajax({
+            url: url,
+            method: method || 'GET',
+            data: data
+          });
+
+          return false;
+        });
+
         $(document).on('click', '.view-toggle svg', function() {
           $('.event-calendar').toggle();
           if ($('.event-calendar:visible').length) {
