@@ -45,7 +45,9 @@ Rails.application.routes.draw do
     get :add_list_item, on: :member
     get :update_last_visit, on: :collection
   end
-  resources :list_items, except: [:index, :show]
+  resources :list_items, except: [:index, :show] do
+    get :cancel, on: :member
+  end
   resources :notes do
     get :update_last_visit, on: :collection
   end

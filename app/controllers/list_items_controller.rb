@@ -29,4 +29,9 @@ class ListItemsController < ApplicationController
     @list_item.destroy
   end
 
+  def cancel
+    @list_item = ListItem.find(params[:id])
+    respond_to :js
+  end
+
 end

@@ -17,6 +17,7 @@
     = f.input :notes, input_html: { placeholder: 'Notes', rows: 2, cols: 20, class: 'form-control list__item--item' }, label: false
   .form-group
     = f.submit 'Save', disable_with: 'Saving...', class: 'btn btn--green'
+    = link_to 'Cancel', cancel_list_item_path, class: 'btn btn--cancel', remote: true if !list_item.new_record?
     = link_to 'Remove row', '#', class: 'btn btn--cancel', 'data-remove-row' => 'true' if list_item.new_record?
 
     = f.input :list_id, as: :hidden
