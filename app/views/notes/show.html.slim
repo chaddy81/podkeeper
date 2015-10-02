@@ -23,10 +23,10 @@
           span.pull-left= @note.user.full_name
           span.pull-right
             - if current_user?(@note.user) || is_at_least_pod_admin?
-              = link_to edit_note_path(@note), id: "edit_note_#{@note.id}", remote: true do
+              = button_to edit_note_path(@note), id: "edit_note_#{@note.id}", method: :get, remote: true do
                 svg.icon.center-block viewbox="0 0 1024 1024" style="fill: #9FC03B;width: 12px; height: 12px;margin-right: 5px;vertical-align: -2px"
                   use xlink:href="#icon-podkeeper-edit"
-              = link_to note_path(@note), id: "delete_note_#{@note.id}", method: :delete, data: { confirm: 'Are you sure you want to delete this discussion? All comments will also be deleted.' } do
+              = button_to note_path(@note), id: "delete_note_#{@note.id}", method: :delete, data: { confirm: 'Are you sure you want to delete this discussion? All comments will also be deleted.' } do
                 svg.icon.center-block viewbox="0 0 1024 1024" style="width: 12px; height: 12px;margin-right: 5px;vertical-align: -2px"
                   use xlink:href="#icon-podkeeper-no"
             em style="margin-left: 10px"= @note.created_at.strftime("%b %d, %Y, %l:%M%P")

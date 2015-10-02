@@ -18,7 +18,7 @@ tr
       = link_to edit_uploaded_file_path(uploaded_file), class: 'edit' do
         svg.icon.icon-edit viewbox="0 0 1024 1024" style="margin: 0 5px;width: 16px; height: 16px"
           use xlink:href="#icon-podkeeper-edit"
-      = link_to uploaded_file_path(uploaded_file), method: :delete, data: { confirm: 'Are you sure you want to remove this file?' } do
+      = button_to uploaded_file_path(uploaded_file), method: :delete, data: { confirm: 'Are you sure you want to remove this file?' } do
         svg.icon.icon-edit viewbox="0 0 1024 1024" style="margin: 0 5px;width: 16px; height: 16px"
           use xlink:href="#icon-podkeeper-no"
 
