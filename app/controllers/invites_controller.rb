@@ -8,7 +8,8 @@ class InvitesController < ApplicationController
       redirect_to invites_path and return
     end
 
-    @visible_invites = current_user.received_invites.unaccepted.where('pod_id IS NOT NULL').includes(:pod, pod: :organizer)
+    # @invites = current_user.received_invites.unaccepted.where('pod_id IS NOT NULL').includes(:pod, pod: :organizer)
+    @invites = Invite.where(invitee_id: current_user.id, accepted: false, declined: false).where('pod_id IS NOT NULL')
   end
 
   # ask group leader to create pod (POST)

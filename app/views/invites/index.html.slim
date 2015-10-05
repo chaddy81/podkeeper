@@ -1,9 +1,9 @@
 .col-md-10.open-invites
   p.note You have been invited to the Pod(s) below by someone in that group. Once you join a Pod you will have complete access to the group’s information on PodKeeper, and will receive invitations to the Pod’s events.
-  - if @visible_invites.any?
+  - if @invites.any?
     .table-responsive
       table.table
-        = render @visible_invites
+        = render @invites
   - elsif current_user.pods.any?
     hr
     p You have no open Pod invitations at this time
