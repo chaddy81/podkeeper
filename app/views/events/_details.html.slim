@@ -17,7 +17,7 @@
   - if event.description
     .event-details__detail
       h3 Details
-      p= event.description
+      p= auto_link(event.description, :all, target: '_blank')
   .event-details__contact
     h3 Event Contact
     .vcard
