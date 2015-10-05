@@ -200,9 +200,9 @@ class Notifications
     end
   end
 
-  handle_asynchronously :urgent_note_posted
-  handle_asynchronously :note_posted
-  handle_asynchronously :reply_to_my_note
+  # handle_asynchronously :urgent_note_posted
+  # handle_asynchronously :note_posted
+  # handle_asynchronously :reply_to_my_note
   handle_asynchronously :new_list_notification
 
 end
