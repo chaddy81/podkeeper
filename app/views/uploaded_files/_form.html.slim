@@ -11,5 +11,5 @@
           = f.input :remote_file_url, as: :string, input_html: { placeholder: 'Type or paste a web link', class: 'form-control pull-left' }
           = f.input :pod_membership_id, as: :hidden
     .form-controls.pull-right
-      = f.submit 'Save', class: 'submit btn', disable_with: 'Save'
+      = f.submit 'Save', class: 'submit btn', data: { disable_with: 'Saving...' }
       = link_to 'Cancel', uploaded_files_path, class: 'back btn btn--cancel'

@@ -13,9 +13,9 @@ $(function() {
     $(this).toggleClass('selected');
   });
 
-  $('#uploaded_file_file').change(function() {
-    $(this).parents('form').submit();
-  });
+  // $('#uploaded_file_file').change(function() {
+  //   $(this).parents('form').submit();
+  // });
 
   $('[data-cancel-description-edit]').click(function() {
     originalDescription = $('[data-original-description]').text();
