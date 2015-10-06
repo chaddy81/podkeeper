@@ -40,7 +40,7 @@
         = simple_form_for @note.comments.new, html: { class: 'new-comment mobile-collapse' } do |f|
           = f.input :body, as: :text, label: false, input_html: { placeholder: 'Add a Comment', rows: 1 }
 
-          = f.submit 'Post'
+          = f.submit 'Post', data: { disable_with: 'Post'}
           = f.input :note_id, as: :hidden, value: @note.id
 
   = render 'ad_leaderboard'
