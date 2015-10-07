@@ -6,7 +6,7 @@
 
 <div style="margin: 10px 0;">
   <span style="display:block;font-size:14px;font-weight: bold;margin:0 0 -10px;"><%= @comment.note.topic %></span>
-  <%= auto_link(simple_format @comment.body, :all, target: '_blank') %>
+  <%= auto_link(simple_format @comment.body, target: '_blank') %>
 </div>
 
 <% unless @user.class.to_s == 'User' %>
