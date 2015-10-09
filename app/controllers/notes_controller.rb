@@ -1,5 +1,5 @@
 class NotesController < ApplicationController
-  before_filter :can_view?, only: [:index, :new, :show]
+  before_filter :can_view?, only: [:show]
 
   def index
     @notes = current_pod.notes.includes(:user).order('sort_by_date DESC')
@@ -83,13 +83,9 @@ class NotesController < ApplicationController
 
   private
 
-  def can_update?
-    pod = Pod.find(params[:id])
-    render_404 unless current_user.pods.include?(pod)
-  end
-
   def can_view?
-    render_404 unless current_user.pods.include?(current_pod)
+    note = Note.find(params[:id])
+    render_404 unless current_user.pods.include?(note.pod)
   end
 
 end
