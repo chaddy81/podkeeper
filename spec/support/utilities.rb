@@ -18,15 +18,15 @@ def sign_out_js(user)
 end
 
 def sign_up_with(email, password, first, last, pod_name, category_name)
-  visit new_session_path
+  visit signup_path
 
-  fill_in 'Email', with: email
-  fill_in 'pod_user_password', with: password
-  fill_in 'pod_user_name', with: pod_name
-  fill_in 'pod_user_first_name', with: first
-  fill_in 'pod_user_last_name', with: last
-  select  category_name, from: 'pod_user_pod_category_id'
-  click_button 'Join PodKeeper'
+  fill_in 'Enter Your Email Address', with: email
+  fill_in 'Choose Password', with: password
+  # fill_in 'pod_user_name', with: pod_name
+  fill_in 'First Name', with: first
+  fill_in 'Last Name', with: last
+  # select  category_name, from: 'pod_user_pod_category_id'
+  click_button 'Sign Up for my Free Account'
 end
 
 # add 'have_title' test

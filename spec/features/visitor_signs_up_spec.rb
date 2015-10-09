@@ -8,7 +8,7 @@ describe 'Visitor signs up' do
     before { sign_up_with('guy@example.com', 'secret_password', 'Guy', 'Example', 'My Pod', category.display_name) }
 
     it { should have_content('Welcome to PodKeeper!') }
-    it { should have_content('Thank Youfor becoming a member of PodKeeper') }
+    it { should have_content('Thank You for becoming a member of PodKeeper') }
   end
 
   describe 'with invalid information' do

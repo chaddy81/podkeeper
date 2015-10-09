@@ -27,8 +27,8 @@
           span.blue-line
 
     .form-group.text-center.clearfix
-      = f.input :first_name, label: false, input_html: { placeholder: 'First Name' }
-      = f.input :last_name, label: false, input_html: { placeholder: 'Last Name' }
+      = f.input :first_name, label: false, input_html: { placeholder: 'First Name', class: 'first' }
+      = f.input :last_name, label: false, input_html: { placeholder: 'Last Name', class: 'last' }
 
     .form-group.text-center
       = f.input :email, label: false, input_html: { placeholder: 'Enter Your Email Address' }
