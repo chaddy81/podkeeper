@@ -1,2 +1,2 @@
 $(".event-calendar").html("<%= escape_javascript render 'calendar' %>");
-$('.event-container').html("<%= escape_javascript render partial: 'event', collection: @events %>");
+$('.event-container').html("<%= escape_javascript render partial: 'event', collection: @upcoming_events %>");

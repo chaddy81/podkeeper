@@ -5,7 +5,7 @@
         .event-calendar style="display: block"
           = render 'calendar'
         .event-container.clearfix
-          = render partial: 'calendar/event', collection: @events
+          = render partial: 'calendar/event', collection: @upcoming_events
 
       .hidden-xs.col-sm-6.col-md-6.event-details--desktop
         svg.icon.icon-events.center-block viewbox="0 0 1024 1024" style="width: 144px;height: 144px;"

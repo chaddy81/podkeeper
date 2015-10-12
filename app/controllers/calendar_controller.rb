@@ -2,13 +2,15 @@ class CalendarController < ApplicationController
   def index
     if params[:start_date]
       @events = current_user_events.select { |ev| ev.start_date.month == params[:start_date].to_date.month && ev.start_date.year == params[:start_date].to_date.year }
+      @upcoming_events = current_user_events_upcoming.select { |ev| ev.start_date.month == params[:start_date].to_date.month && ev.start_date.year == params[:start_date].to_date.year }
     else
-      @events = current_user_events_upcoming.select { |ev| ev.start_date.month == Date.today.month && ev.start_date.year == Date.today.year }
+      @events = current_user_events.select { |ev| ev.start_date.month == Date.today.month && ev.start_date.year == Date.today.year }
+      @upcoming_events = current_user_events_upcoming.select { |ev| ev.start_date.month == Date.today.month && ev.start_date.year == Date.today.year }
     end
   end
 
   def show
-    @events = current_user_events.select { |ev| ev.start_date.month == params[:start_date].to_date.month && ev.start_date.year == params[:start_date].to_date.year }
+    @events = current_user_events_upcoming.select { |ev| ev.start_date.month == params[:start_date].to_date.month && ev.start_date.year == params[:start_date].to_date.year }
     @event = Event.includes(:organizer).find(params[:id])
   end
 
