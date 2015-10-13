@@ -1,0 +1,18 @@
+<p style="margin: 10px 0;">Dear <%= @invite.first_name.blank? ? 'Invitee' : @invite.first_name %>,</p>
+
+<p style="margin: 10px 0;">Please take one minute to join our Pod: <strong><%= @invite.pod.name %></strong>.</p>
+
+<p style="margin: 10px 0;">By joining you’ll be able to easily keep up with everything going on in our group. Don’t be left out.</p>
+
+<% if @invite.invitee.nil? %>
+  <%= link_to image_tag('http://podanize-images.s3.amazonaws.com/email-images/join-the-pod-blue.png', alt: 'Join the Pod', width: '186', height: '40', border: 0), signup_url(auth_token: @invite.auth_token), style: 'display:block; margin: 0 auto; font-size:18px; height: 40px; width: 186px; color:#15c;' %>
+<% else %>
+  <%= link_to image_tag('http://podanize-images.s3.amazonaws.com/email-images/join-the-pod-blue.png', alt: 'Join the Pod', width: '186', height: '40', border: 0), invites_url(invite_id: @invite.id), style: 'display:block; margin: 0 auto; font-size:18px; height: 40px; width: 186px; color:#15c;' %>
+<% end %>
+
+<p style="margin: 10px 0;">If you have any questions, don't hesitate to send an email to <%= link_to 'podhelp@podkeeper.com', 'mailto: podhelp@podkeeper.com' %> and they will help you out.</p>
+
+<p style="margin: 10px 0;">All the best,<br>
+<%= @invite.inviter.full_name %></p>
+
+<% provide :email, @email %>

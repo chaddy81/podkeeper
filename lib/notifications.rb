@@ -40,6 +40,19 @@ class Notifications
     end
   end
 
+  def invite_to_join_a_pod_four_day_reminders
+    date = 4.days.ago
+    invites = Invite.where('pod_id IS NOT NULL AND accepted = false AND created_at >= ? AND created_at <= ?', date - 2.days, date + 2.days)
+    invites.each do |invite|
+      time_zone = get_invite_time_zone(invite)
+      current_time = DateTime.now.in_time_zone(time_zone)
+      midnight = current_time.midnight
+      if current_time >= midnight + 11.hours && current_time < midnight + 12.hours && invite.created_at.in_time_zone(time_zone).to_date == date.in_time_zone(time_zone).to_date
+        InviteMailer.send_invite_to_join_a_pod_four_day_reminder(invite).deliver_now
+      end
+    end
+  end
+
   def invite_to_join_a_pod_nine_day_reminders
     date = 9.days.ago
     invites = Invite.where('pod_id IS NOT NULL AND accepted = false AND created_at >= ? AND created_at <= ?', date - 2.days, date + 2.days)
