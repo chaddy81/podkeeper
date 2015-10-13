@@ -4,7 +4,7 @@
       .col-sm-3.col-md-2
         a.navbar-brand href="#"  PodKeeper
       - unless params[:controller] == 'sessions' && params[:action] == 'new'
-        .col-md-7.col-lg-7.hidden-xs.hidden-sm style="text-align: center;"
+        .col-md-7.col-lg-7.hidden-xs.hidden-sm style="text-align: center;padding: 0;"
           ul
             li=link_to 'Overview', overview_path
             li=link_to 'Video', video_path
@@ -13,6 +13,7 @@
             li=link_to 'Mobile', mobile_path
             li=link_to 'Terms', terms_of_service_path
             li=link_to 'Privacy', privacy_policy_path
+            li=link_to 'Advertise', advertise_path
             li=link_to 'Feedback', feedback_path
             li=link_to 'Contact Us', contact_path
 
@@ -26,6 +27,7 @@
             option val="" data-link-href="#{mobile_path}" Mobile
             option val="" data-link-href="#{terms_of_service_path}" Terms
             option val="" data-link-href="#{privacy_policy_path}" Privacy
+            option val="" data-link-href="#{advertise_path}" Advertise
             option val="" data-link-href="#{feedback_path}" Feedback
             option val="" data-link-href="#{contact_path}" Contact Us
 

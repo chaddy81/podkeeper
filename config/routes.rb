@@ -106,6 +106,7 @@ Rails.application.routes.draw do
   get 'about',   to: 'static_pages#about'
   get 'blog',    to: 'static_pages#blog'
   get 'faq',     to: 'static_pages#faq'
+  get 'advertise',   to: 'static_pages#advertise'
   get 'privacy-policy',   to: 'static_pages#privacy_policy',   as: 'privacy_policy'
   get 'terms-of-service', to: 'static_pages#terms_of_service', as: 'terms_of_service'
   get 'our-mission',      to: 'static_pages#our_mission',      as: 'our_mission'
