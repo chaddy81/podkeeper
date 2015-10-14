@@ -29,7 +29,11 @@
               = button_to note_path(@note), id: "delete_note_#{@note.id}", method: :delete, data: { confirm: 'Are you sure you want to delete this discussion? All comments will also be deleted.' } do
                 svg.icon.center-block viewbox="0 0 1024 1024" style="width: 12px; height: 12px;margin-right: 5px;vertical-align: -2px"
                   use xlink:href="#icon-podkeeper-no"
-            em style="margin-left: 10px"= @note.created_at.strftime("%b %d, %Y, %l:%M%P")
+            em style="margin-left: 10px"
+              = @note.created_at.strftime("%b %d, %Y, %l:%M%P")
+              - if @note.created_at != @note.updated_at
+                br
+                span style="font-size: 11px;float: right; line-height: 1;" Modified
         p= auto_link(@note.body.gsub("\n", "<br />").html_safe, :all, target: '_blank')
       .clearfix
 
