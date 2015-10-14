@@ -1,0 +1,20 @@
+#time-zone-modal.modal.fade aria-hidden="true" aria-labelledby="timezonemodal" role="dialog" tabindex="-1"
+  .modal-dialog
+    .modal-content
+      .modal-header
+        button.close data-dismiss="modal" type="button"
+          span aria-hidden="true"  &times;
+          span.sr-only Close
+        h4.modal-title Default Account Time Zone
+      .modal-body
+        p
+          ' Would you like to set
+          strong
+            span
+          '  as your default time zone?
+        = form_tag update_time_zone_path, remote: true do
+          = hidden_field_tag :time_zone, current_user.time_zone
+          = hidden_field_tag :current_user_time_zone, current_user.time_zone
+          .controls
+            = submit_tag 'Yes', class: 'btn btn-default btn-blue'
+            = link_to 'No', '#', class: 'btn btn-default', 'data-dismiss' => 'modal'
