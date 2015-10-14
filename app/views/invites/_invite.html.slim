@@ -18,6 +18,6 @@ tr
 
   td
     = link_to 'Join Pod', accept_invite_path(invite), class: 'btn', disable_with: 'Joining...'
-    = link_to decline_invite_path(invite), class: 'delete', method: :delete, data: { confirm: 'Are you sure you want to decline this invite?' } do
+    = link_to decline_invite_path(invite), class: 'delete', data: { confirm: 'Are you sure you want to decline this invite?' } do
       svg.icon.center-block viewbox=("0 0 1024 1024") style="width: 21px;height: 21px;margin-left: 15px;vertical-align:middle"
         use xlink:href="#icon-podkeeper-no"
