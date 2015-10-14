@@ -61,12 +61,12 @@ html
       .push.hidden-xs
 
     = render 'footer'
-    = render 'pods/add_kid'
-    = render 'notes/note_edit_modal'
-    = render 'notes/comment_edit_modal'
-    = render 'events/time_zone_modal'
 
     - if current_user
+      = render 'pods/add_kid'
+      = render 'notes/note_edit_modal'
+      = render 'notes/comment_edit_modal'
+      = render 'events/time_zone_modal'
       /! overlay for selecting new pod
       = render 'add_menu' if action_name == 'index'
       = render 'pod_select'
