@@ -16,5 +16,5 @@
             svg.icon.center-block viewbox="0 0 1024 1024" style="width: 12px; height: 12px;margin-right: 5px;vertical-align: -2px"
               use xlink:href="#icon-podkeeper-no"
         em style="margin-left: 10px;"= comment.created_at.strftime("%b %d, %Y, %l:%M%P")
-    p= auto_link(comment.body.gsub("\n", "<br />").html_safe, :all, target: '_blank')
+    p= auto_link(comment.body.gsub("\n", "<p style='margin-bottom: 16px;'></p>").html_safe, :all, target: '_blank')
 .clearfix

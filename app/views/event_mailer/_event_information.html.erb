@@ -13,7 +13,15 @@
       Date &amp; Time
     </td>
     <td style="padding-bottom:10px;">
-      <%= event_date_time(event, user) %>
+      <% unless event.end_date %>
+        <%= event_date_time(event, user) %>
+      <% else %>
+        <p style="margin: 0;"><strong>Starts</strong></p>
+        <%= event_date_time(event, user) %>
+        <p style="margin: 0;line-height: 0.8;">&nbsp;</p>
+        <p style="margin: 0;"><strong>Ends</strong></p>
+        <%= event_end_date_time(event, user) %>
+      <% end %>
     </td>
   </tr>
   <tr>

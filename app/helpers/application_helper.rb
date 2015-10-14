@@ -60,9 +60,10 @@ module ApplicationHelper
     "#{l event.start_date, format: '%a. %b %e'}, #{l event.start_time.in_time_zone(time_zone), format: '%I:%M%p %Z'}"
   end
 
-  def event_end_date_time(event)
+  def event_end_date_time(event, user)
     if event.end_time.present?
-      "#{l event.end_date, format: '%a %b %e'}, #{l event.end_time, format: '%I:%M%p %Z'}"
+      time_zone = user.class.to_s == 'User' ? user.time_zone : event.time_zone
+      "#{l event.end_date, format: '%a %b %e'}, #{l event.end_time.in_time_zone(time_zone), format: '%I:%M%p %Z'}"
     end
   end
 
