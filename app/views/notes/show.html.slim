@@ -33,7 +33,7 @@
         p= auto_link(@note.body.gsub("\n", "<br />").html_safe, :all, target: '_blank')
       .clearfix
 
-      - @note.comments.each do |comment|
+      - @comments.each do |comment|
         = render 'comments/comment', comment: comment
 
       .row

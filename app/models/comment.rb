@@ -6,7 +6,7 @@ class Comment < ActiveRecord::Base
   validates :user_id, presence: true, :if => lambda { self.invite_id.blank? }
   validates :invite_id, presence: true, :if => lambda { self.user_id.blank? }
 
-  default_scope -> { order('updated_at asc') }
+  default_scope -> { order('created_at desc') }
 
   belongs_to :user
   belongs_to :invite

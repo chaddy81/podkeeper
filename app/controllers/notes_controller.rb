@@ -33,6 +33,7 @@ class NotesController < ApplicationController
   def show
     @notes = current_pod.notes.order('sort_by_date DESC')
     @note = Note.includes(:comments).find(params[:id])
+    @comments = @note.comments.order('created_at DESC')
   end
 
   def update
