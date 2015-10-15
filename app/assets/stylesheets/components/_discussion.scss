@@ -145,6 +145,8 @@
   }
   .discussion-info, .comment-info {
     margin-bottom: 20px;
+    position: relative;
+    word-wrap: break-word;
 
     p {
       font-weight: 300;
@@ -217,6 +219,29 @@
     margin-left: 10px;
     outline: none;
     vertical-align: -5px;
+  }
+}
+
+.note-content {
+  padding-right: 20px;
+}
+
+.open ~ .read-more {
+  right: 10px;
+  transform: rotate(-90deg);
+}
+
+.read-more {
+  bottom: -15px;
+  color: $event-border;
+  font-size: 42px;
+  position: absolute;
+  right: 5px;
+  transform: rotate(90deg);
+
+  &:hover, &:focus, &:active {
+    color: $event-border;
+    text-decoration: none;
   }
 }
 
