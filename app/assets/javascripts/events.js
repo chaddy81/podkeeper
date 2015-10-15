@@ -141,8 +141,22 @@ $(function() {
 
     $('#event_start_time').timepicker();
 
-    $('[data-rsvp-reminders] .remove_nested_fields:first').remove();
-    $('[data-event-reminders] .remove_nested_fields:first').remove();
+    // $('[data-rsvp-reminders] .remove_nested_fields:first').data('confirm', 'Are you sure you want to delete this reminder?');
+    // $('[data-event-reminders] .remove_nested_fields:first').data('confirm', 'Are you sure you want to delete this reminder?');
+
+    $(document).on('click', '[data-rsvp-reminders] .remove_nested_fields', function() {
+      if($('.form-group[data-rsvp-reminders]:visible').length === 1) {
+        $('.form-group[data-rsvp-reminders]:visible .remove_nested_fields')
+          .attr('data-confirm', 'Are you sure you want to remove all rsvp reminders?');
+      }
+    });
+
+    $(document).on('click', '[data-event-reminders] .remove_nested_fields', function() {
+      if($('[data-event-reminders] .form-group:visible').length === 1) {
+        $('[data-event-reminders] .form-group:visible .remove_nested_fields')
+          .attr('data-confirm', 'Are you sure you want to remove all event reminders?');
+      }
+    });
 
     hideShowRsvpReminders();
     $('#event_require_rsvp').change(function() {
