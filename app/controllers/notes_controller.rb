@@ -3,6 +3,10 @@ class NotesController < ApplicationController
 
   def index
     @notes = current_pod.notes.includes(:user).order('sort_by_date DESC')
+    @notes.each do |note|
+      puts note.user
+      puts note.id
+    end
   end
 
   def new

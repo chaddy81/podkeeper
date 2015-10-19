@@ -97,6 +97,10 @@
   }
 }
 
+.discussion-info {
+  overflow: hidden;
+}
+
 .discussion-urgent {
   margin-right: 15px;
 
@@ -223,7 +227,14 @@
 }
 
 .note-content {
+  box-sizing: border-box;
+  overflow: hidden;
   padding-right: 20px;
+  word-break: break-word;
+
+  p {
+    margin-bottom: 15px;
+  }
 }
 
 .open ~ .read-more {
