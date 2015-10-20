@@ -56,6 +56,11 @@
   <priority>0.80</priority>
 </url>
 <url>
+  <loc>http://www.podkeeper.com/advertise</loc>
+  <changefreq>never</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
   <loc>http://www.podkeeper.com/terms-of-service</loc>
   <changefreq>never</changefreq>
   <priority>0.80</priority>
