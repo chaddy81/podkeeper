@@ -36,11 +36,11 @@ class CalendarController < ApplicationController
     events = []
 
     current_user.pod_memberships.includes(:pod).each do |pm|
-      pm.pod.events.confirmed.upcoming.order(:start_date, :start_time).each do |ev|
+      pm.pod.events.confirmed.upcoming.each do |ev|
         events << ev
       end
     end
 
-    return events
+    return events.sort_by!{|e| [e.start_date, e.start_time]}
   end
 end
