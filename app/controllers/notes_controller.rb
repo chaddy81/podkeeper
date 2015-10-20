@@ -2,7 +2,7 @@ class NotesController < ApplicationController
   before_filter :can_view?, only: [:show]
 
   def index
-    @notes = current_pod.notes.includes(:user).order('sort_by_date DESC')
+    @notes = current_pod.notes.includes(:user).order('created_at DESC')
     @notes.each do |note|
       puts note.user
       puts note.id
