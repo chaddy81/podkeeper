@@ -14,10 +14,7 @@ class UploadedFilesController < ApplicationController
     @uploaded_file = UploadedFile.new(params[:uploaded_file])
     @uploaded_file.pod_membership = current_pod_membership
 
-    # Removed below to allow adding weblinks that end in html
-    # @uploaded_file.file.file.content_type.include?('html') == false
-
-    if @uploaded_file.file.present? && @uploaded_file.save
+    if @uploaded_file.file.present? && @uploaded_file.file.file.content_type.include?('html') == false && @uploaded_file.save
       flash[:success] = 'File was added sucessfully'
       redirect_to uploaded_files_path
     elsif @uploaded_file.errors.messages.has_key?(:file) || @uploaded_file.errors.messages.has_key?(:base)
