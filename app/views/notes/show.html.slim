@@ -34,7 +34,7 @@
               - if @note.created_at != @note.updated_at
                 div style="font-size: 11px;line-height: 1;text-align:right;font-weight: 400;" Modified
         - if @note.body.length > 100
-          .note-content= truncate(@note.body, length: 100)
+          .note-content= auto_link(truncate(@note.body.gsub('\n', '<br />').html_safe, length: 100), :all, target: '_blank')
           = link_to "#", class: 'read-more' do
             | &rsaquo;
 
@@ -70,7 +70,7 @@ javascript:
       e.preventDefault()
 
       if($(this).parent().find('.note-content').hasClass('open')) {
-        var content = "#{escape_javascript truncate(@note.body, length: 100)}";
+        var content = "#{escape_javascript auto_link(truncate(@note.body.gsub('\n', '<br />').html_safe, length: 100), :all, target: '_blank')}";
         $(this).parent().find('.note-content').removeClass('open').html(content);
         $('html, body').animate({
           scrollTop: $(".discussion-info").offset().top
