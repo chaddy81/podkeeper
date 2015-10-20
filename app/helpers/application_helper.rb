@@ -86,6 +86,11 @@ module ApplicationHelper
     end
   end
 
+  def discussion_comment_time(note, user)
+    time_zone = user.time_zone
+    "#{l note.updated_at.in_time_zone(time_zone), format: '%b %d, %Y, %l:%M%P'}"
+  end
+
   def inverse_sort_direction(column = nil)
     sort_direction(column) == 'asc' ? 'desc' : 'asc'
   end

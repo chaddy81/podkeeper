@@ -30,7 +30,7 @@
                 svg.icon.center-block viewbox="0 0 1024 1024" style="width: 12px; height: 12px;margin-right: 5px;vertical-align: -2px"
                   use xlink:href="#icon-podkeeper-no"
             em.pull-right style="margin-left: 10px"
-              = @note.created_at.strftime("%b %d, %Y, %l:%M%P")
+              = discussion_comment_time(@note, current_user)
               - if @note.created_at != @note.updated_at
                 div style="font-size: 11px;line-height: 1;text-align:right;font-weight: 400;" Modified
         - if @note.body.length > 100
