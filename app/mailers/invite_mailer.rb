@@ -88,7 +88,7 @@ class InviteMailer < ActionMailer::Base
     @final_reminder = false
     @email = invite.email
     mail to: invite.email,
-         subject: "Reminder - Invitation to join Pod - #{@invite.pod.name}",
+         subject: "Take one minute to join Pod - #{@invite.pod.name}",
          reply_to: invite.inviter.email,
          from: "#{invite.inviter.full_name} via PodKeeper <podmember@email.podkeeper.com>"
   end
