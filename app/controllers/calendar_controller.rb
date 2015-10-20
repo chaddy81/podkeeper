@@ -41,6 +41,6 @@ class CalendarController < ApplicationController
       end
     end
 
-    return events.sort_by!{|e| [e.start_date, e.start_time]}
+    return events.sort_by!{|e| [e.start_date, e.start_time, e.pod.name, e.name]}
   end
 end
