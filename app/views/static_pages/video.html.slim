@@ -5,3 +5,9 @@
 
   .embed-responsive.embed-responsive-16by9
     iframe.embed-responsive-item src="//www.youtube.com/embed/seHSD1wFQYM?rel=0" frameborder="0" allowfullscreen=""
+
+  - unless current_user
+    .page-sign-up
+      a.btn.btn--green.center-block href="#{signup_path}" Sign Up
+
+      p.text-center It’s 100% Free!

@@ -76,3 +76,9 @@
       = link_to 'podinfo@podkeeper.com', 'mailto:podinfo@podkeeper.com?subject=Inquiry%20from%20PodKeeper%20Privacy%20page', class: 'contact'
 
   p Effective as of September 1, 2014
+
+  - unless current_user
+    .page-sign-up
+      a.btn.btn--green.center-block href="#{signup_path}" Sign Up
+
+      p.text-center It’s 100% Free!

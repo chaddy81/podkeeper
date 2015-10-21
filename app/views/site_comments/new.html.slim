@@ -9,3 +9,9 @@
         = f.input :body, label: false, input_html: { rows: 5, id: 'comment', class: 'form-control' }
         = link_to 'Cancel', :back
         = f.submit 'Send Feedback', class: 'btn'
+
+    - unless current_user
+      .page-sign-up
+        a.btn.btn--green.center-block href="#{signup_path}" Sign Up
+
+        p.text-center It’s 100% Free!
