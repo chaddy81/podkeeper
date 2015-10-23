@@ -92,16 +92,18 @@ class Notifications
   end
 
   def upcoming_event_reminders
-    events = Event.confirmed.upcoming.requires_rsvp
+    # events = Event.confirmed.upcoming.requires_rsvp
+    events = Event.confirmed.upcoming
     events.each do |event|
       event.event_reminders.each do |event_reminder|
         event.pod.users.each do |user|
           current_time = DateTime.now.in_time_zone(user.time_zone)
           midnight = current_time.midnight
           if current_time >= midnight + 11.hours && current_time < midnight + 12.hours && event.start_date == event_reminder.days_before.days.from_now.in_time_zone(user.time_zone).to_date
-            rsvp = user.rsvps.where(event_id: event.id).last
+            # rsvp = user.rsvps.where(event_id: event.id).last
             unless user.settings.where(pod_id: event.pod.id).last.event_reminder_notice == false
-              EventMailer.reminder(event, user).deliver_now unless rsvp && rsvp.rsvp_option_is_no?
+              # EventMailer.reminder(event, user).deliver_now unless rsvp && rsvp.rsvp_option_is_no?
+              EventMailer.reminder(event, user).deliver_now
             end
           end
         end
