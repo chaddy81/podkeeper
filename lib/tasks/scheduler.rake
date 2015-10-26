@@ -12,6 +12,10 @@ task invite_to_create_a_pod_eleven_day_reminders: :environment do
   Notifications.new.invite_to_create_a_pod_eleven_day_reminders
 end
 
+task invite_to_join_a_pod_four_day_reminders: :environment do
+  Notifications.new.invite_to_join_a_pod_four_day_reminders
+end
+
 task invite_to_join_a_pod_two_day_reminders: :environment do
   Notifications.new.invite_to_join_a_pod_two_day_reminders
 end
