@@ -29,7 +29,7 @@ class CalendarController < ApplicationController
       end
     end
 
-    return events
+    return events.sort_by!{|e| [e.start_date, e.start_time, e.pod.name, e.name]}
   end
 
   def current_user_events_upcoming
