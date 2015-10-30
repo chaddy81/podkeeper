@@ -34,7 +34,7 @@ class UploadedFilesController < ApplicationController
         redirect_to uploaded_files_path
       else
         if @uploaded_file.errors.full_messages.first.include? 'redirection forbidden'
-          flash.now[:error] = 'The web link could not be added due to a redirect. Please consider downloading to a file and uploading.'
+          flash.now[:error] = 'The web link could not be added because that website is trying to log you in to their site. So consider saving that content into a Word doc or PDF and uploading it instead.'
         else
           flash.now[:error] = 'There was an error trying to upload the file. Make sure you enter a fully qualified url (ie "http://www.podkeeper.com")'
         end
