@@ -25,7 +25,7 @@ tr
   td.link-tooltips
     .tooltip-container
       - if uploaded_file.file.present?
-        - if IMAGE_EXTENSIONS.include? uploaded_file.file.file.extension.downcase
+        - if IMAGE_EXTENSIONS.include? uploaded_file.file.file.extension.try(:downcase)
           = link_to image_tag(uploaded_file.file.thumb.url), uploaded_file.file.file.url, class: 'thumbnail-image', target: '_blank'
         - else
           span= link_to 'Download File', uploaded_file.file.file.url, class: 'thumbnail-image', target: '_blank'
