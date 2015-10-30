@@ -33,7 +33,11 @@ class UploadedFilesController < ApplicationController
         flash[:success] = 'Link to file was added sucessfully'
         redirect_to uploaded_files_path
       else
-        flash.now[:error] = 'There was an error trying to upload the file. Make sure you enter a fully qualified url (ie "http://www.podkeeper.com")'
+        if @uploaded_file.errors.full_messages.first.include? 'redirection forbidden'
+          flash.now[:error] = 'The web link could not be added due to a redirect. Please consider downloading to a file and uploading.'
+        else
+          flash.now[:error] = 'There was an error trying to upload the file. Make sure you enter a fully qualified url (ie "http://www.podkeeper.com")'
+        end
         render :new
       end
     end
