@@ -5,7 +5,7 @@
         li.dropdown.pod-name
           = render 'desktop_pod_dropdown'
 
-      - if (current_pod || @accessible_pods.any?) && controller_name != 'calendar'
+      - if (current_pod || @accessible_pods) && controller_name != 'calendar'
         = render 'desktop_navbar'
 
       - elsif controller_name == 'calendar'
