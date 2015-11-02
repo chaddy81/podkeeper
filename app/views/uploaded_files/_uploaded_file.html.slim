@@ -35,10 +35,10 @@ tr
   td
     - if uploaded_file.file.file.nil?
       | Link
-    - elsif uploaded_file.file.file.extension.include?('/uploaded_file/file/')
+    - elsif uploaded_file.file.file.extension && uploaded_file.file.file.extension.include?('/uploaded_file/file/')
       | N/A
     - else
-      = uploaded_file.file.file.extension.downcase
+      = uploaded_file.file.file.extension.try(:downcase)
 
   td
     - if uploaded_file.file.present?
