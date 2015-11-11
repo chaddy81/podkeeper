@@ -5,7 +5,7 @@
 <% end %>
 
 <div style="margin: 10px 0;">
-  <span style="display:block;font-size:14px;font-weight: bold;margin:0 0 -10px;"><%= @comment.note.topic %></span>
+  <span style="display:block;font-size:14px;font-weight: bold;margin:0;"><%= @comment.note.topic %></span>
   <%= auto_link(simple_format(@comment.body, sanitize: false), target: '_blank') %>
 </div>
 
