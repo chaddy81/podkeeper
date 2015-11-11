@@ -9,6 +9,7 @@ Disallow: /no_script
 Disallow: /unbounce
 Disallow: /blog
 Disallow: /registrations/new
+Disallow: /basketball_gaw
 
 User-agent: Googlebot
 Disallow:
