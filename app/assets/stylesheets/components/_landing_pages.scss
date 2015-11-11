@@ -1,0 +1,232 @@
+.basketball_gaw {
+  .hero {
+    background: image-url('basketball_gym.jpg') center center no-repeat;
+    background-size: cover;
+    height: 475px;
+    position: relative;
+
+    h1 {
+      background: rgba(255,255,255,0.3);
+      color: #fff;
+      display: inline-block;
+      font-family: 'Raleway';
+      font-size: 42px;
+      margin: 105px 0 0;
+      padding: 20px 25px 0;
+      text-shadow: 1px 2px rgba(0,0,0,0.4);
+    }
+
+    h2 {
+      background: rgba(255,255,255,0.3);
+      color: #fff;
+      display: inline-block;
+      font-family: 'Raleway';
+      font-size: 36px;
+      margin: 0;
+      padding: 20px 25px 20px;
+      text-shadow: 1px 2px rgba(0,0,0,0.4);
+    }
+
+    a {
+      background: #F6BA4E;
+      border-radius: 0;
+      bottom: 25px;
+      left: 50%;
+      padding: 12px 65px;
+      position: absolute;
+      transform: translateX(-50%);
+
+      p {
+        font-size: 34px;
+        font-weight: 400;
+      }
+
+      small {
+        font-size: 18px;
+      }
+    }
+  }
+
+  .tagline, .examples {
+    background: $blue;
+    color: #fff;
+    padding: 20px;
+  }
+
+  .tagline {
+    font-family: 'Raleway';
+    font-size: 28px;
+    font-weight: 400;
+    line-height: 2;
+  }
+
+  .example {
+    h5 {
+      font-weight: 100;
+      line-height: 1.3;
+    }
+  }
+
+  .description, .media {
+    background: #F1F2F6;
+    margin: 0;
+  }
+
+  .description {
+    color: $blue;
+
+    h3 {
+      font-family: 'Raleway';
+      font-size: 32px;
+    }
+
+    p {
+      font-size: 18px;
+    }
+  }
+
+  .media {
+    color: $blue;
+    padding-top: 35px;
+    p {
+      font-family: 'Raleway';
+      font-size: 22px;
+      font-weight: 500;
+    }
+
+    img {
+      width: auto;
+    }
+  }
+
+  .what-people-say {
+    background: $blue;
+    color: #fff;
+    margin: 0 0 35px;
+    padding: 25px;
+
+    h3 {
+      font-family: 'Raleway';
+      font-size: 28px;
+      margin: 0 0 20px;
+    }
+
+    blockquote {
+      border: none;
+      margin: 0 auto 20px;
+      width: 50%;
+
+      p {
+        font-size: 16px;
+        text-align: left;
+      }
+
+      cite {
+        display: block;
+        font-size: 16px;
+        font-style: normal;
+        margin-right: 25px;
+        text-align: right;
+
+        img {
+          margin-right: 7px;
+          vertical-align: -0.5px;
+        }
+      }
+    }
+  }
+
+  .sign-up {
+    ul {
+      display: inline-block;
+      list-style-type: none;
+      margin: 0 0 35px;
+      padding: 0;
+
+      li {
+        color: $blue;
+        font-size: 21px;
+        line-height: 1.7;
+        text-align: left;
+      }
+    }
+
+    .btn {
+      border-radius: 0;
+      font-size: 21px;
+      padding: 15px 28px;
+    }
+
+    p {
+      color: $blue;
+      font-size: 18px;
+      font-weight: 400;
+      margin-top: 20px;
+    }
+  }
+
+  footer {
+    padding: 20px 0;
+
+    .copyright {
+      color: $blue;
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .basketball_gaw {
+    .hero {
+      h1 {
+        font-size: 36px;
+        margin: 75px 0 0;
+        padding: 20px 15px 0;
+      }
+
+      h2 {
+        font-size: 28px;
+        padding: 20px 15px 20px;
+      }
+    }
+
+    .tagline {
+      font-size: 21px;
+      line-height: 1.5;
+    }
+
+    .example {
+      margin-bottom: 10px;
+    }
+
+    .media {
+      img {
+        width: 100%;
+      }
+    }
+
+    .what-people-say {
+      blockquote {
+        width: 100%;
+      }
+    }
+
+    .sign-up {
+      ul {
+        li {
+          font-size: 15px;
+          line-height: 2;
+        }
+      }
+
+      .btn {
+        font-size: 24px;
+        padding: 15px 28px;
+      }
+    }
+
+    .copyright {
+      margin-top: 25px;
+      text-align: center;
+    }
+  }
+}
