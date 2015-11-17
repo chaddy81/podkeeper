@@ -203,8 +203,10 @@
     }
 
     .tagline {
-      font-size: 21px;
-      line-height: 1.5;
+      h3 {
+        font-size: 21px;
+        line-height: 1.5;
+      }
     }
 
     .example {
