@@ -182,4 +182,9 @@
   <changefreq>never</changefreq>
   <priority>0.80</priority>
 </url>
+<url>
+  <loc>http://podkeeper.com/basketball</loc>
+  <changefreq>never</changefreq>
+  <priority>0.80</priority>
+</url>
 </urlset>

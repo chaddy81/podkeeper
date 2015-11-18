@@ -102,7 +102,9 @@ Rails.application.routes.draw do
   get 'login',  to: 'sessions#new'
   delete 'signout', to: 'sessions#destroy'
 
+  get 'basketball',       to: 'landing_pages#basketball'
   get 'basketball_gaw',   to: 'landing_pages#basketball_gaw'
+  get 'basketball_fba',   to: 'landing_pages#basketball_fba'
 
   get 'no_script',        to: 'static_pages#no_script'
   get 'about',            to: 'static_pages#about'

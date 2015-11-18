@@ -10,6 +10,7 @@ Disallow: /unbounce
 Disallow: /blog
 Disallow: /registrations/new
 Disallow: /basketball_gaw
+Disallow: /basketball_fba
 
 User-agent: Googlebot
 Disallow:
