@@ -63,8 +63,9 @@
       svg.icon viewbox="0 0 1024 1024"
         use xlink:href="#icon-podkeeper-baseball"
 
-      svg.icon viewbox="0 0 1024 1024"
-        use xlink:href="#icon-podkeeper-basketball"
+      = link_to basketball_path do
+        svg.icon.basketball viewbox="0 0 1024 1024"
+          use xlink:href="#icon-podkeeper-basketball"
 
       svg.icon viewbox="0 0 1024 1024"
         use xlink:href="#icon-podkeeper-camp"
