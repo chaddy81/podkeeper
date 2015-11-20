@@ -15,7 +15,7 @@
 
     .form-group
       .text-center
-        = link_to "/auth/facebook", class: 'registration__facebook' do
+        = link_to "/auth/facebook?auth_token=#{params[:auth_token]}", class: 'registration__facebook' do
           svg.icon.icon-facebook.center-block.visible-xs viewbox="0 0 8664 1024"
             use xlink:href="#icon-podkeeper-facebook"
 

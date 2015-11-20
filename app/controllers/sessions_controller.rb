@@ -28,6 +28,7 @@ class SessionsController < ApplicationController
 
   def create
     if params[:provider].present?
+      invite = Invite.find_by_auth_token(env['omniauth.params']['auth_token']) if env['omniauth.params']['auth_token']
       auth = env["omniauth.auth"]
 
       if !auth.info.email
@@ -44,8 +45,9 @@ class SessionsController < ApplicationController
             if user.time_zone.nil? || user.time_zone == 'none'
               user.update_attribute :time_zone, 'Eastern Time (US & Canada)'
             end
+            invite.accept! if invite
             pod = Pod.where(id: user.last_pod_visited_id).first || user.pods.last
-            pod.present? ? redirect_back_or(events_path(login: 'success')) : redirect_to(new_pod_path)
+            pod.present? ? redirect_back_or(events_path) : redirect_to(new_pod_path)
           else
             puts user.errors.full_messages
           end
@@ -56,8 +58,9 @@ class SessionsController < ApplicationController
           if user.time_zone.nil? || user.time_zone == 'none'
             user.update_attribute :time_zone, 'Eastern Time (US & Canada)'
           end
+          invite.accept! if invite
           pod = Pod.where(id: user.last_pod_visited_id).first || user.pods.last
-          pod.present? ? redirect_back_or(events_path(login: 'success')) : redirect_to(new_pod_path)
+          pod.present? ? redirect_back_or(events_path) : redirect_to(new_pod_path)
         end
       end
     else
