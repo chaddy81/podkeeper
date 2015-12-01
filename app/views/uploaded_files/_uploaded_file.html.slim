@@ -1,5 +1,5 @@
 tr
-  td.files__link
+  td.files__link style="word-wrap: break-word;"
     - if %w(edit update).include?(params[:action]) && uploaded_file.id == params[:id].to_i
       = simple_form_for uploaded_file do |f|
         .form-group
@@ -11,7 +11,7 @@ tr
     - else
       - if show_file_notification(current_pod, uploaded_file)
         span.comment-count
-      = uploaded_file.description
+      p style="word-wrap: break-word;"= uploaded_file.description
 
   td style=("padding: 10px 10px 0;")
     - if current_user?(uploaded_file.pod_membership.user) || is_at_least_pod_admin?

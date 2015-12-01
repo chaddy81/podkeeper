@@ -7,7 +7,7 @@ hr
           span.comment-count
         = list.name
       .list__author
-        small = list.creator.full_name
+        small = list.creator.try(:full_name)
       .list__date
         small = l list.created_at, format: '%a, %b %d, %Y, %I:%M %P'
     .list__details.col-sm-4
