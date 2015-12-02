@@ -8,12 +8,9 @@ class SessionsController < ApplicationController
       flash.keep
       if current_user.pods.any?
         last_pod_visited = Pod.find(current_user.last_pod_visited_id)
-        current_pod = last_pod_visited
-        if last_pod_visited.nil?
-          # redirect_to dashboard_pod_path(current_user.pods.order('created_at').first)
-        else
-          redirect_to events_path
-        end
+        set_current_pod(last_pod_visited)
+
+        redirect_to events_path
 
       elsif current_user.received_invites.unaccepted.where('pod_id IS NOT NULL')
         redirect_to invites_path
@@ -45,8 +42,17 @@ class SessionsController < ApplicationController
             if user.time_zone.nil? || user.time_zone == 'none'
               user.update_attribute :time_zone, 'Eastern Time (US & Canada)'
             end
-            invite.accept! if invite
+
+            if invite
+              invite.accept!
+              unless user.pods.include?(invite.pod) || invite.pod.nil?
+                user.pod_memberships.create(pod: invite.pod, access_level: AccessLevel.member)
+              end
+              set_current_pod(user.pods.last)
+            end
+
             pod = Pod.where(id: user.last_pod_visited_id).first || user.pods.last
+            set_current_pod(pod)
             pod.present? ? redirect_back_or(events_path) : redirect_to(new_pod_path)
           else
             puts user.errors.full_messages
@@ -58,7 +64,15 @@ class SessionsController < ApplicationController
           if user.time_zone.nil? || user.time_zone == 'none'
             user.update_attribute :time_zone, 'Eastern Time (US & Canada)'
           end
-          invite.accept! if invite
+
+          if invite
+            invite.accept!
+            unless user.pods.include?(invite.pod) || invite.pod.nil?
+              user.pod_memberships.create(pod: invite.pod, access_level: AccessLevel.member)
+            end
+            set_current_pod(user.pods.last)
+          end
+
           pod = Pod.where(id: user.last_pod_visited_id).first || user.pods.last
           pod.present? ? redirect_back_or(events_path) : redirect_to(new_pod_path)
         end
