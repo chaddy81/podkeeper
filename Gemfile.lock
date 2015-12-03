@@ -240,8 +240,6 @@ GEM
       guard-compat (~> 1.0)
       spork (>= 0.8.4)
     hashie (3.4.2)
-    heroku-deflater (0.6.2)
-      rack (>= 1.4.5)
     htmlentities (4.3.4)
     http-cookie (1.0.2)
       domain_name (~> 0.5)
@@ -506,7 +504,6 @@ DEPENDENCIES
   growl
   guard-rspec
   guard-spork
-  heroku-deflater
   icalendar
   jquery-rails
   jquery-timepicker-rails
