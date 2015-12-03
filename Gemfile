@@ -73,10 +73,6 @@ group :development do
   gem 'traceroute'
 end
 
-group :testing do
-  gem 'heroku-deflater'
-end
-
 group :test do
   gem 'database_cleaner'
   gem 'capybara'
