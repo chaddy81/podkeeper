@@ -83,7 +83,7 @@ class UsersController < ApplicationController
     if params[:pod_id].present?
       @pod = current_user.pods.where(id: params[:pod_id]).first
     else
-      @pod_memberships = current_user.pod_memberships.includes(:pod).order('pods.name')
+      @pod_memberships = current_user.pod_memberships.includes(pod: :organizer).order('pods.name')
     end
   end
 

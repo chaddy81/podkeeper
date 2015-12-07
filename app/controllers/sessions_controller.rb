@@ -60,6 +60,8 @@ class SessionsController < ApplicationController
         else
           user = User.from_omniauth(auth)
           sign_in user, params[:remember_me]
+          UserMailer.delay.new_user_welcome(user)
+
           user.update_attribute :last_login, DateTime.now
           if user.time_zone.nil? || user.time_zone == 'none'
             user.update_attribute :time_zone, 'Eastern Time (US & Canada)'
