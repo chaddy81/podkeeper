@@ -85,4 +85,4 @@
       .event-details__form-controls
         .pull-right
           = link_to 'Cancel', events_path, class: 'back btn btn--cancel'
-          = f.submit 'Save', class: 'submit btn', disable_with: 'Saving...'
+          = f.submit 'Save', class: 'submit btn', data: { disable_with: 'Saving...' }
