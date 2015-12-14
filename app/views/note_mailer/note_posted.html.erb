@@ -1,7 +1,7 @@
 <p style="margin: 10px 0;"><%= link_to @note.user.full_name, "mailto:#{@note.user.email}" %> posted <%= @note.is_urgent? ? 'an':'a' %> <%= ' Urgent' if @note.is_urgent? %> Discussion for <%= @note.pod.name.upcase %><%= " regarding the event called #{@note.event.name}" unless @note.event.nil? %></p>
 
 <div>
-  <span style="display: block;font-size: 14px;font-weight: bold;margin:0 0 -10px;"><%= @note.topic %></span>
+  <span style="display: block;font-size: 14px;font-weight: bold;margin:0;"><%= @note.topic %></span>
   <%= auto_link(@note.body.gsub("\n", "<p style='margin-bottom: 10px;'></p>"), :all) %>
 </div>
 
