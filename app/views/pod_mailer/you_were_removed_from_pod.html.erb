@@ -9,7 +9,9 @@
 <%= link_to image_tag('http://podanize-images.s3.amazonaws.com/email-images/go-to-podkeeper-blue.png', alt: 'Go to PodKeeper', width: '214', height: '40', border: 0), root_url, style: 'display:block; margin: 0 auto; height: 40px; width:214px; font-size:18px; color:#15c;' %>
 
 <p style="margin: 10px 0;">All the best,<br>
-<%= @sender.full_name %></p>
+<%= @sender.full_name %>
+<br />
+<%= link_to @sender.email, 'mailto: #{@sender.email}' %></p>
 
 <% provide :email, @email %>
 
