@@ -25,6 +25,6 @@ $(function() {
 
   $('.corkboard-note').on('submit', function(){
     $('.save-message').show();
-  })
+  });
 
 });
