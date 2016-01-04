@@ -9,6 +9,7 @@
 
     - if @lists.any?
       = render @lists
+      = paginate @lists
     - else
       .col-sm-12.event-details--desktop
         svg.icon.icon-events.center-block viewbox="0 0 1024 1024" style="width: 144px;height: 144px;"

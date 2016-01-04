@@ -1,4 +1,6 @@
 class List < ActiveRecord::Base
+  paginates_per 10
+
   attr_accessible :creator_id, :creator, :details, :list_type_id, :list_type, :name, :list_items_attributes,
                   :pod_id, :pod, :notification_has_been_sent
 
