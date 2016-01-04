@@ -10,4 +10,7 @@ class LandingPagesController < ApplicationController
 
   def basketball_fba
   end
+
+  def certifikids
+  end
 end

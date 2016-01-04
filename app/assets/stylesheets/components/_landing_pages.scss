@@ -1,13 +1,11 @@
-.basketball_gaw, .basketball_fba, .basketball {
+.landing-page {
   .hero {
-    background: image-url('basketball_gym.jpg') center center no-repeat;
     background-size: cover;
     height: 475px;
     margin-bottom: 20px;
     position: relative;
-
     h1 {
-      background: rgba(255,255,255,0.6);
+      background: rgba(255, 255, 255, 0.6);
       color: $blue;
       display: block;
       font-family: 'Raleway';
@@ -16,9 +14,8 @@
       padding: 20px 25px 0;
       // text-shadow: 1px 2px rgba(0,0,0,0.3);
     }
-
     h2 {
-      background: rgba(255,255,255,0.6);
+      background: rgba(255, 255, 255, 0.6);
       color: $blue;
       display: block;
       font-family: 'Raleway';
@@ -27,7 +24,6 @@
       padding: 20px 25px 20px;
       // text-shadow: 1px 2px rgba(0,0,0,0.3);
     }
-
     a {
       background: #F7941E;
       border: none !important;
@@ -37,26 +33,23 @@
       padding: 12px 65px;
       position: absolute;
       transform: translateX(-50%);
-
       p {
         font-size: 38px;
         font-weight: 400;
-        text-shadow: 2px 2px rgba(0,0,0,0.2);
+        text-shadow: 2px 2px rgba(0, 0, 0, 0.2);
       }
-
       small {
         font-size: 18px;
-        text-shadow: 1px 1px rgba(0,0,0,0.3);
+        text-shadow: 1px 1px rgba(0, 0, 0, 0.3);
       }
     }
   }
-
-  .tagline, .examples {
+  .tagline,
+  .examples {
     background: $blue;
     color: #fff;
     padding: 20px;
   }
-
   .tagline {
     h3 {
       font-family: 'Raleway';
@@ -66,37 +59,31 @@
       margin: 0;
     }
   }
-
   .example {
     h5 {
       font-weight: 100;
       line-height: 1.3;
     }
-
     svg {
       height: 40px;
       width: 48px;
     }
   }
-
-  .description, .media {
+  .description,
+  .media {
     background: #F1F2F6;
     margin: 0;
   }
-
   .description {
     color: $blue;
-
     h3 {
       font-family: 'Open Sans';
       font-size: 32px;
     }
-
     p {
       font-size: 18px;
     }
   }
-
   .media {
     color: $blue;
     padding-top: 15px;
@@ -106,42 +93,35 @@
       font-weight: 500;
       margin-bottom: 0
     }
-
     img {
       margin-top: 25px;
       width: auto;
     }
   }
-
   .what-people-say {
     background: $blue;
     color: #fff;
     margin: 0 0 35px;
     padding: 25px;
-
     h3 {
       font-family: 'Raleway';
       font-size: 28px;
       margin: 0 0 20px;
     }
-
     blockquote {
       border: none;
       margin: 0 auto 20px;
       width: 50%;
-
       p {
         font-size: 16px;
         text-align: left;
       }
-
       cite {
         display: block;
         font-size: 16px;
         font-style: normal;
         margin-right: 25px;
         text-align: right;
-
         img {
           margin-right: 7px;
           vertical-align: -1px;
@@ -149,14 +129,12 @@
       }
     }
   }
-
   .sign-up {
     ul {
       display: inline-block;
       list-style-type: none;
       margin: 0 0 35px;
       padding: 0;
-
       li {
         color: $blue;
         font-size: 21px;
@@ -164,13 +142,11 @@
         text-align: left;
       }
     }
-
     .btn {
       border-radius: 0;
       font-size: 21px;
       padding: 15px 28px;
     }
-
     p {
       color: $blue;
       font-size: 18px;
@@ -178,55 +154,95 @@
       margin-top: 20px;
     }
   }
-
   footer {
     padding: 20px 0;
-
     .copyright {
       color: $blue;
     }
   }
 }
 
+body[class*="basketball"] {
+  .hero {
+    background: image-url('basketball_gym.jpg') center center no-repeat !important;
+  }
+}
+
+.certifikids {
+  .hero {
+    background: image-url('certifikids.jpg') center center no-repeat;
+    h1 {
+      margin: 20px;
+      padding: 20px;
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 50%;
+    }
+    .btn {
+      bottom: auto;
+      left: inherit;
+      margin-right: 40px;
+      right: 0;
+      top: 195px;
+      transform: translateX(-50%);
+    }
+  }
+}
+
+@media (max-width: 1169px) {
+  .certifikids {
+    .hero {
+      .btn {
+        margin-right: 0;
+      }
+    }
+  }
+}
+
+@media (max-width: 991px) {
+  .certifikids {
+    .hero {
+      .btn {
+        transform: translateX(-30%);
+      }
+    }
+  }
+}
+
 @media (max-width: 767px) {
-  .basketball_gaw {
+  .landing-page {
     .hero {
       h1 {
         font-size: 36px;
         margin: 75px -15px 0;
         padding: 20px 15px 0;
       }
-
       h2 {
         font-size: 28px;
         padding: 20px 15px 20px;
       }
     }
-
     .tagline {
       h3 {
         font-size: 21px;
         line-height: 1.5;
       }
     }
-
     .example {
       margin-bottom: 10px;
     }
-
     .media {
       img {
         width: 100%;
       }
     }
-
     .what-people-say {
       blockquote {
         padding: 0;
         width: 100%;
       }
     }
-
     .sign-up {
       ul {
         li {
@@ -234,16 +250,78 @@
           line-height: 2;
         }
       }
-
       .btn {
         font-size: 24px;
         padding: 15px 28px;
       }
     }
-
     .copyright {
       margin-top: 25px;
       text-align: center;
+    }
+  }
+  .certifikids {
+    .hero {
+      h1 {
+        font-size: 28px;
+        padding: 20px;
+      }
+      .btn {
+        bottom: auto;
+        margin-right: 20px;
+        right: 0;
+        top: 165px;
+        transform: none;
+        p {
+          font-size: 21px;
+        }
+        small {
+          font-size: 16px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 540px) {
+  .certifikids {
+    .hero {
+      .btn {
+        top: 205px;
+      }
+    }
+  }
+}
+
+@media (max-width: 400px) {
+  .certifikids {
+    .hero {
+      background: image-url('certifikids-small.jpg') center center no-repeat;
+      h1 {
+        font-size: 28px;
+        left: 0;
+        margin: 20px 0 0;
+        width: 100%;
+      }
+      .btn {
+        bottom: 20px;
+        left: 50%;
+        padding: 12px 0;
+        top: auto;
+        transform: translateX(-50%);
+        width: auto;
+        p {
+          font-size: 21px;
+          line-height: 1.5;
+          margin: 0;
+          text-align: center;
+        }
+        small {
+          font-size: 14px;
+          line-height: normal;
+          text-align: center;
+        }
+      }
     }
   }
 }
