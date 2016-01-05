@@ -105,7 +105,7 @@ Rails.application.routes.draw do
   get 'basketball',       to: 'landing_pages#basketball'
   get 'basketball_gaw',   to: 'landing_pages#basketball_gaw'
   get 'basketball_fba',   to: 'landing_pages#basketball_fba'
-  get 'certifikids',      to: 'landing_pages#certifikids'
+  get 'certifikid',      to: 'landing_pages#certifikids'
 
   get 'no_script',        to: 'static_pages#no_script'
   get 'about',            to: 'static_pages#about'
