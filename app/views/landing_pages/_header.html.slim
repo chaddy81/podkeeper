@@ -2,3 +2,9 @@ nav.navbar.navbar-default.logged-out
   .container
     .navbar-header
       a.navbar-brand href="#{root_path}" Brand
+
+    - if controller.action_name == 'certifikids'
+      .navbar-right.certifikid-logo
+        p
+          | A special offer through
+          = image_tag 'logo_certifikid.png'
