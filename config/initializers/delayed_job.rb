@@ -3,4 +3,5 @@ if Rails.env.production?
   Delayed::Worker.max_attempts = 3
 else
   Delayed::Worker.delay_jobs = false
+  Delayed::Worker.max_attempts = 3
 end
