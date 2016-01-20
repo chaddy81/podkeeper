@@ -1,0 +1,136 @@
+.container
+  .row
+    .col-xs-12.hero.text-center
+      h1
+        | Shared Calendar
+        span Organize the schedule of your groups and family
+      = link_to signup_path, class: 'btn' do
+        p Sign Up
+        small It’s 100% Free
+
+.tagline.text-center.container-fluid
+  h3 PodKeeper is the best free online group calendar app
+
+.container-fluid
+  .row
+    #benefits.examples.clearfix
+      .container
+        .col-xs-6.col-sm-3.col-md-3.example.text-center
+          svg.icon viewbox="0 0 1024 1024" style="width: 48px; fill: #fff;"
+            use xlink:href="#icon-podkeeper-discussion"
+          h5
+            | Provide Updates
+            br
+            | and Stay Informed
+        .col-xs-6.col-sm-3.col-md-3.example.text-center
+          svg.icon viewbox="0 0 1024 1024" style="width: 48px; fill: #fff;"
+            use xlink:href="#icon-podkeeper-user"
+          h5
+            | Plan Events,
+            br
+            | Meetings, Trips,
+            br
+            | and More
+        .col-xs-6.col-sm-3.col-md-3.example.text-center
+          svg.icon viewbox="0 0 1024 1024" style="width: 48px; fill: #fff;"
+            use xlink:href="#icon-podkeeper-calendar"
+          h5
+            | Sync to Google
+            br
+            | Calendar, Outlook, and iCal
+        .col-xs-6.col-sm-3.col-md-3.example.text-center
+          svg.icon viewbox="0 0 1024 1024" style="width: 48px; fill: #fff;"
+            use xlink:href="#icon-podkeeper-list"
+          h5
+            | Create Sign-up
+            br
+            | Lists
+
+.container-fluid
+  .row
+    #how-pods-work.description.clearfix
+      h3.text-center What’s a Pod?
+      p.text-center
+        | A Pod is an online hub for your real-world group. Within your Pod, you can schedule
+        br
+        | events, assign tasks, share forms—whatever your group needs!
+
+    .media.text-center
+          p PodKeeper.com is so simple to use.
+          p You will not believe what you can get done in 5 minutes.
+
+          / h5 Interesting Sub Heading
+          = image_tag 'media-tablet.png'
+
+    #how-pods-work.description.clearfix
+      h3.text-center Popular Types of Pods
+
+      ul.col-md-4.col-md-offset-4
+        li
+          b Schools:
+          '  Room Parents, PTA, Teacher-to-Teacher
+        li
+          b Scouts:
+          '  Boy Scouts, Girl Scouts, Cub Scouts, 4H
+        li
+          b Sports Teams:
+          '  Baseball, Cheer, Soccer, Swimming
+        li
+          b Other Kid’s Groups:
+          '  Dance, Music, Art; Camps, Playgroups
+        li
+          b Just Your Family:
+          '  Vacation Planning, Parents Travel Schedule, Babysitter / Nanny Schedule
+        li
+          b Other Groups:
+          '  Religious, Non-Profit Committees, Parents Social Activities
+        li
+          b Work Groups:
+          '  Offsite Meetings, Special Projects, Small Team Schedules
+
+      .clearfix
+
+      h3.text-center Sample of problems solved with PodKeeper
+
+      ul.col-md-4.col-md-offset-4
+        li Add all the events for the season to get better attendance and easily track who’s coming
+        li Use Discussions to find someone to drive to the meeting, practice or game.
+        li Upload Files that are easier to access than in your email
+        li Add a Sign Up List to request volunteers for an event
+
+      .clearfix
+
+      br
+
+.container-fluid
+  .row
+    .what-people-say.text-center
+      h3 What people are saying about PodKeeper
+      blockquote
+        p "Using PodKeeper took away any of the usual hassle of with my son's basketball team. I always get prompt updates and know exactly where to go to find team information."
+        cite Steve K., Chicago, IL
+
+      blockquote
+        p "PodKeeper keeps everyone highly engaged.  The organizational format and its ease of use allows our group to concentrate on what is important -- and it saves me time!"
+        cite Debra S., Austin, TX
+
+      blockquote
+        p "PodKeeper is evidence that the best innovation often comes from improving something simple."
+        cite
+          = image_tag 'inc_logo.png'
+          ' Magazine
+
+
+.container
+  .row
+    #get-started.sign-up.text-center
+      ul.center-block
+        li &#x2714; No more wasting time sending reminders manually
+        li &#x2714; No more worrying if everyone will show up
+        li &#x2714; No more winging it. The kids are relying on you.
+
+      br
+
+      a.btn.btn--green.center-block href="#{signup_path}" Sign Up
+
+      p It’s 100% Free!

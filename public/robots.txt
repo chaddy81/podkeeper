@@ -11,6 +11,7 @@ Disallow: /blog
 Disallow: /registrations/new
 Disallow: /basketball_gaw
 Disallow: /basketball_fba
+Disallow: /shared_calendar_fba
 
 User-agent: Googlebot
 Disallow:

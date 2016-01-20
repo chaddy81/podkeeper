@@ -180,7 +180,7 @@ body[class*="basketball"] {
   }
 }
 
-.certifikids {
+.certifikids, .shared_calendar_gaw {
   .hero {
     background: image-url('certifikids.jpg') center center no-repeat;
     h1 {
@@ -190,6 +190,13 @@ body[class*="basketball"] {
       right: 0;
       top: 0;
       width: 50%;
+
+      span {
+        display: block;
+        font-size: 26px;
+        margin: 15px auto 0;
+        width: 75%;
+      }
     }
     .btn {
       bottom: auto;
@@ -198,6 +205,23 @@ body[class*="basketball"] {
       right: 0;
       top: 195px;
       transform: translateX(-50%);
+    }
+  }
+}
+
+.shared_calendar_gaw {
+  #how-pods-work:not(:first-child) {
+    h3 {
+      margin-bottom: 25px;
+    }
+
+    li {
+      font-size: 18px;
+      margin-bottom: 10px;
+
+      b {
+        font-weight: 500;
+      }
     }
   }
 }
@@ -213,10 +237,16 @@ body[class*="basketball"] {
 }
 
 @media (max-width: 991px) {
-  .certifikids {
+  .certifikids, .shared_calendar_gaw {
     .hero {
       .btn {
         transform: translateX(-30%);
+      }
+
+      h1 {
+        span {
+          width: 100%;
+        }
       }
     }
   }
@@ -272,7 +302,7 @@ body[class*="basketball"] {
       text-align: center;
     }
   }
-  .certifikids {
+  .certifikids, .shared_calendar_gaw {
     .hero {
       padding: 0;
       h1 {
@@ -281,6 +311,13 @@ body[class*="basketball"] {
         padding: 20px;
         right: 30px;
         top: 20px;
+        width: 65%;
+
+        span {
+          font-size: 21px;
+          margin-bottom: 20px;
+          width: 100%
+        }
       }
       .btn {
         bottom: auto;
@@ -310,7 +347,7 @@ body[class*="basketball"] {
 }
 
 @media (max-width: 400px) {
-  .certifikids {
+  .certifikids, .shared_calendar_gaw {
     .hero {
       background: image-url('certifikids-small.jpg') center center no-repeat;
       h1 {
@@ -318,6 +355,11 @@ body[class*="basketball"] {
         left: 0;
         margin: 20px 0 0;
         width: 100%;
+
+        span {
+          margin-bottom: 20px;
+          width: 100%;
+        }
       }
       .btn {
         bottom: 20px;
@@ -337,6 +379,22 @@ body[class*="basketball"] {
           line-height: normal;
           text-align: center;
         }
+      }
+    }
+  }
+
+  .shared_calendar_gaw {
+    #how-pods-work:not(:first-child) {
+      h3 {
+        margin-bottom: 25px;
+      }
+
+      ul {
+        padding: 0 25px;
+      }
+
+      li {
+        font-size: 16px;
       }
     }
   }
