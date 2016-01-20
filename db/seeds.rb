@@ -1,7 +1,61 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+arts_and_music =   PodCategory.where(name: 'arts_music'      ).first_or_create!(name: 'arts_music',       display_name: 'Arts/Music')
+                   PodCategory.where(name: 'camp'            ).first_or_create!(name: 'camp',             display_name: 'Camp')
+                   PodCategory.where(name: 'playgroup'       ).first_or_create!(name: 'playgroup',        display_name: 'Playgroup')
+parents_activity = PodCategory.where(name: 'parents_activity').first_or_create!(name: 'parents_activity', display_name: 'Parents Activity')
+                   PodCategory.where(name: 'religious'       ).first_or_create!(name: 'religious',        display_name: 'Religious')
+                   PodCategory.where(name: 'scouts'          ).first_or_create!(name: 'scouts',           display_name: 'Scouts')
+                   PodCategory.where(name: 'school_related'  ).first_or_create!(name: 'school_related',   display_name: 'School Class / PTA')
+sports =           PodCategory.where(name: 'sports'          ).first_or_create!(name: 'sports',           display_name: 'Sports')
+                   PodCategory.where(name: 'volunteer'       ).first_or_create!(name: 'volunteer',        display_name: 'Volunteer')
+                   PodCategory.where(name: 'other'           ).first_or_create!(name: 'other',            display_name: 'Other')
+
+arts_and_music.pod_sub_categories.where(name: 'art'    ).first_or_create!(name: 'art', display_name: 'Art')
+arts_and_music.pod_sub_categories.where(name: 'cooking').first_or_create!(name: 'cooking', display_name: 'Cooking')
+arts_and_music.pod_sub_categories.where(name: 'dance'  ).first_or_create!(name: 'dance', display_name: 'Dance')
+arts_and_music.pod_sub_categories.where(name: 'drama'  ).first_or_create!(name: 'drama', display_name: 'Drama')
+arts_and_music.pod_sub_categories.where(name: 'music'  ).first_or_create!(name: 'music', display_name: 'Music')
+
+parents_activity.pod_sub_categories.where(name: 'business_team').first_or_create!(name: 'business_team', display_name: 'Business Team')
+parents_activity.pod_sub_categories.where(name: 'committee').first_or_create!(name: 'committee', display_name: 'Committee')
+parents_activity.pod_sub_categories.where(name: 'neighborhood_group').first_or_create!(name: 'neighborhood_group', display_name: 'Neighborhood Group')
+parents_activity.pod_sub_categories.where(name: 'networking_group').first_or_create!(name: 'networking_group', display_name: 'Networking Group')
+parents_activity.pod_sub_categories.where(name: 'non_profit'    ).first_or_create!(name: 'non_profit', display_name: 'Non-Profit')
+parents_activity.pod_sub_categories.where(name: 'religious').first_or_create!(name: 'religious', display_name: 'Religious')
+parents_activity.pod_sub_categories.where(name: 'social'   ).first_or_create!(name: 'social', display_name: 'Social Group / Club (Book, Supper, Poker)')
+parents_activity.pod_sub_categories.where(name: 'sports'   ).first_or_create!(name: 'sports', display_name: 'Sports')
+parents_activity.pod_sub_categories.where(name: 'other'    ).first_or_create!(name: 'other', display_name: 'Other')
+
+sports.pod_sub_categories.where(name: 'baseball'  ).first_or_create!(name: 'baseball', display_name: 'Baseball/Softball/T-ball')
+sports.pod_sub_categories.where(name: 'basketball').first_or_create!(name: 'basketball', display_name: 'Basketball')
+sports.pod_sub_categories.where(name: 'football'  ).first_or_create!(name: 'football', display_name: 'Football')
+sports.pod_sub_categories.where(name: 'golf'      ).first_or_create!(name: 'golf', display_name: 'Golf')
+sports.pod_sub_categories.where(name: 'gym'       ).first_or_create!(name: 'gym', display_name: 'Gym/Yoga/Workout Program')
+sports.pod_sub_categories.where(name: 'gymnastics').first_or_create!(name: 'gymnastics', display_name: 'Gymnastics')
+sports.pod_sub_categories.where(name: 'lacrosse'  ).first_or_create!(name: 'lacrosse', display_name: 'Lacrosse')
+sports.pod_sub_categories.where(name: 'karate'    ).first_or_create!(name: 'karate', display_name: 'Karate/Martial Arts')
+sports.pod_sub_categories.where(name: 'running'   ).first_or_create!(name: 'running', display_name: 'Running')
+sports.pod_sub_categories.where(name: 'soccer'    ).first_or_create!(name: 'soccer', display_name: 'Soccer')
+sports.pod_sub_categories.where(name: 'swimming'  ).first_or_create!(name: 'swimming', display_name: 'Swimming')
+sports.pod_sub_categories.where(name: 'tennis'    ).first_or_create!(name: 'tennis', display_name: 'Tennis')
+sports.pod_sub_categories.where(name: 'other'     ).first_or_create!(name: 'other', display_name: 'Other Sport')
+
+RsvpOption.where(name: 'yes'  ).first_or_create!(name: 'yes',    display_name: 'Yes',   color: 'green')
+RsvpOption.where(name: 'no'   ).first_or_create!(name: 'no',     display_name: 'No',    color: 'red')
+RsvpOption.where(name: 'maybe').first_or_create!(name: 'maybe',  display_name: 'Maybe', color: 'yellow')
+
+AccessLevel.where(name: 'member').first_or_create!(name: 'member', display_name: 'Member')
+AccessLevel.where(name: 'pod_admin').first_or_create!(name: 'pod_admin', display_name: 'Pod Admin')
+AccessLevel.where(name: 'pod_admin_with_grant_option').first_or_create!(name: 'pod_admin_with_grant_option', display_name: 'Pod Admin with Sharing')
+
+ListType.where(name: 'item_sign_up').first_or_create!(name: 'item_sign_up', display_name: 'Sign up to bring an item')
+
+admin  = User.where(email: 'admin@podkeeper.com'     ).first_or_create!(first_name: 'Admin', last_name: 'User', password: 'password', password_confirmation: 'password', is_admin: true, time_zone: 'Eastern Time (US & Canada)', email: 'admin@podkeeper.com')
+steven = User.where(email: 'zadiandigital@gmail.com').first_or_create!(first_name: 'Admin', last_name: 'User', password: 'password', password_confirmation: 'password', is_admin: true, time_zone: 'Eastern Time (US & Canada)', email: 'zadiandigital@gmail.com')
+jeff   = User.where(email: 'jeff@duncan.mobi'       ).first_or_create!(first_name: 'Admin', last_name: 'User', password: 'password', password_confirmation: 'password', is_admin: true, time_zone: 'Eastern Time (US & Canada)', email: 'jeff@duncan.mobi')
+nikki  = User.where(email: 'sacksbiz@gmail.com'     ).first_or_create!(first_name: 'Admin', last_name: 'User', password: 'password', password_confirmation: 'password', is_admin: true, time_zone: 'Eastern Time (US & Canada)', email: 'sacksbiz@gmail.com')
+
+pod = Pod.where(slug: 'admin-pod').first_or_create!(organizer: steven, pod_category: PodCategory.last, name: 'Admin Pod', active: true, description: 'A Pod for testing', slug: 'admin-pod')
+pod.pod_memberships.where(user_id: admin.id, pod_id: pod.id).first_or_create(user_id: admin.id)
+pod.pod_memberships.where(user_id: steven.id, pod_id: pod.id).first_or_create(user_id: steven.id)
+pod.pod_memberships.where(user_id: jeff.id, pod_id: pod.id).first_or_create(user_id: jeff.id)
+pod.pod_memberships.where(user_id: nikki.id, pod_id: pod.id).first_or_create(user_id: nikki.id)

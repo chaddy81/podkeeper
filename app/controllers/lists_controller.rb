@@ -5,7 +5,9 @@ class ListsController < ApplicationController
   before_filter :get_pod
 
   def index
-    @lists = @pod.lists.includes(:list_items, :creator, :list_type).page(params[:page]).order('created_at DESC')
+    # @lists = ListDecorator.decorate_collection(@pod.lists).includes(:list_items, :creator, :list_type)
+    #              .page(params[:page]).order('created_at DESC')
+    @lists = ListDecorator.decorate_collection(@pod.lists.includes(:list_items, :creator, :list_type).page(params[:page]).order('created_at DESC'))
   end
 
   def show

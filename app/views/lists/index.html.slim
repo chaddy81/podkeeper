@@ -8,6 +8,8 @@
     .clearfix
 
     - if @lists.any?
+      hr
+      = paginate @lists
       = render @lists
       = paginate @lists
     - else

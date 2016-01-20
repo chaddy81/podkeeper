@@ -1,4 +1,3 @@
-hr
 .list data-list-id="#{list.id}"
   .list__row
     .list__meta.col-sm-4
@@ -7,30 +6,20 @@ hr
           span.comment-count
         = list.name
       .list__author
-        small = list.creator.try(:full_name)
+        small = list.author
       .list__date
-        small = l list.created_at, format: '%a, %b %d, %Y, %I:%M %P'
+        = list.created_at
     .list__details.col-sm-4
-      .list__type = list.list_type.display_name
+      .list__type = list.display_name
       .list__detail
-        small = simple_format list.details
+        = list.details
     .list__controls.col-sm-4
       span.icons__minimize Collapse
 
-      - if current_user?(list.creator) || is_at_least_pod_admin?
-        = link_to edit_list_path(list) do
-          svg.icon.icon-edit viewbox="0 0 1024 1024" style="margin: 0 5px;width: 16px;height: 16px;"
-            use xlink:href="#icon-podkeeper-edit"
-        = link_to list_path(list), id: "delete_list_#{list.id}", class: 'delete', method: :delete, data: { confirm: 'Are you sure you want to delete this list? All list items will also be deleted.' } do |f|
-          svg.icon.icon-edit viewbox="0 0 1024 1024" style="margin: 0 5px;width: 16px;height: 16px;"
-            use xlink:href="#icon-podkeeper-no"
+      = list.edit_link
+      = list.delete_link
 
-  - if current_user?(list.creator) && !list.notification_has_been_sent?
-    p
-      ' Once you fill out the List, have an email sent out:
-      = link_to 'Notify the Pod of this List', notify_pod_list_path(list)
-      svg.icon viewbox="0 0 1024 1024" style="width: 21px; height: 21px; margin-left: 10px;vertical-align: middle;" data-toggle="tooltip" data-placement="auto" data-html="true" title="When you click this link, an email will be sent to all Pod members and invitees"
-        use xlink:href="#icon-podkeeper-info-yellow"
+  = list.notify_list
 
 .list__items data-list-id="#{list.id}"
   .table-responsive
@@ -47,3 +36,5 @@ hr
 
   = render 'list_items/form', list: list, list_item: list.list_items.build
   = link_to 'Add a row', add_list_item_list_path(list), remote: true, class: 'list__items--add-row'
+
+hr

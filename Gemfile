@@ -54,6 +54,7 @@ gem 'uglifier'
 gem 'autoprefixer-rails'
 gem 'simple_calendar', '~> 1.1.0'
 gem 'puma'
+gem 'draper'
 
 gem 'rack-rewrite', '~> 1.5.0'
 
