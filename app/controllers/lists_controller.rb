@@ -11,8 +11,8 @@ class ListsController < ApplicationController
   end
 
   def show
-    @lists = @pod.lists.includes(:list_items).page(params[:page]).per(10)
-    @list = List.find params[:id]
+    @lists = ListDecorator.decorate_collection(@pod.lists.includes(:list_items).page(params[:page]).per(10))
+    @list = List.find(params[:id]).decorate
     render :index
   end
 
