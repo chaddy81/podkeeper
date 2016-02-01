@@ -106,6 +106,7 @@ Rails.application.routes.draw do
   get 'basketball_gaw',      to: 'landing_pages#basketball_gaw'
   get 'basketball_fba',      to: 'landing_pages#basketball_fba'
   get 'certifikid',          to: 'landing_pages#certifikids'
+  get 'shared_calendar', to: 'landing_pages#shared_calendar'
   get 'shared_calendar_gaw', to: 'landing_pages#shared_calendar_gaw'
 
   get 'no_script',        to: 'static_pages#no_script'
